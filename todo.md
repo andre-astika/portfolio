@@ -1,4 +1,4 @@
-- [ ] Inspect the Lumora reference hero background and identify reusable visual behaviors.
+- [x] Inspect the Lumora reference hero background and identify reusable visual behaviors.
 - [x] Keep the existing hero typography, controls, copy, and layout unchanged, except remove the hero portrait element.
 - [x] Replace or layer only the hero background with a Lumora-inspired monochrome treatment.
 - [x] Copy and upload the newly attached 16:9 plain and Weekend photos as durable web assets.
