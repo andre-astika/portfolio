@@ -1,10 +1,9 @@
 /* NOIR KINETIC — hero: staggered line-rise headline, interactive
-   Developer ↔ Weekend mode switcher swapping the two profile photos with a
-   sliding pill, tilt-on-hover, and parallax. Tagline stays clipped brand voice. */
-import { useEffect, useRef, useState } from "react";
-import { useMouseParallax } from "@/hooks/useKinetic";
+   Developer ↔ Weekend mode switcher with a sliding pill and clipped brand voice.
+   The portrait is intentionally omitted here so the cinematic background owns
+   the hero; reusable Andre portraits remain available in About/Experience. */
+import { useState } from "react";
 import FluidHeroBg from "@/components/FluidHeroBg";
-import { AndrePhoto, useWeekend } from "@/components/AndrePhoto";
 
 type Mode = "dev" | "weekend";
 
@@ -53,32 +52,6 @@ function ModeSwitch({
 
 export default function Hero() {
   const [mode, setMode] = useState<Mode>("dev");
-  const [hovered, setHovered] = useState(false);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const portraitWrapRef = useRef<HTMLDivElement>(null);
-  const parallaxRef = useMouseParallax(22);
-  const siteWeekend = useWeekend(hovered);
-
-  /* slight tilt of the portrait card toward the pointer */
-  useEffect(() => {
-    const wrap = portraitWrapRef.current;
-    if (!wrap) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-    const onMove = (e: MouseEvent) => {
-      const rect = wrap.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      setTilt({ x: py * -6, y: px * 6 });
-    };
-    const onLeave = () => setTilt({ x: 0, y: 0 });
-    wrap.addEventListener("mousemove", onMove as EventListener);
-    wrap.addEventListener("mouseleave", onLeave as EventListener);
-    return () => {
-      wrap.removeEventListener("mousemove", onMove as EventListener);
-      wrap.removeEventListener("mouseleave", onLeave as EventListener);
-    };
-  }, []);
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -162,32 +135,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT: interactive portrait with mode swap (site-wide via AndrePhoto) */}
-          <div className="hidden lg:block">
-            <div ref={portraitWrapRef} className="relative justify-self-end">
-              {/* parallax container + tilt */}
-              <div
-                ref={parallaxRef}
-                className="relative transition-transform duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)]"
-                style={{
-                  willChange: "transform",
-                  transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-                }}
-              >
-                <div
-                  onMouseEnter={() => setHovered(true)}
-                  onMouseLeave={() => setHovered(false)}
-                  className="transition-shadow duration-500 hover:shadow-[0_0_60px_oklch(1_0_0/0.06)]"
-                >
-                  <AndrePhoto
-                    className="relative h-[62vh] w-auto cursor-pointer"
-                    imgClassName="h-full w-auto"
-                    tilt
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

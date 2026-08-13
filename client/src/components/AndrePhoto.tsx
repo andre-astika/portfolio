@@ -93,8 +93,8 @@ export function AndrePhoto({
     <div
       ref={ref}
       className={`group relative select-none ${className}`}
-      onMouseEnter={() => setFlip(true)}
-      onMouseLeave={() => setFlip(false)}
+      onPointerEnter={() => setFlip(true)}
+      onPointerLeave={() => setFlip(false)}
       style={style}
     >
       {/* sharp accent frame: thin offset outline echoing the clipped corner */}
