@@ -90,20 +90,20 @@ export default function Philosophy() {
                 }}
                 data-principle-index={i}
                 aria-current={activeIndex === i ? "step" : undefined}
-                className={`reveal group relative border-t py-10 transition-[background-color,border-color,opacity] duration-500 first:border-t-0 ${
+                className={`reveal relative border-t py-10 transition-colors duration-500 first:border-t-0 ${
                   activeIndex === i
-                    ? "border-white/25 bg-white/[0.035]"
-                    : "border-white/10 opacity-55 hover:bg-white/[0.02] hover:opacity-80"
+                    ? "border-white/30"
+                    : "border-white/10"
                 }`}
                 style={{ "--reveal-delay": `${i * 110}ms` } as React.CSSProperties}
               >
                 <div className="flex flex-wrap items-baseline gap-4">
-                  <span className={`font-label text-[11px] uppercase tracking-[0.3em] transition-colors duration-300 ${activeIndex === i ? "text-white/70" : "text-white/35"}`}>{p.no}</span>
-                  <h3 className={`font-display text-2xl font-bold uppercase tracking-tight transition-colors duration-300 group-hover:text-silver-gradient md:text-3xl ${activeIndex === i ? "text-white" : "text-white/60"}`}>
+                  <span className={`font-label text-[11px] uppercase tracking-[0.3em] transition-colors duration-300 ${activeIndex === i ? "text-white" : "text-white/45"}`}>{p.no}</span>
+                  <h3 className={`font-display text-2xl font-bold uppercase tracking-tight transition-colors duration-300 md:text-3xl ${activeIndex === i ? "text-white" : "text-white/70"}`}>
                     {p.title}
                   </h3>
                 </div>
-                <p className={`mt-4 max-w-xl text-sm leading-relaxed transition-colors duration-300 md:text-base ${activeIndex === i ? "text-white/70" : "text-white/40"}`}>{p.text}</p>
+                <p className={`mt-4 max-w-xl text-sm leading-relaxed transition-colors duration-300 md:text-base ${activeIndex === i ? "text-white" : "text-white/55"}`}>{p.text}</p>
               </div>
             ))}
             <div className="border-t border-white/10" />
