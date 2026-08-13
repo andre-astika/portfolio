@@ -46,9 +46,9 @@ function CaseCard({ c, i }: { c: (typeof CASES)[number]; i: number }) {
         <span className="font-label text-[11px] uppercase tracking-[0.25em]">Read study</span>
         <span>→</span>
       </div>
-      {/* oversized ghost number */}
+      {/* oversized outlined index */}
       <span
-        className="font-display pointer-events-none absolute -right-12 -bottom-12 select-none text-[7rem] font-black leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.38)] transition-colors duration-300 group-hover:[-webkit-text-stroke-color:rgba(255,255,255,0.58)]"
+        className="case-study-index font-display pointer-events-none absolute -right-8 -bottom-12 select-none text-[84px] font-black leading-none text-transparent sm:text-[108px] md:text-[140px] [-webkit-text-stroke:1px_rgba(255,255,255,0.38)] transition-colors duration-300 group-hover:[-webkit-text-stroke-color:rgba(255,255,255,0.58)]"
         aria-hidden="true"
       >
         {String(i + 1).padStart(2, "0")}

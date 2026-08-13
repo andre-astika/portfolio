@@ -349,6 +349,12 @@ manus-content-root {
 }
 
 @media (max-width: 767px) {
+  .site-surface main > section,
+  .site-surface main > section > .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .lumora-hero-orb {
     width: 75vw;
     height: 30vw;
@@ -429,6 +435,10 @@ body:has(.weekend-theme) {
 
 .weekend-theme .text-stroke {
   -webkit-text-stroke-color: color-mix(in oklab, var(--ink) 62%, transparent);
+}
+
+.weekend-theme .case-study-index {
+  -webkit-text-stroke-color: color-mix(in oklab, var(--ink) 42%, transparent);
 }
 
 .hero-astika-sparkle {
