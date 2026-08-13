@@ -37,8 +37,8 @@ function ModeSwitch({
       />
       {(
         [
-          { key: "dev", label: "✦ Developer" },
-          { key: "weekend", label: "Weekend ✦" },
+          { key: "dev", label: "✦ Developer Mode" },
+          { key: "weekend", label: "Weekend Mode ✦" },
         ] as const
       ).map((opt) => (
         <button
@@ -86,8 +86,8 @@ export default function Hero() {
     >
       <LiquidHeroReveal
         ref={liquidRevealRef}
-        baseSrc={HERO_IMG_PLAIN}
-        revealSrc={HERO_IMG_WEEKEND}
+        baseSrc={weekend ? HERO_IMG_WEEKEND : HERO_IMG_PLAIN}
+        revealSrc={weekend ? HERO_IMG_PLAIN : HERO_IMG_WEEKEND}
       />
       {/* WebGL fluid/smoke layer behind everything, pointer-reactive */}
       <FluidHeroBg />
@@ -103,7 +103,7 @@ export default function Hero() {
 
             <p className="font-label mb-6 line-rise flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
               <span className="inline-block h-px w-10 bg-white/30" />
-              (Portfolio) — Frontend Developer · Website &amp; Graphic Designer
+              Frontend Developer · Website &amp; Graphic Designer
             </p>
 
             <h1 className="font-display leading-[0.88] tracking-tight">
@@ -111,14 +111,17 @@ export default function Hero() {
                 Andre
               </span>
               <span className="line-rise block text-[15vw] font-black uppercase text-stroke md:text-[8.5rem]" style={{ "--line-delay": "240ms" } as React.CSSProperties}>
-                Astika<span className="text-white/40">✦</span>
+                Astika
+                <span className="ml-2 inline-block translate-y-[0.03em] align-middle text-[1.12em] leading-none text-white/40 md:ml-3 md:text-[1.08em]" aria-hidden="true">
+                  ✦
+                </span>
               </span>
             </h1>
 
             {/* mode-aware taglines */}
             <p
               key={mode}
-              className="mt-8 max-w-xl animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] text-base leading-relaxed text-white/60 md:text-lg"
+              className="mt-8 w-full max-w-[700px] animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] text-base leading-relaxed text-white/60 md:text-lg"
             >
               {mode === "dev" ? (
                 <>
