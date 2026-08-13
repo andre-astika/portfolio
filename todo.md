@@ -267,3 +267,12 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Set `.hero-astika-sparkle` to color `#ffffffb8`, no text stroke, 1.5rem left margin, and 105px font size.
 - [x] Verify the revised sparkle on desktop and mobile, run automated checks, then publish.
+
+## Weekend sparkle color correction
+
+- [x] Preserve the requested base sparkle CSS and restore `.weekend-theme .hero-astika-sparkle { color: var(--ink); }`.
+- [x] Verify the corrected Developer and Weekend color behavior, run checks, then publish.
+
+## Weekend sparkle verification notes
+
+Developer Mode renders the requested semi-transparent white sparkle beside ASTIKA. After switching to Weekend Mode in the browser, the Hero changes to the warm paper palette and the sparkle renders in the `var(--ink)` color, confirming the restored Weekend override is active.
