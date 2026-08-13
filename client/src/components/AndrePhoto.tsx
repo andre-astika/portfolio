@@ -70,6 +70,18 @@ export function AndrePhoto({
   const showWeekend = useWeekend(flip);
   const ref = useRef<HTMLDivElement>(null);
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
+  const [weekendReady, setWeekendReady] = useState(false);
+
+  useEffect(() => {
+    const weekendImage = new Image();
+    const markReady = () => setWeekendReady(true);
+
+    weekendImage.addEventListener("load", markReady);
+    weekendImage.src = IMG_ANDRE_WEEKEND;
+    if (weekendImage.complete && weekendImage.naturalWidth > 0) markReady();
+
+    return () => weekendImage.removeEventListener("load", markReady);
+  }, []);
 
   useEffect(() => {
     const wrap = ref.current;
@@ -110,10 +122,19 @@ export function AndrePhoto({
       />
       <div className="relative overflow-hidden" style={{ clipPath }}>
         <img
-          key={showWeekend ? "weekend" : "dev"}
-          src={showWeekend ? IMG_ANDRE_WEEKEND : IMG_ANDRE_DEV}
-          alt={showWeekend ? "Andre Astika — Weekend mode (cap & shades)" : "Andre Astika — Developer mode"}
-          className={`h-full w-auto animate-[photo-in_0.7s_cubic-bezier(0.23,1,0.32,1)_both] object-cover object-top ${imgClassName}`}
+          src={IMG_ANDRE_DEV}
+          alt="Andre Astika — Developer mode"
+          className={`block h-full w-auto object-cover object-top ${imgClassName}`}
+          style={{ filter: "grayscale(100%) contrast(1.05)" }}
+          draggable={false}
+        />
+        <img
+          src={IMG_ANDRE_WEEKEND}
+          alt=""
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 h-full w-full max-w-none object-cover object-top transition-opacity duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
+            showWeekend && weekendReady ? "opacity-100" : "opacity-0"
+          }`}
           style={{ filter: "grayscale(100%) contrast(1.05)" }}
           draggable={false}
         />

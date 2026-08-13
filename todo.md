@@ -390,3 +390,9 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Ensure all Philosophy principles remain visible after being scrolled past or re-entering the viewport.
 - [x] Retain an active-reading emphasis without changing item visibility, opacity, or layout.
 - [x] Verify scroll behavior on desktop and mobile, run automated checks, and publish the fix.
+
+## About portrait hover blank-frame repair
+
+- [x] Eliminate intermittent blank frames during the About portrait hover image transition.
+- [x] Preserve the shared portrait hover behavior and responsive image composition.
+- [x] Verify hover behavior on desktop and mobile, run automated checks, and publish the repair.
