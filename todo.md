@@ -240,3 +240,8 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Clip outlined Work project indices 01–03 within each card boundary.
 - [x] Create visible 3rem separation between Work cards without any index or card overlap.
 - [x] Verify desktop/mobile clipping and separation, run checks, then publish.
+
+## True Work image ratio
+
+- [x] Enforce a true 4:3 ratio on every Work project image container.
+- [x] Verify the 4:3 imagery on desktop and mobile, run checks, then publish.

@@ -63,13 +63,13 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
       className="group relative flex w-full shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-3 hover:border-white/40"
     >
       {/* image block */}
-      <div className="relative overflow-hidden">
-        <div className="relative overflow-hidden">
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
+        <div className="relative h-full overflow-hidden">
           <img
           src={project.image}
           alt={project.title}
           draggable={false}
-          className="aspect-[4/3] w-full object-cover transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.05] group-hover:contrast-[1.15]"
+          className="h-full w-full object-cover transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.05] group-hover:contrast-[1.15]"
           style={{ filter: "grayscale(100%) contrast(1.2)" }}
           loading="lazy"
           />
