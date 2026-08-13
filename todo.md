@@ -378,3 +378,9 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Highlight the principle currently being read in the right column.
 - [x] Add a concise CTA below Philosophy that links to the Contact section.
 - [x] Verify the interactions on desktop and mobile, run automated checks, and publish the update.
+
+## Philosophy active-state contrast correction
+
+- [x] Render the actively read Philosophy principle in solid white without making other principles disappear.
+- [x] Remove background changes from Philosophy principle hover states.
+- [x] Verify the corrected states on desktop and mobile, run automated checks, and publish the update.
