@@ -3,7 +3,7 @@
    track sideways. Only when the track reaches its end does the page unlock and
    continue to the next section. Wheel events are captured via passive:false on
    the section. Hovering a card lifts it and reveals its brief description. */
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRevealObserver } from "@/hooks/useKinetic";
 
 const PROJECTS = [
@@ -39,7 +39,7 @@ const PROJECTS = [
   },
 ];
 
-function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: number }) {
+function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
   const cardRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -67,6 +67,7 @@ function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: 
         <img
           src={project.image}
           alt={project.title}
+          draggable={false}
           className="aspect-[4/3] w-full object-cover transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.05] group-hover:contrast-[1.15]"
           style={{ filter: "grayscale(100%) contrast(1.2)" }}
           loading="lazy"
@@ -108,84 +109,56 @@ function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: 
 }
 
 export default function WorkGallery() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackZoneRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
-  const progressLabelRef = useRef<HTMLSpanElement>(null);
-  const pinnedRef = useRef(false);
-  const [locked, setLocked] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef({ active: false, didDrag: false, pointerId: 0, startX: 0, startScrollLeft: 0 });
+  const [isDragging, setIsDragging] = useState(false);
   useRevealObserver();
 
-  const PADDING_X = 40; // extra px around the track
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    const viewport = viewportRef.current;
+    if (!viewport) return;
 
-  const applyProgress = useCallback((p: number) => {
-    const section = sectionRef.current;
-    const track = trackRef.current;
-    const progressBar = progressRef.current;
-    const progressLabel = progressLabelRef.current;
-    if (!section || !track) return;
-    const trackWidth = Math.max(0, track.scrollWidth - window.innerWidth);
-    track.style.transform = `translate3d(${-p * trackWidth}px, 0, 0)`;
-    if (progressBar) progressBar.style.width = `${Math.min(100, p * 100 + 6)}%`;
-    if (progressLabel) progressLabel.textContent = `${Math.round(p * 100)}%`;
-    setProgress(p);
-    const wasPinned = pinnedRef.current;
-    const isPinned = p > 0.002 && p < 0.998;
-    pinnedRef.current = isPinned;
-    if (wasPinned !== isPinned) setLocked(isPinned);
-  }, []);
-
-  /* Wheel → sideways while pinned. Captures events (passive:false) so the page
-     doesn't scroll vertically until the track has reached the end. */
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-    const trackZone = trackZoneRef.current;
-    if (!trackZone) return;
-
-    const SENSITIVITY = 0.0018; // fraction of track per wheel delta
-    let current = 0;
-    let raf = 0;
-
-    const update = (raw: number) => {
-      const p = Math.min(1, Math.max(0, raw));
-      if (Math.abs(p - current) > 0.0005) {
-        current = p;
-        applyProgress(current);
-      }
+    dragRef.current = {
+      active: true,
+      didDrag: false,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startScrollLeft: viewport.scrollLeft,
     };
+    viewport.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+  };
 
-    const onWheel = (e: WheelEvent) => {
-      const atStart = current <= 0.002 && e.deltaY <= 0;
-      const atEnd = current >= 0.998 && e.deltaY >= 0;
-      if (atStart || atEnd) return; // let the page scroll naturally
-      e.preventDefault();
-      const step = (e.deltaY + e.deltaX * 0.5) * SENSITIVITY;
-      update(current + step);
-    };
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    const viewport = viewportRef.current;
+    if (!drag.active || !viewport) return;
 
-    trackZone.addEventListener("wheel", onWheel, { passive: false });
-    const tick = () => {
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    window.addEventListener("resize", () => update(current));
-    return () => {
-      trackZone.removeEventListener("wheel", onWheel);
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", () => {});
-    };
-  }, [applyProgress]);
+    const distance = event.clientX - drag.startX;
+    if (Math.abs(distance) > 4) drag.didDrag = true;
+    viewport.scrollLeft = drag.startScrollLeft - distance;
+  };
+
+  const finishDragging = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    const viewport = viewportRef.current;
+    if (!drag.active || !viewport) return;
+
+    if (viewport.hasPointerCapture(drag.pointerId)) viewport.releasePointerCapture(drag.pointerId);
+    drag.active = false;
+    setIsDragging(false);
+  };
+
+  const preventDraggedClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!dragRef.current.didDrag) return;
+    event.preventDefault();
+    event.stopPropagation();
+    dragRef.current.didDrag = false;
+  };
 
   return (
-    <section
-      id="work"
-      ref={sectionRef}
-      className="relative bg-[oklch(0.15_0_0)]"
-      style={{ minHeight: locked ? "100vh" : undefined }}
-    >
+    <section id="work" className="relative bg-[oklch(0.15_0_0)]">
       <div className="container pb-8 pt-24 md:pt-32">
         <div className="reveal flex flex-wrap items-end justify-between gap-6">
           <div>
@@ -200,42 +173,30 @@ export default function WorkGallery() {
             </h2>
           </div>
           <p className="font-label max-w-sm text-[11px] uppercase leading-relaxed tracking-[0.15em] text-white/40">
-            Pinned while you browse — scroll ↓ to move sideways. At 100% the lock releases.
+            Drag left or right to browse the selected projects.
           </p>
-        </div>
-
-        {/* progress bar */}
-        <div className="mt-10 flex items-center gap-4">
-          <div className="h-px flex-1 bg-white/10">
-            <div
-              ref={progressRef}
-              className="h-px bg-white/70 transition-[width] duration-150"
-              style={{ width: "6%" }}
-            />
-          </div>
-          <span
-            ref={progressLabelRef}
-            className="font-label text-[10px] uppercase tracking-[0.3em] text-white/40"
-          >
-            00%
-          </span>
         </div>
       </div>
 
-      {/* pinned track: overflows beyond viewport so it can translate left */}
-      <div ref={trackZoneRef} className="overflow-x-clip">
+      <div
+        ref={viewportRef}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={finishDragging}
+        onPointerCancel={finishDragging}
+        onClickCapture={preventDraggedClick}
+        className={`cursor-grab overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${isDragging ? "cursor-grabbing" : ""}`}
+      >
         <div
-          ref={trackRef}
-          className="flex gap-10 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-16 md:gap-14"
-          style={{ width: "max-content", willChange: "transform" }}
+          className="flex w-max gap-4 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-10 md:gap-6 md:pt-12"
         >
           {PROJECTS.map((p, i) => (
             <div
               key={p.index}
-              className="reveal w-full max-w-[46rem] shrink-0"
+              className="reveal w-[82vw] max-w-[46rem] shrink-0 md:w-[40vw]"
               style={{ "--reveal-delay": `${i * 100}ms` } as React.CSSProperties}
             >
-              <SpotlightCard project={p} i={i} />
+              <SpotlightCard project={p} />
             </div>
           ))}
 
