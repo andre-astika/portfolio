@@ -371,3 +371,10 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Make the Philosophy section’s left content column sticky on desktop and tablet while the principles list scrolls alongside it.
 - [x] Remove the Kind Words testimonial section and its page-level rendering.
 - [x] Verify the revised page on desktop and mobile, run automated checks, and publish the update.
+
+## Philosophy interactive reading enhancements
+
+- [x] Add a subtle scroll-progress bar for the Philosophy principles list.
+- [x] Highlight the principle currently being read in the right column.
+- [x] Add a concise CTA below Philosophy that links to the Contact section.
+- [x] Verify the interactions on desktop and mobile, run automated checks, and publish the update.
