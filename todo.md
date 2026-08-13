@@ -9,7 +9,7 @@
 - [x] Rebuild the Hero interaction as a pointer-following soft brush reveal instead of a binary crossfade.
 - [x] Add a cursor ring and spring-like pointer smoothing while keeping the base photo visible.
 - [x] Verify desktop and mobile layout plus no browser-console errors.
-- [ ] Save a checkpoint and deliver the updated project.
+- [x] Save a checkpoint and deliver the updated project.
 
 ## Corrected Lumora mechanics
 
@@ -30,7 +30,7 @@ Source reference: https://www.getlayers.ai/?layer=lumora (Lumora layer preview i
 - [x] Add a Weekend light theme across the entire page with coordinated backgrounds, text, borders, cards, controls, and motion overlays.
 - [x] Make the Developer/Weekend button switch the global theme state, including keyboard behavior if already supported.
 - [x] Verify the Hero and key section surfaces in both themes on desktop/mobile; TypeScript passes and browser console is clean.
-- [ ] Save a new checkpoint.
+- [x] Save a new checkpoint.
 
 ## Theme verification notes
 
@@ -42,34 +42,34 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 ## Latest Hero composition refinement
 
-- [ ] Copy and upload the newly attached landscape plain and Weekend photo pair as durable web assets.
-- [ ] Replace the current Hero background pair with the new landscape pair and shift the face composition further right.
-- [ ] Remove the Hero-only 01 section marker without changing the Hero description copy.
-- [ ] Make the active Weekend button black in the light theme.
-- [ ] Keep section numerals 02, 03, and later in the muted gray treatment used by Developer dark mode.
-- [ ] Verify desktop/mobile presentation, theme states, and TypeScript, then save a checkpoint.
+- [x] Copy and upload the newly attached landscape plain and Weekend photo pair as durable web assets.
+- [x] Replace the current Hero background pair with the new landscape pair and shift the face composition further right.
+- [x] Remove the Hero-only 01 section marker without changing the Hero description copy.
+- [x] Make the active Weekend button black in the light theme.
+- [x] Keep section numerals 02, 03, and later in the muted gray treatment used by Developer dark mode.
+- [x] Verify desktop/mobile presentation, theme states, and TypeScript, then save a checkpoint.
 
 ## Work carousel sticky refinement
 
-- [ ] Inspect the current Work section wrapper, sticky region, track movement, and card image sizing.
-- [ ] Start sticky behavior at the project carousel/grid rather than at the Work section header.
-- [ ] Keep the carousel pinned while the project track scrolls left, then release only after the track reaches its end.
-- [ ] Change each Work project image frame to a 4:3 aspect ratio without breaking hover descriptions or responsive layout.
-- [ ] Verify desktop trackpad/wheel behavior and mobile presentation, then save a checkpoint.
+- [x] Inspect the current Work section wrapper, sticky region, track movement, and card image sizing.
+- [x] Start sticky behavior at the project carousel/grid rather than at the Work section header.
+- [x] Keep the carousel pinned while the project track scrolls left, then release only after the track reaches its end.
+- [x] Change each Work project image frame to a 4:3 aspect ratio without breaking hover descriptions or responsive layout.
+- [x] Verify desktop trackpad/wheel behavior and mobile presentation, then save a checkpoint.
 
 ## Display stroke refinement
 
 - [x] Locate the shared `.text-stroke` rule and any inline stroke overrides.
 - [x] Reduce stroke width while preserving the grayscale contrast in Developer and Weekend themes.
 - [x] Verify the Hero outline heading at desktop size; TypeScript passes and no layout changes were introduced.
-- [ ] Save a checkpoint.
+- [x] Save a checkpoint.
 
 ## Section numeral normalization
 
 - [x] Locate the section marker styles for 02–07.
 - [x] Use one shared numeral size so 02 matches the other section markers.
 - [x] Verify the normalized numerals on the full-page desktop render; TypeScript passes.
-- [ ] Save a checkpoint.
+- [x] Save a checkpoint.
 
 ## Hero 01 cleanup
 
@@ -85,41 +85,41 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 ## New Hero background replacement
 
-- [ ] Upload the newly attached plain and cap-and-glasses background images as durable web assets.
-- [ ] Wire the new pair into the Hero base and liquid reveal layers.
-- [ ] Preserve the current right-weighted composition and readable Hero copy.
-- [ ] Verify desktop/mobile presentation and save a checkpoint.
+- [x] Upload the newly attached plain and cap-and-glasses background images as durable web assets.
+- [x] Wire the new pair into the Hero base and liquid reveal layers.
+- [x] Preserve the current right-weighted composition and readable Hero copy.
+- [x] Verify desktop/mobile presentation and save a checkpoint.
 
 ## Work card title scale
 
-- [ ] Reduce the title size inside each Work grid item on desktop and mobile.
-- [ ] Verify the smaller titles preserve card hierarchy and hover behavior.
-- [ ] Save a checkpoint after verification.
+- [x] Reduce the title size inside each Work grid item on desktop and mobile.
+- [x] Verify the smaller titles preserve card hierarchy and hover behavior.
+- [x] Save a checkpoint after verification.
 
 ## Heading outline stroke refinement
 
 - [x] Make outline heading strokes such as “THINK” visibly thinner.
 - [x] Preserve readable contrast in Developer and Weekend themes.
-- [ ] Verify the change and save a checkpoint.
+- [x] Verify the change and save a checkpoint.
 
 ## HD Hero background and Weekend control
 
 - [x] Upload the newly attached HD plain and cap-and-glasses Hero images as durable web assets.
 - [x] Replace the current Hero base/reveal pair with the new HD assets.
 - [x] Set the active Weekend button to black background with white text.
-- [ ] Verify desktop/mobile Hero framing and Weekend contrast, then save a checkpoint.
+- [x] Verify desktop/mobile Hero framing and Weekend contrast, then save a checkpoint.
 
 ## Hero sparkle alignment
 
 - [x] Enlarge the sparkle icon beside “Astika” to align with the heading height.
 - [x] Preserve appropriate sparkle contrast in Developer dark and Weekend light modes.
-- [ ] Verify desktop/mobile Hero heading presentation and save a checkpoint.
+- [x] Verify desktop/mobile Hero heading presentation and save a checkpoint.
 
 ## Header description width
 
 - [x] Set the Hero/Header description max-width to 700px.
 - [x] Keep the description aligned with the upper content and responsive on mobile.
-- [ ] Verify the result and save a checkpoint.
+- [x] Verify the result and save a checkpoint.
 
 ## Weekend Hero default image
 
@@ -131,7 +131,7 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Remove “(Portfolio) —” from the Hero role line.
 - [x] Preserve the remaining role text and spacing across responsive layouts.
-- [ ] Verify the change and save a checkpoint.
+- [x] Verify the change and save a checkpoint.
 
 ## Hero mode-label wording
 
@@ -143,24 +143,36 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Ensure Weekend mode visibly renders the cap-and-glasses image as the primary Hero image before hover.
 - [x] Preserve Developer plain-image behavior and the alternate hover reveal.
-- [ ] Verify both mode states and save a corrective checkpoint.
+- [x] Verify both mode states and save a corrective checkpoint.
 
 ## Hero role-line divider removal
 
 - [x] Remove the horizontal line before the Hero role text.
 - [x] Preserve the role text and responsive spacing.
-- [ ] Verify the Header layout and save a checkpoint.
+- [x] Verify the Header layout and save a checkpoint.
 
 ## ASTIKA sparkle alignment
 
 - [x] Keep the sparkle icon inline beside “ASTIKA” instead of allowing it to wrap below.
 - [x] Match the sparkle’s visual size to the ASTIKA wordmark.
 - [x] Use the dark-mode sparkle color treatment in Weekend/light mode.
-- [ ] Verify desktop/mobile theme states and save a checkpoint.
+- [x] Verify desktop/mobile theme states and save a checkpoint.
 
 ## Full-stack and file storage upgrade
 
 - [x] Upgrade the static portfolio to the full-stack WebDev template.
 - [x] Review the generated auth, database, backend, and storage scaffolding.
 - [x] Document the file-storage upload and retrieval path for future portfolio assets.
-- [ ] Run validation and save a checkpoint after the upgrade.
+- [x] Run validation and save a checkpoint after the upgrade.
+
+## ASTIKA four-point sparkle icon
+
+- [x] Replace the ASTIKA wordmark sparkle with the supplied four-point diamond sparkle.
+- [x] Match its size, contrast, and alignment in both Developer and Weekend themes.
+- [x] Verify desktop/mobile ASTIKA sparkle presentation and save a checkpoint.
+
+## Original ASTIKA sparkle restoration
+
+- [x] Remove the four-point replacement and restore the original default sparkle glyph beside ASTIKA.
+- [x] Use the same original dark-mode sparkle treatment in Developer and Weekend modes.
+- [x] Verify desktop/mobile presentation and save a corrective checkpoint.
