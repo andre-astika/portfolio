@@ -1,6 +1,8 @@
-/* NOIR KINETIC — design philosophy: huge serif accent line, parallax meta,
-   three numbered principles on an asymmetric split. */
+/* NOIR KINETIC — design philosophy: sticky editorial statement with a measured
+   reading-progress indicator and focus-aware numbered principles. */
+import { useEffect, useRef, useState } from "react";
 import { useMouseParallax } from "@/hooks/useKinetic";
+import { getPhilosophyReadingProgress } from "@/lib/philosophyProgress";
 
 const PRINCIPLES = [
   {
@@ -22,6 +24,32 @@ const PRINCIPLES = [
 
 export default function Philosophy() {
   const floatRef = useMouseParallax(14);
+  const principleRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const observedPrinciples = principleRefs.current.filter(
+      (principle): principle is HTMLDivElement => Boolean(principle),
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const mostVisible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!mostVisible) return;
+        const nextIndex = Number(mostVisible.target.getAttribute("data-principle-index"));
+        if (!Number.isNaN(nextIndex)) setActiveIndex(nextIndex);
+      },
+      { rootMargin: "-32% 0px -42% 0px", threshold: [0.2, 0.45, 0.7] },
+    );
+
+    observedPrinciples.forEach((principle) => observer.observe(principle));
+    return () => observer.disconnect();
+  }, []);
+
+  const readingProgress = getPhilosophyReadingProgress(activeIndex, PRINCIPLES.length);
 
   return (
     <section id="philosophy" className="relative overflow-hidden border-y border-white/10 bg-[oklch(0.11_0_0)]">
@@ -38,6 +66,18 @@ export default function Philosophy() {
             <div ref={floatRef} className="mt-10 flex items-center gap-3 text-white/40" style={{ willChange: "transform" }}>
               <span className="font-label text-[11px] uppercase tracking-[0.25em]">✦ Reduced to essentials</span>
             </div>
+            <div className="mt-8 max-w-44" aria-label={`Reading progress: principle ${activeIndex + 1} of ${PRINCIPLES.length}`}>
+              <div className="mb-3 flex items-center justify-between font-label text-[9px] uppercase tracking-[0.24em] text-white/35">
+                <span>Reading</span>
+                <span>{String(activeIndex + 1).padStart(2, "0")} / {String(PRINCIPLES.length).padStart(2, "0")}</span>
+              </div>
+              <div className="h-px overflow-hidden bg-white/15" aria-hidden="true">
+                <div
+                  className="h-full origin-left bg-white/70 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)]"
+                  style={{ transform: `scaleX(${readingProgress / 100})` }}
+                />
+              </div>
+            </div>
           </div>
 
           {/* RIGHT: numbered principles */}
@@ -45,20 +85,41 @@ export default function Philosophy() {
             {PRINCIPLES.map((p, i) => (
               <div
                 key={p.no}
-                className="reveal group border-t border-white/10 py-10 transition-colors duration-300 first:border-t-0 hover:bg-white/[0.02]"
+                ref={(element) => {
+                  principleRefs.current[i] = element;
+                }}
+                data-principle-index={i}
+                aria-current={activeIndex === i ? "step" : undefined}
+                className={`reveal group relative border-t py-10 transition-[background-color,border-color,opacity] duration-500 first:border-t-0 ${
+                  activeIndex === i
+                    ? "border-white/25 bg-white/[0.035]"
+                    : "border-white/10 opacity-55 hover:bg-white/[0.02] hover:opacity-80"
+                }`}
                 style={{ "--reveal-delay": `${i * 110}ms` } as React.CSSProperties}
               >
                 <div className="flex flex-wrap items-baseline gap-4">
-                  <span className="font-label text-[11px] uppercase tracking-[0.3em] text-white/40">{p.no}</span>
-                  <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-white transition-colors duration-300 group-hover:text-silver-gradient md:text-3xl">
+                  <span className={`font-label text-[11px] uppercase tracking-[0.3em] transition-colors duration-300 ${activeIndex === i ? "text-white/70" : "text-white/35"}`}>{p.no}</span>
+                  <h3 className={`font-display text-2xl font-bold uppercase tracking-tight transition-colors duration-300 group-hover:text-silver-gradient md:text-3xl ${activeIndex === i ? "text-white" : "text-white/60"}`}>
                     {p.title}
                   </h3>
                 </div>
-                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/55 md:text-base">{p.text}</p>
+                <p className={`mt-4 max-w-xl text-sm leading-relaxed transition-colors duration-300 md:text-base ${activeIndex === i ? "text-white/70" : "text-white/40"}`}>{p.text}</p>
               </div>
             ))}
             <div className="border-t border-white/10" />
           </div>
+        </div>
+
+        <div className="reveal mt-14 flex items-center justify-between gap-6 border-t border-white/10 pt-7 md:mt-20">
+          <p className="font-label text-[10px] uppercase tracking-[0.24em] text-white/40">Ready to make it real?</p>
+          <a
+            href="#contact"
+            data-cursor
+            className="font-label group inline-flex shrink-0 items-center gap-3 border border-white/25 px-5 py-3 text-[10px] uppercase tracking-[0.22em] text-white/85 transition-all duration-200 hover:bg-white hover:text-black active:scale-[0.97]"
+          >
+            Start a project
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
         </div>
       </div>
     </section>
