@@ -365,3 +365,9 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Remove the vertical timeline rule and square marker from the Experience list in “Behind the pixels”.
 - [x] Set the Experience entry grid to `1fr 6fr` with a 1.5rem gap on tablet and desktop.
 - [x] Verify the refined About layout on desktop and tablet, run automated checks, and publish the update.
+
+## Philosophy sticky layout and testimonial removal
+
+- [x] Make the Philosophy section’s left content column sticky on desktop and tablet while the principles list scrolls alongside it.
+- [x] Remove the Kind Words testimonial section and its page-level rendering.
+- [x] Verify the revised page on desktop and mobile, run automated checks, and publish the update.

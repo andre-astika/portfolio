@@ -28,7 +28,7 @@ export default function Philosophy() {
       <div className="container py-24 md:py-36">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           {/* LEFT: statement */}
-          <div className="reveal lg:sticky lg:top-32 lg:self-start">
+          <div className="reveal md:sticky md:top-28 md:self-start">
             <p className="font-label mb-6 text-[11px] uppercase tracking-[0.35em] text-white/45">
               (Philosophy) — Design principles
             </p>
