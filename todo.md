@@ -75,4 +75,10 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Remove the remaining 01 background marker from Hero.
 - [x] Verify Hero content and layout remain unchanged; TypeScript passes.
-- [ ] Save a checkpoint.
+- [x] Save a checkpoint.
+
+## Hero portrait positioning
+
+- [x] Shift the landscape Hero image/object position farther right on desktop.
+- [x] Preserve readable headline/description and safe mobile crop.
+- [x] Verify the hover reveal and save a checkpoint.

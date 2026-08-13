@@ -446,9 +446,13 @@ body:has(.weekend-theme) {
   border-color: var(--border) !important;
 }
 
-.weekend-theme .mode-switch button[aria-selected="false"] {
-  color: var(--muted-foreground) !important;
-}
+  .weekend-theme .mode-switch button[aria-selected="false"] {
+    color: var(--muted-foreground) !important;
+  }
+
+  .weekend-theme .mode-switch button[aria-selected="true"] {
+    color: var(--ink) !important;
+  }
 
 .weekend-theme .liquid-reveal-vignette {
   background:

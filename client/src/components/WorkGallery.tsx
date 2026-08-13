@@ -109,6 +109,7 @@ function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: 
 
 export default function WorkGallery() {
   const sectionRef = useRef<HTMLElement>(null);
+  const trackZoneRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const progressLabelRef = useRef<HTMLSpanElement>(null);
@@ -141,8 +142,8 @@ export default function WorkGallery() {
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
-    const section = sectionRef.current;
-    if (!section) return;
+    const trackZone = trackZoneRef.current;
+    if (!trackZone) return;
 
     const SENSITIVITY = 0.0018; // fraction of track per wheel delta
     let current = 0;
@@ -165,14 +166,14 @@ export default function WorkGallery() {
       update(current + step);
     };
 
-    section.addEventListener("wheel", onWheel, { passive: false });
+    trackZone.addEventListener("wheel", onWheel, { passive: false });
     const tick = () => {
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     window.addEventListener("resize", () => update(current));
     return () => {
-      section.removeEventListener("wheel", onWheel);
+      trackZone.removeEventListener("wheel", onWheel);
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", () => {});
     };
@@ -230,7 +231,7 @@ export default function WorkGallery() {
       </div>
 
       {/* pinned track: overflows beyond viewport so it can translate left */}
-      <div className="overflow-x-clip">
+      <div ref={trackZoneRef} className="overflow-x-clip">
         <div
           ref={trackRef}
           className="flex gap-10 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-16 md:gap-14"
