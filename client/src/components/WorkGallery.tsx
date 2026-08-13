@@ -171,7 +171,7 @@ export default function WorkGallery() {
               <span className="relative mb-3 ml-4 inline-block align-middle text-2xl text-white/40 md:text-3xl">✦</span>
             </h2>
           </div>
-          <p className="font-label max-w-sm text-[11px] uppercase leading-relaxed tracking-[0.15em] text-white/40">
+          <p className="font-label max-w-[170px] text-[11px] uppercase leading-relaxed tracking-[0.15em] text-white/40">
             Drag left or right to browse the selected projects.
           </p>
         </div>

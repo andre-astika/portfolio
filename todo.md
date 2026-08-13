@@ -290,3 +290,8 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Render the Work heading as a single line: “The Work ✦”.
 - [x] Add `margin-bottom: 0.75rem` to the sparkle in the Work heading and verify responsive layout before publishing.
+
+## Work instruction width refinement
+
+- [x] Set “Drag left or right to browse the selected projects.” to `max-width: 170px`.
+- [x] Verify the refined instruction width on desktop and mobile, run checks, then publish.
