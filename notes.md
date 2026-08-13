@@ -25,3 +25,10 @@
 - Browser preview confirmed the landscape assets render. Weekend mode switched successfully and the selected Weekend tab computed to dark ink (`oklch(0.16 0.008 80)`) on the light pill.
 - Work wheel capture is scoped to the carousel viewport instead of the section header; project image cards use `aspect-[4/3]`.
 - `npx tsc --noEmit` passes. The reusable `/home/ubuntu/skills/kinetic-portfolio/SKILL.md` was initialized, written, and passed `quick_validate.py`.
+
+## HD Hero and Weekend control verification
+
+- The Hero now uses `/manus-storage/andre-profile-bg-img-without-acc-hd_a1951d13.webp` as the plain base layer and `/manus-storage/andre-profile-bg-img-with-acc-hd_308df14c.webp` as the cap-and-glasses reveal layer.
+- Desktop preview confirms the new plain image remains right-weighted and the existing copy stays readable; the browser preview also switched to Weekend mode successfully.
+- Weekend active state now uses a black sliding pill with white text; Developer active state remains a white pill with black text.
+- The browser preview visibly switched to Weekend mode with the light Hero palette and updated Weekend copy; a later console selector lookup did not find the tab in that preview context, so the control was verified visually and through the source class logic.

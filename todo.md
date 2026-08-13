@@ -101,3 +101,10 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Make outline heading strokes such as “THINK” visibly thinner.
 - [x] Preserve readable contrast in Developer and Weekend themes.
 - [ ] Verify the change and save a checkpoint.
+
+## HD Hero background and Weekend control
+
+- [x] Upload the newly attached HD plain and cap-and-glasses Hero images as durable web assets.
+- [x] Replace the current Hero base/reveal pair with the new HD assets.
+- [x] Set the active Weekend button to black background with white text.
+- [ ] Verify desktop/mobile Hero framing and Weekend contrast, then save a checkpoint.
