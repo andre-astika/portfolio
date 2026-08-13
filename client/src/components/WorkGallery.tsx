@@ -60,10 +60,10 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
       href="#contact"
       data-cursor
       data-cursor-label="TALK"
-      className="group relative flex w-[86vw] shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-3 hover:border-white/40 md:w-[46vw]"
+      className="group relative flex w-full shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-3 hover:border-white/40"
     >
       {/* image block */}
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <div className="relative overflow-hidden">
           <img
           src={project.image}
@@ -195,7 +195,7 @@ export default function WorkGallery() {
           {PROJECTS.map((p, i) => (
             <div
               key={p.index}
-              className="reveal w-[82vw] max-w-[46rem] shrink-0 md:w-[40vw]"
+              className="reveal w-[86vw] max-w-[46rem] shrink-0 md:w-[46vw]"
               style={{ "--reveal-delay": `${i * 100}ms` } as React.CSSProperties}
             >
               <SpotlightCard project={p} />
