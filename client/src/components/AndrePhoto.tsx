@@ -11,9 +11,10 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { siteAsset } from "@/lib/siteAsset";
 
-export const IMG_ANDRE_DEV = "/manus-storage/andre-profile-img-without_6e47e8ca.webp";
-export const IMG_ANDRE_WEEKEND = "/manus-storage/andre-profile-img-with_3f7bf32d.webp";
+export const IMG_ANDRE_DEV = siteAsset("/manus-storage/andre-profile-img-without_6e47e8ca.webp");
+export const IMG_ANDRE_WEEKEND = siteAsset("/manus-storage/andre-profile-img-with_3f7bf32d.webp");
 
 type WeekendCtx = { weekend: boolean; setWeekend: (next: boolean) => void };
 const Ctx = createContext<WeekendCtx>({ weekend: false, setWeekend: () => undefined });

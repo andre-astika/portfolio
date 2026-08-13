@@ -1,6 +1,7 @@
 /* NOIR KINETIC — top nav: mono labels, crosshair logo, scroll-aware blur bar. */
 import { useEffect, useState } from "react";
 import { useMagnetic } from "@/hooks/useKinetic";
+import { siteAsset } from "@/lib/siteAsset";
 
 const LINKS = [
   { href: "#work", label: "Work" },
@@ -37,7 +38,7 @@ export default function Nav() {
           className="flex items-center gap-2"
         >
           <img
-            src="/manus-storage/logo-crosshair_5d137a18.png"
+            src={siteAsset("/manus-storage/logo-crosshair_5d137a18.png")}
             alt="Andre Astika mark"
             className="h-7 w-7 md:h-8 md:w-8"
           />

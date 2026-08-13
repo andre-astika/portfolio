@@ -5,6 +5,7 @@
    the section. Hovering a card lifts it and reveals its brief description. */
 import { useEffect, useRef, useState } from "react";
 import { useRevealObserver } from "@/hooks/useKinetic";
+import { siteAsset } from "@/lib/siteAsset";
 
 const PROJECTS = [
   {
@@ -12,7 +13,7 @@ const PROJECTS = [
     year: "2026",
     title: "Invitation Branding Suite",
     tag: "Brand · Print · Web",
-    image: "/manus-storage/project-invite_8162f19b.png",
+    image: siteAsset("/manus-storage/project-invite_8162f19b.png"),
     description:
       "Logo, invitation card, and a custom e-invitation website — one identity, three surfaces, shipped as a single system.",
     stats: ["3 deliverables", "1 identity", "2026"],
@@ -22,7 +23,7 @@ const PROJECTS = [
     year: "2026",
     title: "Logo & E-Invitation Website",
     tag: "Logo · Website",
-    image: "/manus-storage/project-web_6efabdbf.png",
+    image: siteAsset("/manus-storage/project-web_6efabdbf.png"),
     description:
       "Custom logo design plus a modern e-invitation site. Visual elegance, flawless function — desktop to pocket.",
     stats: ["Logo design", "Full website", "2026"],
@@ -32,7 +33,7 @@ const PROJECTS = [
     year: "2022 — 26",
     title: "Agency Client Websites",
     tag: "Frontend · WordPress · Next.js",
-    image: "/manus-storage/project-brand_b5d041e3.png",
+    image: siteAsset("/manus-storage/project-brand_b5d041e3.png"),
     description:
       "10–20 sites shipped per year for international agency clients. Headless Next.js, Sanity, custom WordPress — each build a different performance puzzle.",
     stats: ["60+ sites shipped", "10–20 / yr", "4 yrs"],

@@ -6,12 +6,13 @@
 import { useRef, type PointerEvent } from "react";
 import { useSiteWeekend } from "@/components/AndrePhoto";
 import FluidHeroBg from "@/components/FluidHeroBg";
+import { siteAsset } from "@/lib/siteAsset";
 import LiquidHeroReveal, {
   type LiquidHeroRevealHandle,
 } from "@/components/LiquidHeroReveal";
 
-const HERO_IMG_PLAIN = "/manus-storage/andre-profile-bg-img-without-acc-hd_a1951d13.webp";
-const HERO_IMG_WEEKEND = "/manus-storage/andre-profile-bg-img-with-acc-hd_308df14c.webp";
+const HERO_IMG_PLAIN = siteAsset("/manus-storage/andre-profile-bg-img-without-acc-hd_a1951d13.webp");
+const HERO_IMG_WEEKEND = siteAsset("/manus-storage/andre-profile-bg-img-with-acc-hd_308df14c.webp");
 
 type Mode = "dev" | "weekend";
 
