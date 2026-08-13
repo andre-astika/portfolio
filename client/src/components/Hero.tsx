@@ -113,7 +113,7 @@ export default function Hero() {
               <span className="line-rise block text-[15vw] font-black uppercase text-stroke md:text-[8.5rem]" style={{ "--line-delay": "240ms" } as React.CSSProperties}>
                 <span className="inline-flex items-center whitespace-nowrap">
                   Astika
-                  <span className="hero-astika-sparkle ml-2 inline-flex h-[0.88em] w-[0.88em] shrink-0 translate-y-[0.02em] items-center justify-center text-[0.88em] leading-none md:ml-3" aria-hidden="true">
+                  <span className="hero-astika-sparkle ml-2 inline-flex h-[0.88em] w-[0.88em] shrink-0 translate-y-[0.02em] items-center justify-center md:ml-3" aria-hidden="true">
                     ✦
                   </span>
                 </span>
