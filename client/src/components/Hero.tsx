@@ -10,8 +10,8 @@ import LiquidHeroReveal, {
   type LiquidHeroRevealHandle,
 } from "@/components/LiquidHeroReveal";
 
-const HERO_IMG_PLAIN = "/manus-storage/andre-profile-img-without-hero-landscape_bd54b3ea.webp";
-const HERO_IMG_WEEKEND = "/manus-storage/andre-profile-img-with-hero-landscape_a3a9f8b3.webp";
+const HERO_IMG_PLAIN = "/manus-storage/andre-profile-bg-img-without_2567d3c2.webp";
+const HERO_IMG_WEEKEND = "/manus-storage/andre-profile-bg-img-with_d033cf67.webp";
 
 type Mode = "dev" | "weekend";
 

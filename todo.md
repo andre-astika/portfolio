@@ -82,3 +82,22 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Shift the landscape Hero image/object position farther right on desktop.
 - [x] Preserve readable headline/description and safe mobile crop.
 - [x] Verify the hover reveal and save a checkpoint.
+
+## New Hero background replacement
+
+- [ ] Upload the newly attached plain and cap-and-glasses background images as durable web assets.
+- [ ] Wire the new pair into the Hero base and liquid reveal layers.
+- [ ] Preserve the current right-weighted composition and readable Hero copy.
+- [ ] Verify desktop/mobile presentation and save a checkpoint.
+
+## Work card title scale
+
+- [ ] Reduce the title size inside each Work grid item on desktop and mobile.
+- [ ] Verify the smaller titles preserve card hierarchy and hover behavior.
+- [ ] Save a checkpoint after verification.
+
+## Heading outline stroke refinement
+
+- [x] Make outline heading strokes such as “THINK” visibly thinner.
+- [x] Preserve readable contrast in Developer and Weekend themes.
+- [ ] Verify the change and save a checkpoint.
