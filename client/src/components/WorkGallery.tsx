@@ -40,7 +40,7 @@ const PROJECTS = [
 ];
 
 function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
-  const cardRef = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const el = cardRef.current;
@@ -55,9 +55,8 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
   }, []);
 
   return (
-    <a
+    <article
       ref={cardRef}
-      href="#contact"
       data-cursor
       data-cursor-label="TALK"
       className="group relative flex w-full shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-3 hover:border-white/40"
@@ -106,7 +105,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
           ))}
         </div>
       </div>
-    </a>
+    </article>
   );
 }
 
