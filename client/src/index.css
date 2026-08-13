@@ -251,3 +251,113 @@
     opacity: 1;
   }
 }
+
+/* Lumora-inspired background layer: a soft monochrome cinematic field with
+   blurred light bands, orb-like washes, grain, and restrained motion. The
+   existing hero typography and portrait sit above it unchanged. */
+.lumora-hero-surface {
+  background:
+    radial-gradient(circle at 72% 32%, rgb(255 255 255 / 0.11), transparent 25%),
+    radial-gradient(circle at 20% 56%, rgb(155 155 155 / 0.13), transparent 31%),
+    linear-gradient(112deg, #070707 0%, #171717 48%, #090909 100%);
+}
+
+.lumora-hero-wash {
+  background:
+    linear-gradient(108deg, transparent 14%, rgb(255 255 255 / 0.07) 34%, transparent 56%),
+    linear-gradient(92deg, transparent 30%, rgb(255 255 255 / 0.035) 50%, transparent 75%);
+  filter: blur(42px);
+  opacity: 0.9;
+  transform: scale(1.14) rotate(-3deg);
+  animation: lumora-wash 18s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate;
+}
+
+.lumora-hero-orb {
+  position: absolute;
+  width: min(42vw, 42rem);
+  height: min(16vw, 15rem);
+  border-radius: 999px;
+  filter: blur(44px);
+  opacity: 0.22;
+  transform: rotate(-12deg);
+  animation: lumora-orb 15s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate;
+}
+
+.lumora-hero-orb-a {
+  top: 20%;
+  right: -8%;
+  background: rgb(230 230 230 / 0.38);
+}
+
+.lumora-hero-orb-b {
+  bottom: 14%;
+  left: -12%;
+  background: rgb(95 95 95 / 0.55);
+  animation-delay: -5s;
+  transform: rotate(9deg) scale(0.82);
+}
+
+.lumora-hero-band {
+  position: absolute;
+  left: -12%;
+  width: 124%;
+  height: 13%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.055) 42%, rgb(255 255 255 / 0.02) 62%, transparent);
+  filter: blur(12px);
+  opacity: 0.75;
+  transform: rotate(-7deg);
+  animation: lumora-band 14s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate;
+}
+
+.lumora-hero-band-a {
+  top: 28%;
+}
+
+.lumora-hero-band-b {
+  top: 63%;
+  opacity: 0.42;
+  animation-delay: -7s;
+  transform: rotate(5deg) scale(0.78);
+}
+
+.lumora-hero-grain {
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+}
+
+@keyframes lumora-wash {
+  from { transform: scale(1.14) rotate(-3deg) translate3d(-2%, -1%, 0); }
+  to { transform: scale(1.2) rotate(-1deg) translate3d(3%, 2%, 0); }
+}
+
+@keyframes lumora-orb {
+  from { margin-top: -1.5%; opacity: 0.16; }
+  to { margin-top: 2.5%; opacity: 0.29; }
+}
+
+@keyframes lumora-band {
+  from { margin-left: -2%; opacity: 0.38; }
+  to { margin-left: 3%; opacity: 0.84; }
+}
+
+@media (max-width: 767px) {
+  .lumora-hero-orb {
+    width: 75vw;
+    height: 30vw;
+    filter: blur(34px);
+  }
+
+  .lumora-hero-band {
+    height: 17%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumora-hero-wash,
+  .lumora-hero-orb,
+  .lumora-hero-band {
+    animation: none;
+  }
+}

@@ -402,11 +402,19 @@ export default function FluidHeroBg() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full"
-      style={{ willChange: "auto" }}
-      aria-hidden="true"
-    />
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div className="lumora-hero-surface absolute inset-0" />
+      <div className="lumora-hero-wash absolute inset-0" />
+      <div className="lumora-hero-orb lumora-hero-orb-a" />
+      <div className="lumora-hero-orb lumora-hero-orb-b" />
+      <div className="lumora-hero-band lumora-hero-band-a" />
+      <div className="lumora-hero-band lumora-hero-band-b" />
+      <div className="lumora-hero-grain absolute inset-0" />
+      <canvas
+        ref={canvasRef}
+        className="relative z-[1] h-full w-full opacity-45 mix-blend-screen"
+        style={{ willChange: "auto" }}
+      />
+    </div>
   );
 }
