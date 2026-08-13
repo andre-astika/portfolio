@@ -1,9 +1,11 @@
 - [ ] Inspect the Lumora reference hero background and identify reusable visual behaviors.
 - [x] Keep the existing hero typography, controls, copy, and layout unchanged, except remove the hero portrait element.
 - [x] Replace or layer only the hero background with a Lumora-inspired monochrome treatment.
-- [x] Make the plain portrait the default and the cap-and-glasses portrait the hover state.
+- [x] Copy and upload the newly attached 16:9 plain and Weekend photos as durable web assets.
+- [x] Use the newly attached plain 16:9 photo as the Hero background by default and crossfade to the newly attached cap-and-glasses 16:9 photo when hovering the Hero.
+- [x] Keep the reference-style background interaction visibly tied to the Hero hover area, not only to a hidden image element.
 - [x] Keep the reusable portrait hover behavior available in the About/Experience section after removing the hero portrait.
-- [x] Verify desktop layout, mobile layout, and TypeScript; confirm no recent browser-console errors.
+- [x] Verify desktop layout, mobile layout, actual hover crossfade, and TypeScript; confirm no browser-console errors.
 - [ ] Save a checkpoint and deliver the updated project.
 
 ## Reference findings
