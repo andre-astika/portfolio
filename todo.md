@@ -262,3 +262,8 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Set desktop ANDRE to 163px, ASTIKA to 125px, and ✦ to 125px.
 - [x] Set both Developer and Weekend Hero descriptions to max-width 630px.
 - [x] Verify both themes on desktop/mobile, run checks, then publish.
+
+## ASTIKA sparkle CSS refinement
+
+- [x] Set `.hero-astika-sparkle` to color `#ffffffb8`, no text stroke, 1.5rem left margin, and 105px font size.
+- [x] Verify the revised sparkle on desktop and mobile, run automated checks, then publish.
