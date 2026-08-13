@@ -108,3 +108,33 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Replace the current Hero base/reveal pair with the new HD assets.
 - [x] Set the active Weekend button to black background with white text.
 - [ ] Verify desktop/mobile Hero framing and Weekend contrast, then save a checkpoint.
+
+## Hero sparkle alignment
+
+- [x] Enlarge the sparkle icon beside “Astika” to align with the heading height.
+- [x] Preserve appropriate sparkle contrast in Developer dark and Weekend light modes.
+- [ ] Verify desktop/mobile Hero heading presentation and save a checkpoint.
+
+## Header description width
+
+- [x] Set the Hero/Header description max-width to 700px.
+- [x] Keep the description aligned with the upper content and responsive on mobile.
+- [ ] Verify the result and save a checkpoint.
+
+## Weekend Hero default image
+
+- [x] Make the cap-and-glasses image the default Hero background in Weekend mode.
+- [x] Keep the plain image as the default in Developer mode.
+- [x] Preserve the liquid reveal behavior and verify both modes before checkpointing.
+
+## Hero role-line cleanup
+
+- [x] Remove “(Portfolio) —” from the Hero role line.
+- [x] Preserve the remaining role text and spacing across responsive layouts.
+- [ ] Verify the change and save a checkpoint.
+
+## Hero mode-label wording
+
+- [x] Change the mode labels to “✦ Developer Mode” and “Weekend Mode ✦”.
+- [x] Preserve active-state contrast and responsive button spacing.
+- [x] Verify the updated labels and save a checkpoint.
