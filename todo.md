@@ -245,3 +245,8 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Enforce a true 4:3 ratio on every Work project image container.
 - [x] Verify the 4:3 imagery on desktop and mobile, run checks, then publish.
+
+## Work image ratio 16:9
+
+- [x] Change every Work project image container to a true 16:9 ratio.
+- [x] Verify the 16:9 Work imagery on desktop and mobile, run checks, then publish.
