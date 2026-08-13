@@ -86,6 +86,7 @@ export default function Hero() {
     >
       <LiquidHeroReveal
         ref={liquidRevealRef}
+        mode={mode}
         baseSrc={weekend ? HERO_IMG_WEEKEND : HERO_IMG_PLAIN}
         revealSrc={weekend ? HERO_IMG_PLAIN : HERO_IMG_WEEKEND}
       />

@@ -461,7 +461,7 @@ body:has(.weekend-theme) {
 }
 
 .weekend-theme .theme-aware-reveal-base {
-  opacity: 0.58 !important;
+  opacity: 0.9 !important;
 }
 
 .weekend-theme .theme-aware-reveal-media {
