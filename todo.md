@@ -222,3 +222,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Enable manual horizontal dragging to browse project cards left and right.
 - [x] Reduce card gaps and preserve 4:3 project image aspect ratios.
 - [x] Verify desktop/mobile drag behavior and layout, run checks, then publish.
+
+## Work card spacing and indices
+
+- [x] Set the Work carousel gap to 1.5rem so cards no longer crowd or overlap.
+- [x] Render Work project indices 01–03 with a stroke/outline treatment.
+- [x] Verify desktop/mobile card layout and checks, then publish.

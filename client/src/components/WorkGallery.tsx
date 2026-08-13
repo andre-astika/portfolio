@@ -73,7 +73,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
           loading="lazy"
         />
         <span
-          className="font-display pointer-events-none absolute -bottom-6 left-4 select-none text-[9rem] font-black leading-none text-white/15 mix-blend-difference md:text-[12rem]"
+          className="font-display pointer-events-none absolute -bottom-6 left-4 select-none text-[9rem] font-black leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.42)] md:text-[12rem]"
           aria-hidden="true"
         >
           {project.index}
@@ -188,7 +188,7 @@ export default function WorkGallery() {
         className={`cursor-grab overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${isDragging ? "cursor-grabbing" : ""}`}
       >
         <div
-          className="flex w-max gap-4 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-10 md:gap-6 md:pt-12"
+          className="flex w-max gap-6 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-10 md:pt-12"
         >
           {PROJECTS.map((p, i) => (
             <div
