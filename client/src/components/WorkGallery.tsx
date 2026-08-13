@@ -1,7 +1,9 @@
-/* NOIR KINETIC — work section: horizontal-scrolling editorial project showcase
-   driven by vertical scroll. Harsh grayscale crops, giant index numerals,
-   type/image collisions, magazine-style metadata. See ideas.md Style Decisions. */
-import { useEffect, useRef, useState } from "react";
+/* NOIR KINETIC — work section: FULLY PINNED horizontal gallery.
+   The section locks in place while scrolling; wheel/trackpad input drives the
+   track sideways. Only when the track reaches its end does the page unlock and
+   continue to the next section. Wheel events are captured via passive:false on
+   the section. Hovering a card lifts it and reveals its brief description. */
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRevealObserver } from "@/hooks/useKinetic";
 
 const PROJECTS = [
@@ -58,9 +60,9 @@ function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: 
       href="#contact"
       data-cursor
       data-cursor-label="TALK"
-      className="group relative flex w-[86vw] shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] md:w-[46vw]"
+      className="group relative flex w-[86vw] shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-3 hover:border-white/40 md:w-[46vw]"
     >
-      {/* overlapping index numeral colliding with image */}
+      {/* image block */}
       <div className="relative overflow-hidden">
         <img
           src={project.image}
@@ -78,18 +80,21 @@ function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: 
         <span className="font-label absolute right-4 top-4 border border-white/30 bg-black/60 px-2.5 py-1 text-[9px] uppercase tracking-[0.3em] text-white backdrop-blur-sm">
           {project.year}
         </span>
+
+        {/* hover description reveal */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0">
+          <p className="font-label mb-1.5 text-[9px] uppercase tracking-[0.3em] text-white/60">
+            ({project.index}) — {project.tag}
+          </p>
+          <p className="max-w-sm text-sm leading-relaxed text-white">{project.description}</p>
+        </div>
       </div>
 
+      {/* meta block */}
       <div className="flex flex-col gap-4 p-6 md:p-8">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
-          <span className="font-label text-[10px] uppercase tracking-[0.3em] text-white/40">
-            (Project) — {project.tag}
-          </span>
-        </div>
         <h3 className="font-display text-3xl font-black uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-silver-gradient md:text-4xl">
           {project.title}
         </h3>
-        <p className="max-w-md text-sm leading-relaxed text-white/55">{project.description}</p>
         <div className="flex gap-6 border-t border-white/10 pt-4">
           {project.stats.map((s) => (
             <span key={s} className="font-label text-[9px] uppercase tracking-[0.2em] text-white/40">
@@ -103,46 +108,83 @@ function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: 
 }
 
 export default function WorkGallery() {
-  const trackRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const [pinned, setPinned] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const progressLabelRef = useRef<HTMLSpanElement>(null);
+  const pinnedRef = useRef(false);
+  const [locked, setLocked] = useState(false);
   const [progress, setProgress] = useState(0);
   useRevealObserver();
 
-  /* Horizontal scroll: pin the section and translate the track while scrolling */
+  const PADDING_X = 40; // extra px around the track
+
+  const applyProgress = useCallback((p: number) => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    const progressBar = progressRef.current;
+    const progressLabel = progressLabelRef.current;
+    if (!section || !track) return;
+    const trackWidth = Math.max(0, track.scrollWidth - window.innerWidth);
+    track.style.transform = `translate3d(${-p * trackWidth}px, 0, 0)`;
+    if (progressBar) progressBar.style.width = `${Math.min(100, p * 100 + 6)}%`;
+    if (progressLabel) progressLabel.textContent = `${Math.round(p * 100)}%`;
+    setProgress(p);
+    const wasPinned = pinnedRef.current;
+    const isPinned = p > 0.002 && p < 0.998;
+    pinnedRef.current = isPinned;
+    if (wasPinned !== isPinned) setLocked(isPinned);
+  }, []);
+
+  /* Wheel → sideways while pinned. Captures events (passive:false) so the page
+     doesn't scroll vertically until the track has reached the end. */
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
     const section = sectionRef.current;
-    const track = trackRef.current;
-    if (!section || !track) return;
+    if (!section) return;
 
+    const SENSITIVITY = 0.0018; // fraction of track per wheel delta
+    let current = 0;
     let raf = 0;
-    const onScroll = () => {
-      const rect = section.getBoundingClientRect();
-      const viewH = window.innerHeight;
-      const sectionH = section.offsetHeight;
-      const raw = -rect.top / (sectionH - viewH);
+
+    const update = (raw: number) => {
       const p = Math.min(1, Math.max(0, raw));
-      const trackWidth = track.scrollWidth - window.innerWidth;
-      track.style.transform = `translate3d(${-p * trackWidth}px, 0, 0)`;
-      setPinned(p > 0.01 && p < 0.99);
-      setProgress(p);
+      if (Math.abs(p - current) > 0.0005) {
+        current = p;
+        applyProgress(current);
+      }
     };
+
+    const onWheel = (e: WheelEvent) => {
+      const atStart = current <= 0.002 && e.deltaY <= 0;
+      const atEnd = current >= 0.998 && e.deltaY >= 0;
+      if (atStart || atEnd) return; // let the page scroll naturally
+      e.preventDefault();
+      const step = (e.deltaY + e.deltaX * 0.5) * SENSITIVITY;
+      update(current + step);
+    };
+
+    section.addEventListener("wheel", onWheel, { passive: false });
     const tick = () => {
-      onScroll();
       raf = requestAnimationFrame(tick);
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
     raf = requestAnimationFrame(tick);
+    window.addEventListener("resize", () => update(current));
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      section.removeEventListener("wheel", onWheel);
       cancelAnimationFrame(raf);
+      window.removeEventListener("resize", () => {});
     };
-  }, []);
+  }, [applyProgress]);
 
   return (
-    <section id="work" ref={sectionRef} className="relative bg-[oklch(0.15_0_0)]">
+    <section
+      id="work"
+      ref={sectionRef}
+      className="relative bg-[oklch(0.15_0_0)]"
+      style={{ minHeight: locked ? "100vh" : undefined }}
+    >
       {/* giant clipped numeral bleeding off the right edge */}
       <div
         className="font-display pointer-events-none select-none absolute -right-10 top-0 text-[22rem] font-black leading-none text-white/[0.05] md:text-[26rem]"
@@ -165,23 +207,34 @@ export default function WorkGallery() {
             </h2>
           </div>
           <p className="font-label max-w-sm text-[11px] uppercase leading-relaxed tracking-[0.15em] text-white/40">
-            Scroll ↓ to move sideways — every card is real client work, shipped and in the wild.
+            Pinned while you browse — scroll ↓ to move sideways. At 100% the lock releases.
           </p>
         </div>
 
         {/* progress bar */}
-        <div className="mt-10 h-px w-full bg-white/10">
-          <div
-            className="h-px bg-white/70 transition-[width] duration-150"
-            style={{ width: `${Math.min(100, progress * 100 + 8)}%` }}
-          />
+        <div className="mt-10 flex items-center gap-4">
+          <div className="h-px flex-1 bg-white/10">
+            <div
+              ref={progressRef}
+              className="h-px bg-white/70 transition-[width] duration-150"
+              style={{ width: "6%" }}
+            />
+          </div>
+          <span
+            ref={progressLabelRef}
+            className="font-label text-[10px] uppercase tracking-[0.3em] text-white/40"
+          >
+            00%
+          </span>
         </div>
       </div>
 
-      <div className="overflow-x-clip" style={{ pointerEvents: pinned ? "none" : "auto" }}>
+      {/* pinned track: overflows beyond viewport so it can translate left */}
+      <div className="overflow-x-clip">
         <div
           ref={trackRef}
           className="flex gap-10 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-16 md:gap-14"
+          style={{ width: "max-content", willChange: "transform" }}
         >
           {PROJECTS.map((p, i) => (
             <div
@@ -196,7 +249,9 @@ export default function WorkGallery() {
           {/* closing editorial card */}
           <div className="reveal flex w-full max-w-[28rem] shrink-0 flex-col justify-between border border-dashed border-white/25 p-10">
             <div>
-              <span className="font-display mb-8 block text-[5rem] font-black leading-none text-white/10" aria-hidden="true">✦</span>
+              <span className="font-display mb-8 block text-[5rem] font-black leading-none text-white/10" aria-hidden="true">
+                ✦
+              </span>
               <p className="font-serif-accent text-2xl italic leading-snug text-white/80 md:text-3xl">
                 "Every pixel has a job. I just make sure it does it well."
               </p>
