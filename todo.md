@@ -255,3 +255,10 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Remove navigation links from all Work cards except the final Brief Project card.
 - [x] Preserve hover effects for every Work card and verify desktop/mobile interaction, then publish.
+
+## Explicit Hero typography refinement
+
+- [x] Change the Hero role line to “Website Developer · Website Designer · Graphic Designer”.
+- [x] Set desktop ANDRE to 163px, ASTIKA to 125px, and ✦ to 125px.
+- [x] Set both Developer and Weekend Hero descriptions to max-width 630px.
+- [x] Verify both themes on desktop/mobile, run checks, then publish.
