@@ -120,22 +120,19 @@ export default function Experience() {
             </div>
           </div>
 
-          {/* RIGHT: timeline */}
-          <div className="relative">
-            <div className="absolute left-[4.5rem] top-2 bottom-2 w-px bg-white/10" aria-hidden="true" />
+          {/* RIGHT: experience list */}
+          <div>
             <div className="flex flex-col">
               {EXPERIENCE.map((e, i) => (
                 <div
                   key={i}
-                  className="reveal group relative grid gap-2 border-b border-white/5 py-8 md:grid-cols-[8rem_1fr]"
+                  className="reveal group relative grid gap-2 border-b border-white/5 py-8 md:grid-cols-[1fr_6fr] md:gap-6"
                   style={{ "--reveal-delay": `${Math.min(i * 70, 300)}ms` } as React.CSSProperties}
                 >
-                  {/* node */}
-                  <span className="absolute left-[3.95rem] top-10 h-[13px] w-[13px] border border-white/40 bg-black transition-colors duration-300 group-hover:bg-white" aria-hidden="true" />
-                  <span className="font-label pl-16 text-[10px] uppercase leading-relaxed tracking-[0.2em] text-white/40 md:pl-0">
+                  <span className="font-label text-[10px] uppercase leading-relaxed tracking-[0.2em] text-white/40">
                     {e.period}
                   </span>
-                  <div className="pl-16 md:pl-0">
+                  <div>
                     <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white md:text-xl">
                       {e.role}
                     </h3>

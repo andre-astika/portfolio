@@ -359,3 +359,9 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Define an appropriately reduced Case Studies index scale for screens below 767px.
 - [x] Make every portfolio section use its full available width below 767px without introducing horizontal overflow.
 - [x] Verify desktop/mobile layouts, run automated checks, and publish the update.
+
+## About Experience layout refinement
+
+- [x] Remove the vertical timeline rule and square marker from the Experience list in “Behind the pixels”.
+- [x] Set the Experience entry grid to `1fr 6fr` with a 1.5rem gap on tablet and desktop.
+- [x] Verify the refined About layout on desktop and tablet, run automated checks, and publish the update.
