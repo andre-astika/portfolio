@@ -384,3 +384,9 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Render the actively read Philosophy principle in solid white without making other principles disappear.
 - [x] Remove background changes from Philosophy principle hover states.
 - [x] Verify the corrected states on desktop and mobile, run automated checks, and publish the update.
+
+## Philosophy scroll visibility regression fix
+
+- [x] Ensure all Philosophy principles remain visible after being scrolled past or re-entering the viewport.
+- [x] Retain an active-reading emphasis without changing item visibility, opacity, or layout.
+- [x] Verify scroll behavior on desktop and mobile, run automated checks, and publish the fix.

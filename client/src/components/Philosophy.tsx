@@ -90,12 +90,11 @@ export default function Philosophy() {
                 }}
                 data-principle-index={i}
                 aria-current={activeIndex === i ? "step" : undefined}
-                className={`reveal relative border-t py-10 transition-colors duration-500 first:border-t-0 ${
+                className={`relative border-t py-10 transition-colors duration-500 first:border-t-0 ${
                   activeIndex === i
                     ? "border-white/30"
                     : "border-white/10"
                 }`}
-                style={{ "--reveal-delay": `${i * 110}ms` } as React.CSSProperties}
               >
                 <div className="flex flex-wrap items-baseline gap-4">
                   <span className={`font-label text-[11px] uppercase tracking-[0.3em] transition-colors duration-300 ${activeIndex === i ? "text-white" : "text-white/45"}`}>{p.no}</span>
