@@ -306,3 +306,27 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Rename `andre-astika/andre-portfolio` to `andre-astika/portfolio`.
 - [x] Verify access to the renamed repository and update the local GitHub remote.
+
+## GitHub web push investigation
+
+- [ ] Inspect repository permissions, default branch settings, and branch rules affecting edits from the GitHub web interface.
+- [ ] Explain the identified cause and provide steps to push or commit through GitHub.
+
+## GitHub Pages hosting assessment
+
+- [x] Inspect the full-stack runtime requirements and current GitHub Pages configuration.
+- [x] Explain why GitHub Pages can or cannot host this project as-is and outline viable deployment paths.
+
+## Static GitHub Pages deployment
+
+- [x] Add a GitHub Pages-specific static build that uses the `/portfolio/` base path without affecting Manus hosting.
+- [x] Add an automated GitHub Actions workflow to build and deploy the static portfolio to GitHub Pages.
+- [ ] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+
+## GitHub Pages deployment notes
+
+Vite’s official GitHub Pages guide requires a repository-site base path of `/portfolio/`, a build that produces `dist`, and an Actions-based Pages workflow that uploads the `dist` artifact before deployment. Source: https://vite.dev/guide/static-deploy#github-pages
+
+GitHub’s custom workflow documentation requires `pages: write` and `id-token: write` deployment permissions, an uploaded Pages artifact, and a `github-pages` deployment environment. Source: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+
+Static build verification: the locally served artifact rendered the full public portfolio at `/portfolio/`, including Hero, navigation, Work, case study, testimonial, and contact content. The browser title was “Andre Astika — Designer & Developer”; the backend-only Asset Library remains intentionally excluded from the static site.

@@ -1,6 +1,7 @@
 /* NOIR KINETIC — contact + footer: giant CTA type, mono contact grid, socials,
    and closing marquee. Crosshair logo mark as favicon anchor. */
 import { useMagnetic } from "@/hooks/useKinetic";
+import { siteAsset } from "@/lib/siteAsset";
 
 const SOCIALS = [
   { label: "Email", href: "mailto:en.andre.st@gmail.com", value: "en.andre.st@gmail.com" },
@@ -71,7 +72,7 @@ export default function Contact() {
         <div className="flex items-center justify-between px-6 md:px-12">
           <div className="flex items-center gap-3">
             <img
-              src="/manus-storage/logo-crosshair_5d137a18.png"
+              src={siteAsset("/manus-storage/logo-crosshair_5d137a18.png")}
               alt="Andre Astika mark"
               className="h-8 w-8"
             />
