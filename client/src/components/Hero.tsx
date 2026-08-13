@@ -4,11 +4,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useMouseParallax } from "@/hooks/useKinetic";
 import FluidHeroBg from "@/components/FluidHeroBg";
+import { AndrePhoto, useWeekend } from "@/components/AndrePhoto";
 
 type Mode = "dev" | "weekend";
-
-const IMG_DEV = "/manus-storage/andre-profile-img-without_6e47e8ca.webp";
-const IMG_WEEKEND = "/manus-storage/andre-profile-img-with_3f7bf32d.webp";
 
 function ModeSwitch({
   mode,
@@ -59,6 +57,7 @@ export default function Hero() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const portraitWrapRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useMouseParallax(22);
+  const siteWeekend = useWeekend(hovered);
 
   /* slight tilt of the portrait card toward the pointer */
   useEffect(() => {
@@ -163,7 +162,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT: interactive portrait with mode swap */}
+          {/* RIGHT: interactive portrait with mode swap (site-wide via AndrePhoto) */}
           <div className="hidden lg:block">
             <div ref={portraitWrapRef} className="relative justify-self-end">
               {/* parallax container + tilt */}
@@ -176,53 +175,17 @@ export default function Hero() {
                 }}
               >
                 <div
-                  className="relative h-[62vh] w-auto cursor-pointer overflow-hidden transition-shadow duration-500 hover:shadow-[0_0_60px_oklch(1_0_0/0.06)]"
-                  style={{ clipPath: "polygon(14% 0, 100% 2%, 100% 100%, 0 97%)" }}
                   onMouseEnter={() => setHovered(true)}
                   onMouseLeave={() => setHovered(false)}
-                  role="img"
-                  aria-label={hovered ? "Andre Astika — hover to meet Weekend mode" : "Andre Astika"}
+                  className="transition-shadow duration-500 hover:shadow-[0_0_60px_oklch(1_0_0/0.06)]"
                 >
-                  <img
-                    key={mode}
-                    src={hovered ? IMG_WEEKEND : IMG_DEV}
-                    alt={hovered ? "Andre Astika — Weekend mode (cap & shades)" : "Andre Astika — Developer mode"}
-                    className="h-full w-auto animate-[photo-in_0.7s_cubic-bezier(0.23,1,0.32,1)_both] object-cover object-top"
-                    style={{ filter: "grayscale(100%) contrast(1.05)" }}
-                  />
-                  {/* hover hint label */}
-                  <span
-                    className={`font-label pointer-events-none absolute left-0 right-0 bottom-0 translate-y-full bg-black/80 px-4 py-2 text-center text-[9px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0 ${
-                      hovered ? "translate-y-0" : ""
-                    }`}
-                  >
-                    {hovered ? "(Hover) — Weekend mode ✦" : "Hover me — Weekend mode →"}
-                  </span>
-                  {/* scan-line overlay for dev mode */}
-                  <span
-                    className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
-                      mode === "dev" ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(0deg, oklch(1 0 0 / 4%) 0px, oklch(1 0 0 / 4%) 1px, transparent 1px, transparent 4px)",
-                    }}
-                    aria-hidden="true"
+                  <AndrePhoto
+                    className="relative h-[62vh] w-auto cursor-pointer"
+                    imgClassName="h-full w-auto"
+                    clipPath="polygon(14% 0, 100% 2%, 100% 100%, 0 97%)"
+                    tilt
                   />
                 </div>
-
-                {/* mode badge */}
-                <span
-                  key={`badge-${hovered ? "weekend" : mode}`}
-                  className="font-label pointer-events-none absolute -bottom-4 left-4 animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm"
-                >
-                  {hovered ? "(Mode) — Weekend · Bali, ID" : mode === "dev" ? "(Mode) — Developer · Bali, ID" : "(Mode) — Weekend · Bali, ID"}
-                </span>
-
-                {/* corner crosshair */}
-                <span className="absolute -left-6 -top-6 text-xl text-white/25" aria-hidden="true">
-                  ✦
-                </span>
               </div>
             </div>
           </div>

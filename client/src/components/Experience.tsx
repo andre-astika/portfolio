@@ -1,5 +1,7 @@
 /* NOIR KINETIC — about + experience: split layout with CV portrait, mono timeline,
    and skills chips echoing the CV's pill style (inverted grayscale). */
+import { AndrePhoto } from "@/components/AndrePhoto";
+
 const EXPERIENCE = [
   {
     period: "Jul 2026 — Present",
@@ -102,7 +104,18 @@ export default function Experience() {
               international clients and teams.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-2">
+            <div className="reveal mt-10 inline-block" style={{ "--reveal-delay": "220ms" } as React.CSSProperties}>
+              <div className="relative h-[42vh] w-auto md:h-[46vh]">
+                <AndrePhoto
+                  className="relative h-full w-auto"
+                  imgClassName="h-full w-auto"
+                  label="(About) — Behind the pixels"
+                  tilt
+                />
+              </div>
+            </div>
+
+            <div className="mt-12 flex flex-wrap gap-2">
               {SKILLS.map((s) => (
                 <span
                   key={s}

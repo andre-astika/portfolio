@@ -6,6 +6,7 @@
 import Cursor from "@/components/Cursor";
 import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
+import { AndrePhotoProvider } from "@/components/AndrePhoto";
 import Hero from "@/components/Hero";
 import WorkGallery from "@/components/WorkGallery";
 import CaseStudies from "@/components/CaseStudies";
@@ -22,6 +23,7 @@ export default function Home() {
   useRevealObserver();
 
   return (
+    <AndrePhotoProvider>
     <div className="grain relative min-h-screen bg-background">
       <Cursor />
       <Nav />
@@ -38,5 +40,6 @@ export default function Home() {
         <Contact />
       </main>
     </div>
+    </AndrePhotoProvider>
   );
 }
