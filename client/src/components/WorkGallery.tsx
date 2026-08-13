@@ -92,7 +92,7 @@ function SpotlightCard({ project, i }: { project: (typeof PROJECTS)[number]; i: 
 
       {/* meta block */}
       <div className="flex flex-col gap-4 p-6 md:p-8">
-        <h3 className="font-display text-3xl font-black uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-silver-gradient md:text-4xl">
+        <h3 className="font-display text-2xl font-black uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-silver-gradient md:text-3xl">
           {project.title}
         </h3>
         <div className="flex gap-6 border-t border-white/10 pt-4">
