@@ -6,7 +6,16 @@
 - [x] Keep the reference-style background interaction visibly tied to the Hero hover area, not only to a hidden image element.
 - [x] Keep the reusable portrait hover behavior available in the About/Experience section after removing the hero portrait.
 - [x] Verify desktop layout, mobile layout, actual hover crossfade, and TypeScript; confirm no browser-console errors.
+- [x] Rebuild the Hero interaction as a pointer-following soft brush reveal instead of a binary crossfade.
+- [x] Add a cursor ring and spring-like pointer smoothing while keeping the base photo visible.
+- [x] Verify desktop and mobile layout plus no browser-console errors.
 - [ ] Save a checkpoint and deliver the updated project.
+
+## Corrected Lumora mechanics
+
+The supplied Lumora prompt describes the Hero as a full-bleed before/after photo with a “liquid cursor-reveal.” It uses two full-screen image layers: the base image remains visible, while a second image is revealed only inside a soft circular brush around the pointer. The pointer position is normalized to the Hero bounds, the reveal follows the pointer with spring-like easing, and the brush has a feathered edge rather than a hard clip. The interaction is therefore a moving mask/reveal, not a binary whole-background image swap. The prompt also calls for a small circular cursor indicator over the reveal point and for the effect to be disabled on touch/reduced-motion contexts.
+
+Source: `/home/ubuntu/upload/pasted_content.txt`, user-provided Lumora recreation prompt, lines 177–183 and surrounding interaction specification.
 
 ## Reference findings
 
