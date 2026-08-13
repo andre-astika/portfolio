@@ -427,21 +427,16 @@ body:has(.weekend-theme) {
 }
 
 .hero-astika-sparkle {
-  --astika-sparkle-fill: rgb(255 255 255 / 0.58);
-  --astika-sparkle-stroke: rgb(255 255 255 / 0.82);
+  --astika-sparkle-fill: rgb(255 255 255 / 0.72);
 }
 
 .hero-astika-sparkle path {
   fill: var(--astika-sparkle-fill);
-  stroke: var(--astika-sparkle-stroke);
-  stroke-width: 2.25;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+  stroke: none;
 }
 
 .weekend-theme .hero-astika-sparkle {
-  --astika-sparkle-fill: color-mix(in oklab, var(--ink) 46%, transparent);
-  --astika-sparkle-stroke: color-mix(in oklab, var(--ink) 76%, transparent);
+  --astika-sparkle-fill: var(--ink);
 }
 
 .weekend-theme .text-silver-gradient {
