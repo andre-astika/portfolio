@@ -186,14 +186,6 @@ export default function WorkGallery() {
       className="relative bg-[oklch(0.15_0_0)]"
       style={{ minHeight: locked ? "100vh" : undefined }}
     >
-      {/* giant clipped numeral bleeding off the right edge */}
-      <div
-        className="font-display pointer-events-none select-none absolute -right-10 top-0 text-[16rem] font-black leading-none text-white/[0.05]"
-        aria-hidden="true"
-      >
-        02
-      </div>
-
       <div className="container pb-8 pt-24 md:pt-32">
         <div className="reveal flex flex-wrap items-end justify-between gap-6">
           <div>

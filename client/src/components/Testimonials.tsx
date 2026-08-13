@@ -45,13 +45,6 @@ export default function Testimonials() {
 
   return (
     <section className="relative overflow-hidden border-y border-white/10 bg-[oklch(0.15_0_0)]">
-      <div
-        className="font-display pointer-events-none select-none absolute -left-4 bottom-4 text-[16rem] font-black leading-none text-white/[0.04]"
-        aria-hidden="true"
-      >
-        06
-      </div>
-
       <div className="container py-24 md:py-32">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div className="reveal">

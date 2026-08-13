@@ -60,13 +60,6 @@ function CaseCard({ c, i }: { c: (typeof CASES)[number]; i: number }) {
 export default function CaseStudies() {
   return (
     <section id="case-studies" className="relative overflow-hidden">
-      <div
-        className="font-display pointer-events-none select-none absolute right-0 top-10 text-[16rem] font-black leading-none text-white/[0.04]"
-        aria-hidden="true"
-      >
-        03
-      </div>
-
       <div className="container py-24 md:py-32">
         <div className="reveal mb-14 max-w-2xl">
           <p className="font-label mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">

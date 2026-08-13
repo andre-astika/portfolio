@@ -210,3 +210,8 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Set `.hero-astika-sparkle` to a 90px font size and 1rem left margin.
 - [x] Verify the requested spacing and responsive presentation on desktop and mobile, then publish.
+
+## Section marker cleanup
+
+- [x] Remove all visible section-number markers beginning with 02 across the public portfolio.
+- [x] Preserve section structure and spacing, verify desktop/mobile presentation and checks, then publish.

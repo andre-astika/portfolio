@@ -76,13 +76,6 @@ const SKILLS = [
 export default function Experience() {
   return (
     <section id="experience" className="relative overflow-hidden">
-      <div
-        className="font-display pointer-events-none select-none absolute -right-6 top-8 text-[16rem] font-black leading-none text-white/[0.04]"
-        aria-hidden="true"
-      >
-        05
-      </div>
-
       <div className="container py-24 md:py-32">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           {/* LEFT: about + portrait */}
