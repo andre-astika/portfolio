@@ -52,7 +52,7 @@ export function AndrePhoto({
   label,
   style,
   tilt = false,
-  clipPath = "polygon(14% 0, 100% 2%, 100% 100%, 0 97%)",
+  clipPath = "polygon(0 0, calc(100% - 3rem) 0, 100% 3rem, 100% 100%, 0 100%)",
 }: {
   className?: string;
   imgClassName?: string;
@@ -97,6 +97,12 @@ export function AndrePhoto({
       onMouseLeave={() => setFlip(false)}
       style={style}
     >
+      {/* sharp accent frame: thin offset outline echoing the clipped corner */}
+      <div
+        className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 border border-white/15 transition-colors duration-500 group-hover:border-white/35"
+        style={{ clipPath: "polygon(0 0, calc(100% - 3rem) 0, 100% 3rem, 100% 100%, 0 100%)" }}
+        aria-hidden="true"
+      />
       <div className="relative overflow-hidden" style={{ clipPath }}>
         <img
           key={showWeekend ? "weekend" : "dev"}

@@ -182,7 +182,6 @@ export default function Hero() {
                   <AndrePhoto
                     className="relative h-[62vh] w-auto cursor-pointer"
                     imgClassName="h-full w-auto"
-                    clipPath="polygon(14% 0, 100% 2%, 100% 100%, 0 97%)"
                     tilt
                   />
                 </div>
