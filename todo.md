@@ -298,6 +298,6 @@ The browser preview shows the requested six labels in the specified order, repea
 
 ## GitHub project export
 
-- [ ] Inspect the available GitHub destination and prepare the full Andre portfolio source for export.
-- [ ] Create a private GitHub repository and push the complete project source.
-- [ ] Verify the repository contents and share the GitHub URL.
+- [x] Inspect the available GitHub destination and prepare the full Andre portfolio source for export.
+- [x] Create a private GitHub repository and push the complete project source.
+- [x] Verify the repository contents and share the GitHub URL.
