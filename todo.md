@@ -250,3 +250,8 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Change every Work project image container to a true 16:9 ratio.
 - [x] Verify the 16:9 Work imagery on desktop and mobile, run checks, then publish.
+
+## Work card link behavior
+
+- [x] Remove navigation links from all Work cards except the final Brief Project card.
+- [x] Preserve hover effects for every Work card and verify desktop/mobile interaction, then publish.
