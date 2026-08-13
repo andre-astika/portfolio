@@ -63,32 +63,34 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
       className="group relative flex w-[86vw] shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-3 hover:border-white/40 md:w-[46vw]"
     >
       {/* image block */}
-      <div className="relative overflow-hidden">
-        <img
+      <div className="relative">
+        <div className="relative overflow-hidden">
+          <img
           src={project.image}
           alt={project.title}
           draggable={false}
           className="aspect-[4/3] w-full object-cover transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.05] group-hover:contrast-[1.15]"
           style={{ filter: "grayscale(100%) contrast(1.2)" }}
           loading="lazy"
-        />
+          />
+          <span className="font-label absolute right-4 top-4 border border-white/30 bg-black/60 px-2.5 py-1 text-[9px] uppercase tracking-[0.3em] text-white backdrop-blur-sm">
+            {project.year}
+          </span>
+
+        {/* hover description reveal */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0">
+            <p className="font-label mb-1.5 text-[9px] uppercase tracking-[0.3em] text-white/60">
+              ({project.index}) — {project.tag}
+            </p>
+            <p className="max-w-sm text-sm leading-relaxed text-white">{project.description}</p>
+          </div>
+        </div>
         <span
-          className="font-display pointer-events-none absolute -bottom-6 left-4 select-none text-[9rem] font-black leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.42)] md:text-[12rem]"
+          className="font-display pointer-events-none absolute -bottom-20 -left-16 z-10 select-none text-[9rem] font-black leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.42)] md:text-[12rem]"
           aria-hidden="true"
         >
           {project.index}
         </span>
-        <span className="font-label absolute right-4 top-4 border border-white/30 bg-black/60 px-2.5 py-1 text-[9px] uppercase tracking-[0.3em] text-white backdrop-blur-sm">
-          {project.year}
-        </span>
-
-        {/* hover description reveal */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0">
-          <p className="font-label mb-1.5 text-[9px] uppercase tracking-[0.3em] text-white/60">
-            ({project.index}) — {project.tag}
-          </p>
-          <p className="max-w-sm text-sm leading-relaxed text-white">{project.description}</p>
-        </div>
       </div>
 
       {/* meta block */}
@@ -188,7 +190,7 @@ export default function WorkGallery() {
         className={`cursor-grab overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${isDragging ? "cursor-grabbing" : ""}`}
       >
         <div
-          className="flex w-max gap-6 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-10 md:pt-12"
+          className="flex w-max gap-12 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-10 md:pt-12"
         >
           {PROJECTS.map((p, i) => (
             <div
