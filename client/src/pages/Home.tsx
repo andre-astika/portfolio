@@ -12,7 +12,6 @@ import WorkGallery from "@/components/WorkGallery";
 import CaseStudies from "@/components/CaseStudies";
 import Philosophy from "@/components/Philosophy";
 import Experience from "@/components/Experience";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import { useRevealObserver } from "@/hooks/useKinetic";
 
@@ -35,7 +34,6 @@ function SiteSurface() {
         <Marquee items={TICKER_B} reverse />
         <Philosophy />
         <Experience />
-        <Testimonials />
         <Contact />
       </main>
     </div>
