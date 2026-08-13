@@ -20,5 +20,8 @@
 - Checkpoints: 4d08c886 (site-wide swap), bea41ea3 (fluid bg).
 - tsc must pass. Notes: FluidHeroBg had 2 null-coalesce fixes.
 
-## Skill creation (PENDING, user asked earlier)
-Create /home/ubuntu/skills/kinetic-portfolio via python /home/ubuntu/skills/skill-creator/scripts/init_skill.py; write SKILL.md describing Noir Kinetic build process (design tokens, fonts, FluidHeroBg pattern, pinned gallery, AndrePhoto swap context, custom cursor, marquee); validate with quick_validate.py; deliver SKILL.md path as message attachment.
+## Latest verification
+- Hero now uses the uploaded landscape plain and Weekend assets, with both image layers aligned to a right-shifted object position (`58%` mobile / `38%` desktop) so the face sits farther right while the copy remains readable.
+- Browser preview confirmed the landscape assets render. Weekend mode switched successfully and the selected Weekend tab computed to dark ink (`oklch(0.16 0.008 80)`) on the light pill.
+- Work wheel capture is scoped to the carousel viewport instead of the section header; project image cards use `aspect-[4/3]`.
+- `npx tsc --noEmit` passes. The reusable `/home/ubuntu/skills/kinetic-portfolio/SKILL.md` was initialized, written, and passed `quick_validate.py`.

@@ -101,13 +101,13 @@ const LiquidHeroReveal = forwardRef<
       <img
         src={baseSrc}
         alt=""
-        className="theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[66%_50%] opacity-40 grayscale-[0.15] contrast-[1.05] brightness-[0.72] md:w-[76%] md:object-center"
+        className="theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[58%_50%] opacity-40 grayscale-[0.15] contrast-[1.05] brightness-[0.72] md:w-[76%] md:object-[38%_50%]"
         draggable={false}
       />
       <img
         src={revealSrc}
         alt=""
-        className={`theme-aware-reveal-media theme-aware-reveal-hover absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[66%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:w-[76%] md:object-center ${active ? "opacity-60" : "opacity-0"}`}
+        className={`theme-aware-reveal-media theme-aware-reveal-hover absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[58%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:w-[76%] md:object-[38%_50%] ${active ? "opacity-60" : "opacity-0"}`}
         style={{
           WebkitMaskImage:
             "radial-gradient(circle var(--liquid-radius) at var(--liquid-x) var(--liquid-y), black 0%, black 30%, rgb(0 0 0 / 0.7) 48%, transparent 100%)",
