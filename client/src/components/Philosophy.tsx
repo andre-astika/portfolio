@@ -25,13 +25,6 @@ export default function Philosophy() {
 
   return (
     <section id="philosophy" className="relative overflow-hidden border-y border-white/10 bg-[oklch(0.11_0_0)]">
-      <div
-        className="font-display pointer-events-none select-none absolute -left-6 top-6 text-[16rem] font-black leading-none text-white/[0.04]"
-        aria-hidden="true"
-      >
-        04
-      </div>
-
       <div className="container py-24 md:py-36">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           {/* LEFT: statement */}

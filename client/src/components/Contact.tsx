@@ -14,13 +14,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden">
-      <div
-        className="font-display pointer-events-none select-none absolute -right-8 top-4 text-[16rem] font-black leading-none text-white/[0.04]"
-        aria-hidden="true"
-      >
-        07
-      </div>
-
       <div className="container py-24 md:py-36">
         <p className="reveal font-label mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">
           (Contact) — Available for new projects
