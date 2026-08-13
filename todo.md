@@ -205,3 +205,8 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Set the desktop ANDRE wordmark to 139px and ASTIKA to 108px.
 - [x] Replace the solid diamond SVG with the ✦ glyph and match its visual height to ASTIKA.
 - [x] Define responsive mobile sizing, verify desktop/mobile screenshots and checks, then publish.
+
+## Explicit ASTIKA sparkle CSS
+
+- [x] Set `.hero-astika-sparkle` to a 90px font size and 1rem left margin.
+- [x] Verify the requested spacing and responsive presentation on desktop and mobile, then publish.
