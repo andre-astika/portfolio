@@ -228,3 +228,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Set the Work carousel gap to 1.5rem so cards no longer crowd or overlap.
 - [x] Render Work project indices 01–03 with a stroke/outline treatment.
 - [x] Verify desktop/mobile card layout and checks, then publish.
+
+## Work index position and card separation
+
+- [x] Position Work project indices with `left: -4rem` and `bottom: -5rem`.
+- [x] Increase the Work carousel gap to 3rem so cards and index numerals do not overlap.
+- [x] Verify desktop/mobile positioning and card separation, then publish.
