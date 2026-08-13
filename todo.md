@@ -285,3 +285,8 @@ Developer Mode renders the requested semi-transparent white sparkle beside ASTIK
 ## Marquee verification notes
 
 The browser preview shows the requested six labels in the specified order, repeated continuously with ✦ separators. A timed browser check confirmed the marquee track transform advanced from `translateX(-2023.5px)` to `translateX(-2080.01px)` over 400ms, confirming the animation remains active.
+
+## Work heading refinement
+
+- [x] Render the Work heading as a single line: “The Work ✦”.
+- [x] Add `margin-bottom: 0.75rem` to the sparkle in the Work heading and verify responsive layout before publishing.

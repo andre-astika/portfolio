@@ -167,10 +167,8 @@ export default function WorkGallery() {
               <span className="text-white/30">✦</span> (Selected) — Featured projects
             </p>
             <h2 className="font-display text-5xl font-black uppercase leading-[0.9] tracking-tight text-white md:text-7xl">
-              The
-              <br />
-              <span className="text-stroke">work</span>
-              <span className="relative ml-4 inline-block align-middle text-2xl text-white/40 md:text-3xl">✦</span>
+              The <span className="text-stroke">Work</span>
+              <span className="relative mb-3 ml-4 inline-block align-middle text-2xl text-white/40 md:text-3xl">✦</span>
             </h2>
           </div>
           <p className="font-label max-w-sm text-[11px] uppercase leading-relaxed tracking-[0.15em] text-white/40">
