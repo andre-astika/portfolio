@@ -22,3 +22,20 @@ Source: `/home/ubuntu/upload/pasted_content.txt`, user-provided Lumora recreatio
 The Lumora hero uses a calm, cinematic background rather than a busy graphic: a pale smoky field, a large monochrome focal image, soft translucent horizontal light bands, blurred orb-like gradients, and a very large low-contrast wordmark/image texture behind the foreground copy. The composition feels editorial and atmospheric, with the content layered above the background. For Andre, retain the existing black/grayscale Noir Kinetic palette and typography; borrow only the background behavior by making the existing fluid layer calmer, more cinematic, and softly luminous. Keep the existing hero copy, mode switch, CTA, portrait placement, and nav unchanged.
 
 Source reference: https://www.getlayers.ai/?layer=lumora (Lumora layer preview inspected Aug 13, 2026).
+
+## Global Developer / Weekend theme
+
+- [x] Inspect the existing shared Weekend state and current CSS token architecture.
+- [x] Keep Developer as the existing dark theme.
+- [x] Add a Weekend light theme across the entire page with coordinated backgrounds, text, borders, cards, controls, and motion overlays.
+- [x] Make the Developer/Weekend button switch the global theme state, including keyboard behavior if already supported.
+- [x] Verify the Hero and key section surfaces in both themes on desktop/mobile; TypeScript passes and browser console is clean.
+- [ ] Save a new checkpoint.
+
+## Theme verification notes
+
+The interactive dev preview was opened and the Weekend tab was clicked. The Hero switched from the near-black Developer palette to a light warm-paper background, the headline switched to dark ink, controls and borders became lighter-theme compatible, and the Weekend copy appeared. The existing photo background remains visible with a softer ink-on-paper treatment. This confirms the global state is wired to the mode button rather than only changing Hero copy.
+
+Computed-style check confirmed the key Work and Philosophy section surfaces resolve to the Weekend card token and the major sections resolve to the Weekend ink color. The document body needed an explicit `:has(.weekend-theme)` background fallback so transparent sections cannot reveal the old dark body color; that fallback has been added.
+
+After a fresh preview refresh, reselecting Weekend again reproduced the light-paper Hero with dark ink typography, pale controls, dark cursor ring, and Weekend copy. The mode remains a user-controlled global switch rather than a one-time render state.

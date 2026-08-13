@@ -1,8 +1,10 @@
 /* NOIR KINETIC — hero: staggered line-rise headline, interactive
-   Developer ↔ Weekend mode switcher with a sliding pill and clipped brand voice.
+  Developer ↔ Weekend mode switcher with a sliding pill and clipped brand voice.
+  The switch also changes the page-wide Developer dark / Weekend light palette.
    The portrait is intentionally omitted here so the cinematic background owns
    the hero; reusable Andre portraits remain available in About/Experience. */
-import { useRef, useState, type PointerEvent } from "react";
+import { useRef, type PointerEvent } from "react";
+import { useSiteWeekend } from "@/components/AndrePhoto";
 import FluidHeroBg from "@/components/FluidHeroBg";
 import LiquidHeroReveal, {
   type LiquidHeroRevealHandle,
@@ -22,7 +24,7 @@ function ModeSwitch({
 }) {
   return (
     <div
-      className="font-label relative inline-flex w-fit items-center border border-white/20 bg-black/40 p-1 backdrop-blur-sm"
+      className="mode-switch font-label relative inline-flex w-fit items-center border border-white/20 bg-black/40 p-1 backdrop-blur-sm"
       role="tablist"
       aria-label="Andre mode"
     >
@@ -57,7 +59,8 @@ function ModeSwitch({
 }
 
 export default function Hero() {
-  const [mode, setMode] = useState<Mode>("dev");
+  const { weekend, setWeekend } = useSiteWeekend();
+  const mode: Mode = weekend ? "weekend" : "dev";
   const liquidRevealRef = useRef<LiquidHeroRevealHandle>(null);
 
   const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
@@ -68,7 +71,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden"
+      className="hero-section relative overflow-hidden"
       onPointerMove={handlePointerMove}
       onPointerEnter={(event) => {
         if (event.pointerType !== "touch") {
@@ -99,7 +102,7 @@ export default function Hero() {
           <div>
             {/* mode switcher */}
             <div className="line-rise mb-6">
-              <ModeSwitch mode={mode} onChange={setMode} />
+            <ModeSwitch mode={mode} onChange={(nextMode) => setWeekend(nextMode === "weekend")} />
             </div>
 
             <p className="font-label mb-6 line-rise flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>

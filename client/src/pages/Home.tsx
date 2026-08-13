@@ -1,12 +1,12 @@
 /*
   NOIR KINETIC — single-page portfolio for Andre Astika.
-  Sections: Hero → ticker → Work (horizontal gallery) → Case Studies → Philosophy →
-  Experience → Testimonials → Contact. All motion via useKinetic hooks.
+  Weekend mode keeps the same kinetic editorial system but moves the whole page
+  to a warm light-paper palette through one shared theme class.
 */
 import Cursor from "@/components/Cursor";
 import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
-import { AndrePhotoProvider } from "@/components/AndrePhoto";
+import { AndrePhotoProvider, useSiteWeekend } from "@/components/AndrePhoto";
 import Hero from "@/components/Hero";
 import WorkGallery from "@/components/WorkGallery";
 import CaseStudies from "@/components/CaseStudies";
@@ -19,12 +19,11 @@ import { useRevealObserver } from "@/hooks/useKinetic";
 const TICKER_A = ["Web Design", "Web Development", "Graphic Design", "Frontend Architecture", "UI/UX Sense", "QA & Tooling"];
 const TICKER_B = ["WordPress", "Next.js", "Headless CMS", "Tailwind", "Sanity", "Photoshop"];
 
-export default function Home() {
-  useRevealObserver();
+function SiteSurface() {
+  const { weekend } = useSiteWeekend();
 
   return (
-    <AndrePhotoProvider>
-    <div className="grain relative min-h-screen bg-background">
+    <div className={`grain site-surface relative min-h-screen bg-background ${weekend ? "weekend-theme" : "developer-theme"}`}>
       <Cursor />
       <Nav />
 
@@ -40,6 +39,15 @@ export default function Home() {
         <Contact />
       </main>
     </div>
+  );
+}
+
+export default function Home() {
+  useRevealObserver();
+
+  return (
+    <AndrePhotoProvider>
+      <SiteSurface />
     </AndrePhotoProvider>
   );
 }

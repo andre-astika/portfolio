@@ -1,7 +1,6 @@
 /* NOIR KINETIC — WebGL fluid/smoke background for the hero, inspired by the
-   Flow Design Agency splash effect but adapted to our grayscale identity:
-   white smoke drifting on black, pointer-reactive, dissolves quickly,
-   bloom-free, and automatically disabled under prefers-reduced-motion. */
+  Flow Design Agency splash effect but adapted to our grayscale identity.
+  Weekend mode re-tones the same layer to a subtle ink-on-paper wash. */
 import { useEffect, useRef } from "react";
 
 const CFG = {
@@ -412,7 +411,7 @@ export default function FluidHeroBg() {
       <div className="lumora-hero-grain absolute inset-0" />
       <canvas
         ref={canvasRef}
-        className="relative z-[1] h-full w-full opacity-45 mix-blend-screen"
+        className="hero-fluid-canvas relative z-[1] h-full w-full opacity-45 mix-blend-screen"
         style={{ willChange: "auto" }}
       />
     </div>
