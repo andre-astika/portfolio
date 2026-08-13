@@ -188,3 +188,14 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Return the ASTIKA sparkle to a solid fill without an outline.
 - [x] Reduce the sparkle so its visual height aligns with the ASTIKA letter height.
 - [x] Verify the desktop/mobile wordmark alignment, run checks, and publish the refinement.
+
+## Responsive Hero wordmark scale
+
+- [x] Increase the ANDRE/ASTIKA Hero wordmark scale to match the approved reference hierarchy.
+- [x] Keep ASTIKA slightly smaller than ANDRE and resize the solid diamond sparkle to match its cap height.
+- [x] Tune desktop and mobile scales independently, verify with screenshots and checks, then publish.
+
+## Confirmed ANDRE ASTIKA sparkle composition
+
+- [x] Match the Hero wordmark composition to the supplied ANDRE / ASTIKA / ✦ reference.
+- [x] Preserve the responsive desktop and mobile scaling requirements in the final implementation.
