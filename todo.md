@@ -17,14 +17,6 @@ The supplied Lumora prompt describes the Hero as a full-bleed before/after photo
 
 Source: `/home/ubuntu/upload/pasted_content.txt`, user-provided Lumora recreation prompt, lines 177–183 and surrounding interaction specification.
 
-## Accessory-only refinement
-
-- [x] Keep the plain portrait as the fixed body/base image during hover.
-- [x] Reveal only the Weekend head region so the hat and glasses are added without replacing the torso or changing the body pose.
-- [x] Add a subtle head-layer offset for liveliness while keeping the facial alignment believable.
-- [x] Increase the reveal brush size and Weekend-layer visibility so the hover state is immediately noticeable.
-- [x] Verify desktop and mobile behavior, alignment, TypeScript, and browser-console output.
-
 ## Reference findings
 
 The Lumora hero uses a calm, cinematic background rather than a busy graphic: a pale smoky field, a large monochrome focal image, soft translucent horizontal light bands, blurred orb-like gradients, and a very large low-contrast wordmark/image texture behind the foreground copy. The composition feels editorial and atmospheric, with the content layered above the background. For Andre, retain the existing black/grayscale Noir Kinetic palette and typography; borrow only the background behavior by making the existing fluid layer calmer, more cinematic, and softly luminous. Keep the existing hero copy, mode switch, CTA, portrait placement, and nav unchanged.
