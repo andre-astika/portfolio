@@ -176,3 +176,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Remove the four-point replacement and restore the original default sparkle glyph beside ASTIKA.
 - [x] Use the same original dark-mode sparkle treatment in Developer and Weekend modes.
 - [x] Verify desktop/mobile presentation and save a corrective checkpoint.
+
+## Outlined ASTIKA sparkle restoration
+
+- [x] Replace the current solid ✦ glyph with the approved outlined four-point diamond sparkle beside ASTIKA.
+- [x] Match the reference’s scale, inline placement, and light outline/gray fill treatment in Developer and Weekend modes.
+- [x] Verify desktop/mobile presentation, run automated validation, and publish a checkpoint.
