@@ -215,3 +215,10 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Remove all visible section-number markers beginning with 02 across the public portfolio.
 - [x] Preserve section structure and spacing, verify desktop/mobile presentation and checks, then publish.
+
+## Manual Work carousel
+
+- [x] Remove the sticky/pinned scroll lock from the Work gallery.
+- [x] Enable manual horizontal dragging to browse project cards left and right.
+- [x] Reduce card gaps and preserve 4:3 project image aspect ratios.
+- [x] Verify desktop/mobile drag behavior and layout, run checks, then publish.
