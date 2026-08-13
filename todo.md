@@ -352,3 +352,10 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Make Case Studies cards fill the available height with `height: 100%`.
 - [x] Convert Case Studies indices 01–03 to outlined numerals, positioned with `right: -3rem` and `bottom: -3rem`.
 - [x] Verify the refined card layout on desktop and mobile, run checks, then publish.
+
+## Case Studies index and mobile section width refinement
+
+- [x] Set Case Studies indices 01–03 to `right: -2rem`, `bottom: -3rem`, and a 140px desktop font size.
+- [x] Define an appropriately reduced Case Studies index scale for screens below 767px.
+- [x] Make every portfolio section use its full available width below 767px without introducing horizontal overflow.
+- [x] Verify desktop/mobile layouts, run automated checks, and publish the update.
