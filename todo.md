@@ -339,3 +339,10 @@ Final GitHub verification: the corrected workflow run `31722854179` completed su
 ## How I Think heading sparkle
 
 - [x] Add ✦ to the “How I Think” section heading and verify responsive rendering before publishing.
+
+## How I Think sparkle treatment match
+
+- [x] Match the How I Think sparkle’s size, color, and text spacing to the Work heading sparkle treatment.
+- [x] Verify the matched heading sparkle on desktop and mobile, run checks, then publish.
+
+Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-white/40`, `margin-left: 1rem`, and `margin-bottom: 0.75rem`; the provided reference similarly shows a subdued gray sparkle with generous separation from the outlined wordmark.
