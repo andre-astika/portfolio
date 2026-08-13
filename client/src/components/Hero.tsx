@@ -10,8 +10,8 @@ import LiquidHeroReveal, {
   type LiquidHeroRevealHandle,
 } from "@/components/LiquidHeroReveal";
 
-const HERO_IMG_PLAIN = "/manus-storage/andre-profile-bg-img-without_2567d3c2.webp";
-const HERO_IMG_WEEKEND = "/manus-storage/andre-profile-bg-img-with_d033cf67.webp";
+const HERO_IMG_PLAIN = "/manus-storage/andre-profile-bg-img-without-acc-hd_a1951d13.webp";
+const HERO_IMG_WEEKEND = "/manus-storage/andre-profile-bg-img-with-acc-hd_308df14c.webp";
 
 type Mode = "dev" | "weekend";
 
@@ -30,8 +30,8 @@ function ModeSwitch({
     >
       {/* sliding pill */}
       <span
-        className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
-          mode === "dev" ? "left-1" : "left-[calc(50%+0px)]"
+        className={`absolute top-1 bottom-1 w-[calc(50%-4px)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
+          mode === "dev" ? "left-1 bg-white" : "left-[calc(50%+0px)] bg-black"
         }`}
         aria-hidden="true"
       />
@@ -48,7 +48,11 @@ function ModeSwitch({
           data-cursor
           onClick={() => onChange(opt.key)}
           className={`relative z-10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 md:px-5 ${
-            mode === opt.key ? "text-black" : "text-white/60 hover:text-white"
+            mode === opt.key
+              ? mode === "weekend"
+                ? "text-white"
+                : "text-black"
+              : "text-white/60 hover:text-white"
           }`}
         >
           {opt.label}
