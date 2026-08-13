@@ -295,3 +295,9 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Set “Drag left or right to browse the selected projects.” to `max-width: 170px`.
 - [x] Verify the refined instruction width on desktop and mobile, run checks, then publish.
+
+## GitHub project export
+
+- [ ] Inspect the available GitHub destination and prepare the full Andre portfolio source for export.
+- [ ] Create a private GitHub repository and push the complete project source.
+- [ ] Verify the repository contents and share the GitHub URL.
