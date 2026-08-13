@@ -113,8 +113,10 @@ export default function Hero() {
               <span className="line-rise block text-[15vw] font-black uppercase text-stroke md:text-[8.5rem]" style={{ "--line-delay": "240ms" } as React.CSSProperties}>
                 <span className="inline-flex items-center whitespace-nowrap">
                   Astika
-                  <span className="hero-astika-sparkle ml-2 inline-flex h-[0.88em] w-[0.88em] shrink-0 translate-y-[0.02em] items-center justify-center md:ml-3" aria-hidden="true">
-                    ✦
+                  <span className="hero-astika-sparkle ml-2 inline-flex h-[0.98em] w-[0.98em] shrink-0 translate-y-[0.01em] items-center justify-center md:ml-3" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" className="h-full w-full" focusable="false">
+                      <path d="M50 3C54 24 64 37 92 50C64 62 54 76 50 97C45 76 35 62 8 50C35 37 45 24 50 3Z" />
+                    </svg>
                   </span>
                 </span>
               </span>
