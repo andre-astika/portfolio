@@ -30,7 +30,7 @@ const CASES = [
 function CaseCard({ c, i }: { c: (typeof CASES)[number]; i: number }) {
   return (
     <article
-      className="spotlight group relative flex flex-col border border-white/10 bg-[oklch(0.19_0_0)] p-8 transition-colors duration-300 hover:border-white/30 md:p-10"
+      className="spotlight group relative flex h-full flex-col overflow-hidden border border-white/10 bg-[oklch(0.19_0_0)] p-8 transition-colors duration-300 hover:border-white/30 md:p-10"
       style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
     >
       <div className="mb-8 flex items-center justify-between">
@@ -48,7 +48,7 @@ function CaseCard({ c, i }: { c: (typeof CASES)[number]; i: number }) {
       </div>
       {/* oversized ghost number */}
       <span
-        className="font-display pointer-events-none absolute -right-2 bottom-0 select-none text-[7rem] font-black leading-none text-white/[0.05] transition-colors duration-300 group-hover:text-white/[0.09]"
+        className="font-display pointer-events-none absolute -right-12 -bottom-12 select-none text-[7rem] font-black leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.38)] transition-colors duration-300 group-hover:[-webkit-text-stroke-color:rgba(255,255,255,0.58)]"
         aria-hidden="true"
       >
         {String(i + 1).padStart(2, "0")}
@@ -73,7 +73,7 @@ export default function CaseStudies() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {CASES.map((c, i) => (
-            <div key={c.index} className="reveal">
+            <div key={c.index} className="reveal h-full">
               <CaseCard c={c} i={i} />
             </div>
           ))}
