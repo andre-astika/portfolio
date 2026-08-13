@@ -150,3 +150,17 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Remove the horizontal line before the Hero role text.
 - [x] Preserve the role text and responsive spacing.
 - [ ] Verify the Header layout and save a checkpoint.
+
+## ASTIKA sparkle alignment
+
+- [x] Keep the sparkle icon inline beside “ASTIKA” instead of allowing it to wrap below.
+- [x] Match the sparkle’s visual size to the ASTIKA wordmark.
+- [x] Use the dark-mode sparkle color treatment in Weekend/light mode.
+- [ ] Verify desktop/mobile theme states and save a checkpoint.
+
+## Full-stack and file storage upgrade
+
+- [x] Upgrade the static portfolio to the full-stack WebDev template.
+- [x] Review the generated auth, database, backend, and storage scaffolding.
+- [x] Document the file-storage upload and retrieval path for future portfolio assets.
+- [ ] Run validation and save a checkpoint after the upgrade.

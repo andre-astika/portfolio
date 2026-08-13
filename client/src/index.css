@@ -426,6 +426,15 @@ body:has(.weekend-theme) {
   -webkit-text-stroke-color: color-mix(in oklab, var(--ink) 62%, transparent);
 }
 
+.hero-astika-sparkle {
+  color: rgb(255 255 255 / 0.62);
+  -webkit-text-stroke: 0;
+}
+
+.weekend-theme .hero-astika-sparkle {
+  color: var(--ink) !important;
+}
+
 .weekend-theme .text-silver-gradient {
   background: linear-gradient(120deg, var(--ink) 0%, var(--slate) 55%, var(--ink) 100%);
   -webkit-background-clip: text;

@@ -32,3 +32,11 @@
 - Desktop preview confirms the new plain image remains right-weighted and the existing copy stays readable; the browser preview also switched to Weekend mode successfully.
 - Weekend active state now uses a black sliding pill with white text; Developer active state remains a white pill with black text.
 - The browser preview visibly switched to Weekend mode with the light Hero palette and updated Weekend copy; a later console selector lookup did not find the tab in that preview context, so the control was verified visually and through the source class logic.
+
+## Full-stack asset storage
+
+- The project now uses the full-stack template with tRPC, Manus OAuth, Drizzle/MySQL, and built-in S3 helpers.
+- `portfolioAssets` stores metadata only (`storageKey`, signed `storageUrl`, filename, content type, size, owner); file bytes live in S3.
+- The owner-only `/assets` route uses the provided dashboard shell. It requests a server-side upload URL, uploads directly to S3, confirms the stored object, and renders fresh signed view URLs.
+- Core entry points: `server/portfolioAssets.ts`, `server/routers.ts`, `server/storage.ts`, `server/db.ts`, `drizzle/schema.ts`, and `client/src/pages/AssetLibrary.tsx`.
+- Guardrails: authenticated owner-only procedures; allowlisted image/document formats; 10 MB maximum file size; metadata is recorded only after a successful storage confirmation.
