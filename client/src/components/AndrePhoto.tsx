@@ -1,7 +1,7 @@
 /* NOIR KINETIC — site-wide Andre photo swap: a shared hover state so that
    hovering ANY Andre portrait on the page flips EVERY Andre portrait to
-   Weekend mode (cap & glasses). Implemented as a React context provider
-   wrapping the page; <AndrePhoto /> drops into any section. */
+   Weekend mode (cap & glasses). The same provider also owns the site-wide
+   Developer dark / Weekend light theme. */
 import {
   createContext,
   useContext,
@@ -15,8 +15,8 @@ import {
 export const IMG_ANDRE_DEV = "/manus-storage/andre-profile-img-without_6e47e8ca.webp";
 export const IMG_ANDRE_WEEKEND = "/manus-storage/andre-profile-img-with_3f7bf32d.webp";
 
-type WeekendCtx = { weekend: boolean };
-const Ctx = createContext<WeekendCtx>({ weekend: false });
+type WeekendCtx = { weekend: boolean; setWeekend: (next: boolean) => void };
+const Ctx = createContext<WeekendCtx>({ weekend: false, setWeekend: () => undefined });
 
 export function AndrePhotoProvider({ children }: { children: ReactNode }) {
   const [weekend, setWeekend] = useState(false);
@@ -30,7 +30,11 @@ export function AndrePhotoProvider({ children }: { children: ReactNode }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-  return <Ctx.Provider value={useMemo(() => ({ weekend }), [weekend])}>{children}</Ctx.Provider>;
+  return <Ctx.Provider value={useMemo(() => ({ weekend, setWeekend }), [weekend])}>{children}</Ctx.Provider>;
+}
+
+export function useSiteWeekend() {
+  return useContext(Ctx);
 }
 
 /**

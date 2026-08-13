@@ -1,6 +1,7 @@
 /*
   NOIR KINETIC — Design tokens for Andre Astika's dark brutalist portfolio.
-  Palette: strict grayscale ladder (ink → charcoal → slate → mist → light → white).
+  Developer uses the original ink ladder; Weekend swaps the same system to paper,
+  graphite, and ink through the page-level .weekend-theme class.
   Type: Archivo (display) + Cormorant Garamond (accent serif) + IBM Plex Mono (labels).
   Motion: kinetic — reveal-on-scroll, marquee, parallax, magnetic. See ideas.md.
 */
@@ -360,4 +361,152 @@
   .lumora-hero-band {
     animation: none;
   }
+}
+
+/* ===== WEEKEND LIGHT MODE =====
+   A full-page light theme, intentionally not a generic white reset: warm paper,
+   graphite ink, softer borders, and the same kinetic hierarchy. */
+.weekend-theme {
+  --background: oklch(0.965 0.008 90);
+  --foreground: oklch(0.16 0.008 80);
+  --card: oklch(0.925 0.008 90);
+  --card-foreground: oklch(0.16 0.008 80);
+  --popover: oklch(0.98 0.006 90);
+  --popover-foreground: oklch(0.16 0.008 80);
+  --primary: oklch(0.16 0.008 80);
+  --primary-foreground: oklch(0.965 0.008 90);
+  --secondary: oklch(0.89 0.007 90);
+  --secondary-foreground: oklch(0.22 0.008 80);
+  --muted: oklch(0.90 0.008 90);
+  --muted-foreground: oklch(0.43 0.01 80);
+  --accent: oklch(0.82 0.01 85);
+  --accent-foreground: oklch(0.16 0.008 80);
+  --border: oklch(0.16 0.008 80 / 18%);
+  --input: oklch(0.16 0.008 80 / 20%);
+  --ring: oklch(0.16 0.008 80 / 34%);
+  --ink: oklch(0.16 0.008 80);
+  --charcoal: oklch(0.24 0.008 80);
+  --slate: oklch(0.48 0.01 80);
+  --mist: oklch(0.53 0.01 80);
+  --light: oklch(0.28 0.008 80);
+  --white: oklch(0.99 0.004 90);
+  color: var(--foreground);
+  background: var(--background);
+  transition: color 420ms cubic-bezier(0.23, 1, 0.32, 1), background-color 420ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+body:has(.weekend-theme) {
+  background: oklch(0.965 0.008 90);
+  color: oklch(0.16 0.008 80);
+}
+
+.weekend-theme .site-surface,
+.weekend-theme main,
+.weekend-theme section {
+  color: var(--foreground);
+}
+
+.weekend-theme [class*="text-white"] {
+  color: var(--weekend-ink, oklch(0.16 0.008 80)) !important;
+}
+
+.weekend-theme [class*="border-white"] {
+  border-color: var(--border) !important;
+}
+
+.weekend-theme [class*="bg-black"] {
+  background-color: color-mix(in oklab, var(--ink) 8%, transparent) !important;
+}
+
+.weekend-theme [class*="bg-[oklch"] {
+  background-color: var(--card) !important;
+}
+
+.weekend-theme .text-stroke {
+  -webkit-text-stroke-color: color-mix(in oklab, var(--ink) 62%, transparent);
+}
+
+.weekend-theme .text-silver-gradient {
+  background: linear-gradient(120deg, var(--ink) 0%, var(--slate) 55%, var(--ink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.weekend-theme .hairline {
+  background: var(--border);
+}
+
+.weekend-theme .grain::before {
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+.weekend-theme .mode-switch {
+  background: color-mix(in oklab, var(--paper, oklch(0.99 0.004 90)) 72%, transparent) !important;
+  border-color: var(--border) !important;
+}
+
+.weekend-theme .mode-switch button[aria-selected="false"] {
+  color: var(--muted-foreground) !important;
+}
+
+.weekend-theme .liquid-reveal-vignette {
+  background:
+    linear-gradient(90deg, rgb(246 244 238 / 0.98) 0%, rgb(246 244 238 / 0.82) 39%, rgb(246 244 238 / 0.2) 73%, transparent 100%),
+    linear-gradient(0deg, rgb(246 244 238 / 0.9) 0%, transparent 42%, rgb(246 244 238 / 0.42) 100%) !important;
+}
+
+.weekend-theme .theme-aware-reveal-base {
+  opacity: 0.58 !important;
+}
+
+.weekend-theme .theme-aware-reveal-media {
+  filter: grayscale(0.12) contrast(1.04) brightness(0.94) !important;
+}
+
+.weekend-theme .hero-fluid-canvas {
+  opacity: 0.15 !important;
+  mix-blend-mode: multiply !important;
+}
+
+.weekend-theme .lumora-hero-surface {
+  background:
+    radial-gradient(circle at 72% 32%, rgb(30 30 28 / 0.11), transparent 25%),
+    radial-gradient(circle at 20% 56%, rgb(100 96 88 / 0.12), transparent 31%),
+    linear-gradient(112deg, #f2f0ea 0%, #dedbd3 48%, #f4f1eb 100%);
+}
+
+.weekend-theme .lumora-hero-wash {
+  background:
+    linear-gradient(108deg, transparent 14%, rgb(40 40 38 / 0.08) 34%, transparent 56%),
+    linear-gradient(92deg, transparent 30%, rgb(255 255 255 / 0.24) 50%, transparent 75%);
+  mix-blend-mode: multiply;
+}
+
+.weekend-theme .lumora-hero-orb-a {
+  background: rgb(72 69 62 / 0.18);
+}
+
+.weekend-theme .lumora-hero-orb-b {
+  background: rgb(255 255 255 / 0.46);
+}
+
+.weekend-theme .lumora-hero-band {
+  background: linear-gradient(90deg, transparent, rgb(30 30 28 / 0.08) 42%, rgb(30 30 28 / 0.03) 62%, transparent);
+  mix-blend-mode: multiply;
+}
+
+.weekend-theme .lumora-hero-grain {
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+.weekend-theme .liquid-cursor-ring {
+  border-color: var(--ink) !important;
+  background: rgb(255 255 255 / 0.18) !important;
+  box-shadow: 0 0 0 7px rgb(20 20 18 / 0.05), 0 0 26px rgb(20 20 18 / 0.16) !important;
+}
+
+.weekend-theme .liquid-cursor-ring > span {
+  background: var(--ink) !important;
 }
