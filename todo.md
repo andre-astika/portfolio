@@ -182,3 +182,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Replace the current solid ✦ glyph with the approved outlined four-point diamond sparkle beside ASTIKA.
 - [x] Match the reference’s scale, inline placement, and light outline/gray fill treatment in Developer and Weekend modes.
 - [x] Verify desktop/mobile presentation, run automated validation, and publish a checkpoint.
+
+## Simplified ASTIKA sparkle alignment
+
+- [x] Return the ASTIKA sparkle to a solid fill without an outline.
+- [x] Reduce the sparkle so its visual height aligns with the ASTIKA letter height.
+- [x] Verify the desktop/mobile wordmark alignment, run checks, and publish the refinement.
