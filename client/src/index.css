@@ -427,10 +427,10 @@ body:has(.weekend-theme) {
 }
 
 .hero-astika-sparkle {
-  font-size: 125px;
-  margin-left: 1rem;
-  color: rgb(255 255 255 / 0.72);
+  color: #ffffffb8;
   -webkit-text-stroke: 0;
+  margin-left: 1.5rem;
+  font-size: 105px;
 }
 
 @media (max-width: 767px) {
@@ -438,10 +438,6 @@ body:has(.weekend-theme) {
     font-size: 14vw;
     margin-left: 0.5rem;
   }
-}
-
-.weekend-theme .hero-astika-sparkle {
-  color: var(--ink);
 }
 
 .weekend-theme .text-silver-gradient {
