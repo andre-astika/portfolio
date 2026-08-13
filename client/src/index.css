@@ -5,6 +5,11 @@
   Type: Archivo (display) + Cormorant Garamond (accent serif) + IBM Plex Mono (labels).
   Motion: kinetic — reveal-on-scroll, marquee, parallax, magnetic. See ideas.md.
 */
+
+manus-content-root {
+    display: none;
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
