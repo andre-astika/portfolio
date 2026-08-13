@@ -187,7 +187,7 @@ export default function WorkGallery() {
     >
       {/* giant clipped numeral bleeding off the right edge */}
       <div
-        className="font-display pointer-events-none select-none absolute -right-10 top-0 text-[22rem] font-black leading-none text-white/[0.05] md:text-[26rem]"
+        className="font-display pointer-events-none select-none absolute -right-10 top-0 text-[16rem] font-black leading-none text-white/[0.05]"
         aria-hidden="true"
       >
         02
