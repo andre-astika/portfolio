@@ -1,9 +1,83 @@
-/* NOIR KINETIC — hero: left-anchored giant display type, line-rise stagger,
-   cut-out portrait with mouse parallax, location meta, marquee underfold. */
+/* NOIR KINETIC — hero: staggered line-rise headline, interactive
+   Developer ↔ Weekend mode switcher swapping the two profile photos with a
+   sliding pill, tilt-on-hover, and parallax. Tagline stays clipped brand voice. */
+import { useEffect, useRef, useState } from "react";
 import { useMouseParallax } from "@/hooks/useKinetic";
 
+type Mode = "dev" | "weekend";
+
+const IMG_DEV = "/manus-storage/andre-profile-img-without_6e47e8ca.webp";
+const IMG_WEEKEND = "/manus-storage/andre-profile-img-with_3f7bf32d.webp";
+
+function ModeSwitch({
+  mode,
+  onChange,
+}: {
+  mode: Mode;
+  onChange: (m: Mode) => void;
+}) {
+  return (
+    <div
+      className="font-label relative inline-flex w-fit items-center border border-white/20 bg-black/40 p-1 backdrop-blur-sm"
+      role="tablist"
+      aria-label="Andre mode"
+    >
+      {/* sliding pill */}
+      <span
+        className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
+          mode === "dev" ? "left-1" : "left-[calc(50%+0px)]"
+        }`}
+        aria-hidden="true"
+      />
+      {(
+        [
+          { key: "dev", label: "✦ Developer" },
+          { key: "weekend", label: "Weekend ✦" },
+        ] as const
+      ).map((opt) => (
+        <button
+          key={opt.key}
+          role="tab"
+          aria-selected={mode === opt.key}
+          data-cursor
+          onClick={() => onChange(opt.key)}
+          className={`relative z-10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 md:px-5 ${
+            mode === opt.key ? "text-black" : "text-white/60 hover:text-white"
+          }`}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export default function Hero() {
-  const portraitRef = useMouseParallax(22);
+  const [mode, setMode] = useState<Mode>("dev");
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const portraitWrapRef = useRef<HTMLDivElement>(null);
+  const parallaxRef = useMouseParallax(22);
+
+  /* slight tilt of the portrait card toward the pointer */
+  useEffect(() => {
+    const wrap = portraitWrapRef.current;
+    if (!wrap) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+    const onMove = (e: MouseEvent) => {
+      const rect = wrap.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      setTilt({ x: py * -6, y: px * 6 });
+    };
+    const onLeave = () => setTilt({ x: 0, y: 0 });
+    wrap.addEventListener("mousemove", onMove as EventListener);
+    wrap.addEventListener("mouseleave", onLeave as EventListener);
+    return () => {
+      wrap.removeEventListener("mousemove", onMove as EventListener);
+      wrap.removeEventListener("mouseleave", onLeave as EventListener);
+    };
+  }, []);
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -16,30 +90,49 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 flex min-h-screen flex-col justify-center pb-28 pt-28 md:pt-32">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           {/* LEFT: type stack */}
           <div>
-            <p className="font-label mb-6 line-rise flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/50 md:text-xs">
+            {/* mode switcher */}
+            <div className="line-rise mb-6">
+              <ModeSwitch mode={mode} onChange={setMode} />
+            </div>
+
+            <p className="font-label mb-6 line-rise flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
               <span className="inline-block h-px w-10 bg-white/30" />
               (Portfolio) — Frontend Developer · Website &amp; Graphic Designer
             </p>
 
             <h1 className="font-display leading-[0.88] tracking-tight">
-              <span className="line-rise block text-[15vw] font-black uppercase text-white md:text-[8.5rem]" style={{ "--line-delay": "80ms" } as React.CSSProperties}>
+              <span className="line-rise block text-[15vw] font-black uppercase text-white md:text-[8.5rem]" style={{ "--line-delay": "120ms" } as React.CSSProperties}>
                 Andre
               </span>
-              <span className="line-rise block text-[15vw] font-black uppercase text-stroke md:text-[8.5rem]" style={{ "--line-delay": "200ms" } as React.CSSProperties}>
+              <span className="line-rise block text-[15vw] font-black uppercase text-stroke md:text-[8.5rem]" style={{ "--line-delay": "240ms" } as React.CSSProperties}>
                 Astika<span className="text-white/40">✦</span>
               </span>
             </h1>
 
-            <p className="line-rise mt-8 max-w-xl text-base leading-relaxed text-white/60 md:text-lg" style={{ "--line-delay": "340ms" } as React.CSSProperties}>
-              Interfaces that don't wait to be noticed. I design and build websites,
-              branding, and visual systems — pixel-precise, deadline-obsessed,
-              zero fluff. Shipped from Bali for clients worldwide.
+            {/* mode-aware taglines */}
+            <p
+              key={mode}
+              className="mt-8 max-w-xl animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] text-base leading-relaxed text-white/60 md:text-lg"
+            >
+              {mode === "dev" ? (
+                <>
+                  Interfaces that don't wait to be noticed. I design and build
+                  websites, branding, and visual systems — pixel-precise,
+                  deadline-obsessed, zero fluff.
+                </>
+              ) : (
+                <>
+                  Off the clock, on the move. Same pixel discipline — looser
+                  frames, better coffee. The weekend edition of the same
+                  craftsman.
+                </>
+              )}
             </p>
 
-            <div className="line-rise mt-10 flex flex-wrap items-center gap-4" style={{ "--line-delay": "480ms" } as React.CSSProperties}>
+            <div className="line-rise mt-10 flex flex-wrap items-center gap-4" style={{ "--line-delay": "420ms" } as React.CSSProperties}>
               <a
                 href="#work"
                 data-cursor
@@ -58,30 +151,59 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="line-rise mt-14 flex flex-wrap gap-x-8 gap-y-2 text-white/40" style={{ "--line-delay": "600ms" } as React.CSSProperties}>
+            <div className="line-rise mt-14 flex flex-wrap gap-x-8 gap-y-2 text-white/40" style={{ "--line-delay": "540ms" } as React.CSSProperties}>
               <span className="font-label text-[11px] uppercase tracking-[0.25em]">✦ 3+ yrs shipping</span>
               <span className="font-label text-[11px] uppercase tracking-[0.25em]">✦ 10–20 projects / yr</span>
               <span className="font-label text-[11px] uppercase tracking-[0.25em]">✦ Denpasar, Bali</span>
             </div>
           </div>
 
-          {/* RIGHT: cut-out portrait */}
-          <div className="relative hidden justify-self-end lg:block">
-            <div ref={portraitRef} className="relative" style={{ willChange: "transform" }}>
-              <img
-                src="/manus-storage/andre-profile-img-with_3f7bf32d.webp"
-                alt="Andre Astika"
-                className="h-[62vh] w-auto object-cover object-top"
+          {/* RIGHT: interactive portrait with mode swap */}
+          <div className="hidden lg:block">
+            <div ref={portraitWrapRef} className="relative justify-self-end">
+              {/* parallax container + tilt */}
+              <div
+                ref={parallaxRef}
+                className="relative transition-transform duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)]"
                 style={{
-                  clipPath: "polygon(14% 0, 100% 2%, 100% 100%, 0 97%)",
-                  filter: "grayscale(100%) contrast(1.05)",
+                  willChange: "transform",
+                  transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
                 }}
-              />
-              <span className="font-label absolute -bottom-4 left-4 text-[10px] uppercase tracking-[0.3em] text-white/50">
-                (Portrait) — Bali, ID
-              </span>
-              {/* crosshair tick at corner */}
-              <span className="absolute -left-6 -top-6 text-xl text-white/25" aria-hidden="true">✦</span>
+              >
+                <div className="relative h-[62vh] w-auto overflow-hidden" style={{ clipPath: "polygon(14% 0, 100% 2%, 100% 100%, 0 97%)" }}>
+                  <img
+                    key={mode}
+                    src={mode === "dev" ? IMG_DEV : IMG_WEEKEND}
+                    alt={mode === "dev" ? "Andre Astika — Developer mode" : "Andre Astika — Weekend mode"}
+                    className="h-full w-auto animate-[photo-in_0.7s_cubic-bezier(0.23,1,0.32,1)_both] object-cover object-top"
+                    style={{ filter: "grayscale(100%) contrast(1.05)" }}
+                  />
+                  {/* scan-line overlay for dev mode */}
+                  <span
+                    className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
+                      mode === "dev" ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(0deg, oklch(1 0 0 / 4%) 0px, oklch(1 0 0 / 4%) 1px, transparent 1px, transparent 4px)",
+                    }}
+                    aria-hidden="true"
+                  />
+                </div>
+
+                {/* mode badge */}
+                <span
+                  key={`badge-${mode}`}
+                  className="font-label absolute -bottom-4 left-4 animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm"
+                >
+                  {mode === "dev" ? "(Mode) — Developer · Bali, ID" : "(Mode) — Weekend · Bali, ID"}
+                </span>
+
+                {/* corner crosshair */}
+                <span className="absolute -left-6 -top-6 text-xl text-white/25" aria-hidden="true">
+                  ✦
+                </span>
+              </div>
             </div>
           </div>
         </div>
