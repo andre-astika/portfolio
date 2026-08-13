@@ -144,3 +144,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Ensure Weekend mode visibly renders the cap-and-glasses image as the primary Hero image before hover.
 - [x] Preserve Developer plain-image behavior and the alternate hover reveal.
 - [ ] Verify both mode states and save a corrective checkpoint.
+
+## Hero role-line divider removal
+
+- [x] Remove the horizontal line before the Hero role text.
+- [x] Preserve the role text and responsive spacing.
+- [ ] Verify the Header layout and save a checkpoint.

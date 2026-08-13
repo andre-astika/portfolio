@@ -102,8 +102,7 @@ export default function Hero() {
             <ModeSwitch mode={mode} onChange={(nextMode) => setWeekend(nextMode === "weekend")} />
             </div>
 
-            <p className="font-label mb-6 line-rise flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
-              <span className="inline-block h-px w-10 bg-white/30" />
+            <p className="font-label mb-6 line-rise text-[11px] uppercase tracking-[0.35em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
               Frontend Developer · Website &amp; Graphic Designer
             </p>
 
