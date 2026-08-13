@@ -66,7 +66,7 @@ export default function CaseStudies() {
             (Thinking) — Case study previews
           </p>
           <h2 className="font-display text-4xl font-black uppercase tracking-tight text-white md:text-6xl">
-            How I <span className="text-stroke">think</span>
+            How I <span className="text-stroke">think</span><span className="ml-2 inline-block align-middle text-[0.72em]">✦</span>
           </h2>
         </div>
 
