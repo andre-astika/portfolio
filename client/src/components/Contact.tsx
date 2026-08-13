@@ -15,7 +15,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden">
       <div
-        className="font-display pointer-events-none select-none absolute -right-8 top-4 text-[26rem] font-black leading-none text-white/[0.04]"
+        className="font-display pointer-events-none select-none absolute -right-8 top-4 text-[16rem] font-black leading-none text-white/[0.04]"
         aria-hidden="true"
       >
         07

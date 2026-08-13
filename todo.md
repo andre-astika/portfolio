@@ -39,3 +39,34 @@ The interactive dev preview was opened and the Weekend tab was clicked. The Hero
 Computed-style check confirmed the key Work and Philosophy section surfaces resolve to the Weekend card token and the major sections resolve to the Weekend ink color. The document body needed an explicit `:has(.weekend-theme)` background fallback so transparent sections cannot reveal the old dark body color; that fallback has been added.
 
 After a fresh preview refresh, reselecting Weekend again reproduced the light-paper Hero with dark ink typography, pale controls, dark cursor ring, and Weekend copy. The mode remains a user-controlled global switch rather than a one-time render state.
+
+## Latest Hero composition refinement
+
+- [ ] Copy and upload the newly attached landscape plain and Weekend photo pair as durable web assets.
+- [ ] Replace the current Hero background pair with the new landscape pair and shift the face composition further right.
+- [ ] Remove the Hero-only 01 section marker without changing the Hero description copy.
+- [ ] Make the active Weekend button black in the light theme.
+- [ ] Keep section numerals 02, 03, and later in the muted gray treatment used by Developer dark mode.
+- [ ] Verify desktop/mobile presentation, theme states, and TypeScript, then save a checkpoint.
+
+## Work carousel sticky refinement
+
+- [ ] Inspect the current Work section wrapper, sticky region, track movement, and card image sizing.
+- [ ] Start sticky behavior at the project carousel/grid rather than at the Work section header.
+- [ ] Keep the carousel pinned while the project track scrolls left, then release only after the track reaches its end.
+- [ ] Change each Work project image frame to a 4:3 aspect ratio without breaking hover descriptions or responsive layout.
+- [ ] Verify desktop trackpad/wheel behavior and mobile presentation, then save a checkpoint.
+
+## Display stroke refinement
+
+- [x] Locate the shared `.text-stroke` rule and any inline stroke overrides.
+- [x] Reduce stroke width while preserving the grayscale contrast in Developer and Weekend themes.
+- [x] Verify the Hero outline heading at desktop size; TypeScript passes and no layout changes were introduced.
+- [ ] Save a checkpoint.
+
+## Section numeral normalization
+
+- [x] Locate the section marker styles for 02–07.
+- [x] Use one shared numeral size so 02 matches the other section markers.
+- [x] Verify the normalized numerals on the full-page desktop render; TypeScript passes.
+- [ ] Save a checkpoint.
