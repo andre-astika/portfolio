@@ -346,3 +346,9 @@ Final GitHub verification: the corrected workflow run `31722854179` completed su
 - [x] Verify the matched heading sparkle on desktop and mobile, run checks, then publish.
 
 Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-white/40`, `margin-left: 1rem`, and `margin-bottom: 0.75rem`; the provided reference similarly shows a subdued gray sparkle with generous separation from the outlined wordmark.
+
+## Case Studies card refinement
+
+- [x] Make Case Studies cards fill the available height with `height: 100%`.
+- [x] Convert Case Studies indices 01–03 to outlined numerals, positioned with `right: -3rem` and `bottom: -3rem`.
+- [x] Verify the refined card layout on desktop and mobile, run checks, then publish.
