@@ -5,6 +5,9 @@
 import { useState } from "react";
 import FluidHeroBg from "@/components/FluidHeroBg";
 
+const HERO_IMG_PLAIN = "/manus-storage/andre-profile-img-without-hero_4d9a7fdb.webp";
+const HERO_IMG_WEEKEND = "/manus-storage/andre-profile-img-with-hero_88bb2896.webp";
+
 type Mode = "dev" | "weekend";
 
 function ModeSwitch({
@@ -52,9 +55,34 @@ function ModeSwitch({
 
 export default function Hero() {
   const [mode, setMode] = useState<Mode>("dev");
+  const [heroHovered, setHeroHovered] = useState(false);
 
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section
+      id="top"
+      className="relative overflow-hidden"
+      onPointerEnter={() => setHeroHovered(true)}
+      onPointerLeave={() => setHeroHovered(false)}
+    >
+      {/* Reference-style hover background: plain portrait at rest, Weekend portrait on Hero hover. */}
+      <div className="hero-portrait-background pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
+        <img
+          src={HERO_IMG_PLAIN}
+          alt=""
+          className={`hero-portrait-background__image hero-portrait-background__image--plain absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[66%_50%] transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] md:w-[76%] md:object-center ${heroHovered ? "scale-[1.025] opacity-10" : "scale-100 opacity-40"}`}
+          draggable={false}
+        />
+        <img
+          src={HERO_IMG_WEEKEND}
+          alt=""
+          className={`hero-portrait-background__image absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[66%_50%] transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] md:w-[76%] md:object-center ${heroHovered ? "scale-100 opacity-40" : "scale-[1.025] opacity-0"}`}
+          draggable={false}
+        />
+        <span className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.08_0_0/0.98)_0%,oklch(0.08_0_0/0.74)_42%,transparent_78%),linear-gradient(0deg,oklch(0.08_0_0/0.82)_0%,transparent_36%,oklch(0.08_0_0/0.38)_100%)]" />
+        <span className={`absolute right-[12%] top-[44%] hidden -translate-y-1/2 border border-white/25 bg-black/35 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.3em] text-white/55 backdrop-blur-sm transition-all duration-500 md:block ${heroHovered ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"}`}>
+          Weekend portrait / hover
+        </span>
+      </div>
       {/* WebGL fluid/smoke layer behind everything, pointer-reactive */}
       <FluidHeroBg />
 
