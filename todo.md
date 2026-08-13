@@ -138,3 +138,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Change the mode labels to “✦ Developer Mode” and “Weekend Mode ✦”.
 - [x] Preserve active-state contrast and responsive button spacing.
 - [x] Verify the updated labels and save a checkpoint.
+
+## Weekend Hero base-rendering correction
+
+- [x] Ensure Weekend mode visibly renders the cap-and-glasses image as the primary Hero image before hover.
+- [x] Preserve Developer plain-image behavior and the alternate hover reveal.
+- [ ] Verify both mode states and save a corrective checkpoint.

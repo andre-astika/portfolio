@@ -20,6 +20,7 @@ export type LiquidHeroRevealHandle = {
 type LiquidHeroRevealProps = {
   baseSrc: string;
   revealSrc: string;
+  mode?: "dev" | "weekend";
 };
 
 const clamp = (value: number, min: number, max: number) =>
@@ -28,7 +29,7 @@ const clamp = (value: number, min: number, max: number) =>
 const LiquidHeroReveal = forwardRef<
   LiquidHeroRevealHandle,
   LiquidHeroRevealProps
->(function LiquidHeroReveal({ baseSrc, revealSrc }, ref) {
+>(function LiquidHeroReveal({ baseSrc, revealSrc, mode = "dev" }, ref) {
   const rootRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef({ x: 0.78, y: 0.46 });
   const currentRef = useRef({ x: 0.78, y: 0.46 });
@@ -99,12 +100,14 @@ const LiquidHeroReveal = forwardRef<
       aria-hidden="true"
     >
       <img
+        key={baseSrc}
         src={baseSrc}
         alt=""
-        className="theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[58%_50%] opacity-40 grayscale-[0.15] contrast-[1.05] brightness-[0.72] md:object-center"
+        className={`theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[58%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:object-center ${mode === "weekend" ? "opacity-90" : "opacity-40"}`}
         draggable={false}
       />
       <img
+        key={revealSrc}
         src={revealSrc}
         alt=""
         className={`theme-aware-reveal-media theme-aware-reveal-hover absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[58%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:object-center ${active ? "opacity-60" : "opacity-0"}`}
