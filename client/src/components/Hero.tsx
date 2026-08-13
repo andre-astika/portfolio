@@ -3,6 +3,7 @@
    sliding pill, tilt-on-hover, and parallax. Tagline stays clipped brand voice. */
 import { useEffect, useRef, useState } from "react";
 import { useMouseParallax } from "@/hooks/useKinetic";
+import FluidHeroBg from "@/components/FluidHeroBg";
 
 type Mode = "dev" | "weekend";
 
@@ -54,6 +55,7 @@ function ModeSwitch({
 
 export default function Hero() {
   const [mode, setMode] = useState<Mode>("dev");
+  const [hovered, setHovered] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const portraitWrapRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useMouseParallax(22);
@@ -81,6 +83,9 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden">
+      {/* WebGL fluid/smoke layer behind everything, pointer-reactive */}
+      <FluidHeroBg />
+
       {/* giant background index number */}
       <div
         className="font-display pointer-events-none select-none absolute -right-6 -top-10 text-[28rem] font-black leading-none text-white/[0.04] md:text-[34rem]"
@@ -170,14 +175,29 @@ export default function Hero() {
                   transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
                 }}
               >
-                <div className="relative h-[62vh] w-auto overflow-hidden" style={{ clipPath: "polygon(14% 0, 100% 2%, 100% 100%, 0 97%)" }}>
+                <div
+                  className="relative h-[62vh] w-auto cursor-pointer overflow-hidden transition-shadow duration-500 hover:shadow-[0_0_60px_oklch(1_0_0/0.06)]"
+                  style={{ clipPath: "polygon(14% 0, 100% 2%, 100% 100%, 0 97%)" }}
+                  onMouseEnter={() => setHovered(true)}
+                  onMouseLeave={() => setHovered(false)}
+                  role="img"
+                  aria-label={hovered ? "Andre Astika — hover to meet Weekend mode" : "Andre Astika"}
+                >
                   <img
                     key={mode}
-                    src={mode === "dev" ? IMG_DEV : IMG_WEEKEND}
-                    alt={mode === "dev" ? "Andre Astika — Developer mode" : "Andre Astika — Weekend mode"}
+                    src={hovered ? IMG_WEEKEND : IMG_DEV}
+                    alt={hovered ? "Andre Astika — Weekend mode (cap & shades)" : "Andre Astika — Developer mode"}
                     className="h-full w-auto animate-[photo-in_0.7s_cubic-bezier(0.23,1,0.32,1)_both] object-cover object-top"
                     style={{ filter: "grayscale(100%) contrast(1.05)" }}
                   />
+                  {/* hover hint label */}
+                  <span
+                    className={`font-label pointer-events-none absolute left-0 right-0 bottom-0 translate-y-full bg-black/80 px-4 py-2 text-center text-[9px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0 ${
+                      hovered ? "translate-y-0" : ""
+                    }`}
+                  >
+                    {hovered ? "(Hover) — Weekend mode ✦" : "Hover me — Weekend mode →"}
+                  </span>
                   {/* scan-line overlay for dev mode */}
                   <span
                     className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
@@ -193,10 +213,10 @@ export default function Hero() {
 
                 {/* mode badge */}
                 <span
-                  key={`badge-${mode}`}
-                  className="font-label absolute -bottom-4 left-4 animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm"
+                  key={`badge-${hovered ? "weekend" : mode}`}
+                  className="font-label pointer-events-none absolute -bottom-4 left-4 animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm"
                 >
-                  {mode === "dev" ? "(Mode) — Developer · Bali, ID" : "(Mode) — Weekend · Bali, ID"}
+                  {hovered ? "(Mode) — Weekend · Bali, ID" : mode === "dev" ? "(Mode) — Developer · Bali, ID" : "(Mode) — Weekend · Bali, ID"}
                 </span>
 
                 {/* corner crosshair */}
