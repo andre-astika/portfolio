@@ -16,7 +16,7 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import { useRevealObserver } from "@/hooks/useKinetic";
 
-const TICKER_A = ["Web Design", "Web Development", "Graphic Design", "Frontend Architecture", "UI/UX Sense", "QA & Tooling"];
+const TICKER_A = ["Website Development", "Website Design", "Frontend Architecture", "UI/UX Sense", "Website Responsive", "Graphic Design"];
 const TICKER_B = ["WordPress", "Next.js", "Headless CMS", "Tailwind", "Sanity", "Photoshop"];
 
 function SiteSurface() {

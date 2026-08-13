@@ -276,3 +276,12 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 ## Weekend sparkle verification notes
 
 Developer Mode renders the requested semi-transparent white sparkle beside ASTIKA. After switching to Weekend Mode in the browser, the Hero changes to the warm paper palette and the sparkle renders in the `var(--ink)` color, confirming the restored Weekend override is active.
+
+## Marquee label update
+
+- [x] Replace the marquee labels with Website Development, Website Design, Frontend Architecture, UI/UX Sense, Website Responsive, and Graphic Design, separated by ✦.
+- [x] Verify marquee content and motion, run checks, then publish.
+
+## Marquee verification notes
+
+The browser preview shows the requested six labels in the specified order, repeated continuously with ✦ separators. A timed browser check confirmed the marquee track transform advanced from `translateX(-2023.5px)` to `translateX(-2080.01px)` over 400ms, confirming the animation remains active.
