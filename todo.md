@@ -70,3 +70,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 - [x] Use one shared numeral size so 02 matches the other section markers.
 - [x] Verify the normalized numerals on the full-page desktop render; TypeScript passes.
 - [ ] Save a checkpoint.
+
+## Hero 01 cleanup
+
+- [x] Remove the remaining 01 background marker from Hero.
+- [x] Verify Hero content and layout remain unchanged; TypeScript passes.
+- [ ] Save a checkpoint.

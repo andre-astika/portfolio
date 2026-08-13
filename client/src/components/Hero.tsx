@@ -88,14 +88,6 @@ export default function Hero() {
       {/* WebGL fluid/smoke layer behind everything, pointer-reactive */}
       <FluidHeroBg />
 
-      {/* giant background index number */}
-      <div
-        className="font-display pointer-events-none select-none absolute -right-6 -top-10 text-[28rem] font-black leading-none text-white/[0.04] md:text-[34rem]"
-        aria-hidden="true"
-      >
-        01
-      </div>
-
       <div className="container relative z-10 flex min-h-screen flex-col justify-center pb-28 pt-28 md:pt-32">
         <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           {/* LEFT: type stack */}
