@@ -427,16 +427,12 @@ body:has(.weekend-theme) {
 }
 
 .hero-astika-sparkle {
-  --astika-sparkle-fill: rgb(255 255 255 / 0.72);
-}
-
-.hero-astika-sparkle path {
-  fill: var(--astika-sparkle-fill);
-  stroke: none;
+  color: rgb(255 255 255 / 0.72);
+  -webkit-text-stroke: 0;
 }
 
 .weekend-theme .hero-astika-sparkle {
-  --astika-sparkle-fill: var(--ink);
+  color: var(--ink);
 }
 
 .weekend-theme .text-silver-gradient {

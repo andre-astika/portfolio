@@ -199,3 +199,9 @@ After a fresh preview refresh, reselecting Weekend again reproduced the light-pa
 
 - [x] Match the Hero wordmark composition to the supplied ANDRE / ASTIKA / ✦ reference.
 - [x] Preserve the responsive desktop and mobile scaling requirements in the final implementation.
+
+## Explicit Hero wordmark sizing
+
+- [x] Set the desktop ANDRE wordmark to 139px and ASTIKA to 108px.
+- [x] Replace the solid diamond SVG with the ✦ glyph and match its visual height to ASTIKA.
+- [x] Define responsive mobile sizing, verify desktop/mobile screenshots and checks, then publish.
