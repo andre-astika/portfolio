@@ -476,3 +476,13 @@ Verification note: automated preview interactions briefly retained a scrolled vi
 Weekend Mode activation note: the Hero now switches correctly to the warm light palette with the cap-and-glasses portrait while keeping all cursor rings removed.
 
 Final validation note: pointer movement over the light Hero creates a clearly visible black fluid splash. Developer Mode retains the white variant, no cursor rings return in either mode, and the suite passes 8/8 tests with clean TypeScript and production-build checks.
+
+## ASTIKA sparkle responsive sizing
+
+- [x] Set the Hero ASTIKA sparkle to 110px on desktop and tablet.
+- [x] Set the Hero ASTIKA sparkle to 50px below the 767px mobile breakpoint.
+- [x] Verify desktop/tablet/mobile sizing, run automated checks, then publish and synchronize the update.
+
+Desktop and tablet inspection note: the ASTIKA sparkle renders at the requested 110px size, remains inline with the wordmark, and does not disrupt the Hero layout at 1440px or 768px widths.
+
+Mobile verification note: at 390px width, the sparkle uses the requested 50px size, remains inline with ASTIKA, and causes no overflow. The validation suite passes 8/8 tests, TypeScript is clean, and the production build completes successfully.
