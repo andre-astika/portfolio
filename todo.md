@@ -396,3 +396,13 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Eliminate intermittent blank frames during the About portrait hover image transition.
 - [x] Preserve the shared portrait hover behavior and responsive image composition.
 - [x] Verify hover behavior on desktop and mobile, run automated checks, and publish the repair.
+
+## GitHub latest-change deployment verification
+
+- [x] Confirm the latest portfolio changes are present on GitHub `main`.
+- [x] Verify the GitHub Pages workflow has deployed the latest commit.
+
+## Global heading weight refinement
+
+- [x] Replace font weight 900 with 800 across all portfolio headings.
+- [x] Verify heading typography on desktop and mobile, run automated checks, and publish the update.

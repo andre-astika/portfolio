@@ -14,7 +14,7 @@ function StaticAssetLibraryNotice() {
     <main className="flex min-h-screen items-center justify-center bg-[oklch(0.13_0_0)] px-6 text-white">
       <section className="max-w-lg border border-white/15 p-8">
         <p className="font-label text-[10px] uppercase tracking-[0.3em] text-white/45">Static portfolio edition</p>
-        <h1 className="font-display mt-4 text-4xl font-black uppercase">Asset Library unavailable</h1>
+        <h1 className="font-display mt-4 text-4xl font-extrabold uppercase">Asset Library unavailable</h1>
         <p className="mt-5 text-sm leading-relaxed text-white/65">
           The GitHub Pages site is a static portfolio. Asset upload, OAuth, and database-backed admin tools remain available on the Manus deployment.
         </p>
