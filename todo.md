@@ -440,3 +440,11 @@ Implementation note: the official `SplashCursor-JS-CSS` registry item provides o
 Desktop inspection note: the Hero sparkle is restored to its original full-width silhouette. SplashCursor renders a subtle white fluid trail on the dark Hero canvas, while the existing custom cursor ring remains above it and navigation stays interactive. No browser runtime or WebGL errors were recorded.
 
 Verification note: at 390px width, the restored wordmark remains on one visual line with a properly proportioned sparkle and no overflow. The test suite passes 8/8 tests; TypeScript validation and the production build both complete successfully.
+
+## Custom cursor center-dot removal
+
+- [x] Remove the filled center dot from the custom cursor ring.
+- [x] Preserve the outer ring, interactive label states, and pointer tracking.
+- [x] Verify the cursor on desktop, run automated checks, then publish and synchronize the refinement.
+
+Visual verification note: moving the pointer across the Hero shows the liquid reveal ring as an empty outlined circle, including above the portrait, with no center dot. The separate global cursor ring and interactive controls remain visible and responsive.

@@ -123,9 +123,7 @@ const LiquidHeroReveal = forwardRef<
       <span
         className={`liquid-cursor-ring absolute h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-white/10 shadow-[0_0_0_7px_rgb(255_255_255/0.05),0_0_26px_rgb(255_255_255/0.18)] backdrop-blur-[2px] transition-opacity duration-300 ${active ? "opacity-100" : "opacity-0"}`}
         style={{ left: "var(--liquid-x)", top: "var(--liquid-y)" }}
-      >
-        <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" />
-      </span>
+      />
     </div>
   );
 });
