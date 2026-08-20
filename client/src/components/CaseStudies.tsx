@@ -65,7 +65,7 @@ export default function CaseStudies() {
           <p className="font-label mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">
             (Thinking) — Case study previews
           </p>
-          <h2 className="font-display text-4xl font-black uppercase tracking-tight text-white md:text-6xl">
+          <h2 className="font-display text-4xl font-extrabold uppercase tracking-tight text-white md:text-6xl">
             How I <span className="text-stroke">think</span>
             <span className="relative mb-3 ml-4 inline-block align-middle text-2xl text-white/40 md:text-3xl">✦</span>
           </h2>

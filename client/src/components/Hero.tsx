@@ -108,10 +108,10 @@ export default function Hero() {
             </p>
 
             <h1 className="font-display leading-[0.88] tracking-tight">
-              <span className="line-rise block text-[18vw] font-black uppercase text-white sm:text-[5rem] md:text-[163px]" style={{ "--line-delay": "120ms" } as React.CSSProperties}>
+              <span className="line-rise block text-[18vw] font-extrabold uppercase text-white sm:text-[5rem] md:text-[163px]" style={{ "--line-delay": "120ms" } as React.CSSProperties}>
                 Andre
               </span>
-              <span className="line-rise block text-[14vw] font-black uppercase text-stroke sm:text-[3.875rem] md:text-[125px]" style={{ "--line-delay": "240ms" } as React.CSSProperties}>
+              <span className="line-rise block text-[14vw] font-extrabold uppercase text-stroke sm:text-[3.875rem] md:text-[125px]" style={{ "--line-delay": "240ms" } as React.CSSProperties}>
                 <span className="inline-flex items-center whitespace-nowrap">
                   Astika
                   <span className="hero-astika-sparkle inline-flex h-[0.72em] w-[0.72em] shrink-0 translate-y-[0.01em] items-center justify-center leading-none" aria-hidden="true">

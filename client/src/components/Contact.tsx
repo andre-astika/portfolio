@@ -19,7 +19,7 @@ export default function Contact() {
         <p className="reveal font-label mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">
           (Contact) — Available for new projects
         </p>
-        <h2 className="reveal font-display text-[13vw] font-black uppercase leading-[0.9] tracking-tight text-white md:text-[7.5rem]">
+        <h2 className="reveal font-display text-[13vw] font-extrabold uppercase leading-[0.9] tracking-tight text-white md:text-[7.5rem]">
           Let's build
           <br />
           <span className="text-stroke">something bold.</span>
