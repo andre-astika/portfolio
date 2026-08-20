@@ -412,3 +412,9 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Identify the Hero and display heading styles that still render at weight 900.
 - [x] Update all remaining display headings to a visible 800 weight without changing the established layout.
 - [x] Verify the corrected desktop/mobile typography, run automated checks, and publish the update.
+
+## Hero role letter-spacing adjustment
+
+- [x] Set the Hero role line “Website Developer · Website Designer · Graphic Designer” to `letter-spacing: 0.315em`.
+- [x] Add clear optical spacing between the K and A in the Hero “ASTIKA” wordmark.
+- [x] Verify Hero typography on desktop and mobile, run automated checks, and publish the update.
