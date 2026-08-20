@@ -448,3 +448,15 @@ Verification note: at 390px width, the restored wordmark remains on one visual l
 - [x] Verify the cursor on desktop, run automated checks, then publish and synchronize the refinement.
 
 Visual verification note: moving the pointer across the Hero shows the liquid reveal ring as an empty outlined circle, including above the portrait, with no center dot. The separate global cursor ring and interactive controls remain visible and responsive.
+
+## Hero ring removal and SplashCursor theme color
+
+- [x] Remove the Hero liquid cursor ring element entirely while retaining the liquid image reveal.
+- [x] Render SplashCursor white in Developer mode and black in Weekend/light mode.
+- [x] Verify both theme states, run automated checks, then publish and synchronize the correction.
+
+Developer Mode inspection note: after a preview refresh, neither the Hero liquid cursor ring nor the global custom-cursor ring is visible; the Hero composition and liquid image reveal remain intact.
+
+Weekend Mode inspection note: the mode switch changes the full Hero to the warm light palette and preserves the cursor-free surface; no circular Hero or global cursor indicator remains visible after the theme transition.
+
+Splash verification note: in Weekend Mode, pointer movement and a Hero click trigger the SplashCursor from a fresh black-color instance. The fluid overlay remains non-interactive and no circular cursor chrome is rendered.

@@ -120,10 +120,6 @@ const LiquidHeroReveal = forwardRef<
         draggable={false}
       />
       <span className="liquid-reveal-vignette absolute inset-0 bg-[linear-gradient(90deg,oklch(0.08_0_0/0.99)_0%,oklch(0.08_0_0/0.78)_39%,oklch(0.08_0_0/0.18)_73%,transparent_100%),linear-gradient(0deg,oklch(0.08_0_0/0.85)_0%,transparent_40%,oklch(0.08_0_0/0.34)_100%)]" />
-      <span
-        className={`liquid-cursor-ring absolute h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-white/10 shadow-[0_0_0_7px_rgb(255_255_255/0.05),0_0_26px_rgb(255_255_255/0.18)] backdrop-blur-[2px] transition-opacity duration-300 ${active ? "opacity-100" : "opacity-0"}`}
-        style={{ left: "var(--liquid-x)", top: "var(--liquid-y)" }}
-      />
     </div>
   );
 });
