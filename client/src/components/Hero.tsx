@@ -103,7 +103,7 @@ export default function Hero() {
             <ModeSwitch mode={mode} onChange={(nextMode) => setWeekend(nextMode === "weekend")} />
             </div>
 
-            <p className="font-label mb-6 line-rise text-[11px] uppercase tracking-[0.35em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
+            <p className="font-label mb-6 line-rise text-[11px] uppercase tracking-[0.315em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
               Website Developer · Website Designer · Graphic Designer
             </p>
 
@@ -113,7 +113,7 @@ export default function Hero() {
               </span>
               <span className="line-rise block text-[14vw] font-extrabold uppercase text-stroke sm:text-[3.875rem] md:text-[125px]" style={{ "--line-delay": "240ms" } as React.CSSProperties}>
                 <span className="inline-flex items-center whitespace-nowrap">
-                  Astika
+                  AstiK<span className="ml-[0.11em] inline-block">a</span>
                   <span className="hero-astika-sparkle inline-flex h-[0.72em] w-[0.72em] shrink-0 translate-y-[0.01em] items-center justify-center leading-none" aria-hidden="true">
                     ✦
                   </span>
