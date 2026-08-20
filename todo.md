@@ -460,3 +460,19 @@ Developer Mode inspection note: after a preview refresh, neither the Hero liquid
 Weekend Mode inspection note: the mode switch changes the full Hero to the warm light palette and preserves the cursor-free surface; no circular Hero or global cursor indicator remains visible after the theme transition.
 
 Splash verification note: in Weekend Mode, pointer movement and a Hero click trigger the SplashCursor from a fresh black-color instance. The fluid overlay remains non-interactive and no circular cursor chrome is rendered.
+
+## Weekend SplashCursor visibility regression
+
+- [x] Diagnose why the black SplashCursor effect is not visible in Weekend/light mode.
+- [x] Restore a visible black SplashCursor on the light palette without adding cursor rings.
+- [x] Verify both modes, run automated checks, then publish and synchronize the correction.
+
+Diagnosis note: the original display shader derived canvas opacity from the splash RGB intensity. A pure black `#000000` input therefore produced both black RGB and zero alpha, making the effect transparent. Ink mode now uses a positive internal density but renders it as black with density-derived alpha.
+
+Developer Mode validation note: after a full preview reload, the white SplashCursor integration remains mounted and no circular cursor indicator is rendered.
+
+Verification note: automated preview interactions briefly retained a scrolled viewport after the mode-control click, so the Weekend ink effect will be rechecked from the top Hero position before publication.
+
+Weekend Mode activation note: the Hero now switches correctly to the warm light palette with the cap-and-glasses portrait while keeping all cursor rings removed.
+
+Final validation note: pointer movement over the light Hero creates a clearly visible black fluid splash. Developer Mode retains the white variant, no cursor rings return in either mode, and the suite passes 8/8 tests with clean TypeScript and production-build checks.
