@@ -83,7 +83,7 @@ export default function Experience() {
             <p className="font-label mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/45">
               <span className="text-white/30">✦</span> (About) — Behind the pixels
             </p>
-            <h2 className="font-display text-5xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-7xl">
+            <h2 className="font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-7xl">
               Design.
               <br />
               <span className="text-stroke">Build.</span>

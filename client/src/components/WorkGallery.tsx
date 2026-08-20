@@ -95,7 +95,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
 
       {/* meta block */}
       <div className="flex flex-col gap-4 p-6 md:p-8">
-        <h3 className="font-display text-2xl font-black uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-silver-gradient md:text-3xl">
+        <h3 className="font-display text-2xl font-extrabold uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-silver-gradient md:text-3xl">
           {project.title}
         </h3>
         <div className="flex gap-6 border-t border-white/10 pt-4">
@@ -167,7 +167,7 @@ export default function WorkGallery() {
             <p className="font-label mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/45">
               <span className="text-white/30">✦</span> (Selected) — Featured projects
             </p>
-            <h2 className="font-display text-5xl font-black uppercase leading-[0.9] tracking-tight text-white md:text-7xl">
+            <h2 className="font-display text-5xl font-extrabold uppercase leading-[0.9] tracking-tight text-white md:text-7xl">
               The <span className="text-stroke">Work</span>
               <span className="relative mb-3 ml-4 inline-block align-middle text-2xl text-white/40 md:text-3xl">✦</span>
             </h2>
