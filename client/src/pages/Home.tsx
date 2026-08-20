@@ -4,6 +4,7 @@
   to a warm light-paper palette through one shared theme class.
 */
 import Cursor from "@/components/Cursor";
+import SplashCursor from "@/components/SplashCursor";
 import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
 import { AndrePhotoProvider, useSiteWeekend } from "@/components/AndrePhoto";
@@ -24,6 +25,7 @@ function SiteSurface() {
   return (
     <div className={`grain site-surface relative min-h-screen bg-background ${weekend ? "weekend-theme" : "developer-theme"}`}>
       <Cursor />
+      <SplashCursor COLOR="#ffffff" RAINBOW_MODE={false} />
       <Nav />
 
       <main>

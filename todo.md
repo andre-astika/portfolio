@@ -427,3 +427,16 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
  - [x] Verify sparkle alignment on desktop and mobile, run automated checks, and publish the update.
 
 Verification note: Desktop inspection confirms the horizontally constrained sparkle maintains ASTIKA’s visual height and ends inside the ANDRE wordmark width. At 390px mobile width, the sparkle remains inline, matches the ASTIKA cap height, and finishes at the wordmark boundary without wrapping.
+
+## Hero sparkle restoration and SplashCursor integration
+
+- [x] Restore the ASTIKA sparkle to its prior full-width form.
+- [x] Retrieve the official React Bits JS-CSS SplashCursor source and required dependencies.
+- [x] Add SplashCursor with the requested white color without conflicting with the existing Hero liquid reveal or custom cursor.
+- [x] Verify desktop/mobile performance and interactions, run checks, then publish and synchronize the update.
+
+Implementation note: the official `SplashCursor-JS-CSS` registry item provides one `SplashCursor.jsx` file with no package or registry dependencies. It renders a non-interactive fixed WebGL canvas and listens at window scope; it is mounted globally below the existing z-100 custom cursor, with `COLOR="#ffffff"` and `RAINBOW_MODE={false}` so the requested white effect is used instead of the registry default rainbow mode.
+
+Desktop inspection note: the Hero sparkle is restored to its original full-width silhouette. SplashCursor renders a subtle white fluid trail on the dark Hero canvas, while the existing custom cursor ring remains above it and navigation stays interactive. No browser runtime or WebGL errors were recorded.
+
+Verification note: at 390px width, the restored wordmark remains on one visual line with a properly proportioned sparkle and no overflow. The test suite passes 8/8 tests; TypeScript validation and the production build both complete successfully.
