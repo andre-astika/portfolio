@@ -3,7 +3,6 @@
   Weekend mode keeps the same kinetic editorial system but moves the whole page
   to a warm light-paper palette through one shared theme class.
 */
-import Cursor from "@/components/Cursor";
 import SplashCursor from "@/components/SplashCursor";
 import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
@@ -24,8 +23,11 @@ function SiteSurface() {
 
   return (
     <div className={`grain site-surface relative min-h-screen bg-background ${weekend ? "weekend-theme" : "developer-theme"}`}>
-      <Cursor />
-      <SplashCursor COLOR="#ffffff" RAINBOW_MODE={false} />
+      <SplashCursor
+        key={weekend ? "weekend" : "developer"}
+        COLOR={weekend ? "#000000" : "#ffffff"}
+        RAINBOW_MODE={false}
+      />
       <Nav />
 
       <main>
