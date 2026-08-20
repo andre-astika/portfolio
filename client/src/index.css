@@ -444,8 +444,10 @@ body:has(.weekend-theme) {
 .hero-astika-sparkle {
   color: #ffffffb8;
   -webkit-text-stroke: 0;
-  margin-left: 1.5rem;
-  font-size: 105px;
+  margin-left: -0.125rem;
+  font-size: 125px;
+  transform: translateY(0.01em) scaleX(0.72);
+  transform-origin: left center;
 }
 
 @media (max-width: 767px) {
