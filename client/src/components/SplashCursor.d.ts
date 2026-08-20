@@ -17,6 +17,7 @@ export type SplashCursorProps = {
   TRANSPARENT?: boolean;
   RAINBOW_MODE?: boolean;
   COLOR?: string;
+  INK_MODE?: boolean;
 };
 
 declare const SplashCursor: FC<SplashCursorProps>;

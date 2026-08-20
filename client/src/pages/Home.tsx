@@ -27,6 +27,7 @@ function SiteSurface() {
         key={weekend ? "weekend" : "developer"}
         COLOR={weekend ? "#000000" : "#ffffff"}
         RAINBOW_MODE={false}
+        INK_MODE={weekend}
       />
       <Nav />
 

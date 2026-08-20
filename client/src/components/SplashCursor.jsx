@@ -17,7 +17,8 @@ function SplashCursor({
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
   RAINBOW_MODE = true,
-  COLOR = '#ff0000'
+  COLOR = '#ff0000',
+  INK_MODE = false
 }) {
   const canvasRef = useRef(null);
   const animationFrameId = useRef(null);
@@ -59,7 +60,8 @@ function SplashCursor({
       BACK_COLOR,
       TRANSPARENT,
       RAINBOW_MODE,
-      COLOR
+      COLOR,
+      INK_MODE
     };
 
     let pointers = [new pointerPrototype()];
@@ -287,6 +289,7 @@ function SplashCursor({
       uniform sampler2D uDithering;
       uniform vec2 ditherScale;
       uniform vec2 texelSize;
+      uniform float inkMode;
 
       vec3 linearToGamma (vec3 color) {
           color = max(color, vec3(0));
@@ -311,8 +314,12 @@ function SplashCursor({
               c *= diffuse;
           #endif
 
-          float a = max(c.r, max(c.g, c.b));
-          gl_FragColor = vec4(c, a);
+          float density = max(c.r, max(c.g, c.b));
+          if (inkMode > 0.5) {
+              gl_FragColor = vec4(vec3(0.0), clamp(density, 0.0, 0.78));
+          } else {
+              gl_FragColor = vec4(c, density);
+          }
       }
     `;
 
@@ -802,6 +809,7 @@ function SplashCursor({
       let height = target == null ? gl.drawingBufferHeight : target.height;
       displayMaterial.bind();
       if (config.SHADING) gl.uniform2f(displayMaterial.uniforms.texelSize, 1.0 / width, 1.0 / height);
+      gl.uniform1f(displayMaterial.uniforms.inkMode, config.INK_MODE ? 1 : 0);
       gl.uniform1i(displayMaterial.uniforms.uTexture, dye.read.attach(0));
       blit(target);
     }
@@ -885,6 +893,7 @@ function SplashCursor({
     }
 
     function hexToRGB(hex) {
+      if (config.INK_MODE) return { r: 0.72, g: 0.72, b: 0.72 };
       let val = hex.replace('#', '');
       if (val.length === 3) val = val[0] + val[0] + val[1] + val[1] + val[2] + val[2];
       const r = parseInt(val.slice(0, 2), 16) / 255;
