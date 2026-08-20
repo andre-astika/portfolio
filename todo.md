@@ -418,3 +418,12 @@ Reference finding: the Work heading sparkle uses an inline 2xl/3xl scale, `text-
 - [x] Set the Hero role line “Website Developer · Website Designer · Graphic Designer” to `letter-spacing: 0.315em`.
 - [x] Add clear optical spacing between the K and A in the Hero “ASTIKA” wordmark.
 - [x] Verify Hero typography on desktop and mobile, run automated checks, and publish the update.
+
+## Hero sparkle alignment refinement
+
+ - [x] Resize the ASTIKA sparkle so its height aligns with the ASTIKA wordmark.
+ - [x] Position the sparkle so its right edge does not extend past the ANDRE wordmark’s E.
+ - [x] Constrain the sparkle’s horizontal footprint while preserving its aligned visual height.
+ - [x] Verify sparkle alignment on desktop and mobile, run automated checks, and publish the update.
+
+Verification note: Desktop inspection confirms the horizontally constrained sparkle maintains ASTIKA’s visual height and ends inside the ANDRE wordmark width. At 390px mobile width, the sparkle remains inline, matches the ASTIKA cap height, and finishes at the wordmark boundary without wrapping.
