@@ -10,6 +10,7 @@ import { siteAsset } from "@/lib/siteAsset";
 import LiquidHeroReveal, {
   type LiquidHeroRevealHandle,
 } from "@/components/LiquidHeroReveal";
+import { THEME_CONTROL_HINT } from "@/lib/themeControl";
 
 const HERO_IMG_PLAIN = siteAsset("/manus-storage/andre-profile-bg-img-without-acc-hd_a1951d13.webp");
 const HERO_IMG_WEEKEND = siteAsset("/manus-storage/andre-profile-bg-img-with-acc-hd_308df14c.webp");
@@ -99,8 +100,11 @@ export default function Hero() {
           {/* LEFT: type stack */}
           <div>
             {/* mode switcher */}
-            <div className="line-rise mb-6">
-            <ModeSwitch mode={mode} onChange={(nextMode) => setWeekend(nextMode === "weekend")} />
+            <div className="line-rise mb-10 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <ModeSwitch mode={mode} onChange={(nextMode) => setWeekend(nextMode === "weekend")} />
+              <span className="font-label text-[9px] uppercase tracking-[0.2em] text-white/45 md:text-[10px]">
+                {THEME_CONTROL_HINT} ↔
+              </span>
             </div>
 
             <p className="font-label mb-6 line-rise text-[11px] uppercase tracking-[0.315em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
