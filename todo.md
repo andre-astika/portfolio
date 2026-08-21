@@ -538,3 +538,10 @@ Verification note: after opening `/typography` directly in the development previ
 - [x] Verify instant Hero entry and divider removal across article routes, run checks, then publish and synchronize the refinement.
 
 Verification note: the route reset temporarily disables the site-wide smooth-scroll rule only while setting the viewport to `(0, 0)`, then restores the prior scroll behavior immediately; there is no deferred animation-frame reset. Desktop previews of `/typography`, `/user-experience`, and `/color-theory` each show their Hero cleanly without the previous bottom divider. `pnpm test` passes all 12 tests, and both TypeScript checking and production build complete successfully.
+
+## Weekend Mode Editorial Index correction
+
+- [x] Render the Hero Editorial Index number in black for every individual article when Weekend/Light Mode is active.
+- [x] Verify the index remains outlined light on Developer Mode, black on Weekend Mode, and publish the correction.
+
+Verification note: the Typography Hero retains its light outlined `01` in Developer Mode. After activating Weekend Mode, the same index becomes a solid black `01` against the warm paper Hero; the scoped class applies identically to every article index. `pnpm test` passes all 12 tests, while TypeScript checking and the production build complete successfully.
