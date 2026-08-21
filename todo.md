@@ -611,3 +611,14 @@ Verification note: all Work featured-image containers use a 4:3 frame with `obje
 - [x] Verify the first Work cards have no black image bands on desktop and mobile, then rerun automated checks before publishing.
 
 Verification note: the 4:3 Work frames now use `object-cover`, removing the black letterboxing visible around the first project images. Desktop and 390px mobile previews show the featured artwork filling each frame edge-to-edge. The suite passes all 19 tests; TypeScript checking and production build complete successfully.
+
+## Work hover zoom and public deployment synchronization
+
+- [x] Add a subtle, smooth image zoom to Work cards on hover without disrupting the card layout.
+- [ ] Inspect the Manus and public URLs to identify why the public Work gallery still shows the older ratio and object fit.
+- [ ] Synchronize the current Work gallery to the public deployment and verify 4:3 `object-cover` behavior at the public URL.
+- [ ] Run automated checks and validate the interaction on desktop/mobile before publishing.
+
+Inspection note: both the GitHub Pages URL (`https://andre-astika.github.io/portfolio/`) and Manus URL (`https://andrefolio-f6gtj9q8.manus.space/`) are reachable and expose the same public portfolio content in text extraction. The visual ratio difference therefore requires deployment-asset and version inspection rather than a routing fix.
+
+Preview note: desktop and 390px mobile previews confirm the Work cards retain their 4:3, edge-to-edge cover framing. The zoom transition is applied to the image layer only, preserving card size and text layout.
