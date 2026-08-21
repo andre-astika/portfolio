@@ -562,3 +562,11 @@ Verification note: the Typography navigation now shows `Thinking archive / 01 ·
 - [x] Verify outline contrast, progress behavior, responsiveness, and automated checks before publishing.
 
 Verification note: Weekend Mode now renders the Typography Hero’s `01` as a clearly visible black outline, matching the requested editorial treatment rather than a solid fill. The slim progress indicator is pinned to the top edge of article navigation and scales horizontally with scrolling. The progress calculation has three unit tests for start, midpoint, and boundary conditions. The full suite passes 15 tests; TypeScript checking and production build complete successfully.
+
+## Homepage theme-control clarity refinement
+
+- [x] Increase the breathing room below the Developer/Weekend Mode control in the Hero.
+- [x] Add a concise explanatory label beside the theme control to clarify that it changes the color theme.
+- [x] Verify desktop and mobile layout, button interaction, and checks before publishing.
+
+Verification note: on desktop, the `Switch color theme ↔` hint sits to the right of the Developer/Weekend control and the expanded lower margin cleanly separates it from the role label. At a 390px viewport, the hint wraps beneath the control rather than compressing the buttons. The suite passes all 16 tests, and TypeScript checking plus production build complete successfully.
