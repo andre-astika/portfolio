@@ -321,7 +321,11 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Add a GitHub Pages-specific static build that uses the `/portfolio/` base path without affecting Manus hosting.
 - [x] Add an automated GitHub Actions workflow to build and deploy the static portfolio to GitHub Pages.
+<<<<<<< HEAD
 - [x] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+=======
+- [ ] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+>>>>>>> e7a453e (Checkpoint)
 - [x] Resolve the pnpm version conflict in the GitHub Pages workflow and rerun deployment.
 
 ## GitHub Pages deployment notes
@@ -333,6 +337,7 @@ GitHub’s custom workflow documentation requires `pages: write` and `id-token: 
 Static build verification: the locally served artifact rendered the full public portfolio at `/portfolio/`, including Hero, navigation, Work, case study, testimonial, and contact content. The browser title was “Andre Astika — Designer & Developer”; the backend-only Asset Library remains intentionally excluded from the static site.
 
 GitHub Pages status: the authenticated GitHub Settings → Pages screen confirms the public URL `https://andre-astika.github.io/portfolio/` is active but still configured as “Deploy from a branch” using `main` and `/ (root)`. The source selector exposes “GitHub Actions”, which must be selected for the committed static deployment workflow to serve the `dist` artifact.
+<<<<<<< HEAD
 
 Final GitHub verification: the corrected workflow run `31722854179` completed successfully, including build, artifact upload, and deployment. The public Pages URL `https://andre-astika.github.io/portfolio/` loads the complete portfolio homepage. Repository access permits direct pushes to `main`; it has no branch protection or rulesets. The originally reported issue was the legacy Pages source pointing to the source-code root, not a push-permission restriction. The static Pages edition does not include the backend-only Asset Library, OAuth, tRPC API, or database functionality.
 
@@ -587,3 +592,13 @@ Verification note: the visible `Switch color theme` hint has been removed. The H
 - [x] Replace the fourth Work item with Cultural Campaign Website, covering WordPress delivery, using the fourth supplied image in monochrome.
 - [x] Preserve the final Brief Project card and its direct-contact content.
 - [x] Verify desktop and mobile Work layout, hover descriptions, image treatment, and automated checks before publishing.
+
+## Work gallery order and tonal refinement
+
+- [x] Make the Invitation Branding Suite image visibly darker while preserving its monochrome treatment and detail.
+- [x] Add Responsive Web to the Agency Client Website categories and description.
+- [x] Add Responsive Web to the Cultural Campaign Website categories and description.
+- [x] Reorder the Work cards as Agency Client Website, Cultural Campaign Website, E-Invitation Website, then Invitation Branding Suite; preserve the Brief Project card last.
+- [x] Validate desktop and mobile balance, project order, image contrast, content, and automated checks before publishing.
+
+Verification note: desktop and 390px mobile previews now begin the draggable Work gallery with Agency Client Website, followed by Cultural Campaign Website. Both cards maintain the existing monochrome card treatment and clean responsive framing. Invitation Branding Suite is retained as the fourth project with a deliberately darker `brightness(0.64)` monochrome filter to align its luminosity with the rest of the gallery. The refreshed regression suite passes 19 tests; TypeScript checking and production build complete successfully.
