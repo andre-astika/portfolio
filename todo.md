@@ -530,3 +530,11 @@ Validation note: desktop screenshots confirm each new article URL (`/typography`
 - [x] Verify direct links and in-site article navigation begin at the Hero, run checks, then publish and synchronize the fix.
 
 Verification note: after opening `/typography` directly in the development preview, the browser reports zero pixels above the viewport and renders the Typography Hero first, including the title, introductory text, and Editorial Index. The reset is keyed to `article.slug`, so the same behavior applies when the next-study link changes the active article. `pnpm test` passes all 12 tests, while TypeScript checking and the production build complete successfully.
+
+## Instant article Hero entry and divider cleanup
+
+- [x] Make article route entry appear at the Hero instantly, without any visible smooth-scroll movement.
+- [x] Remove the horizontal divider beneath the Hero from every individual article page.
+- [x] Verify instant Hero entry and divider removal across article routes, run checks, then publish and synchronize the refinement.
+
+Verification note: the route reset temporarily disables the site-wide smooth-scroll rule only while setting the viewport to `(0, 0)`, then restores the prior scroll behavior immediately; there is no deferred animation-frame reset. Desktop previews of `/typography`, `/user-experience`, and `/color-theory` each show their Hero cleanly without the previous bottom divider. `pnpm test` passes all 12 tests, and both TypeScript checking and production build complete successfully.

@@ -4,27 +4,19 @@ import { resetArticleScrollPosition } from "./articleScroll";
 describe("resetArticleScrollPosition", () => {
   afterEach(() => vi.unstubAllGlobals());
 
-  it("resets immediately and once again after history restoration can run", () => {
+  it("resets immediately without inheriting the global smooth-scroll behavior", () => {
     const scrollTo = vi.fn();
-    const cancelAnimationFrame = vi.fn();
-    let scheduledFrame: FrameRequestCallback | undefined;
+    const style = { scrollBehavior: "smooth" };
 
     vi.stubGlobal("window", {
       scrollTo,
-      requestAnimationFrame: vi.fn((callback: FrameRequestCallback) => {
-        scheduledFrame = callback;
-        return 17;
-      }),
-      cancelAnimationFrame,
     });
+    vi.stubGlobal("document", { documentElement: { style } });
 
-    const cancel = resetArticleScrollPosition();
+    resetArticleScrollPosition();
 
     expect(scrollTo).toHaveBeenCalledWith(0, 0);
-    scheduledFrame?.(0);
-    expect(scrollTo).toHaveBeenCalledTimes(2);
-
-    cancel();
-    expect(cancelAnimationFrame).toHaveBeenCalledWith(17);
+    expect(scrollTo).toHaveBeenCalledTimes(1);
+    expect(style.scrollBehavior).toBe("smooth");
   });
 });
