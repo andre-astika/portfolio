@@ -11,6 +11,7 @@ describe("How I Think articles", () => {
       expect(article.sections).toHaveLength(3);
       expect(article.fieldNotes).toHaveLength(3);
       expect(article.checklist.length).toBeGreaterThanOrEqual(4);
+      expect(article.read).toMatch(/^\d+ min read$/);
     });
   });
 

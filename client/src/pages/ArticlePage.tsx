@@ -52,7 +52,7 @@ function ArticleNavigation({ article }: { article: Article }) {
         </Link>
 
         <p className="hidden font-label text-[10px] uppercase tracking-[0.28em] text-white/45 lg:block">
-          Thinking archive / {article.index}
+          Thinking archive / {article.index} · {article.read}
         </p>
 
         <div className="flex items-center gap-3 md:gap-5">
@@ -104,7 +104,10 @@ function ArticleView({ article }: { article: Article }) {
 
             <div className="relative border-r border-white/15 pr-6 text-right md:pr-9 lg:justify-self-end lg:pb-2">
               <p className="font-label text-[10px] uppercase tracking-[0.3em] text-white/40">Editorial index</p>
-              <p className="article-editorial-index mt-2 font-display text-[6rem] font-extrabold leading-none tracking-[-0.08em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.4)] md:text-[8rem]">
+              <p
+                className="article-editorial-index article-editorial-index-motion mt-2 font-display text-[6rem] font-extrabold leading-none tracking-[-0.08em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.4)] md:text-[8rem]"
+                style={weekend ? { color: "var(--ink)", WebkitTextStroke: "0" } : undefined}
+              >
                 {article.index}
               </p>
               <p className="font-label mt-4 text-[10px] uppercase tracking-[0.22em] text-white/55">Andre Astika / 2026</p>
