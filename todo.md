@@ -624,3 +624,10 @@ Inspection note: both the GitHub Pages URL (`https://andre-astika.github.io/port
 Preview note: desktop and 390px mobile previews confirm the Work cards retain their 4:3, edge-to-edge cover framing. The zoom transition is applied to the image layer only, preserving card size and text layout.
 
 Deployment note: the GitHub Pages URL had been serving commit `b7683d7`, while the current cover-fit and hover changes were present only in the Manus project history. The local history was rebased, then pushed to GitHub as commit `e8df896`. GitHub Actions run `32514638763` completed successfully for the static Pages deployment, bringing the public site in sync with the current Work gallery.
+
+## Work image hover zoom removal
+
+- [x] Remove the hover zoom and image-filter motion from Work card images while retaining 4:3 `object-cover` framing.
+- [x] Update regression coverage, validate desktop/mobile framing, and rerun automated checks before publishing.
+
+Verification note: desktop and 390px mobile previews retain the 4:3 edge-to-edge `object-cover` framing with no image zoom or filter change on hover. The updated regression suite passes all 20 tests; TypeScript checking and production build complete successfully.
