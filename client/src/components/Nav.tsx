@@ -1,7 +1,8 @@
 /* NOIR KINETIC — top nav: mono labels, crosshair logo, scroll-aware blur bar. */
 import { useEffect, useState } from "react";
 import { useMagnetic } from "@/hooks/useKinetic";
-import { siteAsset } from "@/lib/siteAsset";
+
+export const NAV_BRAND_MARK = "✦";
 
 const LINKS = [
   { href: "#work", label: "Work" },
@@ -35,16 +36,10 @@ export default function Nav() {
           href="#top"
           data-cursor
           data-cursor-label="TOP"
-          className="flex items-center gap-2"
+          aria-label="Back to top"
+          className="font-display inline-flex items-center justify-center text-2xl leading-none text-white md:text-3xl"
         >
-          <img
-            src={siteAsset("/manus-storage/logo-crosshair_5d137a18.png")}
-            alt="Andre Astika mark"
-            className="h-7 w-7 md:h-8 md:w-8"
-          />
-          <span className="font-display text-sm font-black uppercase tracking-[0.25em] text-white md:text-base">
-            Andre<span className="text-stroke font-black">A</span>
-          </span>
+          <span aria-hidden="true">{NAV_BRAND_MARK}</span>
         </a>
 
         <nav className="hidden items-center gap-7 md:flex">

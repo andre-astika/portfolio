@@ -1,7 +1,9 @@
 /* NOIR KINETIC — contact + footer: giant CTA type, mono contact grid, socials,
    and closing marquee. Crosshair logo mark as favicon anchor. */
 import { useMagnetic } from "@/hooks/useKinetic";
-import { siteAsset } from "@/lib/siteAsset";
+
+export const FOOTER_BRAND_MARK = "✦";
+export const FOOTER_COPYRIGHT = "© 2026 Andre Astika — Denpasar, Bali";
 
 const SOCIALS = [
   { label: "Email", href: "mailto:en.andre.st@gmail.com", value: "en.andre.st@gmail.com" },
@@ -70,28 +72,12 @@ export default function Contact() {
       {/* closing marquee */}
       <div className="border-t border-white/10 bg-[oklch(0.11_0_0)] py-10 md:py-14">
         <div className="flex items-center justify-between px-6 md:px-12">
-          <div className="flex items-center gap-3">
-            <img
-              src={siteAsset("/manus-storage/logo-crosshair_5d137a18.png")}
-              alt="Andre Astika mark"
-              className="h-8 w-8"
-            />
-            <span className="font-display text-lg font-black uppercase tracking-[0.25em] text-white">
-              Andre<span className="text-stroke">A</span>
-            </span>
-          </div>
-          <span className="font-label hidden text-[10px] uppercase tracking-[0.3em] text-white/40 md:block">
-            © {new Date().getFullYear()} Andre Astika — Denpasar, Bali
+          <span className="font-display text-2xl leading-none text-white" aria-hidden="true">
+            {FOOTER_BRAND_MARK}
           </span>
-        </div>
-        <p className="mt-6 px-6 text-center font-serif-accent text-xl italic text-white/50 md:mt-8 md:text-2xl">
-          Pixel-precise. Deadline-obsessed. Zero fluff.
-        </p>
-        <div
-          className="font-display mt-8 flex justify-center gap-1 text-xl font-black uppercase tracking-[0.5em] text-white/20 md:text-2xl"
-          aria-hidden="true"
-        >
-          A<span className="text-stroke">n</span>d<span className="text-stroke">r</span>e<span className="text-stroke">a</span>
+          <span className="font-label text-right text-[9px] uppercase tracking-[0.18em] text-white/40 sm:text-[10px] sm:tracking-[0.3em]">
+            {FOOTER_COPYRIGHT}
+          </span>
         </div>
       </div>
     </section>
