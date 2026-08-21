@@ -578,3 +578,12 @@ Verification note: on desktop, the `Switch color theme ↔` hint sits to the rig
 - [x] Verify desktop and mobile layout, tooltip accessibility, and checks before publishing.
 
 Verification note: the visible `Switch color theme` hint has been removed. The Hero now uses a tighter lower margin beneath the mode control while retaining a clear gap before the role label. Desktop and 390px mobile previews keep both controls legible without layout overflow. Each button exposes a focusable shadcn/Radix tooltip with concise color-theme guidance. The full suite passes all 16 tests, and TypeScript checking plus production build complete successfully.
+
+## Work section portfolio refresh
+
+- [x] Replace the first Work item with Invitation Branding Suite, covering logo, invitation card, brand identity, and print applications, using the first supplied image in monochrome.
+- [x] Replace the second Work item with E-Invitation Website, covering website design and WordPress implementation for a responsive invitation experience, using the second supplied image in monochrome.
+- [x] Replace the third Work item with Agency Client Website, covering WordPress and Next.js website delivery, using the third supplied image in monochrome.
+- [x] Replace the fourth Work item with Cultural Campaign Website, covering WordPress delivery, using the fourth supplied image in monochrome.
+- [x] Preserve the final Brief Project card and its direct-contact content.
+- [x] Verify desktop and mobile Work layout, hover descriptions, image treatment, and automated checks before publishing.
