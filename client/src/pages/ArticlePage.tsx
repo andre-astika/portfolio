@@ -1,8 +1,10 @@
+import { useLayoutEffect } from "react";
 import { Link } from "wouter";
 import SplashCursor from "@/components/SplashCursor";
 import { AndrePhotoProvider, useSiteWeekend } from "@/components/AndrePhoto";
 import { useRevealObserver } from "@/hooks/useKinetic";
 import { ARTICLES, getArticle, type Article } from "@/data/articles";
+import { resetArticleScrollPosition } from "@/lib/articleScroll";
 import { siteAsset } from "@/lib/siteAsset";
 
 type ArticlePageProps = {
@@ -67,6 +69,10 @@ function ArticleNavigation({ article }: { article: Article }) {
 function ArticleView({ article }: { article: Article }) {
   const { weekend } = useSiteWeekend();
   useRevealObserver();
+
+  useLayoutEffect(() => {
+    return resetArticleScrollPosition();
+  }, [article.slug]);
 
   const currentIndex = ARTICLES.findIndex((item) => item.slug === article.slug);
   const nextArticle = ARTICLES[(currentIndex + 1) % ARTICLES.length];
