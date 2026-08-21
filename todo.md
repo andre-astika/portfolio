@@ -321,11 +321,7 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Add a GitHub Pages-specific static build that uses the `/portfolio/` base path without affecting Manus hosting.
 - [x] Add an automated GitHub Actions workflow to build and deploy the static portfolio to GitHub Pages.
-<<<<<<< HEAD
 - [x] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
-=======
-- [ ] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
->>>>>>> e7a453e (Checkpoint)
 - [x] Resolve the pnpm version conflict in the GitHub Pages workflow and rerun deployment.
 
 ## GitHub Pages deployment notes
@@ -337,7 +333,6 @@ GitHub’s custom workflow documentation requires `pages: write` and `id-token: 
 Static build verification: the locally served artifact rendered the full public portfolio at `/portfolio/`, including Hero, navigation, Work, case study, testimonial, and contact content. The browser title was “Andre Astika — Designer & Developer”; the backend-only Asset Library remains intentionally excluded from the static site.
 
 GitHub Pages status: the authenticated GitHub Settings → Pages screen confirms the public URL `https://andre-astika.github.io/portfolio/` is active but still configured as “Deploy from a branch” using `main` and `/ (root)`. The source selector exposes “GitHub Actions”, which must be selected for the committed static deployment workflow to serve the `dist` artifact.
-<<<<<<< HEAD
 
 Final GitHub verification: the corrected workflow run `31722854179` completed successfully, including build, artifact upload, and deployment. The public Pages URL `https://andre-astika.github.io/portfolio/` loads the complete portfolio homepage. Repository access permits direct pushes to `main`; it has no branch protection or rulesets. The originally reported issue was the legacy Pages source pointing to the source-code root, not a push-permission restriction. The static Pages edition does not include the backend-only Asset Library, OAuth, tRPC API, or database functionality.
 
