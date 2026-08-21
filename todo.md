@@ -683,3 +683,11 @@ Verification note: the caption is now rendered inside the clipped portrait layer
 Clarification: “when nothing else can be taken away.” must use the original display font and its existing theme-aware foreground color; it must not inherit Pinyon Script styling.
 
 Verification note: Pinyon Script is now isolated to “Design is what remains” at `4rem` with `0.74` leading on mobile, stepping up only at wider breakpoints. The remaining phrase is an independent Archivo display span with `text-white`, which the existing Weekend override converts to the light-mode ink color. Mobile preview, 25 tests, TypeScript, and production build complete successfully.
+
+## Navigation and footer branding simplification
+
+- [x] Remove all AndreA wordmarks from the header and footer, retaining only the sparkle icon at the left of each area.
+- [x] Remove the footer tagline “Pixel-precise. Deadline-obsessed. Zero fluff.” and retain only the copyright line on the right.
+- [x] Validate desktop/mobile layout, rerun checks, and synchronize the minimal branding update to GitHub Pages.
+
+Verification note: navigation now uses an accessible sparkle-only top anchor, while the footer displays a sparkle at left and the fixed 2026 copyright string at right. The footer no longer renders a wordmark, closing tagline, or decorative AndreA letters. Desktop and 390px mobile previews maintain spacing and alignment. The suite passes all 27 tests; TypeScript and production build complete successfully.
