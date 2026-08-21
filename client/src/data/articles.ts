@@ -5,7 +5,7 @@ export type ArticleSection = {
 };
 
 export type Article = {
-  slug: "blog-1" | "blog-2" | "blog-3";
+  slug: "typography" | "user-experience" | "color-theory";
   index: string;
   category: string;
   read: string;
@@ -20,7 +20,7 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
-    slug: "blog-1",
+    slug: "typography",
     index: "01",
     category: "Typography",
     read: "5 min read",
@@ -79,7 +79,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    slug: "blog-2",
+    slug: "user-experience",
     index: "02",
     category: "User Experience",
     read: "4 min read",
@@ -138,7 +138,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    slug: "blog-3",
+    slug: "color-theory",
     index: "03",
     category: "Color Theory",
     read: "6 min read",

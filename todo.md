@@ -512,3 +512,14 @@ Hover verification note: hovering the first Weekend Work card reveals both the p
 Verification note: desktop previews confirmed `/blog-1`, `/blog-2`, and `/blog-3`; mobile previews confirmed the Typography and UX article layouts at 390px. The Article Weekend Mode uses the warm light palette correctly, while direct routing, article-navigation links, test coverage, TypeScript validation, and the production build all complete successfully.
 
 GitHub Pages verification note: the `build:pages` artifact contains both `dist/pages/index.html` and `dist/pages/404.html`; the fallback includes the `/blog-[1-3]` route handoff to the single-page app.
+
+## Article URL and Hero refinement
+
+- [x] Replace `/blog-1`, `/blog-2`, and `/blog-3` with the topic slugs `/typography`, `/user-experience`, and `/color-theory` across routes, cards, navigation, and GitHub Pages fallback handling.
+- [x] Align the article Hero Editorial Index panel to the right content boundary from its border through its text content.
+- [x] Ensure the active Weekend Mode button on article pages uses solid white text in light mode.
+- [x] Verify topic URLs, Hero alignment, theme-button contrast, and automated checks, then publish and synchronize the update.
+
+Visual verification note: the desktop `/typography` Hero places the Editorial Index against the right content boundary with a right-side rule and right-aligned label, index, and byline. After activating Weekend Mode, the active black Weekend button retains a solid white label against the light-paper page.
+
+Validation note: desktop screenshots confirm each new article URL (`/typography`, `/user-experience`, and `/color-theory`) renders its corresponding Hero with the refined right-aligned Editorial Index; the Typography Hero remains composed at a 390px mobile viewport. `pnpm test` passes all 11 tests, `pnpm check` completes without TypeScript errors, `pnpm build` and `pnpm build:pages` complete, and the emitted GitHub Pages 404 fallback recognizes all three topic slugs.

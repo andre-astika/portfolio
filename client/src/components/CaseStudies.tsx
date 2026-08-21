@@ -10,7 +10,7 @@ const CASES = [
     excerpt:
       "Uncover the significance of typography in visual design and learn how to leverage its power to effectively communicate messages and evoke emotions.",
     read: "5 min read",
-    slug: "blog-1",
+    slug: "typography",
   },
   {
     index: "CS/02",
@@ -19,7 +19,7 @@ const CASES = [
     excerpt:
       "Explore the realm of UX design and discover how to craft interfaces that are not only aesthetically pleasing but intuitive and engaging.",
     read: "4 min read",
-    slug: "blog-2",
+    slug: "user-experience",
   },
   {
     index: "CS/03",
@@ -28,7 +28,7 @@ const CASES = [
     excerpt:
       "Dive into the fascinating world of color theory and learn how to create captivating visual designs by understanding the principles of color harmonies.",
     read: "6 min read",
-    slug: "blog-3",
+    slug: "color-theory",
   },
 ];
 
