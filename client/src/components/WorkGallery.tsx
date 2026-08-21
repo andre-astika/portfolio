@@ -48,6 +48,9 @@ export const PROJECTS = [
   },
 ];
 
+export const WORK_IMAGE_CLASS =
+  "h-full w-full object-cover will-change-transform transition-[transform,filter] duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.06] group-hover:contrast-[1.15] motion-reduce:transform-none motion-reduce:transition-none";
+
 function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
   const cardRef = useRef<HTMLElement>(null);
 
@@ -77,7 +80,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
           src={project.image}
           alt={project.title}
           draggable={false}
-          className="h-full w-full object-cover transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03] group-hover:contrast-[1.15]"
+          className={WORK_IMAGE_CLASS}
           style={{ filter: project.imageFilter ?? "grayscale(100%) contrast(1.2)" }}
           loading="lazy"
           />
