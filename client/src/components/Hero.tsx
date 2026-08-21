@@ -10,7 +10,8 @@ import { siteAsset } from "@/lib/siteAsset";
 import LiquidHeroReveal, {
   type LiquidHeroRevealHandle,
 } from "@/components/LiquidHeroReveal";
-import { THEME_CONTROL_HINT } from "@/lib/themeControl";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { THEME_MODE_TOOLTIPS } from "@/lib/themeControl";
 
 const HERO_IMG_PLAIN = siteAsset("/manus-storage/andre-profile-bg-img-without-acc-hd_a1951d13.webp");
 const HERO_IMG_WEEKEND = siteAsset("/manus-storage/andre-profile-bg-img-with-acc-hd_308df14c.webp");
@@ -43,22 +44,32 @@ function ModeSwitch({
           { key: "weekend", label: "Weekend Mode ✦" },
         ] as const
       ).map((opt) => (
-        <button
-          key={opt.key}
-          role="tab"
-          aria-selected={mode === opt.key}
-          data-cursor
-          onClick={() => onChange(opt.key)}
-          className={`relative z-10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 md:px-5 ${
-            mode === opt.key
-              ? mode === "weekend"
-                ? "text-white"
-                : "text-black"
-              : "text-white/60 hover:text-white"
-          }`}
-        >
-          {opt.label}
-        </button>
+        <Tooltip key={opt.key}>
+          <TooltipTrigger asChild>
+            <button
+              role="tab"
+              aria-selected={mode === opt.key}
+              data-cursor
+              onClick={() => onChange(opt.key)}
+              className={`relative z-10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 md:px-5 ${
+                mode === opt.key
+                  ? mode === "weekend"
+                    ? "text-white"
+                    : "text-black"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
+              {opt.label}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent
+            side="bottom"
+            sideOffset={8}
+            className="font-label border border-white/20 bg-black px-3 py-2 text-[9px] uppercase tracking-[0.18em] text-white shadow-none"
+          >
+            {THEME_MODE_TOOLTIPS[opt.key]}
+          </TooltipContent>
+        </Tooltip>
       ))}
     </div>
   );
@@ -100,11 +111,8 @@ export default function Hero() {
           {/* LEFT: type stack */}
           <div>
             {/* mode switcher */}
-            <div className="line-rise mb-10 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <div className="line-rise mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 md:mb-8">
               <ModeSwitch mode={mode} onChange={(nextMode) => setWeekend(nextMode === "weekend")} />
-              <span className="font-label text-[9px] uppercase tracking-[0.2em] text-white/45 md:text-[10px]">
-                {THEME_CONTROL_HINT} ↔
-              </span>
             </div>
 
             <p className="font-label mb-6 line-rise text-[11px] uppercase tracking-[0.315em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
