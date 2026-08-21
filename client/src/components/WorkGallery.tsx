@@ -78,7 +78,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
           </span>
 
         {/* hover description reveal */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0">
+          <div className="work-hover-description pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0">
             <p className="font-label mb-1.5 text-[9px] uppercase tracking-[0.3em] text-white/60">
               ({project.index}) — {project.tag}
             </p>

@@ -421,6 +421,12 @@ body:has(.weekend-theme) {
   color: var(--weekend-ink, oklch(0.16 0.008 80)) !important;
 }
 
+/* Work hover copy sits on a dark image overlay in both themes, so it must stay white. */
+.weekend-theme .work-hover-description,
+.weekend-theme .work-hover-description p {
+  color: #ffffff !important;
+}
+
 .weekend-theme [class*="border-white"] {
   border-color: var(--border) !important;
 }

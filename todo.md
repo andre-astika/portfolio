@@ -486,3 +486,15 @@ Final validation note: pointer movement over the light Hero creates a clearly vi
 Desktop and tablet inspection note: the ASTIKA sparkle renders at the requested 110px size, remains inline with the wordmark, and does not disrupt the Hero layout at 1440px or 768px widths.
 
 Mobile verification note: at 390px width, the sparkle uses the requested 50px size, remains inline with ASTIKA, and causes no overflow. The validation suite passes 8/8 tests, TypeScript is clean, and the production build completes successfully.
+
+## Weekend Work hover-description contrast
+
+- [x] Set the Work grid hover description text to white in Weekend/light mode.
+- [x] Preserve the existing image overlay, card layout, and Developer-mode hover appearance.
+- [x] Verify hover contrast, run automated checks, then publish and synchronize the correction.
+
+Weekend Mode activation note: the warm light palette and Weekend Hero state are active before the Work-card hover inspection.
+
+Work inspection note: the Weekend Mode Work section is reachable through the primary navigation, with the dark image cards and their hover overlays ready for contrast verification.
+
+Hover verification note: hovering the first Weekend Work card reveals both the project label and descriptive copy in white over the dark image gradient, restoring clear contrast without changing the card geometry.
