@@ -321,7 +321,7 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Add a GitHub Pages-specific static build that uses the `/portfolio/` base path without affecting Manus hosting.
 - [x] Add an automated GitHub Actions workflow to build and deploy the static portfolio to GitHub Pages.
-- [ ] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+- [x] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
 - [x] Resolve the pnpm version conflict in the GitHub Pages workflow and rerun deployment.
 
 ## GitHub Pages deployment notes
