@@ -75,7 +75,7 @@ const SKILLS = [
 
 export const ABOUT_PORTRAIT_OPTIONS = {
   hoverFlip: false,
-  labelPosition: "chest",
+  labelPosition: "bottom-bar",
   sparklePlacement: "top-right",
 } as const;
 

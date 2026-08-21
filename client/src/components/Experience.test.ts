@@ -5,7 +5,7 @@ describe("Experience About section", () => {
   it("uses a static, mode-aware portrait composition in the About section", () => {
     expect(ABOUT_PORTRAIT_OPTIONS).toEqual({
       hoverFlip: false,
-      labelPosition: "chest",
+      labelPosition: "bottom-bar",
       sparklePlacement: "top-right",
     });
   });
