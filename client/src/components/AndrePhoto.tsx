@@ -1,7 +1,5 @@
-/* NOIR KINETIC — site-wide Andre photo swap: a shared hover state so that
-   hovering ANY Andre portrait on the page flips EVERY Andre portrait to
-   Weekend mode (cap & glasses). The same provider also owns the site-wide
-   Developer dark / Weekend light theme. */
+/* NOIR KINETIC — site-wide Andre photo swap. Portraits can either respond to
+   hover or remain static while following the shared Developer / Weekend mode. */
 import {
   createContext,
   useContext,
@@ -48,8 +46,8 @@ export function useWeekend(flip: boolean) {
 }
 
 /**
- * <AndrePhoto /> — drop-in portrait that flips to Weekend on hover (page-wide),
- * with blur-dissolve transition, mono mode label and corner crosshair.
+ * <AndrePhoto /> — drop-in portrait with a mode-aware image, optional hover
+ * flip, mono mode label, and corner sparkle.
  */
 export function AndrePhoto({
   className = "",
@@ -57,6 +55,9 @@ export function AndrePhoto({
   label,
   style,
   tilt = false,
+  hoverFlip = true,
+  labelPosition = "outside",
+  sparklePlacement = "top-left",
   clipPath = "polygon(0 0, calc(100% - 3rem) 0, 100% 3rem, 100% 100%, 0 100%)",
 }: {
   className?: string;
@@ -64,10 +65,13 @@ export function AndrePhoto({
   label?: string;
   style?: React.CSSProperties;
   tilt?: boolean;
+  hoverFlip?: boolean;
+  labelPosition?: "outside" | "chest";
+  sparklePlacement?: "top-left" | "top-right";
   clipPath?: string;
 }) {
   const [flip, setFlip] = useState(false);
-  const showWeekend = useWeekend(flip);
+  const showWeekend = useWeekend(hoverFlip && flip);
   const ref = useRef<HTMLDivElement>(null);
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
   const [weekendReady, setWeekendReady] = useState(false);
@@ -110,13 +114,15 @@ export function AndrePhoto({
     <div
       ref={ref}
       className={`group relative select-none ${className}`}
-      onPointerEnter={() => setFlip(true)}
-      onPointerLeave={() => setFlip(false)}
+      onPointerEnter={hoverFlip ? () => setFlip(true) : undefined}
+      onPointerLeave={hoverFlip ? () => setFlip(false) : undefined}
       style={style}
     >
       {/* sharp accent frame: thin offset outline echoing the clipped corner */}
       <div
-        className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 border border-white/15 transition-colors duration-500 group-hover:border-white/35"
+        className={`pointer-events-none absolute inset-0 translate-x-2 translate-y-2 border border-white/15 transition-colors duration-500 ${
+          hoverFlip ? "group-hover:border-white/35" : ""
+        }`}
         style={{ clipPath: "polygon(0 0, calc(100% - 3rem) 0, 100% 3rem, 100% 100%, 0 100%)" }}
         aria-hidden="true"
       />
@@ -138,14 +144,15 @@ export function AndrePhoto({
           style={{ filter: "grayscale(100%) contrast(1.05)" }}
           draggable={false}
         />
-        {/* hover hint */}
-        <span
-          className={`font-label pointer-events-none absolute inset-x-0 bottom-0 bg-black/80 px-4 py-2 text-center text-[9px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
-            flip ? "translate-y-0" : "translate-y-full"
-          }`}
-        >
-          {showWeekend ? "(Hover) — Weekend mode ✦" : "Hover me — Weekend mode →"}
-        </span>
+        {hoverFlip ? (
+          <span
+            className={`font-label pointer-events-none absolute inset-x-0 bottom-0 bg-black/80 px-4 py-2 text-center text-[9px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
+              flip ? "translate-y-0" : "translate-y-full"
+            }`}
+          >
+            {showWeekend ? "(Hover) — Weekend mode ✦" : "Hover me — Weekend mode →"}
+          </span>
+        ) : null}
         {/* scanlines in dev mode */}
         <span
           className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
@@ -161,12 +168,19 @@ export function AndrePhoto({
       {/* mode badge */}
       <span
         key={showWeekend ? "wk" : "dv"}
-        className="font-label pointer-events-none absolute -bottom-4 left-4 animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm"
+        className={`font-label pointer-events-none absolute ${
+          labelPosition === "chest" ? "left-4 top-[62%]" : "-bottom-4 left-4"
+        } animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm`}
       >
         {label ?? (showWeekend ? "(Mode) — Weekend · Bali, ID" : "(Mode) — Developer · Bali, ID")}
       </span>
       {/* corner crosshair */}
-      <span className="font-display pointer-events-none absolute -left-6 -top-6 text-xl text-white/25" aria-hidden="true">
+      <span
+        className={`font-display pointer-events-none absolute ${
+          sparklePlacement === "top-right" ? "-right-6 -top-6" : "-left-6 -top-6"
+        } text-xl text-white/25`}
+        aria-hidden="true"
+      >
         ✦
       </span>
     </div>
