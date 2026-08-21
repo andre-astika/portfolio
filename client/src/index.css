@@ -447,6 +447,12 @@ body:has(.weekend-theme) {
   -webkit-text-stroke-color: color-mix(in oklab, var(--ink) 42%, transparent);
 }
 
+/* Article index becomes an intentionally solid black anchor on the light paper Hero. */
+.weekend-theme .article-editorial-index {
+  color: var(--ink) !important;
+  -webkit-text-stroke: 0;
+}
+
 .hero-astika-sparkle {
   color: #ffffffb8;
   -webkit-text-stroke: 0;
