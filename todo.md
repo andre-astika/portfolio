@@ -321,7 +321,11 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Add a GitHub Pages-specific static build that uses the `/portfolio/` base path without affecting Manus hosting.
 - [x] Add an automated GitHub Actions workflow to build and deploy the static portfolio to GitHub Pages.
+<<<<<<< HEAD
 - [x] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+=======
+- [ ] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+>>>>>>> e7a453e (Checkpoint)
 - [x] Resolve the pnpm version conflict in the GitHub Pages workflow and rerun deployment.
 
 ## GitHub Pages deployment notes
@@ -333,6 +337,7 @@ GitHub’s custom workflow documentation requires `pages: write` and `id-token: 
 Static build verification: the locally served artifact rendered the full public portfolio at `/portfolio/`, including Hero, navigation, Work, case study, testimonial, and contact content. The browser title was “Andre Astika — Designer & Developer”; the backend-only Asset Library remains intentionally excluded from the static site.
 
 GitHub Pages status: the authenticated GitHub Settings → Pages screen confirms the public URL `https://andre-astika.github.io/portfolio/` is active but still configured as “Deploy from a branch” using `main` and `/ (root)`. The source selector exposes “GitHub Actions”, which must be selected for the committed static deployment workflow to serve the `dist` artifact.
+<<<<<<< HEAD
 
 Final GitHub verification: the corrected workflow run `31722854179` completed successfully, including build, artifact upload, and deployment. The public Pages URL `https://andre-astika.github.io/portfolio/` loads the complete portfolio homepage. Repository access permits direct pushes to `main`; it has no branch protection or rulesets. The originally reported issue was the legacy Pages source pointing to the source-code root, not a push-permission restriction. The static Pages edition does not include the backend-only Asset Library, OAuth, tRPC API, or database functionality.
 
@@ -523,3 +528,10 @@ GitHub Pages verification note: the `build:pages` artifact contains both `dist/p
 Visual verification note: the desktop `/typography` Hero places the Editorial Index against the right content boundary with a right-side rule and right-aligned label, index, and byline. After activating Weekend Mode, the active black Weekend button retains a solid white label against the light-paper page.
 
 Validation note: desktop screenshots confirm each new article URL (`/typography`, `/user-experience`, and `/color-theory`) renders its corresponding Hero with the refined right-aligned Editorial Index; the Typography Hero remains composed at a 390px mobile viewport. `pnpm test` passes all 11 tests, `pnpm check` completes without TypeScript errors, `pnpm build` and `pnpm build:pages` complete, and the emitted GitHub Pages 404 fallback recognizes all three topic slugs.
+
+## Article entry-position correction
+
+- [x] Reset the scroll position to the top whenever a topic-based article route opens so the Hero is the first visible section.
+- [x] Verify direct links and in-site article navigation begin at the Hero, run checks, then publish and synchronize the fix.
+
+Verification note: after opening `/typography` directly in the development preview, the browser reports zero pixels above the viewport and renders the Typography Hero first, including the title, introductory text, and Editorial Index. The reset is keyed to `article.slug`, so the same behavior applies when the next-study link changes the active article. `pnpm test` passes all 12 tests, while TypeScript checking and the production build complete successfully.
