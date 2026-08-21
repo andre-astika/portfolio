@@ -13,6 +13,8 @@ import { siteAsset } from "@/lib/siteAsset";
 
 export const IMG_ANDRE_DEV = siteAsset("/manus-storage/andre-profile-img-without_6e47e8ca.webp");
 export const IMG_ANDRE_WEEKEND = siteAsset("/manus-storage/andre-profile-img-with_3f7bf32d.webp");
+export const BOTTOM_CAPTION_CLASS =
+  "font-label pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-black/85 px-4 py-2 text-center text-[9px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm";
 
 type WeekendCtx = { weekend: boolean; setWeekend: (next: boolean) => void };
 const Ctx = createContext<WeekendCtx>({ weekend: false, setWeekend: () => undefined });
@@ -164,20 +166,28 @@ export function AndrePhoto({
           }}
           aria-hidden="true"
         />
+        {labelPosition === "bottom-bar" ? (
+          <span
+            key={showWeekend ? "wk" : "dv"}
+            className={`${BOTTOM_CAPTION_CLASS} animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both]`}
+          >
+            {label ?? (showWeekend ? "(Mode) — Weekend · Bali, ID" : "(Mode) — Developer · Bali, ID")}
+          </span>
+        ) : null}
       </div>
       {/* portrait caption */}
-      <span
-        key={showWeekend ? "wk" : "dv"}
-        className={`font-label pointer-events-none absolute animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/85 uppercase text-white/70 backdrop-blur-sm ${
-          labelPosition === "bottom-bar"
-            ? "inset-x-0 bottom-0 px-4 py-2 text-center text-[9px] tracking-[0.3em]"
-            : labelPosition === "chest"
+      {labelPosition !== "bottom-bar" ? (
+        <span
+          key={showWeekend ? "wk" : "dv"}
+          className={`font-label pointer-events-none absolute animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/85 uppercase text-white/70 backdrop-blur-sm ${
+            labelPosition === "chest"
               ? "left-4 top-[68%] px-3 py-1.5 text-[10px] tracking-[0.3em]"
               : "-bottom-4 left-4 px-3 py-1.5 text-[10px] tracking-[0.3em]"
-        }`}
-      >
-        {label ?? (showWeekend ? "(Mode) — Weekend · Bali, ID" : "(Mode) — Developer · Bali, ID")}
-      </span>
+          }`}
+        >
+          {label ?? (showWeekend ? "(Mode) — Weekend · Bali, ID" : "(Mode) — Developer · Bali, ID")}
+        </span>
+      ) : null}
       {/* corner crosshair */}
       <span
         className={`font-display pointer-events-none absolute ${

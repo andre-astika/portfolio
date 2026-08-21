@@ -321,7 +321,7 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Add a GitHub Pages-specific static build that uses the `/portfolio/` base path without affecting Manus hosting.
 - [x] Add an automated GitHub Actions workflow to build and deploy the static portfolio to GitHub Pages.
-- [x] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+- [ ] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
 - [x] Resolve the pnpm version conflict in the GitHub Pages workflow and rerun deployment.
 
 ## GitHub Pages deployment notes
@@ -665,3 +665,11 @@ Deployment note: GitHub Actions run `32518915519` completed successfully for com
 - [x] Reposition “(About) — Behind the Pixels” beneath the portrait as a full-width horizontal caption bar matching the supplied reference, validate responsively, and synchronize it to GitHub Pages.
 
 Verification note: the About caption now uses a bottom-anchored, full-width mono bar inside the portrait, matching the prior hover-caption treatment. Desktop and 390px mobile previews confirm that it follows the image width without overlapping adjacent content.
+
+## About caption and Philosophy script refinement
+
+- [x] Anchor the About caption flush to the bottom edge of the portrait, removing its visible border while preserving full image width.
+- [x] Restyle the Philosophy statement with Pinyon Script and preserve white text in Developer Mode plus black text in Weekend Mode.
+- [x] Validate both refinements on desktop and mobile, rerun automated checks, and synchronize them to GitHub Pages.
+
+Verification note: the caption is now rendered inside the clipped portrait layer at its true bottom edge with no caption border. The Philosophy statement uses Pinyon Script with source `text-white`, which the scoped Weekend rule converts to black on the light-paper theme. Desktop and 390px mobile previews confirm the caption remains flush and the statement remains legible. The suite passes all 24 tests; TypeScript, production build, and GitHub Pages static build complete successfully.

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { ABOUT_PORTRAIT_OPTIONS, EXPERIENCE } from "./Experience";
+import { BOTTOM_CAPTION_CLASS } from "./AndrePhoto";
 
 describe("Experience About section", () => {
   it("uses a static, mode-aware portrait composition in the About section", () => {
@@ -8,6 +9,12 @@ describe("Experience About section", () => {
       labelPosition: "bottom-bar",
       sparklePlacement: "top-right",
     });
+  });
+
+  it("anchors the About caption at the image bottom without a visible border", () => {
+    expect(BOTTOM_CAPTION_CLASS).toContain("inset-x-0");
+    expect(BOTTOM_CAPTION_CLASS).toContain("bottom-0");
+    expect(BOTTOM_CAPTION_CLASS).not.toContain("border");
   });
 
   it("uses the requested Lead WordPress Frontend Developer role and corrected Lead wording", () => {
