@@ -545,3 +545,12 @@ Verification note: the route reset temporarily disables the site-wide smooth-scr
 - [x] Verify the index remains outlined light on Developer Mode, black on Weekend Mode, and publish the correction.
 
 Verification note: the Typography Hero retains its light outlined `01` in Developer Mode. After activating Weekend Mode, the same index becomes a solid black `01` against the warm paper Hero; the scoped class applies identically to every article index. `pnpm test` passes all 12 tests, while TypeScript checking and the production build complete successfully.
+
+## Article index visibility and navigation enhancements
+
+- [x] Make the Hero Editorial Index reliably visible as black in Weekend/Light Mode across all individual articles.
+- [x] Add a subtle, reduced-motion-safe entrance animation for the Hero Editorial Index number.
+- [x] Add the active article’s reading duration to the article navigation.
+- [x] Verify both themes, index motion, reading-duration navigation, and automated checks before publishing.
+
+Verification note: the Typography navigation now shows `Thinking archive / 01 · 5 min read`. In Developer Mode, the `01` retains its outlined light treatment. Switching to Weekend Mode displays `01` as a solid black number against the paper Hero, using both a direct inline fallback and scoped CSS. The index enters with a short 580ms transform-and-opacity animation and respects reduced-motion preferences. `pnpm test` passes all 12 tests, and TypeScript checking plus production build complete successfully.
