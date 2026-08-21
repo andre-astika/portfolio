@@ -604,3 +604,10 @@ Verification note: desktop and 390px mobile previews now begin the draggable Wor
 - [x] Validate the updated tonal balance, full image framing, desktop/mobile layout, and automated checks before publishing.
 
 Verification note: all Work featured-image containers use a 4:3 frame with `object-contain`, keeping source compositions visible rather than cropping them. Desktop and 390px mobile previews retain clear card spacing and full artwork framing. Invitation Branding Suite uses a direct grayscale, `brightness(0.82)`, and `contrast(1.48)` image filter for a darker, sharper monochrome result without adding an overlay. The suite passes all 19 tests; TypeScript checking and production build complete successfully.
+
+## Work card cover-fit correction
+
+- [x] Change Work featured images to `object-cover` inside their 4:3 frames to remove black top-and-bottom letterboxing.
+- [x] Verify the first Work cards have no black image bands on desktop and mobile, then rerun automated checks before publishing.
+
+Verification note: the 4:3 Work frames now use `object-cover`, removing the black letterboxing visible around the first project images. Desktop and 390px mobile previews show the featured artwork filling each frame edge-to-edge. The suite passes all 19 tests; TypeScript checking and production build complete successfully.
