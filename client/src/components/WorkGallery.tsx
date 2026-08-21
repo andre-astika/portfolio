@@ -1,42 +1,49 @@
-/* NOIR KINETIC — work section: FULLY PINNED horizontal gallery.
-   The section locks in place while scrolling; wheel/trackpad input drives the
-   track sideways. Only when the track reaches its end does the page unlock and
-   continue to the next section. Wheel events are captured via passive:false on
-   the section. Hovering a card lifts it and reveals its brief description. */
+/* NOIR KINETIC — a manually draggable horizontal Work gallery.
+   Hovering a card lifts it and reveals its brief description. */
 import { useEffect, useRef, useState } from "react";
 import { useRevealObserver } from "@/hooks/useKinetic";
 import { siteAsset } from "@/lib/siteAsset";
 
-const PROJECTS = [
+export const PROJECTS = [
   {
     index: "01",
     year: "2026",
     title: "Invitation Branding Suite",
-    tag: "Brand · Print · Web",
-    image: siteAsset("/manus-storage/project-invite_8162f19b.png"),
+    tag: "Logo · Invitation Card · Brand · Print",
+    image: siteAsset("/manus-storage/portfolio-logo-card_df167b01.webp"),
     description:
-      "Logo, invitation card, and a custom e-invitation website — one identity, three surfaces, shipped as a single system.",
-    stats: ["3 deliverables", "1 identity", "2026"],
+      "A complete visual identity from the logo through invitation cards and print pieces, built as one considered brand system with a cohesive, memorable finish.",
+    stats: ["Logo system", "Print suite", "2026"],
   },
   {
     index: "02",
     year: "2026",
-    title: "Logo & E-Invitation Website",
-    tag: "Logo · Website",
-    image: siteAsset("/manus-storage/project-web_6efabdbf.png"),
+    title: "E-Invitation Website",
+    tag: "Website · WordPress",
+    image: siteAsset("/manus-storage/portfolio-e-invitation_1bd541f0.webp"),
     description:
-      "Custom logo design plus a modern e-invitation site. Visual elegance, flawless function — desktop to pocket.",
-    stats: ["Logo design", "Full website", "2026"],
+      "A responsive WordPress e-invitation experience that gives guests a clear, elegant way to discover every event detail across desktop and mobile.",
+    stats: ["WordPress", "Responsive web", "2026"],
   },
   {
     index: "03",
     year: "2022 — 26",
-    title: "Agency Client Websites",
-    tag: "Frontend · WordPress · Next.js",
-    image: siteAsset("/manus-storage/project-brand_b5d041e3.png"),
+    title: "Agency Client Website",
+    tag: "WordPress · Next.js · Web Development",
+    image: siteAsset("/manus-storage/portfolio-client_5e130c11.webp"),
     description:
-      "10–20 sites shipped per year for international agency clients. Headless Next.js, Sanity, custom WordPress — each build a different performance puzzle.",
-    stats: ["60+ sites shipped", "10–20 / yr", "4 yrs"],
+      "A flexible client website engineered for an agency workflow, combining WordPress content management with the speed, structure, and scalability of Next.js.",
+    stats: ["WordPress", "Next.js", "Agency delivery"],
+  },
+  {
+    index: "04",
+    year: "2026",
+    title: "Cultural Campaign Website",
+    tag: "WordPress · Campaign Design · Web Development",
+    image: siteAsset("/manus-storage/portfolio-batur2026_9512c622.webp"),
+    description:
+      "A WordPress campaign site that translates cultural storytelling into a clear digital experience, giving the programme a distinctive presence and an accessible home online.",
+    stats: ["WordPress", "Campaign site", "2026"],
   },
 ];
 
