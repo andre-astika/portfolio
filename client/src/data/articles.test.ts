@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { ARTICLES, getArticle } from "./articles";
 
 describe("How I Think articles", () => {
-  it("exposes the three requested standalone blog slugs", () => {
-    expect(ARTICLES.map((article) => article.slug)).toEqual(["blog-1", "blog-2", "blog-3"]);
+  it("exposes the three requested topic-based article slugs", () => {
+    expect(ARTICLES.map((article) => article.slug)).toEqual(["typography", "user-experience", "color-theory"]);
   });
 
   it("gives every article a complete professional reading structure", () => {
@@ -15,7 +15,7 @@ describe("How I Think articles", () => {
   });
 
   it("finds an article by its public route slug", () => {
-    expect(getArticle("blog-2")?.category).toBe("User Experience");
+    expect(getArticle("user-experience")?.category).toBe("User Experience");
     expect(getArticle("missing")).toBeUndefined();
   });
 });

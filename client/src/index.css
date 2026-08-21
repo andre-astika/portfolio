@@ -493,6 +493,13 @@ body:has(.weekend-theme) {
     color: var(--ink) !important;
   }
 
+  /* The active article control remains an ink button in Weekend Mode, so its label
+     intentionally stays pure white instead of inheriting the page-wide ink override. */
+  .weekend-theme .article-mode-switch button[aria-selected="true"] {
+    background-color: var(--ink) !important;
+    color: #ffffff !important;
+  }
+
 .weekend-theme .liquid-reveal-vignette {
   background:
     linear-gradient(90deg, rgb(246 244 238 / 0.98) 0%, rgb(246 244 238 / 0.82) 39%, rgb(246 244 238 / 0.2) 73%, transparent 100%),

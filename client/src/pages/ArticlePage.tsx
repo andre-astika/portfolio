@@ -13,7 +13,7 @@ function ArticleModeSwitch() {
   const { weekend, setWeekend } = useSiteWeekend();
 
   return (
-    <div className="mode-switch inline-flex items-center gap-1 border border-white/20 bg-black/20 p-1 font-label text-[9px] uppercase tracking-[0.18em] backdrop-blur-sm">
+    <div className="article-mode-switch mode-switch inline-flex items-center gap-1 border border-white/20 bg-black/20 p-1 font-label text-[9px] uppercase tracking-[0.18em] backdrop-blur-sm">
       <button
         type="button"
         aria-selected={!weekend}
@@ -26,8 +26,7 @@ function ArticleModeSwitch() {
         type="button"
         aria-selected={weekend}
         onClick={() => setWeekend(true)}
-        className={`px-3 py-2 transition-colors ${weekend ? "text-[var(--paper)]" : "text-white/55 hover:text-white"}`}
-        style={weekend ? { backgroundColor: "var(--ink)" } : undefined}
+        className={`px-3 py-2 transition-colors ${weekend ? "bg-[var(--ink)] text-white" : "text-white/55 hover:text-white"}`}
       >
         Weekend
       </button>
@@ -97,7 +96,7 @@ function ArticleView({ article }: { article: Article }) {
               </p>
             </div>
 
-            <div className="relative border-l border-white/15 pl-6 md:pl-9 lg:pb-2">
+            <div className="relative border-r border-white/15 pr-6 text-right md:pr-9 lg:justify-self-end lg:pb-2">
               <p className="font-label text-[10px] uppercase tracking-[0.3em] text-white/40">Editorial index</p>
               <p className="mt-2 font-display text-[6rem] font-extrabold leading-none tracking-[-0.08em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.4)] md:text-[8rem]">
                 {article.index}

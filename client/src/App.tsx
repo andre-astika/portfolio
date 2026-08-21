@@ -30,7 +30,7 @@ function StaticAssetLibraryNotice() {
 function Router() {
   if (isGitHubPagesBuild && typeof window !== "undefined") {
     const fallbackPath = new URLSearchParams(window.location.search).get("p");
-    if (fallbackPath && /^\/blog-[1-3]$/.test(fallbackPath)) {
+    if (fallbackPath && /^\/(?:typography|user-experience|color-theory)$/.test(fallbackPath)) {
       window.history.replaceState(null, "", `/portfolio${fallbackPath}`);
     }
   }
@@ -39,9 +39,9 @@ function Router() {
   const routes = (
     <Switch>
       <Route path={"/"} component={Home} />
-      <Route path={"/blog-1"}><ArticlePage slug="blog-1" /></Route>
-      <Route path={"/blog-2"}><ArticlePage slug="blog-2" /></Route>
-      <Route path={"/blog-3"}><ArticlePage slug="blog-3" /></Route>
+      <Route path={"/typography"}><ArticlePage slug="typography" /></Route>
+      <Route path={"/user-experience"}><ArticlePage slug="user-experience" /></Route>
+      <Route path={"/color-theory"}><ArticlePage slug="color-theory" /></Route>
       <Route path={"/assets"} component={isGitHubPagesBuild ? StaticAssetLibraryNotice : AssetLibrary} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
