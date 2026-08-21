@@ -615,10 +615,12 @@ Verification note: the 4:3 Work frames now use `object-cover`, removing the blac
 ## Work hover zoom and public deployment synchronization
 
 - [x] Add a subtle, smooth image zoom to Work cards on hover without disrupting the card layout.
-- [ ] Inspect the Manus and public URLs to identify why the public Work gallery still shows the older ratio and object fit.
-- [ ] Synchronize the current Work gallery to the public deployment and verify 4:3 `object-cover` behavior at the public URL.
-- [ ] Run automated checks and validate the interaction on desktop/mobile before publishing.
+- [x] Inspect the Manus and public URLs to identify why the public Work gallery still shows the older ratio and object fit.
+- [x] Synchronize the current Work gallery to the public deployment and verify 4:3 `object-cover` behavior at the public URL.
+- [x] Run automated checks and validate the interaction on desktop/mobile before publishing.
 
 Inspection note: both the GitHub Pages URL (`https://andre-astika.github.io/portfolio/`) and Manus URL (`https://andrefolio-f6gtj9q8.manus.space/`) are reachable and expose the same public portfolio content in text extraction. The visual ratio difference therefore requires deployment-asset and version inspection rather than a routing fix.
 
 Preview note: desktop and 390px mobile previews confirm the Work cards retain their 4:3, edge-to-edge cover framing. The zoom transition is applied to the image layer only, preserving card size and text layout.
+
+Deployment note: the GitHub Pages URL had been serving commit `b7683d7`, while the current cover-fit and hover changes were present only in the Manus project history. The local history was rebased, then pushed to GitHub as commit `e8df896`. GitHub Actions run `32514638763` completed successfully for the static Pages deployment, bringing the public site in sync with the current Work gallery.
