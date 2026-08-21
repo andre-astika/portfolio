@@ -41,7 +41,7 @@ export const PROJECTS = [
     title: "Invitation Branding Suite",
     tag: "Logo · Invitation Card · Brand · Print",
     image: siteAsset("/manus-storage/portfolio-logo-card_df167b01.webp"),
-    imageFilter: "grayscale(100%) brightness(0.64) contrast(1.12)",
+    imageFilter: "grayscale(100%) brightness(0.82) contrast(1.48)",
     description:
       "A complete visual identity from the logo through invitation cards and print pieces, built as one considered brand system with a cohesive, memorable finish.",
     stats: ["Logo system", "Print suite", "2026"],
@@ -71,13 +71,13 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
       className="group relative flex w-full shrink-0 flex-col border border-white/10 bg-[oklch(0.19_0_0)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-3 hover:border-white/40"
     >
       {/* image block */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
         <div className="relative h-full overflow-hidden">
           <img
           src={project.image}
           alt={project.title}
           draggable={false}
-          className="h-full w-full object-cover transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.05] group-hover:contrast-[1.15]"
+          className="h-full w-full object-contain transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03] group-hover:contrast-[1.15]"
           style={{ filter: project.imageFilter ?? "grayscale(100%) contrast(1.2)" }}
           loading="lazy"
           />

@@ -19,7 +19,7 @@ describe("WorkGallery project data", () => {
     expect(PROJECTS[1].description).toContain("responsive");
   });
 
-  it("uses a darker monochrome treatment for the Invitation Branding Suite image", () => {
-    expect(PROJECTS[3].imageFilter).toBe("grayscale(100%) brightness(0.64) contrast(1.12)");
+  it("uses a crisp, dark, high-contrast monochrome treatment for the Invitation Branding Suite image", () => {
+    expect(PROJECTS[3].imageFilter).toBe("grayscale(100%) brightness(0.82) contrast(1.48)");
   });
 });

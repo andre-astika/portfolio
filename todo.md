@@ -596,3 +596,11 @@ Verification note: the visible `Switch color theme` hint has been removed. The H
 - [x] Validate desktop and mobile balance, project order, image contrast, content, and automated checks before publishing.
 
 Verification note: desktop and 390px mobile previews now begin the draggable Work gallery with Agency Client Website, followed by Cultural Campaign Website. Both cards maintain the existing monochrome card treatment and clean responsive framing. Invitation Branding Suite is retained as the fourth project with a deliberately darker `brightness(0.64)` monochrome filter to align its luminosity with the rest of the gallery. The refreshed regression suite passes 19 tests; TypeScript checking and production build complete successfully.
+
+## Work image clarity and framing refinement
+
+- [x] Replace the muted Invitation Branding Suite treatment with a crisp, higher-contrast dark monochrome presentation without an overlay-like effect.
+- [x] Present every Work card featured image at a 4:3 aspect ratio with no image content cropped out.
+- [x] Validate the updated tonal balance, full image framing, desktop/mobile layout, and automated checks before publishing.
+
+Verification note: all Work featured-image containers use a 4:3 frame with `object-contain`, keeping source compositions visible rather than cropping them. Desktop and 390px mobile previews retain clear card spacing and full artwork framing. Invitation Branding Suite uses a direct grayscale, `brightness(0.82)`, and `contrast(1.48)` image filter for a darker, sharper monochrome result without adding an overlay. The suite passes all 19 tests; TypeScript checking and production build complete successfully.
