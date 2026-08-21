@@ -66,7 +66,7 @@ export function AndrePhoto({
   style?: React.CSSProperties;
   tilt?: boolean;
   hoverFlip?: boolean;
-  labelPosition?: "outside" | "chest";
+  labelPosition?: "outside" | "chest" | "bottom-bar";
   sparklePlacement?: "top-left" | "top-right";
   clipPath?: string;
 }) {
@@ -165,12 +165,16 @@ export function AndrePhoto({
           aria-hidden="true"
         />
       </div>
-      {/* mode badge */}
+      {/* portrait caption */}
       <span
         key={showWeekend ? "wk" : "dv"}
-        className={`font-label pointer-events-none absolute ${
-          labelPosition === "chest" ? "left-4 top-[68%]" : "-bottom-4 left-4"
-        } animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm`}
+        className={`font-label pointer-events-none absolute animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/85 uppercase text-white/70 backdrop-blur-sm ${
+          labelPosition === "bottom-bar"
+            ? "inset-x-0 bottom-0 px-4 py-2 text-center text-[9px] tracking-[0.3em]"
+            : labelPosition === "chest"
+              ? "left-4 top-[68%] px-3 py-1.5 text-[10px] tracking-[0.3em]"
+              : "-bottom-4 left-4 px-3 py-1.5 text-[10px] tracking-[0.3em]"
+        }`}
       >
         {label ?? (showWeekend ? "(Mode) — Weekend · Bali, ID" : "(Mode) — Developer · Bali, ID")}
       </span>
