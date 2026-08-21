@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { useMouseParallax } from "@/hooks/useKinetic";
 import { getPhilosophyReadingProgress } from "@/lib/philosophyProgress";
 
+export const PHILOSOPHY_STATEMENT = "Design is what remains when nothing else can be taken away.";
+export const PHILOSOPHY_STATEMENT_CLASS = "font-script-accent text-white";
+
 const PRINCIPLES = [
   {
     no: "P/01",
@@ -60,8 +63,8 @@ export default function Philosophy() {
             <p className="font-label mb-6 text-[11px] uppercase tracking-[0.35em] text-white/45">
               (Philosophy) — Design principles
             </p>
-            <h2 className="font-serif-accent text-4xl font-medium italic leading-[1.15] text-white md:text-6xl">
-              Design is what remains <span className="text-silver-gradient not-italic font-display">when nothing else can be taken away.</span>
+            <h2 className={`${PHILOSOPHY_STATEMENT_CLASS} text-5xl font-normal leading-[0.98] md:text-7xl`}>
+              {PHILOSOPHY_STATEMENT}
             </h2>
             <div ref={floatRef} className="mt-10 flex items-center gap-3 text-white/40" style={{ willChange: "transform" }}>
               <span className="font-label text-[11px] uppercase tracking-[0.25em]">✦ Reduced to essentials</span>

@@ -139,6 +139,9 @@ manus-content-root {
   .font-serif-accent {
     font-family: "Cormorant Garamond", serif;
   }
+  .font-script-accent {
+    font-family: "Pinyon Script", "Pinyon Script Fallback", cursive;
+  }
   .font-label {
     font-family: "IBM Plex Mono", monospace;
   }
