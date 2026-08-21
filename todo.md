@@ -596,6 +596,7 @@ Verification note: the visible `Switch color theme` hint has been removed. The H
 - [x] Validate desktop and mobile balance, project order, image contrast, content, and automated checks before publishing.
 
 Verification note: desktop and 390px mobile previews now begin the draggable Work gallery with Agency Client Website, followed by Cultural Campaign Website. Both cards maintain the existing monochrome card treatment and clean responsive framing. Invitation Branding Suite is retained as the fourth project with a deliberately darker `brightness(0.64)` monochrome filter to align its luminosity with the rest of the gallery. The refreshed regression suite passes 19 tests; TypeScript checking and production build complete successfully.
+<<<<<<< HEAD
 
 ## Work image clarity and framing refinement
 
@@ -642,3 +643,10 @@ Verification note: desktop and 390px mobile previews retain the 4:3 edge-to-edge
 - [x] Verify the revised About composition, theme modes, desktop/mobile responsiveness, and automated checks before publishing.
 
 Verification note: the About portrait now uses the shared Developer/Weekend state directly with hover flip disabled. Its label sits at chest level, the corner sparkle sits at the portrait’s top-right, and no Weekend hover prompt remains. Desktop and 390px mobile preview layouts retain the revised composition. The suite passes all 22 tests; TypeScript checking and production build complete successfully.
+
+## About section GitHub Pages synchronization
+
+- [x] Rebase and push the completed About section refinement to `andre-astika/portfolio`.
+- [x] Verify the GitHub Pages workflow succeeds and the public URL serves the updated About section.
+
+Verification note: GitHub Actions run `32517230752` completed successfully for commit `071de493`. The public GitHub Pages URL now exposes the updated About content, including the static Developer-mode portrait and Lead WordPress Frontend Developer experience entry.
