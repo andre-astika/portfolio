@@ -169,7 +169,7 @@ export function AndrePhoto({
       <span
         key={showWeekend ? "wk" : "dv"}
         className={`font-label pointer-events-none absolute ${
-          labelPosition === "chest" ? "left-4 top-[62%]" : "-bottom-4 left-4"
+          labelPosition === "chest" ? "left-4 top-[68%]" : "-bottom-4 left-4"
         } animate-[fade-up_0.5s_cubic-bezier(0.23,1,0.32,1)_both] border border-white/25 bg-black/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/70 backdrop-blur-sm`}
       >
         {label ?? (showWeekend ? "(Mode) — Weekend · Bali, ID" : "(Mode) — Developer · Bali, ID")}
@@ -177,7 +177,7 @@ export function AndrePhoto({
       {/* corner crosshair */}
       <span
         className={`font-display pointer-events-none absolute ${
-          sparklePlacement === "top-right" ? "-right-6 -top-6" : "-left-6 -top-6"
+          sparklePlacement === "top-right" ? "-right-4 -top-2" : "-left-6 -top-6"
         } text-xl text-white/25`}
         aria-hidden="true"
       >
