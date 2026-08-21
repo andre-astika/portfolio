@@ -597,6 +597,10 @@ Verification note: the visible `Switch color theme` hint has been removed. The H
 
 Verification note: desktop and 390px mobile previews now begin the draggable Work gallery with Agency Client Website, followed by Cultural Campaign Website. Both cards maintain the existing monochrome card treatment and clean responsive framing. Invitation Branding Suite is retained as the fourth project with a deliberately darker `brightness(0.64)` monochrome filter to align its luminosity with the rest of the gallery. The refreshed regression suite passes 19 tests; TypeScript checking and production build complete successfully.
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 597605e (Checkpoint)
 
 ## Work image clarity and framing refinement
 
@@ -655,6 +659,8 @@ Verification note: GitHub Actions run `32517230752` completed successfully for c
 
 - [x] Set the portrait sparkle to `top: -0.5rem` and `right: -1rem`.
 - [x] Lower the About — Behind the Pixels label until it aligns visually with the portrait chest.
-- [ ] Validate the revised composition on desktop and mobile, rerun automated checks, and synchronize the change to GitHub Pages.
+- [x] Validate the revised composition on desktop and mobile, rerun automated checks, and synchronize the change to GitHub Pages.
 
 Preview note: desktop and 390px mobile previews show the portrait sparkle at the refined top-right offset and the About label lowered to the chest area. The revised marker placement remains inside the portrait composition without crowding its clipped corner.
+
+Deployment note: GitHub Actions run `32518915519` completed successfully for commit `c52cae25`. The public GitHub Pages URL is now serving the refined About section, including the lowered top-right sparkle and chest-aligned label.
