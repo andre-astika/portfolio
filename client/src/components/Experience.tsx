@@ -2,7 +2,7 @@
    and skills chips echoing the CV's pill style (inverted grayscale). */
 import { AndrePhoto } from "@/components/AndrePhoto";
 
-const EXPERIENCE = [
+export const EXPERIENCE = [
   {
     period: "Jul 2026 — Present",
     role: "Frontend Developer — Headless CMS & Next.js",
@@ -24,10 +24,10 @@ const EXPERIENCE = [
   },
   {
     period: "Oct 2024 — Jan 2026",
-    role: "Lead Frontend Developer",
+    role: "Lead WordPress Frontend Developer",
     company: "Jupitr Agency",
     points: [
-      "Led the frontend development team — managed workflow and delegated tasks.",
+      "Lead the frontend development team — managed workflow and delegated tasks.",
       "Handled 10–20 projects annually for international agency clients, each with distinct performance challenges and case studies.",
     ],
   },
@@ -36,7 +36,7 @@ const EXPERIENCE = [
     role: "Senior Frontend WordPress Developer",
     company: "Cabaretti Website Design and Development",
     points: [
-      "Led frontend development for international clients with distinct performance challenges and case studies.",
+      "Lead frontend development for international clients with distinct performance challenges and case studies.",
     ],
   },
   {
@@ -73,6 +73,12 @@ const SKILLS = [
   "Adobe Photoshop (Advanced)",
 ];
 
+export const ABOUT_PORTRAIT_OPTIONS = {
+  hoverFlip: false,
+  labelPosition: "chest",
+  sparklePlacement: "top-right",
+} as const;
+
 export default function Experience() {
   return (
     <section id="experience" className="relative overflow-hidden">
@@ -103,7 +109,7 @@ export default function Experience() {
                   className="relative h-full w-auto"
                   imgClassName="h-full w-auto"
                   label="(About) — Behind the pixels"
-                  tilt
+                  {...ABOUT_PORTRAIT_OPTIONS}
                 />
               </div>
             </div>
@@ -136,11 +142,11 @@ export default function Experience() {
                     <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white md:text-xl">
                       {e.role}
                     </h3>
-                    <p className="font-serif-accent mt-0.5 text-base italic text-white/50">{e.company}</p>
+                    <p className="mt-3 font-sans text-base not-italic text-white/50">{e.company}</p>
                     <ul className="mt-3 space-y-1.5">
                       {e.points.map((p, j) => (
                         <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-white/55">
-                          <span className="mt-[0.55em] text-white/30">✦</span>
+                          <span className="mt-0 text-white/30">✦</span>
                           {p}
                         </li>
                       ))}

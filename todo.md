@@ -631,3 +631,14 @@ Deployment note: the GitHub Pages URL had been serving commit `b7683d7`, while t
 - [x] Update regression coverage, validate desktop/mobile framing, and rerun automated checks before publishing.
 
 Verification note: desktop and 390px mobile previews retain the 4:3 edge-to-edge `object-cover` framing with no image zoom or filter change on hover. The updated regression suite passes all 20 tests; TypeScript checking and production build complete successfully.
+
+## About section editorial refinement
+
+- [x] Replace the workplace serif styling with Archivo, normal style, and `0.75rem` top margin.
+- [x] Remove the sparkle’s top margin and reposition it to the top-right corner aligned with the portrait image.
+- [x] Remove portrait hover behavior and show the Developer portrait in Developer mode and Weekend portrait in Weekend mode only.
+- [x] Remove the portrait’s Weekend hover hint and lower the About — Behind the Pixels label to align with the chest composition.
+- [x] Change the Jupitr Agency role to Lead WordPress Frontend Developer and correct all “Led” copy to “Lead” in About experience content.
+- [x] Verify the revised About composition, theme modes, desktop/mobile responsiveness, and automated checks before publishing.
+
+Verification note: the About portrait now uses the shared Developer/Weekend state directly with hover flip disabled. Its label sits at chest level, the corner sparkle sits at the portrait’s top-right, and no Weekend hover prompt remains. Desktop and 390px mobile preview layouts retain the revised composition. The suite passes all 22 tests; TypeScript checking and production build complete successfully.
