@@ -7,16 +7,26 @@ import { siteAsset } from "@/lib/siteAsset";
 export const PROJECTS = [
   {
     index: "01",
-    year: "2026",
-    title: "Invitation Branding Suite",
-    tag: "Logo · Invitation Card · Brand · Print",
-    image: siteAsset("/manus-storage/portfolio-logo-card_df167b01.webp"),
+    year: "2022 — 26",
+    title: "Agency Client Website",
+    tag: "WordPress · Next.js · Responsive Web · Web Development",
+    image: siteAsset("/manus-storage/portfolio-client_5e130c11.webp"),
     description:
-      "A complete visual identity from the logo through invitation cards and print pieces, built as one considered brand system with a cohesive, memorable finish.",
-    stats: ["Logo system", "Print suite", "2026"],
+      "A flexible, responsive client website engineered for an agency workflow, combining WordPress content management with the speed, structure, and scalability of Next.js across every screen size.",
+    stats: ["WordPress", "Next.js", "Responsive web"],
   },
   {
     index: "02",
+    year: "2026",
+    title: "Cultural Campaign Website",
+    tag: "WordPress · Campaign Design · Responsive Web · Web Development",
+    image: siteAsset("/manus-storage/portfolio-batur2026_9512c622.webp"),
+    description:
+      "A responsive WordPress campaign site that translates cultural storytelling into a clear digital experience, giving the programme a distinctive presence and an accessible home across every device.",
+    stats: ["WordPress", "Campaign site", "Responsive web"],
+  },
+  {
+    index: "03",
     year: "2026",
     title: "E-Invitation Website",
     tag: "Website · WordPress",
@@ -26,24 +36,15 @@ export const PROJECTS = [
     stats: ["WordPress", "Responsive web", "2026"],
   },
   {
-    index: "03",
-    year: "2022 — 26",
-    title: "Agency Client Website",
-    tag: "WordPress · Next.js · Web Development",
-    image: siteAsset("/manus-storage/portfolio-client_5e130c11.webp"),
-    description:
-      "A flexible client website engineered for an agency workflow, combining WordPress content management with the speed, structure, and scalability of Next.js.",
-    stats: ["WordPress", "Next.js", "Agency delivery"],
-  },
-  {
     index: "04",
     year: "2026",
-    title: "Cultural Campaign Website",
-    tag: "WordPress · Campaign Design · Web Development",
-    image: siteAsset("/manus-storage/portfolio-batur2026_9512c622.webp"),
+    title: "Invitation Branding Suite",
+    tag: "Logo · Invitation Card · Brand · Print",
+    image: siteAsset("/manus-storage/portfolio-logo-card_df167b01.webp"),
+    imageFilter: "grayscale(100%) brightness(0.64) contrast(1.12)",
     description:
-      "A WordPress campaign site that translates cultural storytelling into a clear digital experience, giving the programme a distinctive presence and an accessible home online.",
-    stats: ["WordPress", "Campaign site", "2026"],
+      "A complete visual identity from the logo through invitation cards and print pieces, built as one considered brand system with a cohesive, memorable finish.",
+    stats: ["Logo system", "Print suite", "2026"],
   },
 ];
 
@@ -77,7 +78,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
           alt={project.title}
           draggable={false}
           className="h-full w-full object-cover transition-all duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.05] group-hover:contrast-[1.15]"
-          style={{ filter: "grayscale(100%) contrast(1.2)" }}
+          style={{ filter: project.imageFilter ?? "grayscale(100%) contrast(1.2)" }}
           loading="lazy"
           />
           <span className="font-label absolute right-4 top-4 border border-white/30 bg-black/60 px-2.5 py-1 text-[9px] uppercase tracking-[0.3em] text-white backdrop-blur-sm">
