@@ -1,8 +1,10 @@
 export function resetArticleScrollPosition() {
-  window.scrollTo(0, 0);
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
 
-  // Also run on the next frame to override session-history restoration when a
-  // visitor reopens a study URL they had previously read.
-  const frame = window.requestAnimationFrame(() => window.scrollTo(0, 0));
-  return () => window.cancelAnimationFrame(frame);
+  // The portfolio uses smooth scrolling globally. Disable it only for this
+  // route-entry reset so the Hero is painted in place rather than sliding up.
+  root.style.scrollBehavior = "auto";
+  window.scrollTo(0, 0);
+  root.style.scrollBehavior = previousScrollBehavior;
 }

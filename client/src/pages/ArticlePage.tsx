@@ -71,7 +71,7 @@ function ArticleView({ article }: { article: Article }) {
   useRevealObserver();
 
   useLayoutEffect(() => {
-    return resetArticleScrollPosition();
+    resetArticleScrollPosition();
   }, [article.slug]);
 
   const currentIndex = ARTICLES.findIndex((item) => item.slug === article.slug);
@@ -89,7 +89,7 @@ function ArticleView({ article }: { article: Article }) {
 
       <main id="article-top" className="relative pt-28 md:pt-36">
         <section className="container pb-16 md:pb-24">
-          <div className="reveal relative grid gap-12 border-b border-white/15 pb-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(14rem,0.65fr)] lg:items-end lg:pb-20">
+          <div className="reveal relative grid gap-12 pb-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(14rem,0.65fr)] lg:items-end lg:pb-20">
             <div>
               <p className="font-label mb-7 text-[10px] uppercase tracking-[0.34em] text-white/45">
                 {article.category} / {article.read}
