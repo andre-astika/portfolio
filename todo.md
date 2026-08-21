@@ -570,3 +570,11 @@ Verification note: Weekend Mode now renders the Typography Hero’s `01` as a cl
 - [x] Verify desktop and mobile layout, button interaction, and checks before publishing.
 
 Verification note: on desktop, the `Switch color theme ↔` hint sits to the right of the Developer/Weekend control and the expanded lower margin cleanly separates it from the role label. At a 390px viewport, the hint wraps beneath the control rather than compressing the buttons. The suite passes all 16 tests, and TypeScript checking plus production build complete successfully.
+
+## Streamlined homepage theme control
+
+- [x] Reduce the lower spacing below the Developer/Weekend Mode control while preserving clear separation from the role label.
+- [x] Remove the visible color-theme hint and add concise hover/focus tooltips to the Developer and Weekend mode buttons.
+- [x] Verify desktop and mobile layout, tooltip accessibility, and checks before publishing.
+
+Verification note: the visible `Switch color theme` hint has been removed. The Hero now uses a tighter lower margin beneath the mode control while retaining a clear gap before the role label. Desktop and 390px mobile previews keep both controls legible without layout overflow. Each button exposes a focusable shadcn/Radix tooltip with concise color-theme guidance. The full suite passes all 16 tests, and TypeScript checking plus production build complete successfully.
