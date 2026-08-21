@@ -49,7 +49,7 @@ export const PROJECTS = [
 ];
 
 export const WORK_IMAGE_CLASS =
-  "h-full w-full object-cover will-change-transform transition-[transform,filter] duration-700 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.06] group-hover:contrast-[1.15] motion-reduce:transform-none motion-reduce:transition-none";
+  "h-full w-full object-cover";
 
 function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
   const cardRef = useRef<HTMLElement>(null);

@@ -23,9 +23,9 @@ describe("WorkGallery project data", () => {
     expect(PROJECTS[3].imageFilter).toBe("grayscale(100%) brightness(0.82) contrast(1.48)");
   });
 
-  it("keeps project images cover-fitted with a subtle, motion-safe hover zoom", () => {
+  it("keeps project images cover-fitted without hover zoom or image-filter motion", () => {
     expect(WORK_IMAGE_CLASS).toContain("object-cover");
-    expect(WORK_IMAGE_CLASS).toContain("group-hover:scale-[1.06]");
-    expect(WORK_IMAGE_CLASS).toContain("motion-reduce:transform-none");
+    expect(WORK_IMAGE_CLASS).not.toContain("group-hover:scale");
+    expect(WORK_IMAGE_CLASS).not.toContain("group-hover:contrast");
   });
 });
