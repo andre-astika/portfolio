@@ -5,6 +5,7 @@ import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import AssetLibrary from "./pages/AssetLibrary";
+import ArticlePage from "./pages/ArticlePage";
 import Home from "./pages/Home";
 
 const isGitHubPagesBuild = import.meta.env.VITE_GITHUB_PAGES === "true";
@@ -27,10 +28,20 @@ function StaticAssetLibraryNotice() {
 }
 
 function Router() {
+  if (isGitHubPagesBuild && typeof window !== "undefined") {
+    const fallbackPath = new URLSearchParams(window.location.search).get("p");
+    if (fallbackPath && /^\/blog-[1-3]$/.test(fallbackPath)) {
+      window.history.replaceState(null, "", `/portfolio${fallbackPath}`);
+    }
+  }
+
   // make sure to consider if you need authentication for certain routes
   const routes = (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/blog-1"}><ArticlePage slug="blog-1" /></Route>
+      <Route path={"/blog-2"}><ArticlePage slug="blog-2" /></Route>
+      <Route path={"/blog-3"}><ArticlePage slug="blog-3" /></Route>
       <Route path={"/assets"} component={isGitHubPagesBuild ? StaticAssetLibraryNotice : AssetLibrary} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

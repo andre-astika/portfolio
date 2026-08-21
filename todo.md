@@ -498,3 +498,17 @@ Weekend Mode activation note: the warm light palette and Weekend Hero state are 
 Work inspection note: the Weekend Mode Work section is reachable through the primary navigation, with the dark image cards and their hover overlays ready for contrast verification.
 
 Hover verification note: hovering the first Weekend Work card reveals both the project label and descriptive copy in white over the dark image gradient, restoring clear contrast without changing the card geometry.
+
+## How I Think standalone articles
+
+- [x] Create a professional Typography article at `/blog-1` from the first How I Think card.
+- [x] Create a professional User Experience article at `/blog-2` from the second How I Think card.
+- [x] Create a professional Color Theory article at `/blog-3` from the third How I Think card.
+- [x] Link each How I Think “Read Study” card CTA to its corresponding standalone article.
+- [x] Preserve Noir Kinetic design language, responsive layout, navigation, and Developer/Weekend themes across all article pages.
+- [x] Verify all article routes and interactions, run automated checks, then publish and synchronize the update.
+- [x] Verify the GitHub Pages static fallback serves `/blog-1`, `/blog-2`, and `/blog-3` through the deployed single-page app.
+
+Verification note: desktop previews confirmed `/blog-1`, `/blog-2`, and `/blog-3`; mobile previews confirmed the Typography and UX article layouts at 390px. The Article Weekend Mode uses the warm light palette correctly, while direct routing, article-navigation links, test coverage, TypeScript validation, and the production build all complete successfully.
+
+GitHub Pages verification note: the `build:pages` artifact contains both `dist/pages/index.html` and `dist/pages/404.html`; the fallback includes the `/blog-[1-3]` route handoff to the single-page app.
