@@ -650,3 +650,11 @@ Verification note: the About portrait now uses the shared Developer/Weekend stat
 - [x] Verify the GitHub Pages workflow succeeds and the public URL serves the updated About section.
 
 Verification note: GitHub Actions run `32517230752` completed successfully for commit `071de493`. The public GitHub Pages URL now exposes the updated About content, including the static Developer-mode portrait and Lead WordPress Frontend Developer experience entry.
+
+## About portrait position refinement
+
+- [x] Set the portrait sparkle to `top: -0.5rem` and `right: -1rem`.
+- [x] Lower the About — Behind the Pixels label until it aligns visually with the portrait chest.
+- [ ] Validate the revised composition on desktop and mobile, rerun automated checks, and synchronize the change to GitHub Pages.
+
+Preview note: desktop and 390px mobile previews show the portrait sparkle at the refined top-right offset and the About label lowered to the chest area. The revised marker placement remains inside the portrait composition without crowding its clipped corner.
