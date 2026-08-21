@@ -321,7 +321,7 @@ The browser preview shows the requested six labels in the specified order, repea
 
 - [x] Add a GitHub Pages-specific static build that uses the `/portfolio/` base path without affecting Manus hosting.
 - [x] Add an automated GitHub Actions workflow to build and deploy the static portfolio to GitHub Pages.
-- [x] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
+- [ ] Verify the static build and live GitHub Pages URL; document that backend Asset Library features are excluded.
 - [x] Resolve the pnpm version conflict in the GitHub Pages workflow and rerun deployment.
 
 ## GitHub Pages deployment notes
@@ -673,3 +673,13 @@ Verification note: the About caption now uses a bottom-anchored, full-width mono
 - [x] Validate both refinements on desktop and mobile, rerun automated checks, and synchronize them to GitHub Pages.
 
 Verification note: the caption is now rendered inside the clipped portrait layer at its true bottom edge with no caption border. The Philosophy statement uses Pinyon Script with source `text-white`, which the scoped Weekend rule converts to black on the light-paper theme. Desktop and 390px mobile previews confirm the caption remains flush and the statement remains legible. The suite passes all 24 tests; TypeScript, production build, and GitHub Pages static build complete successfully.
+
+## Scoped Philosophy script typography refinement
+
+- [x] Apply Pinyon Script only to the phrase “Design is what remains” and retain the rest of the statement in the standard display typeface.
+- [x] Tune the script phrase’s mobile font size and line-height for a balanced, readable Philosophy heading.
+- [x] Verify Developer and Weekend themes on desktop/mobile, rerun checks, and synchronize the update to GitHub Pages.
+
+Clarification: “when nothing else can be taken away.” must use the original display font and its existing theme-aware foreground color; it must not inherit Pinyon Script styling.
+
+Verification note: Pinyon Script is now isolated to “Design is what remains” at `4rem` with `0.74` leading on mobile, stepping up only at wider breakpoints. The remaining phrase is an independent Archivo display span with `text-white`, which the existing Weekend override converts to the light-mode ink color. Mobile preview, 25 tests, TypeScript, and production build complete successfully.
