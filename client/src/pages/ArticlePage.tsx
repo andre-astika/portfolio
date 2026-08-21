@@ -1,10 +1,11 @@
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "wouter";
 import SplashCursor from "@/components/SplashCursor";
 import { AndrePhotoProvider, useSiteWeekend } from "@/components/AndrePhoto";
 import { useRevealObserver } from "@/hooks/useKinetic";
 import { ARTICLES, getArticle, type Article } from "@/data/articles";
 import { resetArticleScrollPosition } from "@/lib/articleScroll";
+import { getReadingProgress } from "@/lib/readingProgress";
 import { siteAsset } from "@/lib/siteAsset";
 
 type ArticlePageProps = {
@@ -36,9 +37,18 @@ function ArticleModeSwitch() {
   );
 }
 
-function ArticleNavigation({ article }: { article: Article }) {
+function ArticleNavigation({ article, readingProgress }: { article: Article; readingProgress: number }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[oklch(0.08_0_0/0.82)] backdrop-blur-xl">
+      <div
+        aria-label={`Reading progress: ${Math.round(readingProgress)}%`}
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={Math.round(readingProgress)}
+        className="article-reading-progress absolute inset-x-0 top-0 h-px origin-left bg-white"
+        role="progressbar"
+        style={{ transform: `scaleX(${readingProgress / 100})` }}
+      />
       <div className="container flex h-16 items-center justify-between gap-4 md:h-20">
         <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Return to Andre Astika portfolio">
           <img
@@ -68,10 +78,28 @@ function ArticleNavigation({ article }: { article: Article }) {
 
 function ArticleView({ article }: { article: Article }) {
   const { weekend } = useSiteWeekend();
+  const [readingProgress, setReadingProgress] = useState(0);
   useRevealObserver();
 
   useLayoutEffect(() => {
     resetArticleScrollPosition();
+  }, [article.slug]);
+
+  useEffect(() => {
+    const updateReadingProgress = () => {
+      const root = document.documentElement;
+      const scrollHeight = Math.max(root.scrollHeight, document.body.scrollHeight);
+      setReadingProgress(getReadingProgress(window.scrollY, scrollHeight, window.innerHeight));
+    };
+
+    updateReadingProgress();
+    window.addEventListener("scroll", updateReadingProgress, { passive: true });
+    window.addEventListener("resize", updateReadingProgress);
+
+    return () => {
+      window.removeEventListener("scroll", updateReadingProgress);
+      window.removeEventListener("resize", updateReadingProgress);
+    };
   }, [article.slug]);
 
   const currentIndex = ARTICLES.findIndex((item) => item.slug === article.slug);
@@ -85,7 +113,7 @@ function ArticleView({ article }: { article: Article }) {
         RAINBOW_MODE={false}
         INK_MODE={weekend}
       />
-      <ArticleNavigation article={article} />
+      <ArticleNavigation article={article} readingProgress={readingProgress} />
 
       <main id="article-top" className="relative pt-28 md:pt-36">
         <section className="container pb-16 md:pb-24">
@@ -106,7 +134,7 @@ function ArticleView({ article }: { article: Article }) {
               <p className="font-label text-[10px] uppercase tracking-[0.3em] text-white/40">Editorial index</p>
               <p
                 className="article-editorial-index article-editorial-index-motion mt-2 font-display text-[6rem] font-extrabold leading-none tracking-[-0.08em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.4)] md:text-[8rem]"
-                style={weekend ? { color: "var(--ink)", WebkitTextStroke: "0" } : undefined}
+                style={weekend ? { color: "transparent", WebkitTextStroke: "1px var(--ink)" } : undefined}
               >
                 {article.index}
               </p>
