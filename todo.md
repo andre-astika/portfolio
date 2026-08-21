@@ -554,3 +554,11 @@ Verification note: the Typography Hero retains its light outlined `01` in Develo
 - [x] Verify both themes, index motion, reading-duration navigation, and automated checks before publishing.
 
 Verification note: the Typography navigation now shows `Thinking archive / 01 · 5 min read`. In Developer Mode, the `01` retains its outlined light treatment. Switching to Weekend Mode displays `01` as a solid black number against the paper Hero, using both a direct inline fallback and scoped CSS. The index enters with a short 580ms transform-and-opacity animation and respects reduced-motion preferences. `pnpm test` passes all 12 tests, and TypeScript checking plus production build complete successfully.
+
+## Light Mode outline and article reading progress
+
+- [x] Restore the Hero Editorial Index number to a black outline, not a solid fill, in Weekend/Light Mode.
+- [x] Add a slim reading-progress bar at the top of article navigation that reflects the reader’s position through the article.
+- [x] Verify outline contrast, progress behavior, responsiveness, and automated checks before publishing.
+
+Verification note: Weekend Mode now renders the Typography Hero’s `01` as a clearly visible black outline, matching the requested editorial treatment rather than a solid fill. The slim progress indicator is pinned to the top edge of article navigation and scales horizontally with scrolling. The progress calculation has three unit tests for start, midpoint, and boundary conditions. The full suite passes 15 tests; TypeScript checking and production build complete successfully.
