@@ -1,27 +1,25 @@
 import { describe, expect, it } from "vitest";
 import {
+  PHILOSOPHY_PRIMARY_CLASS,
+  PHILOSOPHY_PRIMARY_PHRASE,
   PHILOSOPHY_REMAINDER,
   PHILOSOPHY_REMAINDER_CLASS,
-  PHILOSOPHY_SCRIPT_CLASS,
-  PHILOSOPHY_SCRIPT_PHRASE,
 } from "./Philosophy";
 
 describe("Philosophy statement", () => {
-  it("limits Pinyon Script to the requested opening phrase", () => {
-    expect(PHILOSOPHY_SCRIPT_PHRASE).toBe("Design is what remains");
-    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("font-script-accent");
-    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("text-white");
+  it("restores the original display treatment for both statement lines", () => {
+    expect(PHILOSOPHY_PRIMARY_PHRASE).toBe("Design is what remains");
+    expect(PHILOSOPHY_PRIMARY_CLASS).toContain("font-display");
+    expect(PHILOSOPHY_PRIMARY_CLASS).not.toContain("font-script-accent");
     expect(PHILOSOPHY_REMAINDER).toBe("when nothing else can be taken away.");
     expect(PHILOSOPHY_REMAINDER_CLASS).toContain("font-display");
     expect(PHILOSOPHY_REMAINDER_CLASS).not.toContain("font-script-accent");
   });
 
-  it("keeps both statement fragments inline with a mobile-appropriate script scale", () => {
-    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("inline");
-    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("whitespace-nowrap");
-    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("text-[3.4rem]");
-    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("inline");
-    expect(PHILOSOPHY_REMAINDER_CLASS).not.toContain("block");
-    expect(PHILOSOPHY_REMAINDER_CLASS).not.toContain("mt-");
+  it("uses separate display lines with original editorial spacing", () => {
+    expect(PHILOSOPHY_PRIMARY_CLASS).toContain("block");
+    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("block");
+    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("mt-3");
+    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("md:mt-5");
   });
 });
