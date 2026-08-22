@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { buildInquiryMailto, CONTACT_AVAILABILITY, FOOTER_COPYRIGHT, SOCIALS } from "./Contact";
+import { buildInquiryMailto, FOOTER_COPYRIGHT, INQUIRY_EMAIL, SOCIALS } from "./Contact";
 
 describe("Contact privacy and location content", () => {
-  it("replaces the private phone contact with availability information", () => {
+  it("keeps a direct email action while removing private phone and availability cards", () => {
     expect(SOCIALS.some((item) => item.label === "Phone")).toBe(false);
-    expect(SOCIALS.find((item) => item.label === "Availability")?.value).toBe(CONTACT_AVAILABILITY);
+    expect(SOCIALS.some((item) => item.label === "Availability")).toBe(false);
+    expect(SOCIALS.find((item) => item.label === "Email")?.href).toBe(`mailto:${INQUIRY_EMAIL}`);
   });
 
   it("uses the requested Contact and footer location labels", () => {

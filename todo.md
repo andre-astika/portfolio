@@ -724,6 +724,16 @@ Verification note: the Phone card and call link have been replaced by an Availab
 
 Verification note: the inquiry form exposes labeled Name, Email, Project type, and Project details controls with required validation. Submission generates a prefilled mailto draft to the existing portfolio email address, keeping visitor data local to the email client. Desktop and 390px mobile previews confirm readable layout and all controls. The suite passes all 30 tests; TypeScript and production build complete successfully.
 
+## Contact inquiry control refinement
+
+- [x] Remove the redundant “Start a project” and “Or email me” buttons above the inquiry form.
+- [x] Match the Project details textarea typography to the other inquiry inputs.
+- [x] Change the Draft Email Inquiry button to an outline treatment on hover in both Developer and Weekend modes.
+- [x] Replace the Availability card with a direct Email card that opens the portfolio email address.
+- [x] Validate the refined contact controls across themes and breakpoints, rerun checks, and synchronize to GitHub Pages.
+
+Verification note: the redundant email CTAs are removed and the form begins directly beneath the Contact heading. Project details now uses the same IBM Plex Mono label font family as the inquiry inputs. The Submit button is solid at rest and uses a bordered transparent outline on hover; its Weekend override uses the light-theme ink for both border and text. The Email grid card retains a `mailto:en.andre.st@gmail.com` direct action; Availability is removed. Desktop and 390px mobile previews plus 30 tests, TypeScript, and production build verify the refinement.
+
 ## Unified Philosophy display phrase refinement
 
 - [x] Combine the complete Philosophy statement into one continuous Archivo display phrase without Pinyon Script or a forced line break.

@@ -1,11 +1,9 @@
 /* NOIR KINETIC — contact + footer: giant CTA type, inquiry form, mono contact grid,
    socials, and closing marquee. Crosshair logo mark as favicon anchor. */
 import { useState, type FormEvent } from "react";
-import { useMagnetic } from "@/hooks/useKinetic";
 
 export const FOOTER_BRAND_MARK = "✦";
 export const FOOTER_COPYRIGHT = "© 2026 Andre Astika — Bali, Indonesia";
-export const CONTACT_AVAILABILITY = "Available for new projects";
 export const INQUIRY_EMAIL = "en.andre.st@gmail.com";
 
 export type InquiryDraft = {
@@ -36,12 +34,10 @@ export function buildInquiryMailto(draft: InquiryDraft) {
 export const SOCIALS = [
   { label: "Email", href: `mailto:${INQUIRY_EMAIL}`, value: INQUIRY_EMAIL },
   { label: "Web", href: "https://andre.jupitragency.com", value: "andre.jupitragency.com", external: true },
-  { label: "Availability", href: "#contact", value: CONTACT_AVAILABILITY },
   { label: "Location", href: "#contact", value: "Bali, Indonesia" },
 ];
 
 export default function Contact() {
-  const ctaRef = useMagnetic(0.25);
   const [inquiry, setInquiry] = useState<InquiryDraft>(EMPTY_INQUIRY);
 
   const updateInquiry = (field: keyof InquiryDraft, value: string) => {
@@ -65,29 +61,9 @@ export default function Contact() {
           <span className="text-stroke">something bold.</span>
         </h2>
 
-        <div className="mt-12 flex flex-wrap gap-4">
-          <a
-            ref={ctaRef}
-            href={`mailto:${INQUIRY_EMAIL}?subject=New%20project%20with%20Andre`}
-            data-cursor
-            data-cursor-label="MAIL"
-            className="font-label group inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-medium uppercase tracking-[0.25em] text-black transition-all duration-200 hover:bg-transparent hover:text-white active:scale-[0.97]"
-          >
-            Start a project
-            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </a>
-          <a
-            href={`mailto:${INQUIRY_EMAIL}?subject=New%20project%20with%20Andre`}
-            data-cursor
-            className="font-label inline-flex items-center gap-3 px-3 py-4 text-xs uppercase tracking-[0.25em] text-white/70 transition-colors duration-200 hover:text-white"
-          >
-            Or email me
-          </a>
-        </div>
-
         <form
           onSubmit={handleInquirySubmit}
-          className="reveal mt-14 border border-white/10 bg-[oklch(0.13_0_0)] p-6 md:mt-16 md:p-8"
+          className="reveal mt-12 border border-white/10 bg-[oklch(0.13_0_0)] p-6 md:mt-16 md:p-8"
         >
           <div className="mb-7 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -136,7 +112,7 @@ export default function Contact() {
                 required
                 value={inquiry.message}
                 onChange={(event) => updateInquiry("message", event.target.value)}
-                className="min-h-32 resize-y border border-white/15 bg-transparent px-4 py-3 font-sans text-sm leading-relaxed text-white outline-none transition-colors placeholder:text-white/25 focus:border-white/60"
+                className="min-h-32 resize-y border border-white/15 bg-transparent px-4 py-3 font-label text-xs leading-relaxed tracking-[0.04em] text-white outline-none transition-colors placeholder:text-white/25 focus:border-white/60"
                 placeholder="What are you looking to build?"
               />
             </label>
@@ -146,14 +122,14 @@ export default function Contact() {
             type="submit"
             data-cursor
             data-cursor-label="SEND"
-            className="font-label mt-6 inline-flex items-center gap-3 bg-white px-7 py-4 text-xs font-medium uppercase tracking-[0.24em] text-black transition-all duration-200 hover:bg-transparent hover:text-white active:scale-[0.97]"
+            className="contact-inquiry-submit font-label mt-6 inline-flex items-center gap-3 px-7 py-4 text-xs font-medium uppercase tracking-[0.24em] transition-all duration-200 active:scale-[0.97]"
           >
             Draft email inquiry <span aria-hidden="true">→</span>
           </button>
         </form>
 
         {/* contact grid */}
-        <div className="mt-20 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-20 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-3">
           {SOCIALS.map((s) => (
             <a
               key={s.label}

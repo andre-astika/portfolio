@@ -442,6 +442,32 @@ body:has(.weekend-theme) {
   background-color: var(--card) !important;
 }
 
+/* Inquiry action retains a solid treatment at rest and a clear outline on hover
+   in both the ink and paper themes. */
+.contact-inquiry-submit {
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  color: #050505;
+}
+
+.contact-inquiry-submit:hover {
+  background: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.weekend-theme .contact-inquiry-submit {
+  border-color: var(--ink) !important;
+  background: var(--ink) !important;
+  color: var(--paper, oklch(0.965 0.008 90)) !important;
+}
+
+.weekend-theme .contact-inquiry-submit:hover {
+  background: transparent !important;
+  border-color: var(--ink) !important;
+  color: var(--ink) !important;
+}
+
 .weekend-theme .text-stroke {
   -webkit-text-stroke-color: color-mix(in oklab, var(--ink) 62%, transparent);
 }
