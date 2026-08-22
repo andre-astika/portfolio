@@ -705,3 +705,19 @@ Verification note: the two phrases are now adjacent inline spans separated only 
 - [x] Validate desktop/mobile typography, rerun checks, and synchronize the restoration to GitHub Pages.
 
 Verification note: both phrases are restored as their original separate Archivo display lines with the original editorial scale and spacing. Pinyon Script is fully removed from the statement. Desktop and 390px mobile previews confirm the restored two-line composition. The suite passes all 27 tests; TypeScript and production build complete successfully.
+
+## Contact privacy and location refinement
+
+- [x] Replace the Contact phone number with non-private contact information.
+- [x] Set the Contact location to “Denpasar, Bali”.
+- [x] Set the footer copyright to “© 2026 Andre Astika — Bali, Indonesia”.
+- [x] Validate desktop/mobile content, rerun checks, and synchronize the refinement to GitHub Pages.
+
+Verification note: the Phone card and call link have been replaced by an Availability card plus a privacy-safe email action. Contact now shows Denpasar, Bali, and the footer shows © 2026 Andre Astika — Bali, Indonesia. Desktop and 390px mobile previews verify the grid remains legible. The suite passes all 29 tests; TypeScript and production build complete successfully.
+
+## Unified Philosophy display phrase refinement
+
+- [x] Combine the complete Philosophy statement into one continuous Archivo display phrase without Pinyon Script or a forced line break.
+- [x] Validate responsive typography, rerun checks, and synchronize the unified phrase to GitHub Pages.
+
+Verification note: the full Philosophy statement is rendered as a single display-text node, without a script font or structural line-break spans. Natural wrapping is left to the viewport. Desktop and mobile previews plus the 27-test suite, TypeScript, and production build completed successfully before the Contact refinement.

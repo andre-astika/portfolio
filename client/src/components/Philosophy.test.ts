@@ -1,25 +1,18 @@
 import { describe, expect, it } from "vitest";
 import {
-  PHILOSOPHY_PRIMARY_CLASS,
-  PHILOSOPHY_PRIMARY_PHRASE,
-  PHILOSOPHY_REMAINDER,
-  PHILOSOPHY_REMAINDER_CLASS,
+  PHILOSOPHY_STATEMENT,
+  PHILOSOPHY_STATEMENT_CLASS,
 } from "./Philosophy";
 
 describe("Philosophy statement", () => {
-  it("restores the original display treatment for both statement lines", () => {
-    expect(PHILOSOPHY_PRIMARY_PHRASE).toBe("Design is what remains");
-    expect(PHILOSOPHY_PRIMARY_CLASS).toContain("font-display");
-    expect(PHILOSOPHY_PRIMARY_CLASS).not.toContain("font-script-accent");
-    expect(PHILOSOPHY_REMAINDER).toBe("when nothing else can be taken away.");
-    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("font-display");
-    expect(PHILOSOPHY_REMAINDER_CLASS).not.toContain("font-script-accent");
+  it("uses the complete statement as one display phrase", () => {
+    expect(PHILOSOPHY_STATEMENT).toBe("Design is what remains when nothing else can be taken away.");
+    expect(PHILOSOPHY_STATEMENT_CLASS).toContain("font-display");
+    expect(PHILOSOPHY_STATEMENT_CLASS).not.toContain("font-script-accent");
   });
 
-  it("uses separate display lines with original editorial spacing", () => {
-    expect(PHILOSOPHY_PRIMARY_CLASS).toContain("block");
-    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("block");
-    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("mt-3");
-    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("md:mt-5");
+  it("does not force a structural line break within the statement", () => {
+    expect(PHILOSOPHY_STATEMENT_CLASS).not.toContain("block");
+    expect(PHILOSOPHY_STATEMENT_CLASS).not.toContain("mt-");
   });
 });

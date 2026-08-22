@@ -3,13 +3,14 @@
 import { useMagnetic } from "@/hooks/useKinetic";
 
 export const FOOTER_BRAND_MARK = "✦";
-export const FOOTER_COPYRIGHT = "© 2026 Andre Astika — Denpasar, Bali";
+export const FOOTER_COPYRIGHT = "© 2026 Andre Astika — Bali, Indonesia";
+export const CONTACT_AVAILABILITY = "Available for new projects";
 
-const SOCIALS = [
+export const SOCIALS = [
   { label: "Email", href: "mailto:en.andre.st@gmail.com", value: "en.andre.st@gmail.com" },
   { label: "Web", href: "https://andre.jupitragency.com", value: "andre.jupitragency.com", external: true },
-  { label: "Phone", href: "tel:+628814823595", value: "0881 482 3595" },
-  { label: "Location", href: "#contact", value: "Denpasar, Bali — Indonesia" },
+  { label: "Availability", href: "#contact", value: CONTACT_AVAILABILITY },
+  { label: "Location", href: "#contact", value: "Denpasar, Bali" },
 ];
 
 export default function Contact() {
@@ -39,11 +40,11 @@ export default function Contact() {
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
           <a
-            href="tel:+628814823595"
+            href="mailto:en.andre.st@gmail.com?subject=New%20project%20with%20Andre"
             data-cursor
             className="font-label inline-flex items-center gap-3 px-3 py-4 text-xs uppercase tracking-[0.25em] text-white/70 transition-colors duration-200 hover:text-white"
           >
-            Or call me
+            Or email me
           </a>
         </div>
 
