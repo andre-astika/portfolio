@@ -20,6 +20,10 @@ type Mode = "dev" | "weekend";
 
 export const MODE_SWITCH_DEV_ACTIVE_CLASS = "bg-white text-black";
 export const MODE_SWITCH_WEEKEND_ACTIVE_CLASS = "bg-black text-white";
+export const MOBILE_DEV_MODE_LABEL = "✦ Dev Mode";
+export const DESKTOP_DEV_MODE_LABEL = "✦ Developer Mode";
+export const MOBILE_ROLE_LABEL = "Web Developer · Web Designer · Graphic Designer";
+export const DESKTOP_ROLE_LABEL = "Website Developer · Website Designer · Graphic Designer";
 
 function ModeSwitch({
   mode,
@@ -36,7 +40,7 @@ function ModeSwitch({
     >
       {(
         [
-          { key: "dev", label: "✦ Developer Mode" },
+          { key: "dev", label: DESKTOP_DEV_MODE_LABEL },
           { key: "weekend", label: "Weekend Mode ✦" },
         ] as const
       ).map((opt) => (
@@ -55,7 +59,14 @@ function ModeSwitch({
                   : "text-white/60 hover:text-white"
               }`}
             >
-              {opt.label}
+              {opt.key === "dev" ? (
+                <>
+                  <span className="sm:hidden">{MOBILE_DEV_MODE_LABEL}</span>
+                  <span className="hidden sm:inline">{opt.label}</span>
+                </>
+              ) : (
+                opt.label
+              )}
             </button>
           </TooltipTrigger>
           <TooltipContent
@@ -102,7 +113,7 @@ export default function Hero() {
       {/* WebGL fluid/smoke layer behind everything, pointer-reactive */}
       <FluidHeroBg />
 
-      <div className="container relative z-10 flex min-h-screen flex-col justify-center pb-28 pt-28 md:pt-32">
+      <div className="container relative z-10 flex min-h-screen flex-col justify-center px-6 pb-12 pt-28 md:pb-28 md:pt-32 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           {/* LEFT: type stack */}
           <div>
@@ -111,8 +122,9 @@ export default function Hero() {
               <ModeSwitch mode={mode} onChange={(nextMode) => setWeekend(nextMode === "weekend")} />
             </div>
 
-            <p className="font-label mb-6 line-rise text-[11px] uppercase tracking-[0.315em] text-white/50 md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
-              Website Developer · Website Designer · Graphic Designer
+            <p className="font-label mb-6 line-rise max-w-[300px] text-[11px] uppercase tracking-[0.315em] text-white/50 sm:max-w-none md:text-xs" style={{ "--line-delay": "60ms" } as React.CSSProperties}>
+              <span className="sm:hidden">{MOBILE_ROLE_LABEL}</span>
+              <span className="hidden sm:inline">{DESKTOP_ROLE_LABEL}</span>
             </p>
 
             <h1 className="font-display leading-[0.88] tracking-tight">

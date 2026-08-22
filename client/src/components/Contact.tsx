@@ -198,7 +198,7 @@ export default function Contact() {
             data-cursor
             data-cursor-label="SEND"
             disabled={inquiryMutation.isPending}
-            className="contact-inquiry-submit font-label mt-6 inline-flex items-center gap-3 px-7 py-4 text-xs font-medium uppercase tracking-[0.24em] transition-all duration-200 active:scale-[0.97] disabled:cursor-wait disabled:opacity-50"
+            className="contact-inquiry-submit font-label mt-6 inline-flex items-center gap-3 font-medium uppercase tracking-[0.24em] transition-all duration-200 active:scale-[0.97] disabled:cursor-wait disabled:opacity-50"
           >
             {inquiryMutation.isPending ? "Sending…" : "Send inquiry"} <span aria-hidden="true">→</span>
           </button>
@@ -227,7 +227,7 @@ export default function Contact() {
               target={s.external ? "_blank" : undefined}
               rel={s.external ? "noopener noreferrer" : undefined}
               data-cursor
-              className="spotlight group flex flex-col gap-4 bg-[oklch(0.13_0_0)] p-8 transition-colors duration-300 hover:bg-[oklch(0.17_0_0)]"
+              className="spotlight group flex flex-col gap-4 bg-[oklch(0.13_0_0)] p-6 transition-colors duration-300 hover:bg-[oklch(0.17_0_0)] md:p-8"
             >
               <span className="font-label text-[10px] uppercase tracking-[0.3em] text-white/40">
                 {s.label}

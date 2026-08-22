@@ -821,3 +821,10 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 - [x] Set the Hero image crop to 80% on every device and apply Work mobile container padding exactly as specified.
 - [x] Stack the mobile footer with 1.5rem vertical padding and use 18px sparkles in header/footer.
 - [x] Validate and publish the completed responsive rules.
+
+## Hero and Contact mobile spacing refinement
+
+- [x] Apply requested mobile padding to header and Hero container, including the 300px role-label width.
+- [x] Show the shortened Dev Mode label and revised role copy only on mobile.
+- [x] Reduce Contact card padding on mobile and set the inquiry button typography and padding at all breakpoints.
+- [x] Validate and publish the Hero and Contact refinement.

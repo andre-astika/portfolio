@@ -1,4 +1,4 @@
-export const HEADER_CHROME_CONTAINER_CLASS = "container site-chrome-container flex h-16 items-center justify-between md:h-20";
+export const HEADER_CHROME_CONTAINER_CLASS = "container site-chrome-container flex h-16 items-center justify-between px-6 md:h-20 lg:px-8";
 
 export const FOOTER_CHROME_CONTAINER_CLASS = "container site-chrome-container flex flex-col items-center justify-between gap-5 md:flex-row md:gap-0";
 
