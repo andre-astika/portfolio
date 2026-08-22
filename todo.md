@@ -715,6 +715,15 @@ Verification note: both phrases are restored as their original separate Archivo 
 
 Verification note: the Phone card and call link have been replaced by an Availability card plus a privacy-safe email action. Contact now shows Denpasar, Bali, and the footer shows © 2026 Andre Astika — Bali, Indonesia. Desktop and 390px mobile previews verify the grid remains legible. The suite passes all 29 tests; TypeScript and production build complete successfully.
 
+## Contact inquiry form and Bali location refinement
+
+- [x] Add a simple accessible inquiry form to the Contact section with name, email, project detail, and message fields.
+- [x] Send the inquiry through a prefilled `mailto:` message without requiring external credentials or storing visitor data.
+- [x] Update the Contact location value to “Bali, Indonesia”.
+- [x] Validate desktop/mobile layout and form behavior, rerun checks, and synchronize the update to GitHub Pages.
+
+Verification note: the inquiry form exposes labeled Name, Email, Project type, and Project details controls with required validation. Submission generates a prefilled mailto draft to the existing portfolio email address, keeping visitor data local to the email client. Desktop and 390px mobile previews confirm readable layout and all controls. The suite passes all 30 tests; TypeScript and production build complete successfully.
+
 ## Unified Philosophy display phrase refinement
 
 - [x] Combine the complete Philosophy statement into one continuous Archivo display phrase without Pinyon Script or a forced line break.
