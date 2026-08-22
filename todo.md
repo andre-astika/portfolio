@@ -766,7 +766,7 @@ Verification note: the full Philosophy statement is rendered as a single display
 - [x] Diagnose why the GitHub Pages form has no visible validation or action feedback.
 - [x] Show validation and a clear fallback status on GitHub Pages before attempting mailto.
 - [x] Capitalize the first letter of name, project type, and project details in the delivery email while preserving email casing.
-- [ ] Verify both hosting variants, run checks, and synchronize the repair to GitHub Pages.
+- [x] Verify both hosting variants, run checks, and synchronize the repair to GitHub Pages.
 
 Public-check progress: GitHub Pages workflow `32586715680` completed successfully and the latest static Contact interface is live. The next validation step is to trigger its required-field state and confirm the recovery mailto link is visible after a valid static submission.
 
@@ -779,6 +779,12 @@ GitHub Pages validation result: submitting the empty public form now shows all t
 - [x] Audit the Manus server endpoint and cross-origin protections for GitHub Pages delivery.
 - [x] Route valid GitHub Pages inquiries to the secure Manus Resend endpoint without exposing credentials.
 - [x] Verify a delivered inquiry originating from GitHub Pages, including capitalization and lowercase email formatting.
-- [ ] Publish the cross-host form delivery update to Manus and GitHub Pages.
+- [x] Publish the cross-host form delivery update to Manus and GitHub Pages.
 
 Cross-host delivery verification: an inquiry request carrying `Origin: https://andre-astika.github.io` received the expected CORS response and returned HTTP 200 from the Manus inquiry procedure. Resend recorded `Portfolio inquiry — Github pages test` to `en.andre.st@gmail.com` with status `Delivered`; the test input used lowercase source text and uppercase email, validating the new content formatting path.
+
+Public deployment check: GitHub Pages now displays `Securely sends via Andre's form` and `Send inquiry`, confirming the static client points to the live Manus delivery path rather than the prior mailto-only flow.
+
+Browser delivery check: the published GitHub Pages Contact form exposes the real-send label, its required fields, and the `Send inquiry` action. A controlled browser submission is ready to confirm the visible success state.
+
+Production delivery result: the published Manus endpoint returned HTTP 200 to a request from the GitHub Pages origin with the intended CORS headers. Resend then recorded `Portfolio inquiry — Github pages production test` as `Opened` by `en.andre.st@gmail.com`, confirming real delivery on the deployed cross-host path. The pre-publication validation and capitalization repair also passed 45 automated tests, TypeScript, and both production builds.
