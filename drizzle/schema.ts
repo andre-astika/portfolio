@@ -45,3 +45,11 @@ export const portfolioAssets = mysqlTable(
 
 export type PortfolioAsset = typeof portfolioAssets.$inferSelect;
 export type InsertPortfolioAsset = typeof portfolioAssets.$inferInsert;
+
+/** Hashed visitor fingerprints used only to throttle the public inquiry form. */
+export const inquiryRateLimits = mysqlTable("inquiryRateLimits", {
+  keyHash: varchar("keyHash", { length: 64 }).primaryKey(),
+  attempts: int("attempts").notNull(),
+  windowStartedAt: timestamp("windowStartedAt").notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});

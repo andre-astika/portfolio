@@ -734,6 +734,24 @@ Verification note: the inquiry form exposes labeled Name, Email, Project type, a
 
 Verification note: the redundant email CTAs are removed and the form begins directly beneath the Contact heading. Project details now uses the same IBM Plex Mono label font family as the inquiry inputs. The Submit button is solid at rest and uses a bordered transparent outline on hover; its Weekend override uses the light-theme ink for both border and text. The Email grid card retains a `mailto:en.andre.st@gmail.com` direct action; Availability is removed. Desktop and 390px mobile previews plus 30 tests, TypeScript, and production build verify the refinement.
 
+## Resend inquiry delivery, feedback, and anti-spam
+
+- [x] Collect Resend credentials and verified sender details for server-side inquiry delivery.
+- [x] Add required name/email validation, loading feedback, and success/error messaging to the Contact inquiry form.
+- [x] Deliver inquiries through Resend to the owner inbox, with reply-to set to the visitor email.
+- [x] Add layered anti-spam protections including a hidden honeypot, minimum completion time, and server-side rate limiting.
+- [ ] Test the client/server flow and security guards, then synchronize the live form to GitHub Pages.
+
+Setup assistance: guide the user through Resend account access, sender or domain verification, and secure API-key creation before activating server-side delivery.
+
+Resend setup progress (Aug 22, 2026): the account email was successfully changed and verified as `en.andre.st@gmail.com`; a one-time API key named `Andre Portfolio Contact Form` with Sending access was created. The key still needs to be entered through the secure project configuration card. Until a custom domain is verified, the permitted sender is `onboarding@resend.dev` and the recipient must remain the Resend account email. Resend’s send-email endpoint supports `from`, `to`, `reply_to`, HTML/text body, and an idempotency key, so the future server mutation can set visitor email only as reply-to.
+
+Visual check (Aug 22, 2026): the Manus preview Contact section renders the `Securely sends to Andre` label and `Send inquiry` action in the established Noir Kinetic form treatment. The GitHub Pages build remains intentionally configured to use the previous mailto fallback because it has no server runtime.
+
+Browser verification (Manus preview): the Contact form exposes the required Name, Email, Project type, and Project details fields alongside the `Securely sends to Andre` label. A user-approved test inquiry is ready to be submitted to the configured owner inbox.
+
+Delivery verification: Resend recorded `Portfolio inquiry — Portfolio Delivery Test` to `en.andre.st@gmail.com` with status `Delivered`. The final test used the Resend temporary onboarding sender and a visitor reply-to address; it was accepted after normalizing an accidental trailing period in the configured sender address.
+
 ## Unified Philosophy display phrase refinement
 
 - [x] Combine the complete Philosophy statement into one continuous Archivo display phrase without Pinyon Script or a forced line break.

@@ -1,9 +1,11 @@
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
-import { createPortfolioAsset, listPortfolioAssets } from "./db";
+import { consumeInquiryRateLimit, createPortfolioAsset, listPortfolioAssets } from "./db";
+import { createInquiryFingerprint, inquiryInputSchema, isInquirySubmittedTooQuickly, sendInquiryEmail } from "./inquiry";
 import { sanitizePortfolioFileName, validatePortfolioAssetUpload } from "./portfolioAssets";
 import { storagePut } from "./storage";
 
@@ -18,6 +20,41 @@ export const appRouter = router({
       return {
         success: true,
       } as const;
+    }),
+  }),
+  inquiry: router({
+    submit: publicProcedure.input(inquiryInputSchema).mutation(async ({ ctx, input }) => {
+      // Quietly accept obvious bot submissions without sending an email.
+      if (input.honeypot || isInquirySubmittedTooQuickly(input.formStartedAt)) {
+        return { success: true, filtered: true } as const;
+      }
+
+      const forwardedFor = ctx.req.headers["x-forwarded-for"];
+      const ipAddress = Array.isArray(forwardedFor)
+        ? forwardedFor[0] ?? "unknown"
+        : forwardedFor?.split(",")[0]?.trim() || ctx.req.ip || "unknown";
+      const userAgent = ctx.req.headers["user-agent"] ?? "unknown";
+      const fingerprint = createInquiryFingerprint(ipAddress, userAgent);
+      const allowed = await consumeInquiryRateLimit(fingerprint);
+
+      if (!allowed) {
+        throw new TRPCError({
+          code: "TOO_MANY_REQUESTS",
+          message: "Please wait a few minutes before sending another inquiry.",
+        });
+      }
+
+      try {
+        await sendInquiryEmail(input);
+      } catch (error) {
+        console.error("[Inquiry] Delivery failed", error instanceof Error ? error.message : "Unknown error");
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Your inquiry could not be sent. Please try again or email Andre directly.",
+        });
+      }
+
+      return { success: true, filtered: false } as const;
     }),
   }),
   assets: router({
