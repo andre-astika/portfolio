@@ -799,3 +799,10 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 - [x] Match the header navigation sparkle size to the footer sparkle.
 - [x] Use the shared header container and height structure for the footer.
 - [x] Ensure header and footer containers use full width below 767px, then verify and publish.
+
+## Header controls and footer spacing refinement
+
+- [x] Make the active Developer Mode background fill the full button width.
+- [x] Hide header menu links at tablet widths so only the sparkle and Let’s talk button remain.
+- [x] Set footer section padding to 3rem 0 on every breakpoint and remove the shared footer container height.
+- [x] Validate desktop, tablet, and mobile layouts, then publish the refinement.

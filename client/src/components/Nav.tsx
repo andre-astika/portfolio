@@ -1,7 +1,7 @@
 /* NOIR KINETIC — top nav: mono labels, crosshair logo, scroll-aware blur bar. */
 import { useEffect, useState } from "react";
 import { useMagnetic } from "@/hooks/useKinetic";
-import { SITE_CHROME_CONTAINER_CLASS, SITE_CHROME_MARK_CLASS } from "@/lib/siteChrome";
+import { HEADER_CHROME_CONTAINER_CLASS, HEADER_NAV_LINKS_CLASS, SITE_CHROME_MARK_CLASS } from "@/lib/siteChrome";
 
 export const NAV_BRAND_MARK = "✦";
 
@@ -32,7 +32,7 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
-      <div className={SITE_CHROME_CONTAINER_CLASS}>
+      <div className={HEADER_CHROME_CONTAINER_CLASS}>
         <a
           href="#top"
           data-cursor
@@ -43,7 +43,7 @@ export default function Nav() {
           <span aria-hidden="true">{NAV_BRAND_MARK}</span>
         </a>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className={HEADER_NAV_LINKS_CLASS}>
           {LINKS.map((l, i) => (
             <a
               key={l.href}

@@ -18,6 +18,9 @@ const HERO_IMG_WEEKEND = siteAsset("/manus-storage/andre-profile-bg-img-with-acc
 
 type Mode = "dev" | "weekend";
 
+export const MODE_SWITCH_DEV_ACTIVE_CLASS = "bg-white text-black";
+export const MODE_SWITCH_WEEKEND_ACTIVE_CLASS = "bg-black text-white";
+
 function ModeSwitch({
   mode,
   onChange,
@@ -31,13 +34,6 @@ function ModeSwitch({
       role="tablist"
       aria-label="Andre mode"
     >
-      {/* sliding pill */}
-      <span
-        className={`absolute top-1 bottom-1 w-[calc(50%-4px)] transition-all duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
-          mode === "dev" ? "left-1 bg-white" : "left-[calc(50%+0px)] bg-black"
-        }`}
-        aria-hidden="true"
-      />
       {(
         [
           { key: "dev", label: "✦ Developer Mode" },
@@ -54,8 +50,8 @@ function ModeSwitch({
               className={`relative z-10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 md:px-5 ${
                 mode === opt.key
                   ? mode === "weekend"
-                    ? "text-white"
-                    : "text-black"
+                    ? MODE_SWITCH_WEEKEND_ACTIVE_CLASS
+                    : MODE_SWITCH_DEV_ACTIVE_CLASS
                   : "text-white/60 hover:text-white"
               }`}
             >
