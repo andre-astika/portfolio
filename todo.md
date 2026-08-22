@@ -793,3 +793,9 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 
 - [x] Replace the Contact Web card target and label with the GitHub Pages portfolio URL.
 - [x] Verify the change and publish it to GitHub Pages.
+
+## Header and footer alignment
+
+- [x] Match the header navigation sparkle size to the footer sparkle.
+- [x] Use the shared header container and height structure for the footer.
+- [x] Ensure header and footer containers use full width below 767px, then verify and publish.
