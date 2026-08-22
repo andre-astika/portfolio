@@ -131,6 +131,11 @@ manus-content-root {
       max-width: 1280px;
     }
   }
+  @media (max-width: 767px) {
+    .site-chrome-container {
+      max-width: 100%;
+    }
+  }
 
   /* ===== NOIR KINETIC utilities ===== */
   .font-display {
