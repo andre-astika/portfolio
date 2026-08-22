@@ -8,6 +8,13 @@
       "when": 1786626190569,
       "tag": "0000_normal_anthem",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1787416475422,
+      "tag": "0001_inquiry-rate-limits",
+      "breakpoints": true
     }
   ]
 }

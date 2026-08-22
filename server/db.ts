@@ -1,7 +1,8 @@
 import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertPortfolioAsset, InsertUser, portfolioAssets, users } from "../drizzle/schema";
+import { InsertPortfolioAsset, InsertUser, inquiryRateLimits, portfolioAssets, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
+import { evaluateInquiryRateLimit } from "./inquiryRateLimit";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -105,4 +106,33 @@ export async function listPortfolioAssets(ownerId: number) {
     .from(portfolioAssets)
     .where(eq(portfolioAssets.ownerId, ownerId))
     .orderBy(desc(portfolioAssets.createdAt));
+}
+
+export async function consumeInquiryRateLimit(keyHash: string, now = new Date()) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable while protecting the inquiry form");
+
+  const [current] = await db
+    .select({ attempts: inquiryRateLimits.attempts, windowStartedAt: inquiryRateLimits.windowStartedAt })
+    .from(inquiryRateLimits)
+    .where(eq(inquiryRateLimits.keyHash, keyHash))
+    .limit(1);
+  const decision = evaluateInquiryRateLimit(current, now);
+
+  if (!decision.allowed) return false;
+
+  if (current) {
+    await db
+      .update(inquiryRateLimits)
+      .set({ attempts: decision.attempts, windowStartedAt: decision.windowStartedAt })
+      .where(eq(inquiryRateLimits.keyHash, keyHash));
+  } else {
+    await db.insert(inquiryRateLimits).values({
+      keyHash,
+      attempts: decision.attempts,
+      windowStartedAt: decision.windowStartedAt,
+    });
+  }
+
+  return true;
 }
