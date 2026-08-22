@@ -760,3 +760,10 @@ Publication verification: checkpoint `7aa66862` is live on Manus. GitHub commit 
 - [x] Validate responsive typography, rerun checks, and synchronize the unified phrase to GitHub Pages.
 
 Verification note: the full Philosophy statement is rendered as a single display-text node, without a script font or structural line-break spans. Natural wrapping is left to the viewport. Desktop and mobile previews plus the 27-test suite, TypeScript, and production build completed successfully before the Contact refinement.
+
+## Contact fallback GitHub Pages and email capitalization repair
+
+- [x] Diagnose why the GitHub Pages form has no visible validation or action feedback.
+- [x] Show validation and a clear fallback status on GitHub Pages before attempting mailto.
+- [x] Capitalize the first letter of name, project type, and project details in the delivery email while preserving email casing.
+- [ ] Verify both hosting variants, run checks, and synchronize the repair to GitHub Pages.
