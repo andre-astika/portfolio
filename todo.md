@@ -814,3 +814,10 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 - [x] Apply specified mobile spacing, principle layout, and CTA geometry to Philosophy.
 - [x] Apply specified mobile spacing and tablet grid treatment to Experience and Contact.
 - [x] Validate desktop, 1023px tablet, and mobile layouts, then publish the responsive refinement.
+
+## Header and footer responsive completion
+
+- [x] Remove max-width from all shared containers at tablet and mobile widths.
+- [x] Set the Hero image crop to 80% on every device and apply Work mobile container padding exactly as specified.
+- [x] Stack the mobile footer with 1.5rem vertical padding and use 18px sparkles in header/footer.
+- [x] Validate and publish the completed responsive rules.

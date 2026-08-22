@@ -18,4 +18,11 @@ describe("tablet and mobile section layout", () => {
     expect(source("Experience.tsx")).toContain("md:grid-cols-[0.8fr_1.22fr]");
     expect(source("Experience.tsx")).toContain("grid gap-2");
   });
+
+  it("uses the requested all-device Hero crop and mobile Work spacing", () => {
+    expect(source("LiquidHeroReveal.tsx")).toContain("object-[80%_50%]");
+    const css = readFileSync(new URL("../index.css", import.meta.url), "utf8");
+    expect(css).toContain(".container {\n    max-width: unset;");
+    expect(css).toContain("#work > .container {\n    padding: 3rem 1.5rem 0;");
+  });
 });
