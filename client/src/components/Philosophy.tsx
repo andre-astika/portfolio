@@ -4,10 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useMouseParallax } from "@/hooks/useKinetic";
 import { getPhilosophyReadingProgress } from "@/lib/philosophyProgress";
 
-export const PHILOSOPHY_PRIMARY_PHRASE = "Design is what remains";
-export const PHILOSOPHY_REMAINDER = "when nothing else can be taken away.";
-export const PHILOSOPHY_PRIMARY_CLASS = "font-display block text-4xl font-extrabold leading-[0.96] tracking-tight text-white sm:text-5xl md:text-6xl";
-export const PHILOSOPHY_REMAINDER_CLASS = "font-display mt-3 block text-4xl font-extrabold leading-[0.96] tracking-tight text-white sm:text-5xl md:mt-5 md:text-6xl";
+export const PHILOSOPHY_STATEMENT = "Design is what remains when nothing else can be taken away.";
+export const PHILOSOPHY_STATEMENT_CLASS = "font-display text-4xl font-extrabold leading-[0.96] tracking-tight text-white sm:text-5xl md:text-6xl";
 
 const PRINCIPLES = [
   {
@@ -65,10 +63,7 @@ export default function Philosophy() {
             <p className="font-label mb-6 text-[11px] uppercase tracking-[0.35em] text-white/45">
               (Philosophy) — Design principles
             </p>
-            <h2 aria-label={`${PHILOSOPHY_PRIMARY_PHRASE} ${PHILOSOPHY_REMAINDER}`}>
-              <span className={PHILOSOPHY_PRIMARY_CLASS}>{PHILOSOPHY_PRIMARY_PHRASE}</span>
-              <span className={PHILOSOPHY_REMAINDER_CLASS}>{PHILOSOPHY_REMAINDER}</span>
-            </h2>
+            <h2 className={PHILOSOPHY_STATEMENT_CLASS}>{PHILOSOPHY_STATEMENT}</h2>
             <div ref={floatRef} className="mt-10 flex items-center gap-3 text-white/40" style={{ willChange: "transform" }}>
               <span className="font-label text-[11px] uppercase tracking-[0.25em]">✦ Reduced to essentials</span>
             </div>

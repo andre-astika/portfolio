@@ -9,6 +9,6 @@ describe("minimal site branding", () => {
   });
 
   it("retains the requested footer copyright line", () => {
-    expect(FOOTER_COPYRIGHT).toBe("© 2026 Andre Astika — Denpasar, Bali");
+    expect(FOOTER_COPYRIGHT).toBe("© 2026 Andre Astika — Bali, Indonesia");
   });
 });
