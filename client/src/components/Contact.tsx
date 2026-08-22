@@ -2,7 +2,7 @@
    socials, and closing marquee. Crosshair logo mark as favicon anchor. */
 import { useState, type FormEvent } from "react";
 import { trpc } from "@/lib/trpc";
-import { SITE_CHROME_CONTAINER_CLASS, SITE_CHROME_MARK_CLASS } from "@/lib/siteChrome";
+import { FOOTER_CHROME_CONTAINER_CLASS, FOOTER_SECTION_CLASS, SITE_CHROME_MARK_CLASS } from "@/lib/siteChrome";
 
 export const FOOTER_BRAND_MARK = "✦";
 export const FOOTER_COPYRIGHT = "© 2026 Andre Astika — Bali, Indonesia";
@@ -240,8 +240,8 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-[oklch(0.11_0_0)] py-10 md:py-14">
-        <div className={SITE_CHROME_CONTAINER_CLASS}>
+      <div className={FOOTER_SECTION_CLASS}>
+        <div className={FOOTER_CHROME_CONTAINER_CLASS}>
           <span className={SITE_CHROME_MARK_CLASS} aria-hidden="true">
             {FOOTER_BRAND_MARK}
           </span>

@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { FOOTER_BRAND_MARK, FOOTER_COPYRIGHT } from "./Contact";
 import { NAV_BRAND_MARK } from "./Nav";
-import { SITE_CHROME_CONTAINER_CLASS, SITE_CHROME_MARK_CLASS } from "@/lib/siteChrome";
+import {
+  FOOTER_CHROME_CONTAINER_CLASS,
+  FOOTER_SECTION_CLASS,
+  HEADER_CHROME_CONTAINER_CLASS,
+  HEADER_NAV_LINKS_CLASS,
+  SITE_CHROME_MARK_CLASS,
+} from "@/lib/siteChrome";
 
 describe("minimal site branding", () => {
   it("uses a sparkle-only mark in both the navigation and footer", () => {
@@ -12,7 +18,10 @@ describe("minimal site branding", () => {
   });
 
   it("uses the same fixed-height container structure for header and footer", () => {
-    expect(SITE_CHROME_CONTAINER_CLASS).toBe("container site-chrome-container flex h-16 items-center justify-between md:h-20");
+    expect(HEADER_CHROME_CONTAINER_CLASS).toBe("container site-chrome-container flex h-16 items-center justify-between md:h-20");
+    expect(FOOTER_CHROME_CONTAINER_CLASS).toBe("container site-chrome-container flex items-center justify-between");
+    expect(FOOTER_SECTION_CLASS).toBe("border-t border-white/10 bg-[oklch(0.11_0_0)] py-12");
+    expect(HEADER_NAV_LINKS_CLASS).toContain("lg:flex");
   });
 
   it("retains the requested footer copyright line", () => {
