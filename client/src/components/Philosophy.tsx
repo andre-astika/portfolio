@@ -6,8 +6,8 @@ import { getPhilosophyReadingProgress } from "@/lib/philosophyProgress";
 
 export const PHILOSOPHY_SCRIPT_PHRASE = "Design is what remains";
 export const PHILOSOPHY_REMAINDER = "when nothing else can be taken away.";
-export const PHILOSOPHY_SCRIPT_CLASS = "font-script-accent text-white text-[4rem] leading-[0.74] sm:text-[5rem] md:text-[6.1rem]";
-export const PHILOSOPHY_REMAINDER_CLASS = "font-display mt-3 block text-4xl font-extrabold leading-[0.96] tracking-tight text-white sm:text-5xl md:mt-5 md:text-6xl";
+export const PHILOSOPHY_SCRIPT_CLASS = "font-script-accent inline whitespace-nowrap text-[3.4rem] leading-[0.88] text-white sm:text-[4.6rem] md:text-[5.75rem]";
+export const PHILOSOPHY_REMAINDER_CLASS = "font-display inline text-2xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-3xl md:text-4xl";
 
 const PRINCIPLES = [
   {
@@ -66,7 +66,7 @@ export default function Philosophy() {
               (Philosophy) — Design principles
             </p>
             <h2 aria-label={`${PHILOSOPHY_SCRIPT_PHRASE} ${PHILOSOPHY_REMAINDER}`}>
-              <span className={PHILOSOPHY_SCRIPT_CLASS}>{PHILOSOPHY_SCRIPT_PHRASE}</span>
+              <span className={PHILOSOPHY_SCRIPT_CLASS}>{PHILOSOPHY_SCRIPT_PHRASE}</span>{" "}
               <span className={PHILOSOPHY_REMAINDER_CLASS}>{PHILOSOPHY_REMAINDER}</span>
             </h2>
             <div ref={floatRef} className="mt-10 flex items-center gap-3 text-white/40" style={{ willChange: "transform" }}>
