@@ -356,12 +356,15 @@ manus-content-root {
   to { margin-left: 3%; opacity: 0.84; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .site-surface main > section,
   .site-surface main > section > .container {
     width: 100%;
-    max-width: 100%;
+    max-width: none;
   }
+}
+
+@media (max-width: 767px) {
 
   .lumora-hero-orb {
     width: 75vw;

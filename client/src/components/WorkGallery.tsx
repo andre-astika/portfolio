@@ -172,7 +172,7 @@ export default function WorkGallery() {
 
   return (
     <section id="work" className="relative bg-[oklch(0.15_0_0)]">
-      <div className="container pb-8 pt-24 md:pt-32">
+      <div className="container pb-0 pt-12 md:pb-8 md:pt-32">
         <div className="reveal flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="font-label mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/45">
@@ -199,7 +199,7 @@ export default function WorkGallery() {
         className={`cursor-grab overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${isDragging ? "cursor-grabbing" : ""}`}
       >
         <div
-          className="flex w-max gap-12 px-[max(1rem,calc((100vw-1280px)/2+2rem))] pb-28 pt-10 md:pt-12"
+          className="flex w-max gap-6 px-6 py-12 md:gap-12 md:px-[max(1rem,calc((100vw-1280px)/2+2rem))] md:pb-28 md:pt-12"
         >
           {PROJECTS.map((p, i) => (
             <div

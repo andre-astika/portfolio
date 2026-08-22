@@ -103,14 +103,14 @@ const LiquidHeroReveal = forwardRef<
         key={baseSrc}
         src={baseSrc}
         alt=""
-        className={`theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[58%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:object-center ${mode === "weekend" ? "opacity-90" : "opacity-40"}`}
+        className={`theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-right grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:object-center ${mode === "weekend" ? "opacity-90" : "opacity-40"}`}
         draggable={false}
       />
       <img
         key={revealSrc}
         src={revealSrc}
         alt=""
-        className={`theme-aware-reveal-media theme-aware-reveal-hover absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[58%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:object-center ${active ? "opacity-60" : "opacity-0"}`}
+        className={`theme-aware-reveal-media theme-aware-reveal-hover absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-right grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 md:object-center ${active ? "opacity-60" : "opacity-0"}`}
         style={{
           WebkitMaskImage:
             "radial-gradient(circle var(--liquid-radius) at var(--liquid-x) var(--liquid-y), black 0%, black 30%, rgb(0 0 0 / 0.7) 48%, transparent 100%)",

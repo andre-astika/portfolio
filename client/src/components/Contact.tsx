@@ -103,7 +103,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden">
-      <div className="container py-24 md:py-36">
+      <div className="container px-6 py-12 md:py-36 lg:px-8">
         <p className="reveal font-label mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">
           (Contact) — Available for new projects
         </p>
@@ -219,7 +219,7 @@ export default function Contact() {
           )}
         </form>
 
-        <div className="mt-20 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-px border border-white/10 bg-white/10 md:mt-20 md:grid-cols-3">
           {SOCIALS.map((s) => (
             <a
               key={s.label}

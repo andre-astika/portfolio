@@ -53,7 +53,7 @@ function CaseCard({ c, i }: { c: (typeof CASES)[number]; i: number }) {
       </Link>
       {/* oversized outlined index */}
       <span
-        className="case-study-index font-display pointer-events-none absolute -right-8 -bottom-12 select-none text-[84px] font-black leading-none text-transparent sm:text-[108px] md:text-[140px] [-webkit-text-stroke:1px_rgba(255,255,255,0.38)] transition-colors duration-300 group-hover:[-webkit-text-stroke-color:rgba(255,255,255,0.58)]"
+        className="case-study-index font-display pointer-events-none absolute -right-5 -bottom-8 select-none text-[84px] font-black leading-none text-transparent sm:-right-8 sm:-bottom-12 sm:text-[108px] md:text-[140px] [-webkit-text-stroke:1px_rgba(255,255,255,0.38)] transition-colors duration-300 group-hover:[-webkit-text-stroke-color:rgba(255,255,255,0.58)]"
         aria-hidden="true"
       >
         {String(i + 1).padStart(2, "0")}
@@ -65,8 +65,8 @@ function CaseCard({ c, i }: { c: (typeof CASES)[number]; i: number }) {
 export default function CaseStudies() {
   return (
     <section id="case-studies" className="relative overflow-hidden">
-      <div className="container py-24 md:py-32">
-        <div className="reveal mb-14 max-w-2xl">
+      <div className="container px-6 py-12 md:py-32 lg:px-8">
+        <div className="reveal mb-12 max-w-2xl md:mb-14">
           <p className="font-label mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">
             (Thinking) — Case study previews
           </p>
