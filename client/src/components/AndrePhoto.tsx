@@ -191,7 +191,7 @@ export function AndrePhoto({
       {/* corner crosshair */}
       <span
         className={`font-display pointer-events-none absolute ${
-          sparklePlacement === "top-right" ? "-right-4 -top-2" : "-left-6 -top-6"
+          sparklePlacement === "top-right" ? "right-0 top-0 md:-right-4 md:-top-2" : "-left-6 -top-6"
         } text-xl text-white/25`}
         aria-hidden="true"
       >

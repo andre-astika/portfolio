@@ -806,3 +806,11 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 - [x] Hide header menu links at tablet widths so only the sparkle and Let’s talk button remain.
 - [x] Set footer section padding to 3rem 0 on every breakpoint and remove the shared footer container height.
 - [x] Validate desktop, tablet, and mobile layouts, then publish the refinement.
+
+## Tablet and mobile section layout refinement
+
+- [x] Remove container max-width constraints at tablet and mobile breakpoints and shift the mobile Hero portrait to the right.
+- [x] Apply specified mobile spacing and carousel geometry to Work and Case Studies.
+- [x] Apply specified mobile spacing, principle layout, and CTA geometry to Philosophy.
+- [x] Apply specified mobile spacing and tablet grid treatment to Experience and Contact.
+- [x] Validate desktop, 1023px tablet, and mobile layouts, then publish the responsive refinement.

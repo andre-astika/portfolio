@@ -56,8 +56,8 @@ export default function Philosophy() {
 
   return (
     <section id="philosophy" className="relative overflow-hidden border-y border-white/10 bg-[oklch(0.11_0_0)]">
-      <div className="container py-24 md:py-36">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="container px-6 py-12 md:py-36 lg:px-8">
+        <div className="grid gap-6 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           {/* LEFT: statement */}
           <div className="reveal md:sticky md:top-28 md:self-start">
             <p className="font-label mb-6 text-[11px] uppercase tracking-[0.35em] text-white/45">
@@ -91,7 +91,7 @@ export default function Philosophy() {
                 }}
                 data-principle-index={i}
                 aria-current={activeIndex === i ? "step" : undefined}
-                className={`relative border-t py-10 transition-colors duration-500 first:border-t-0 ${
+                className={`relative border-t py-6 transition-colors duration-500 first:border-t-0 md:py-10 ${
                   activeIndex === i
                     ? "border-white/30"
                     : "border-white/10"
@@ -110,7 +110,7 @@ export default function Philosophy() {
           </div>
         </div>
 
-        <div className="reveal mt-14 flex items-center justify-between gap-6 border-t border-white/10 pt-7 md:mt-20">
+        <div className="reveal mt-12 flex items-center justify-between gap-6 border-t border-white/10 pt-6 md:mt-20 md:pt-7">
           <p className="font-label text-[10px] uppercase tracking-[0.24em] text-white/40">Ready to make it real?</p>
           <a
             href="#contact"

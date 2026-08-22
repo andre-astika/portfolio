@@ -82,8 +82,8 @@ export const ABOUT_PORTRAIT_OPTIONS = {
 export default function Experience() {
   return (
     <section id="experience" className="relative overflow-hidden">
-      <div className="container py-24 md:py-32">
-        <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="container px-6 py-12 md:py-32 lg:px-8">
+        <div className="grid gap-2 md:grid-cols-[0.8fr_1.22fr] md:gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           {/* LEFT: about + portrait */}
           <div className="reveal lg:sticky lg:top-32 lg:self-start">
             <p className="font-label mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-white/45">
@@ -103,7 +103,7 @@ export default function Experience() {
               international clients and teams.
             </p>
 
-            <div className="reveal mt-10 inline-block" style={{ "--reveal-delay": "220ms" } as React.CSSProperties}>
+            <div className="reveal mt-8 inline-block md:mt-10" style={{ "--reveal-delay": "220ms" } as React.CSSProperties}>
               <div className="relative h-[42vh] w-auto md:h-[46vh]">
                 <AndrePhoto
                   className="relative h-full w-auto"
@@ -114,7 +114,7 @@ export default function Experience() {
               </div>
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-2">
+            <div className="mt-8 flex flex-wrap gap-2 md:mt-12">
               {SKILLS.map((s) => (
                 <span
                   key={s}
@@ -132,7 +132,7 @@ export default function Experience() {
               {EXPERIENCE.map((e, i) => (
                 <div
                   key={i}
-                  className="reveal group relative grid gap-2 border-b border-white/5 py-8 md:grid-cols-[1fr_6fr] md:gap-6"
+                  className="reveal group relative grid gap-2 border-b border-white/5 py-6 md:grid-cols-[1fr_6fr] md:gap-6 md:py-8"
                   style={{ "--reveal-delay": `${Math.min(i * 70, 300)}ms` } as React.CSSProperties}
                 >
                   <span className="font-label text-[10px] uppercase leading-relaxed tracking-[0.2em] text-white/40">
