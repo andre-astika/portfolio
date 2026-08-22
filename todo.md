@@ -698,3 +698,10 @@ Verification note: navigation now uses an accessible sparkle-only top anchor, wh
 - [x] Validate desktop/mobile wrapping, rerun checks, and synchronize the refined statement to GitHub Pages.
 
 Verification note: the two phrases are now adjacent inline spans separated only by a single semantic space. The script phrase remains unbroken, while the standard display remainder wraps naturally only where the viewport requires it. Desktop and 390px mobile previews confirm a continuous heading flow. The suite passes all 27 tests; TypeScript and production build complete successfully.
+
+## Philosophy original typography restoration
+
+- [x] Restore “Design is what remains” and “when nothing else can be taken away.” as the original two-line display statement without Pinyon Script.
+- [x] Validate desktop/mobile typography, rerun checks, and synchronize the restoration to GitHub Pages.
+
+Verification note: both phrases are restored as their original separate Archivo display lines with the original editorial scale and spacing. Pinyon Script is fully removed from the statement. Desktop and 390px mobile previews confirm the restored two-line composition. The suite passes all 27 tests; TypeScript and production build complete successfully.
