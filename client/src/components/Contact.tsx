@@ -18,17 +18,30 @@ type InquiryFieldErrors = Partial<Record<"name" | "email" | "message", string>>;
 
 const EMPTY_INQUIRY: InquiryDraft = { name: "", email: "", project: "", message: "" };
 
+export function capitalizeInquiryValue(value: string) {
+  const trimmed = value.trim();
+  return trimmed ? `${trimmed.charAt(0).toUpperCase()}${trimmed.slice(1)}` : trimmed;
+}
+
+export function normalizeInquiryEmail(value: string) {
+  return value.trim().toLowerCase();
+}
+
 export function buildInquiryMailto(draft: InquiryDraft) {
-  const subject = `Project inquiry from ${draft.name.trim() || "a new visitor"}`;
+  const name = capitalizeInquiryValue(draft.name) || "A new visitor";
+  const email = normalizeInquiryEmail(draft.email) || "Not provided";
+  const project = capitalizeInquiryValue(draft.project) || "Not specified";
+  const message = capitalizeInquiryValue(draft.message) || "Not provided";
+  const subject = `Project inquiry from ${name}`;
   const body = [
     "Hello Andre,",
     "",
-    `Name: ${draft.name.trim() || "Not provided"}`,
-    `Email: ${draft.email.trim() || "Not provided"}`,
-    `Project type: ${draft.project.trim() || "Not specified"}`,
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Project type: ${project}`,
     "",
     "Message:",
-    draft.message.trim() || "Not provided",
+    message,
   ].join("\n");
 
   return `mailto:${INQUIRY_EMAIL}?${new URLSearchParams({ subject, body }).toString()}`;
@@ -55,8 +68,9 @@ export default function Contact() {
   const [honeypot, setHoneypot] = useState("");
   const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
   const [fieldErrors, setFieldErrors] = useState<InquiryFieldErrors>({});
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "validation" | "static" | "success" | "error">("idle");
   const isGitHubPagesBuild = import.meta.env.VITE_GITHUB_PAGES === "true";
+  const mailtoHref = buildInquiryMailto(inquiry);
   const inquiryMutation = trpc.inquiry.submit.useMutation({
     onSuccess: () => {
       setInquiry(EMPTY_INQUIRY);
@@ -77,10 +91,14 @@ export default function Contact() {
     event.preventDefault();
     const errors = getInquiryClientErrors(inquiry);
     setFieldErrors(errors);
-    if (Object.keys(errors).length) return;
+    if (Object.keys(errors).length) {
+      setStatus("validation");
+      return;
+    }
 
     if (isGitHubPagesBuild) {
-      window.location.href = buildInquiryMailto(inquiry);
+      setStatus("static");
+      window.location.href = mailtoHref;
       return;
     }
 
@@ -189,6 +207,16 @@ export default function Contact() {
           >
             {inquiryMutation.isPending ? "Sending…" : isGitHubPagesBuild ? "Draft email inquiry" : "Send inquiry"} <span aria-hidden="true">→</span>
           </button>
+          {status === "validation" && (
+            <p role="alert" className="font-label mt-4 text-[10px] uppercase tracking-[0.18em] text-white/60">
+              Please complete the highlighted required fields before continuing.
+            </p>
+          )}
+          {status === "static" && (
+            <p role="status" className="font-label mt-4 text-[10px] uppercase tracking-[0.18em] text-white/60">
+              Opening an email draft. If nothing opens, <a href={mailtoHref} className="underline underline-offset-4">open it here</a> or use the Email card below.
+            </p>
+          )}
           {status === "success" && (
             <p role="status" className="font-label mt-4 text-[10px] uppercase tracking-[0.18em] text-white/60">
               Thanks — your inquiry has been sent.

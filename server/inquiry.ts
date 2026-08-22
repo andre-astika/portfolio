@@ -37,6 +37,11 @@ function escapeHtml(value: string) {
   });
 }
 
+export function capitalizeInquiryValue(value: string) {
+  const trimmed = value.trim();
+  return trimmed ? `${trimmed.charAt(0).toUpperCase()}${trimmed.slice(1)}` : trimmed;
+}
+
 export function createInquiryFingerprint(ipAddress: string, userAgent: string) {
   return createHash("sha256").update(`${ipAddress}\n${userAgent}`).digest("hex");
 }
@@ -47,16 +52,19 @@ export function isInquirySubmittedTooQuickly(formStartedAt: number, now = Date.n
 
 export function buildInquiryEmailPayload(input: InquiryInput): InquiryEmailPayload {
   const config = getResendConfig();
-  const project = input.project || "Not specified";
+  const name = capitalizeInquiryValue(input.name);
+  const email = input.email.trim().toLowerCase();
+  const project = capitalizeInquiryValue(input.project) || "Not specified";
+  const message = capitalizeInquiryValue(input.message);
   const text = [
     "New portfolio inquiry",
     "",
-    `Name: ${input.name}`,
-    `Email: ${input.email}`,
+    `Name: ${name}`,
+    `Email: ${email}`,
     `Project type: ${project}`,
     "",
     "Project details:",
-    input.message,
+    message,
   ].join("\n");
 
   return {
@@ -65,16 +73,16 @@ export function buildInquiryEmailPayload(input: InquiryInput): InquiryEmailPaylo
     // has been verified in Resend.
     from: config.fromEmail,
     to: [config.recipientEmail],
-    reply_to: input.email,
-    subject: `Portfolio inquiry — ${input.name}`,
+    reply_to: email,
+    subject: `Portfolio inquiry — ${name}`,
     text,
     html: `
       <h1>New portfolio inquiry</h1>
-      <p><strong>Name:</strong> ${escapeHtml(input.name)}</p>
-      <p><strong>Email:</strong> ${escapeHtml(input.email)}</p>
+      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
       <p><strong>Project type:</strong> ${escapeHtml(project)}</p>
       <p><strong>Project details:</strong></p>
-      <p>${escapeHtml(input.message).replace(/\n/g, "<br />")}</p>
+      <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
     `.trim(),
   };
 }

@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { buildInquiryMailto, FOOTER_COPYRIGHT, getInquiryClientErrors, INQUIRY_EMAIL, SOCIALS } from "./Contact";
+import {
+  buildInquiryMailto,
+  capitalizeInquiryValue,
+  FOOTER_COPYRIGHT,
+  getInquiryClientErrors,
+  INQUIRY_EMAIL,
+  normalizeInquiryEmail,
+  SOCIALS,
+} from "./Contact";
 
 describe("Contact privacy and location content", () => {
   it("keeps a direct email action while removing private phone and availability cards", () => {
@@ -35,5 +43,17 @@ describe("Contact privacy and location content", () => {
     });
 
     expect(getInquiryClientErrors({ name: "Nina", email: "nina@example.com", project: "Website", message: "Hello" })).toEqual({});
+  });
+
+  it("formats the mailto fallback with capitalized content and a lowercase email", () => {
+    const inquiryUrl = new URL(
+      buildInquiryMailto({ name: "test", email: "TEST@GMAIL.COM", project: "test", message: "test" }),
+    );
+
+    expect(capitalizeInquiryValue("test")).toBe("Test");
+    expect(normalizeInquiryEmail("TEST@GMAIL.COM")).toBe("test@gmail.com");
+    expect(inquiryUrl.searchParams.get("body")).toContain("Name: Test");
+    expect(inquiryUrl.searchParams.get("body")).toContain("Email: test@gmail.com");
+    expect(inquiryUrl.searchParams.get("body")).toContain("Project type: Test");
   });
 });

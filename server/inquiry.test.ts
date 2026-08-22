@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   buildInquiryEmailPayload,
+  capitalizeInquiryValue,
   createInquiryFingerprint,
   inquiryInputSchema,
   isInquirySubmittedTooQuickly,
@@ -30,6 +31,24 @@ describe("inquiry validation and delivery payload", () => {
     expect(payload.to).toEqual(["en.andre.st@gmail.com"]);
     expect(payload.reply_to).toBe("nina@example.com");
     expect(payload.html).toContain("Nina Lee");
+  });
+
+  it("capitalizes the first character of inquiry content while lowercasing email", () => {
+    const payload = buildInquiryEmailPayload(
+      inquiryInputSchema.parse({
+        ...completeInquiry,
+        name: "test",
+        email: "TEST@GMAIL.COM",
+        project: "test",
+        message: "test",
+      }),
+    );
+
+    expect(capitalizeInquiryValue("test")).toBe("Test");
+    expect(payload.text).toContain("Name: Test");
+    expect(payload.text).toContain("Email: test@gmail.com");
+    expect(payload.text).toContain("Project type: Test");
+    expect(payload.text).toContain("Project details:\nTest");
   });
 
   it("hashes client rate-limit fingerprints and rejects fast submissions", () => {
