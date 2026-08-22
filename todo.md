@@ -740,7 +740,7 @@ Verification note: the redundant email CTAs are removed and the form begins dire
 - [x] Add required name/email validation, loading feedback, and success/error messaging to the Contact inquiry form.
 - [x] Deliver inquiries through Resend to the owner inbox, with reply-to set to the visitor email.
 - [x] Add layered anti-spam protections including a hidden honeypot, minimum completion time, and server-side rate limiting.
-- [ ] Test the client/server flow and security guards, then synchronize the live form to GitHub Pages.
+- [x] Test the client/server flow and security guards, then synchronize the live form to GitHub Pages.
 
 Setup assistance: guide the user through Resend account access, sender or domain verification, and secure API-key creation before activating server-side delivery.
 
@@ -751,6 +751,8 @@ Visual check (Aug 22, 2026): the Manus preview Contact section renders the `Secu
 Browser verification (Manus preview): the Contact form exposes the required Name, Email, Project type, and Project details fields alongside the `Securely sends to Andre` label. A user-approved test inquiry is ready to be submitted to the configured owner inbox.
 
 Delivery verification: Resend recorded `Portfolio inquiry — Portfolio Delivery Test` to `en.andre.st@gmail.com` with status `Delivered`. The final test used the Resend temporary onboarding sender and a visitor reply-to address; it was accepted after normalizing an accidental trailing period in the configured sender address.
+
+Publication verification: checkpoint `7aa66862` is live on Manus. GitHub commit `7aa6686` was pushed to `andre-astika/portfolio`; GitHub Pages workflow `32585989539` completed successfully. The public static site at `https://andre-astika.github.io/portfolio/` renders the Contact fallback label `Opens your email app` and `Draft email inquiry`, while the Manus-hosted site uses real Resend delivery.
 
 ## Unified Philosophy display phrase refinement
 
