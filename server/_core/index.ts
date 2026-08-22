@@ -8,6 +8,7 @@ import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { applyInquiryCorsHeaders, isAllowedInquiryOrigin } from "../inquiryCors";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -36,6 +37,19 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   registerStorageProxy(app);
   registerOAuthRoutes(app);
+  app.use("/api/trpc/inquiry.submit", (req, res, next) => {
+    const origin = req.get("origin");
+
+    if (isAllowedInquiryOrigin(origin)) {
+      applyInquiryCorsHeaders(res, origin);
+      if (req.method === "OPTIONS") {
+        res.status(204).end();
+        return;
+      }
+    }
+
+    next();
+  });
   // tRPC API
   app.use(
     "/api/trpc",
