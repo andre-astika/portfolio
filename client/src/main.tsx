@@ -6,9 +6,11 @@ import { createRoot } from "react-dom/client";
 import superjson from "superjson";
 import App from "./App";
 import { startLogin } from "./const";
+import { getTrpcApiUrl, shouldIncludeTrpcCredentials } from "./lib/inquiryApi";
 import "./index.css";
 
 const queryClient = new QueryClient();
+const isGitHubPagesBuild = import.meta.env.VITE_GITHUB_PAGES === "true";
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {
   if (!(error instanceof TRPCClientError)) return;
@@ -40,7 +42,7 @@ queryClient.getMutationCache().subscribe(event => {
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "/api/trpc",
+      url: getTrpcApiUrl(isGitHubPagesBuild),
       transformer: superjson,
       headers() {
         // Preview auto-login fallback: when the browser blocks iframe cookies
@@ -65,7 +67,7 @@ const trpcClient = trpc.createClient({
       fetch(input, init) {
         return globalThis.fetch(input, {
           ...(init ?? {}),
-          credentials: "include",
+          credentials: shouldIncludeTrpcCredentials(isGitHubPagesBuild) ? "include" : "omit",
         });
       },
     }),

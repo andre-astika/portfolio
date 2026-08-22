@@ -68,7 +68,7 @@ export default function Contact() {
   const [honeypot, setHoneypot] = useState("");
   const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
   const [fieldErrors, setFieldErrors] = useState<InquiryFieldErrors>({});
-  const [status, setStatus] = useState<"idle" | "validation" | "static" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "validation" | "success" | "error">("idle");
   const isGitHubPagesBuild = import.meta.env.VITE_GITHUB_PAGES === "true";
   const mailtoHref = buildInquiryMailto(inquiry);
   const inquiryMutation = trpc.inquiry.submit.useMutation({
@@ -93,12 +93,6 @@ export default function Contact() {
     setFieldErrors(errors);
     if (Object.keys(errors).length) {
       setStatus("validation");
-      return;
-    }
-
-    if (isGitHubPagesBuild) {
-      setStatus("static");
-      window.location.href = mailtoHref;
       return;
     }
 
@@ -129,7 +123,7 @@ export default function Contact() {
               <h3 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-white md:text-3xl">Tell me about the project.</h3>
             </div>
             <p className="font-label text-[9px] uppercase tracking-[0.2em] text-white/35">
-              {isGitHubPagesBuild ? "Opens your email app" : "Securely sends to Andre"}
+              {isGitHubPagesBuild ? "Securely sends via Andre's form" : "Securely sends to Andre"}
             </p>
           </div>
 
@@ -205,16 +199,11 @@ export default function Contact() {
             disabled={inquiryMutation.isPending}
             className="contact-inquiry-submit font-label mt-6 inline-flex items-center gap-3 px-7 py-4 text-xs font-medium uppercase tracking-[0.24em] transition-all duration-200 active:scale-[0.97] disabled:cursor-wait disabled:opacity-50"
           >
-            {inquiryMutation.isPending ? "Sending…" : isGitHubPagesBuild ? "Draft email inquiry" : "Send inquiry"} <span aria-hidden="true">→</span>
+            {inquiryMutation.isPending ? "Sending…" : "Send inquiry"} <span aria-hidden="true">→</span>
           </button>
           {status === "validation" && (
             <p role="alert" className="font-label mt-4 text-[10px] uppercase tracking-[0.18em] text-white/60">
               Please complete the highlighted required fields before continuing.
-            </p>
-          )}
-          {status === "static" && (
-            <p role="status" className="font-label mt-4 text-[10px] uppercase tracking-[0.18em] text-white/60">
-              Opening an email draft. If nothing opens, <a href={mailtoHref} className="underline underline-offset-4">open it here</a> or use the Email card below.
             </p>
           )}
           {status === "success" && (
@@ -224,7 +213,7 @@ export default function Contact() {
           )}
           {status === "error" && (
             <p role="alert" className="font-label mt-4 text-[10px] uppercase tracking-[0.18em] text-white/60">
-              Delivery could not be completed. Please try again or use the email card below.
+              Delivery could not be completed. Please try again, <a href={mailtoHref} className="underline underline-offset-4">open an email draft</a>, or use the Email card below.
             </p>
           )}
         </form>

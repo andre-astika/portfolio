@@ -767,3 +767,18 @@ Verification note: the full Philosophy statement is rendered as a single display
 - [x] Show validation and a clear fallback status on GitHub Pages before attempting mailto.
 - [x] Capitalize the first letter of name, project type, and project details in the delivery email while preserving email casing.
 - [ ] Verify both hosting variants, run checks, and synchronize the repair to GitHub Pages.
+
+Public-check progress: GitHub Pages workflow `32586715680` completed successfully and the latest static Contact interface is live. The next validation step is to trigger its required-field state and confirm the recovery mailto link is visible after a valid static submission.
+
+Interactive public-check progress: the GitHub Pages Contact section displays the Name and Email inputs plus the fallback label in the current public deployment; the required-field state is being verified without submitting an email.
+
+GitHub Pages validation result: submitting the empty public form now shows all three inline required-field messages and the visible summary `Please complete the highlighted required fields before continuing.` No email or mailto action was triggered during this invalid-state verification.
+
+## GitHub Pages real inquiry delivery via Manus
+
+- [x] Audit the Manus server endpoint and cross-origin protections for GitHub Pages delivery.
+- [x] Route valid GitHub Pages inquiries to the secure Manus Resend endpoint without exposing credentials.
+- [x] Verify a delivered inquiry originating from GitHub Pages, including capitalization and lowercase email formatting.
+- [ ] Publish the cross-host form delivery update to Manus and GitHub Pages.
+
+Cross-host delivery verification: an inquiry request carrying `Origin: https://andre-astika.github.io` received the expected CORS response and returned HTTP 200 from the Manus inquiry procedure. Resend recorded `Portfolio inquiry — Github pages test` to `en.andre.st@gmail.com` with status `Delivered`; the test input used lowercase source text and uppercase email, validating the new content formatting path.
