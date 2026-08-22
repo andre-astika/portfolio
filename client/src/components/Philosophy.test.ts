@@ -16,8 +16,12 @@ describe("Philosophy statement", () => {
     expect(PHILOSOPHY_REMAINDER_CLASS).not.toContain("font-script-accent");
   });
 
-  it("uses a measured script scale and leading at mobile widths", () => {
-    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("text-[4rem]");
-    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("leading-[0.74]");
+  it("keeps both statement fragments inline with a mobile-appropriate script scale", () => {
+    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("inline");
+    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("whitespace-nowrap");
+    expect(PHILOSOPHY_SCRIPT_CLASS).toContain("text-[3.4rem]");
+    expect(PHILOSOPHY_REMAINDER_CLASS).toContain("inline");
+    expect(PHILOSOPHY_REMAINDER_CLASS).not.toContain("block");
+    expect(PHILOSOPHY_REMAINDER_CLASS).not.toContain("mt-");
   });
 });

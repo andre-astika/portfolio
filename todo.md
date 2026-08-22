@@ -691,3 +691,10 @@ Verification note: Pinyon Script is now isolated to “Design is what remains”
 - [x] Validate desktop/mobile layout, rerun checks, and synchronize the minimal branding update to GitHub Pages.
 
 Verification note: navigation now uses an accessible sparkle-only top anchor, while the footer displays a sparkle at left and the fixed 2026 copyright string at right. The footer no longer renders a wordmark, closing tagline, or decorative AndreA letters. Desktop and 390px mobile previews maintain spacing and alignment. The suite passes all 27 tests; TypeScript and production build complete successfully.
+
+## Continuous Philosophy statement refinement
+
+- [x] Join “Design is what remains” and “when nothing else can be taken away.” into one continuous inline statement while retaining Pinyon Script only for the opening phrase.
+- [x] Validate desktop/mobile wrapping, rerun checks, and synchronize the refined statement to GitHub Pages.
+
+Verification note: the two phrases are now adjacent inline spans separated only by a single semantic space. The script phrase remains unbroken, while the standard display remainder wraps naturally only where the viewport requires it. Desktop and 390px mobile previews confirm a continuous heading flow. The suite passes all 27 tests; TypeScript and production build complete successfully.
