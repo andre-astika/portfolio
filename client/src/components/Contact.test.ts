@@ -21,6 +21,12 @@ describe("Contact privacy and location content", () => {
     expect(FOOTER_COPYRIGHT).toBe("© 2026 Andre Astika — Bali, Indonesia");
   });
 
+  it("links the Contact Web card to the public GitHub Pages portfolio", () => {
+    const web = SOCIALS.find((item) => item.label === "Web");
+    expect(web?.href).toBe("https://andre-astika.github.io/portfolio/");
+    expect(web?.value).toBe("andre-astika.github.io/portfolio");
+  });
+
   it("keeps a mailto fallback for the static GitHub Pages edition", () => {
     const inquiryUrl = new URL(buildInquiryMailto({
       name: "Nina Lee",

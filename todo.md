@@ -788,3 +788,8 @@ Public deployment check: GitHub Pages now displays `Securely sends via Andre's f
 Browser delivery check: the published GitHub Pages Contact form exposes the real-send label, its required fields, and the `Send inquiry` action. A controlled browser submission is ready to confirm the visible success state.
 
 Production delivery result: the published Manus endpoint returned HTTP 200 to a request from the GitHub Pages origin with the intended CORS headers. Resend then recorded `Portfolio inquiry — Github pages production test` as `Opened` by `en.andre.st@gmail.com`, confirming real delivery on the deployed cross-host path. The pre-publication validation and capitalization repair also passed 45 automated tests, TypeScript, and both production builds.
+
+## Contact Web link update
+
+- [x] Replace the Contact Web card target and label with the GitHub Pages portfolio URL.
+- [x] Verify the change and publish it to GitHub Pages.

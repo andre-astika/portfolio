@@ -59,7 +59,7 @@ export function getInquiryClientErrors(draft: InquiryDraft): InquiryFieldErrors 
 
 export const SOCIALS = [
   { label: "Email", href: `mailto:${INQUIRY_EMAIL}`, value: INQUIRY_EMAIL },
-  { label: "Web", href: "https://andre.jupitragency.com", value: "andre.jupitragency.com", external: true },
+  { label: "Web", href: "https://andre-astika.github.io/portfolio/", value: "andre-astika.github.io/portfolio", external: true },
   { label: "Location", href: "#contact", value: "Bali, Indonesia" },
 ];
 
