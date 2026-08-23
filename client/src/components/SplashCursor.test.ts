@@ -18,4 +18,10 @@ describe('SplashCursor renderer capability handling', () => {
     expect(source).toContain("canvas.dataset.splashRenderer = 'webgl'");
     expect(source).toContain('delete canvas.dataset.splashRenderer;');
   });
+
+  it('continues to use the original theme-aware color and ink configuration', () => {
+    expect(source).toContain('COLOR = \'#ff0000\'');
+    expect(source).toContain('INK_MODE = false');
+    expect(source).toContain('gl.uniform1f(displayMaterial.uniforms.inkMode, config.INK_MODE ? 1 : 0);');
+  });
 });

@@ -866,3 +866,11 @@ Interaction check: moving the pointer across the Developer Hero switches the por
 - [x] Publish the Lumora-only interaction to GitHub Pages.
 
 Preview verification: after removal of the global overlay, Developer reveals the cap-and-glasses portrait through the large feathered Hero mask; Weekend reveals the plain portrait through the same local mask. The cursor effect no longer appears outside the Hero.
+
+## Conditional WebGL SplashCursor recovery
+
+- [x] Restore the original global SplashCursor mount for WebGL-capable browsers in Developer and Weekend themes.
+- [x] Keep the null-context and unsupported-format guard so unsupported browsers render the portfolio without a cursor crash or substitute particle effect.
+- [x] Add regression coverage and validate both renderer branches; GitHub Pages publication remains pending.
+
+Chrome preview check: the site loaded without the former WebGL crash after the original SplashCursor mount was restored; the Hero local photo reveal remained interactive. The guarded renderer is allowed to draw only when its WebGL context and texture formats are available.
