@@ -839,12 +839,14 @@ Verification note: both the development preview and GitHub Pages version `?v=061
 
 ## Hero liquid reveal recovery
 
-- [ ] Identify the approved pointer-following liquid reveal implementation separately from the global SplashCursor canvas.
-- [ ] Restore the portrait liquid reveal with its approved translucent, fluid appearance in Developer and Weekend modes.
-- [ ] Verify the Hero interaction against the supplied reference and publish it to GitHub Pages.
+- [x] Identify the approved pointer-following liquid reveal implementation separately from the global SplashCursor canvas.
+- [x] Restore the portrait liquid reveal with its approved translucent, fluid appearance in Developer and Weekend modes.
+- [x] Verify the Hero interaction against the supplied reference and publish it to GitHub Pages.
+
+Verification note: `Hero.tsx`, `LiquidHeroReveal.tsx`, and `FluidHeroBg.tsx` are byte-for-byte unchanged from the approved pre-error snapshot `41a6abd8`; `SplashCursor` is confirmed as the separate global effect that previously failed when WebGL could not initialize. GitHub Pages commit `b458af8` loaded the Hero normally after its successful workflow.
 
 ## SplashCursor Canvas 2D fallback
 
 - [x] Add a pointer-driven Canvas 2D fluid fallback that activates only when SplashCursor cannot initialize WebGL.
 - [x] Preserve the original WebGL SplashCursor path, theme-aware white/black color behavior, and full cleanup lifecycle.
-- [x] Add regression tests and validate fallback rendering and production builds; GitHub Pages publication remains pending.
+- [x] Add regression tests, validate fallback rendering and production builds, then publish to GitHub Pages.
