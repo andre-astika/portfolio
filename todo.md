@@ -874,3 +874,11 @@ Preview verification: after removal of the global overlay, Developer reveals the
 - [x] Add regression coverage and validate both renderer branches; GitHub Pages publication remains pending.
 
 Chrome preview check: the site loaded without the former WebGL crash after the original SplashCursor mount was restored; the Hero local photo reveal remained interactive. The guarded renderer is allowed to draw only when its WebGL context and texture formats are available.
+
+## Hero liquid focus sizing
+
+- [x] Reduce the Hero liquid reveal radius so pointer focus occupies less of the portrait.
+- [x] Preserve the soft elliptical edge and photo transition in Developer and Weekend modes.
+- [x] Validate the smaller focus radius; GitHub Pages publication remains pending.
+
+Preview check: the mask now uses `clamp(11rem, 21vw, 24rem)`, a moderate reduction from the former `clamp(13rem, 26vw, 29rem)`. Pointer inspection confirms the focused photo transition is more contained around the face while retaining its feathered edge.

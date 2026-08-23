@@ -5,7 +5,7 @@ const source = readFileSync(new URL('./LiquidHeroReveal.tsx', import.meta.url), 
 
 describe('Lumora-style Hero liquid reveal', () => {
   it('uses a large pointer-following feathered image mask instead of particle effects', () => {
-    expect(source).toContain('"--liquid-radius": "clamp(13rem, 26vw, 29rem)"');
+    expect(source).toContain('"--liquid-radius": "clamp(11rem, 21vw, 24rem)"');
     expect(source).toContain('radial-gradient(ellipse calc(var(--liquid-radius) * 0.82) var(--liquid-radius) at var(--liquid-x) var(--liquid-y)');
     expect(source).not.toContain('particle');
   });

@@ -94,7 +94,7 @@ const LiquidHeroReveal = forwardRef<
         {
           "--liquid-x": "78%",
           "--liquid-y": "46%",
-          "--liquid-radius": "clamp(13rem, 26vw, 29rem)",
+          "--liquid-radius": "clamp(11rem, 21vw, 24rem)",
         } as React.CSSProperties
       }
       aria-hidden="true"
