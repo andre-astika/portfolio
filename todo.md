@@ -884,3 +884,9 @@ Interaction audit note: a second pointer movement still did not produce a visibl
 Browser interaction note: browser automation can dispatch legacy mouse events rather than pointer events, so the Hero fluid trail now listens to both event families. This preserves pointer-following behavior for regular visitors while making the interaction resilient across browser event paths.
 
 Verification note: a root-element click from browser automation resolves to the document midpoint rather than the Hero coordinate, so it cannot validate the fluid interaction. The final check must use pointer coordinates inside the visible portrait region.
+
+## Exact pre-error SplashCursor restoration
+
+- [x] Restore `SplashCursor.jsx` byte-for-byte from the last commit before the WebGL error guard.
+- [x] Remove every later SplashCursor guard, fallback, visibility-strength, and test adjustment.
+- [ ] Publish the exact pre-error source to GitHub Pages, accepting the prior runtime error if it recurs.
