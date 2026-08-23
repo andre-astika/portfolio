@@ -828,3 +828,9 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 - [x] Show the shortened Dev Mode label and revised role copy only on mobile.
 - [x] Reduce Contact card padding on mobile and set the inquiry button typography and padding at all breakpoints.
 - [x] Validate and publish the Hero and Contact refinement.
+
+## GitHub Pages runtime crash recovery
+
+- [x] Reproduce the published static-site crash and identify the null `getExtension` call.
+- [x] Fix or guard the static build path that crashes at runtime.
+- [ ] Run regression checks and verify a healthy published GitHub Pages page.
