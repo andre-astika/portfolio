@@ -869,4 +869,4 @@ Public Weekend validation note: the same deployed GitHub Pages version switches 
 
 - [x] Restore Hero, FluidHeroBg, and related visual CSS to the approved state immediately before the WebGL crash report.
 - [x] Keep only the invisible null-WebGL guard in SplashCursor; remove all later visual smoke/fallback experiments.
-- [ ] Verify the restored pre-error appearance, runtime safety, and GitHub Pages deployment.
+- [x] Verify the restored pre-error appearance, runtime safety, and GitHub Pages deployment.
