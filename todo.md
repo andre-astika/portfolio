@@ -870,3 +870,17 @@ Public Weekend validation note: the same deployed GitHub Pages version switches 
 - [x] Restore Hero, FluidHeroBg, and related visual CSS to the approved state immediately before the WebGL crash report.
 - [x] Keep only the invisible null-WebGL guard in SplashCursor; remove all later visual smoke/fallback experiments.
 - [x] Verify the restored pre-error appearance, runtime safety, and GitHub Pages deployment.
+
+## Pointer-following fluid interaction recovery
+
+- [x] Identify the exact pre-regression pointer-fluid renderer shown in the approved reference, separate from the static Hero background.
+- [x] Restore the transparent fluid splash that follows pointer movement over the portrait, preserving the approved visual character.
+- [ ] Verify the interaction in both modes, retain a non-visual WebGL crash guard, then publish to GitHub Pages.
+
+Audit note: the pre-error WebGL source is still mounted with only the null-context guard changed, but the connected browser did not visibly render a splash after its initial pointer movement. The recovery therefore must validate actual pointer-generated splats, not only component mounting or static Hero appearance.
+
+Interaction audit note: a second pointer movement still did not produce a visible trail in the connected browser. The renderer must therefore be strengthened and the Hero-specific fallback retained for the no-context case; restoring source text alone does not restore the observed interaction.
+
+Browser interaction note: browser automation can dispatch legacy mouse events rather than pointer events, so the Hero fluid trail now listens to both event families. This preserves pointer-following behavior for regular visitors while making the interaction resilient across browser event paths.
+
+Verification note: a root-element click from browser automation resolves to the document midpoint rather than the Hero coordinate, so it cannot validate the fluid interaction. The final check must use pointer coordinates inside the visible portrait region.

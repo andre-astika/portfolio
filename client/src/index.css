@@ -343,7 +343,57 @@ manus-content-root {
 
 @keyframes lumora-wash {
   from { transform: scale(1.14) rotate(-3deg) translate3d(-2%, -1%, 0); }
-  to { transform: scale(1.2) rotate(-1deg) translate3d(3%, 2%, 0); }
+  to { transform: scale(1.22) rotate(2deg) translate3d(2%, 1%, 0); }
+}
+
+/* The WebGL cursor has priority. This Hero-only trail is used only when a browser
+   refuses to create the WebGL context, preserving the approved pointer-fluid feel. */
+.splashcursor-fluid-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.splashcursor-fluid-blob {
+  position: absolute;
+  left: var(--fluid-x);
+  top: var(--fluid-y);
+  width: var(--fluid-size);
+  height: calc(var(--fluid-size) * 0.78);
+  border-radius: 45% 55% 62% 38% / 53% 42% 58% 47%;
+  background:
+    radial-gradient(ellipse at 30% 34%, rgb(255 255 255 / 0.88) 0%, rgb(255 255 255 / 0.46) 18%, rgb(255 255 255 / 0.14) 46%, transparent 76%),
+    radial-gradient(ellipse at 71% 63%, rgb(255 255 255 / 0.36) 0%, rgb(255 255 255 / 0.08) 44%, transparent 72%);
+  filter: blur(1.4px) contrast(1.08);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.34) rotate(var(--fluid-rotation));
+  animation: splashcursor-fluid-trail 1700ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.splashcursor-fluid-fallback--ink .splashcursor-fluid-blob {
+  background:
+    radial-gradient(ellipse at 30% 34%, rgb(8 8 7 / 0.78) 0%, rgb(8 8 7 / 0.38) 18%, rgb(8 8 7 / 0.11) 48%, transparent 76%),
+    radial-gradient(ellipse at 71% 63%, rgb(18 18 16 / 0.28) 0%, rgb(18 18 16 / 0.06) 44%, transparent 72%);
+  filter: blur(1.2px) contrast(1.14);
+  mix-blend-mode: multiply;
+}
+
+@keyframes splashcursor-fluid-trail {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.34) rotate(var(--fluid-rotation));
+  }
+  46% {
+    opacity: 0.46;
+    transform: translate(calc(-50% + var(--fluid-drift-x) * 0.32), calc(-50% + var(--fluid-drift-y) * 0.32)) scale(1.05) rotate(calc(var(--fluid-rotation) + 16deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--fluid-drift-x)), calc(-50% + var(--fluid-drift-y))) scale(2.1) rotate(calc(var(--fluid-rotation) + 34deg));
+  }
 }
 
 @keyframes lumora-orb {
