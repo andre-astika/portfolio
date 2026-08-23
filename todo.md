@@ -864,3 +864,9 @@ Weekend validation note: switching to Weekend Mode changes the full Hero to the 
 Public Developer validation note: GitHub Pages workflow `32651321329` completed successfully, and the public Hero renders the visible white Lumora smoke without the previous WebGL crash.
 
 Public Weekend validation note: the same deployed GitHub Pages version switches to the light-paper Weekend Hero and keeps the smoke treatment as a soft black/ink haze.
+
+## Pre-error Hero and SplashCursor visual restoration
+
+- [x] Restore Hero, FluidHeroBg, and related visual CSS to the approved state immediately before the WebGL crash report.
+- [x] Keep only the invisible null-WebGL guard in SplashCursor; remove all later visual smoke/fallback experiments.
+- [ ] Verify the restored pre-error appearance, runtime safety, and GitHub Pages deployment.

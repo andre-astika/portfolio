@@ -182,14 +182,11 @@ function makePrograms(gl: WebGLRenderingContext) {
       varying vec2 vUv;
       uniform sampler2D uTexture;
       uniform float opacity;
-      uniform float inkMode;
       void main () {
         float d = texture2D(uTexture, vUv).r;
-        float density = smoothstep(0.0, 0.42, d);
-        float smoke = density * 0.86;
-        vec3 pigment = inkMode > 0.5 ? vec3(0.0) : vec3(smoke);
-        float alpha = density * (inkMode > 0.5 ? 0.46 : 0.58) * opacity;
-        gl_FragColor = vec4(pigment, alpha);
+        // grayscale smoke: map density to a faint white veil
+        float smoke = smoothstep(0.0, 0.55, d) * 0.16;
+        gl_FragColor = vec4(vec3(smoke), smoke * opacity);
       }
     `),
   };
@@ -221,75 +218,18 @@ function createDoubleFBO(gl: WebGLRenderingContext, w: number, h: number): { rea
   };
 }
 
-export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
+export default function FluidHeroBg() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const smokeTrailRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const canvas = canvasRef.current;
     if (!canvas || reduced) return;
 
-    const smokeLayer = smokeTrailRef.current;
-    let lastSmokeAt = 0;
-
-    const emitSmokePuff = (clientX: number, clientY: number, force = false) => {
-      if (!smokeLayer) return;
-      const rect = canvas.getBoundingClientRect();
-      if (
-        clientX < rect.left ||
-        clientX > rect.right ||
-        clientY < rect.top ||
-        clientY > rect.bottom
-      ) {
-        return;
-      }
-
-      const now = performance.now();
-      if (!force && now - lastSmokeAt < 108) return;
-      lastSmokeAt = now;
-
-      const puff = document.createElement("span");
-      const size = 210 + Math.round(Math.random() * 120);
-      puff.className = "lumora-smoke-puff";
-      puff.style.left = `${clientX - rect.left}px`;
-      puff.style.top = `${clientY - rect.top}px`;
-      puff.style.setProperty("--smoke-size", `${size}px`);
-      puff.style.setProperty("--smoke-drift-x", `${(Math.random() - 0.5) * 94}px`);
-      puff.style.setProperty("--smoke-drift-y", `${-36 - Math.random() * 64}px`);
-      smokeLayer.appendChild(puff);
-      puff.addEventListener("animationend", () => puff.remove(), { once: true });
-    };
-
-    const createSmokePuff = (event: PointerEvent) => {
-      if (event.pointerType === "touch") return;
-      emitSmokePuff(event.clientX, event.clientY);
-    };
-
-    window.addEventListener("pointermove", createSmokePuff, { passive: true });
-    window.requestAnimationFrame(() => {
-      const rect = canvas.getBoundingClientRect();
-      [
-        [0.68, 0.62],
-        [0.75, 0.57],
-        [0.8, 0.66],
-      ].forEach(([x, y]) => {
-        emitSmokePuff(rect.left + rect.width * x, rect.top + rect.height * y, true);
-      });
-    });
-    const removeSmokeTrail = () => {
-      window.removeEventListener("pointermove", createSmokePuff);
-    };
-
     const gl = canvas.getContext("webgl", { alpha: true, antialias: false });
-    if (!gl) return removeSmokeTrail;
+    if (!gl) return;
 
-    let p: ReturnType<typeof makePrograms>;
-    try {
-      p = makePrograms(gl);
-    } catch {
-      return removeSmokeTrail;
-    }
+    const p = makePrograms(gl);
     const simW = CFG.SIM_RES, simH = Math.floor(CFG.SIM_RES * 0.8);
     const dyeW = CFG.DYE_RES, dyeH = Math.floor(CFG.DYE_RES * 0.8);
     const velocity = createDoubleFBO(gl, simW, simH);
@@ -319,8 +259,7 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
       gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
     };
 
-    const smokeAmount = weekend ? 0.38 : 0.52;
-    const splat = (x: number, y: number, dx: number, dy: number, amt = smokeAmount) => {
+    const splat = (x: number, y: number, dx: number, dy: number, amt: number) => {
       p.splat.bind();
       gl.uniform1i(p.splat.uniforms.uTarget, velocity.read.attach(0));
       gl.uniform1f(p.splat.uniforms.aspectRatio, canvas.width / canvas.height);
@@ -350,7 +289,7 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
       const dy = (y - lastY) * CFG.SPLAT_FORCE;
       active = down;
       if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
-        splat(x / rect.width, y / rect.height, dx, dy);
+        splat(x / rect.width, y / rect.height, dx, dy, 0.12);
       }
       lastX = x;
       lastY = y;
@@ -362,7 +301,7 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
       lastY = rect.height - (e.clientY - rect.top);
       active = false;
       // light ambient response to mere hover (no click)
-      splat(lastX / rect.width, lastY / rect.height, 80, 40, smokeAmount * 0.6);
+      splat(lastX / rect.width, lastY / rect.height, 80, 40, 0.05);
     };
 
     // ambient drift: occasional random splats so the smoke is never dead
@@ -370,7 +309,7 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
       const rect = canvas.getBoundingClientRect();
       const x = Math.random();
       const y = Math.random();
-      splat(x, y, (Math.random() - 0.5) * 600, (Math.random() - 0.5) * 600, smokeAmount * 0.34);
+      splat(x, y, (Math.random() - 0.5) * 600, (Math.random() - 0.5) * 600, 0.03);
     };
 
     canvas.addEventListener("mousemove", moveAny);
@@ -384,11 +323,8 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
     resize();
     window.addEventListener("resize", resize);
 
-    let previousTime = performance.now();
-    const step = (now: number) => {
+    const step = (dt: number) => {
       raf = requestAnimationFrame(step);
-      const dt = Math.min(0.016, Math.max(0.001, (now - previousTime) / 1000));
-      previousTime = now;
       gl.disable(gl.BLEND);
 
       p.curl.bind();
@@ -448,7 +384,6 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
       p.display.bind();
       gl.uniform1i(p.display.uniforms.uTexture, dye.read.attach(0));
       gl.uniform1f(p.display.uniforms.opacity, 1);
-      gl.uniform1f(p.display.uniforms.inkMode, weekend ? 1 : 0);
       blit(null);
     };
 
@@ -459,16 +394,14 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
     return () => {
       cancelAnimationFrame(raf);
       clearInterval(ambientInterval);
-      removeSmokeTrail();
       canvas.removeEventListener("mousemove", moveAny);
       window.removeEventListener("mousemove", moveHandler);
       window.removeEventListener("resize", resize);
     };
-  }, [weekend]);
+  }, []);
 
   return (
-    <>
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className="lumora-hero-surface absolute inset-0" />
       <div className="lumora-hero-wash absolute inset-0" />
       <div className="lumora-hero-orb lumora-hero-orb-a" />
@@ -476,19 +409,11 @@ export default function FluidHeroBg({ weekend }: { weekend: boolean }) {
       <div className="lumora-hero-band lumora-hero-band-a" />
       <div className="lumora-hero-band lumora-hero-band-b" />
       <div className="lumora-hero-grain absolute inset-0" />
-      </div>
       <canvas
         ref={canvasRef}
-        className="hero-fluid-canvas pointer-events-none absolute inset-0 z-[2] h-full w-full"
+        className="hero-fluid-canvas relative z-[1] h-full w-full opacity-45 mix-blend-screen"
         style={{ willChange: "auto" }}
-        aria-hidden="true"
       />
-      <div className="lumora-smoke-veil pointer-events-none absolute inset-0 z-[3]" aria-hidden="true" />
-      <div
-        ref={smokeTrailRef}
-        className="lumora-smoke-trail pointer-events-none absolute inset-0 z-[4] overflow-hidden"
-        aria-hidden="true"
-      />
-    </>
+    </div>
   );
 }
