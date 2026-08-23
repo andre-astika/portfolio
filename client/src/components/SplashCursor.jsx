@@ -67,7 +67,7 @@ function SplashCursor({
     let pointers = [new pointerPrototype()];
 
     const webglContext = getWebGLContext(canvas);
-    if (!webglContext) return;
+    if (!webglContext) return mountCssSplashFallback();
 
     const { gl, ext } = webglContext;
     if (!ext.supportLinearFiltering) {
@@ -123,6 +123,43 @@ function SplashCursor({
           halfFloatTexType,
           supportLinearFiltering
         }
+      };
+    }
+
+    function mountCssSplashFallback() {
+      if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return () => {};
+
+      const layer = canvas.parentElement;
+      if (!layer) return () => {};
+
+      const fallback = document.createElement('div');
+      fallback.className = 'splash-cursor-fallback';
+      fallback.setAttribute('aria-hidden', 'true');
+      layer.appendChild(fallback);
+
+      let lastSplashAt = 0;
+      const createSplash = (event) => {
+        if (event.pointerType && event.pointerType !== 'mouse') return;
+
+        const now = performance.now();
+        if (now - lastSplashAt < 42) return;
+        lastSplashAt = now;
+
+        const particle = document.createElement('span');
+        const size = 18 + Math.round(Math.random() * 28);
+        particle.className = 'splash-cursor-fallback-particle';
+        particle.style.left = `${event.clientX}px`;
+        particle.style.top = `${event.clientY}px`;
+        particle.style.setProperty('--splash-color', COLOR);
+        particle.style.setProperty('--splash-size', `${size}px`);
+        fallback.appendChild(particle);
+        particle.addEventListener('animationend', () => particle.remove(), { once: true });
+      };
+
+      window.addEventListener('pointermove', createSplash, { passive: true });
+      return () => {
+        window.removeEventListener('pointermove', createSplash);
+        fallback.remove();
       };
     }
 

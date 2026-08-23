@@ -468,6 +468,35 @@ body:has(.weekend-theme) {
   padding: 12px 20px;
 }
 
+.splash-cursor-fallback {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.splash-cursor-fallback-particle {
+  position: absolute;
+  width: var(--splash-size);
+  height: var(--splash-size);
+  border: 1px solid color-mix(in srgb, var(--splash-color) 88%, transparent);
+  border-radius: 48% 52% 46% 54%;
+  background: color-mix(in srgb, var(--splash-color) 30%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--splash-color) 50%, transparent);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+  animation: splash-cursor-fallback 560ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes splash-cursor-fallback {
+  0% { opacity: 0.72; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+  70% { opacity: 0.38; transform: translate(-50%, -50%) scale(1.8) rotate(22deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.4) rotate(42deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-cursor-fallback { display: none; }
+}
+
 .contact-inquiry-submit:hover {
   background: transparent;
   border-color: #ffffff;
