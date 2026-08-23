@@ -1,6 +1,241 @@
 'use client';
 import { useEffect, useRef } from 'react';
 
+const CANVAS_FALLBACK_MAX_PARTICLES = 120;
+
+function colorFromHex(hex) {
+  const value = hex.replace('#', '');
+  const normalized = value.length === 3
+    ? value.split('').map(channel => channel + channel).join('')
+    : value;
+
+  return {
+    r: parseInt(normalized.slice(0, 2), 16) || 255,
+    g: parseInt(normalized.slice(2, 4), 16) || 255,
+    b: parseInt(normalized.slice(4, 6), 16) || 255
+  };
+}
+
+/**
+ * A deliberately lightweight, Canvas 2D approximation of the WebGL renderer.
+ * It uses stretched, blurred dye particles and short velocity trails. The
+ * numerical fluid simulation remains the WebGL path; this path exists only for
+ * browsers where a WebGL context cannot be created.
+ */
+function startCanvas2DFallback(canvas, { color, inkMode }) {
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) {
+    canvas.dataset.splashRenderer = 'disabled';
+    return () => {};
+  }
+
+  canvas.dataset.splashRenderer = 'canvas2d';
+
+  const tint = inkMode ? { r: 0, g: 0, b: 0 } : colorFromHex(color);
+  const particles = [];
+  const supportsReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let cssWidth = 0;
+  let cssHeight = 0;
+  let pixelRatio = 1;
+  let animationFrame = 0;
+  let lastFrame = performance.now();
+  let previousPointer = null;
+
+  const rgba = (alpha) => `rgba(${tint.r}, ${tint.g}, ${tint.b}, ${alpha})`;
+
+  function resizeCanvas() {
+    const nextWidth = canvas.clientWidth || window.innerWidth;
+    const nextHeight = canvas.clientHeight || window.innerHeight;
+    const nextPixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+
+    cssWidth = nextWidth;
+    cssHeight = nextHeight;
+    pixelRatio = nextPixelRatio;
+    canvas.width = Math.max(1, Math.floor(nextWidth * nextPixelRatio));
+    canvas.height = Math.max(1, Math.floor(nextHeight * nextPixelRatio));
+    ctx.setTransform(nextPixelRatio, 0, 0, nextPixelRatio, 0, 0);
+  }
+
+  function addParticle(x, y, velocityX, velocityY, radius, alpha, life) {
+    if (particles.length >= CANVAS_FALLBACK_MAX_PARTICLES) {
+      particles.splice(0, particles.length - CANVAS_FALLBACK_MAX_PARTICLES + 1);
+    }
+
+    particles.push({
+      x,
+      y,
+      previousX: x - velocityX * 0.012,
+      previousY: y - velocityY * 0.012,
+      velocityX,
+      velocityY,
+      radius,
+      alpha,
+      life,
+      maxLife: life,
+      wobble: Math.random() * Math.PI * 2
+    });
+  }
+
+  function addTrail(x, y, deltaX, deltaY, intensity = 1) {
+    const speed = Math.hypot(deltaX, deltaY);
+    const particleCount = Math.min(7, Math.max(2, Math.ceil(speed / 15))) * intensity;
+
+    for (let index = 0; index < particleCount; index += 1) {
+      const progress = (index + Math.random()) / particleCount;
+      const scatter = (Math.random() - 0.5) * 22;
+      const perpendicularX = speed ? -deltaY / speed : 0;
+      const perpendicularY = speed ? deltaX / speed : 0;
+      const radius = 15 + Math.random() * 25 + Math.min(speed, 70) * 0.16;
+
+      addParticle(
+        x - deltaX * progress + perpendicularX * scatter,
+        y - deltaY * progress + perpendicularY * scatter,
+        deltaX * (0.13 + Math.random() * 0.11) + (Math.random() - 0.5) * 36,
+        deltaY * (0.13 + Math.random() * 0.11) + (Math.random() - 0.5) * 36,
+        radius,
+        (inkMode ? 0.18 : 0.14) + Math.random() * 0.13,
+        0.62 + Math.random() * 0.62
+      );
+    }
+  }
+
+  function addSplash(x, y) {
+    for (let index = 0; index < 14; index += 1) {
+      const angle = (Math.PI * 2 * index) / 14 + Math.random() * 0.38;
+      const speed = 45 + Math.random() * 185;
+      addParticle(
+        x,
+        y,
+        Math.cos(angle) * speed,
+        Math.sin(angle) * speed,
+        13 + Math.random() * 30,
+        (inkMode ? 0.16 : 0.12) + Math.random() * 0.12,
+        0.7 + Math.random() * 0.7
+      );
+    }
+  }
+
+  function drawParticle(particle) {
+    const lifeProgress = 1 - particle.life / particle.maxLife;
+    const fade = Math.pow(1 - lifeProgress, 1.55) * particle.alpha;
+    const velocity = Math.hypot(particle.velocityX, particle.velocityY);
+    const angle = Math.atan2(particle.velocityY, particle.velocityX);
+    const stretch = 1 + Math.min(velocity / 150, 1.45);
+    const radius = particle.radius * (0.64 + (1 - lifeProgress) * 0.55);
+    const trailDistance = Math.hypot(particle.x - particle.previousX, particle.y - particle.previousY);
+
+    ctx.save();
+    ctx.globalCompositeOperation = inkMode ? 'source-over' : 'lighter';
+    ctx.filter = `blur(${inkMode ? 0.8 : 1.5}px)`;
+
+    if (trailDistance > 1) {
+      ctx.lineCap = 'round';
+      ctx.lineWidth = radius * 0.62;
+      ctx.strokeStyle = rgba(fade * 0.58);
+      ctx.beginPath();
+      ctx.moveTo(particle.previousX, particle.previousY);
+      ctx.quadraticCurveTo(
+        (particle.previousX + particle.x) / 2 + Math.sin(particle.wobble + lifeProgress * 5) * 5,
+        (particle.previousY + particle.y) / 2 + Math.cos(particle.wobble + lifeProgress * 5) * 5,
+        particle.x,
+        particle.y
+      );
+      ctx.stroke();
+    }
+
+    ctx.translate(particle.x, particle.y);
+    ctx.rotate(angle + Math.sin(particle.wobble + lifeProgress * 6) * 0.18);
+    ctx.scale(stretch, 1 / Math.sqrt(stretch));
+    const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, radius);
+    glow.addColorStop(0, rgba(fade));
+    glow.addColorStop(0.32, rgba(fade * 0.82));
+    glow.addColorStop(0.72, rgba(fade * 0.28));
+    glow.addColorStop(1, rgba(0));
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function render(timestamp) {
+    const elapsed = Math.min((timestamp - lastFrame) / 1000, 0.033);
+    lastFrame = timestamp;
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.clearRect(0, 0, cssWidth, cssHeight);
+
+    for (let index = particles.length - 1; index >= 0; index -= 1) {
+      const particle = particles[index];
+      particle.life -= elapsed;
+
+      if (particle.life <= 0) {
+        particles.splice(index, 1);
+        continue;
+      }
+
+      particle.previousX = particle.x;
+      particle.previousY = particle.y;
+      particle.velocityX *= 0.956;
+      particle.velocityY *= 0.956;
+      particle.velocityY += 2.5 * elapsed;
+      particle.x += particle.velocityX * elapsed;
+      particle.y += particle.velocityY * elapsed;
+      drawParticle(particle);
+    }
+
+    animationFrame = window.requestAnimationFrame(render);
+  }
+
+  function getPoint(event) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
+    };
+  }
+
+  function handlePointerMove(event) {
+    const point = getPoint(event);
+    if (!previousPointer) {
+      previousPointer = point;
+      addSplash(point.x, point.y);
+      return;
+    }
+
+    const deltaX = point.x - previousPointer.x;
+    const deltaY = point.y - previousPointer.y;
+    if (Math.abs(deltaX) + Math.abs(deltaY) > 0.25) {
+      addTrail(point.x, point.y, deltaX, deltaY);
+    }
+    previousPointer = point;
+  }
+
+  function handlePointerDown(event) {
+    const point = getPoint(event);
+    previousPointer = point;
+    addSplash(point.x, point.y);
+  }
+
+  resizeCanvas();
+  if (!supportsReducedMotion) {
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('pointerdown', handlePointerDown, { passive: true });
+    window.addEventListener('resize', resizeCanvas);
+    animationFrame = window.requestAnimationFrame(render);
+  }
+
+  return () => {
+    window.cancelAnimationFrame(animationFrame);
+    window.removeEventListener('pointermove', handlePointerMove);
+    window.removeEventListener('pointerdown', handlePointerDown);
+    window.removeEventListener('resize', resizeCanvas);
+    particles.length = 0;
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.clearRect(0, 0, cssWidth, cssHeight);
+    delete canvas.dataset.splashRenderer;
+  };
+}
+
 function SplashCursor({
   SIM_RESOLUTION = 128,
   DYE_RESOLUTION = 1440,
@@ -66,12 +301,26 @@ function SplashCursor({
 
     let pointers = [new pointerPrototype()];
 
-    const { gl, ext } = getWebGLContext(canvas);
-    if (!gl) {
+    let webglContext;
+    try {
+      webglContext = getWebGLContext(canvas);
+    } catch (error) {
+      webglContext = { gl: null, ext: {} };
+    }
+
+    const { gl, ext } = webglContext;
+    if (!gl || !ext.formatRGBA || !ext.formatRG || !ext.formatR || !ext.halfFloatTexType) {
+      const disposeFallback = startCanvas2DFallback(canvas, {
+        color: COLOR,
+        inkMode: INK_MODE
+      });
+
       return () => {
         isActive = false;
+        disposeFallback();
       };
     }
+    canvas.dataset.splashRenderer = 'webgl';
     if (!ext.supportLinearFiltering) {
       config.DYE_RESOLUTION = 256;
       config.SHADING = false;
@@ -1072,6 +1321,7 @@ function SplashCursor({
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      delete canvas.dataset.splashRenderer;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

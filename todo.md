@@ -836,3 +836,15 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 - [x] Validate, publish, and synchronize the approved patch to GitHub Pages.
 
 Verification note: both the development preview and GitHub Pages version `?v=061605d` load the complete portfolio on the connected browser without the former `getExtension` null-context crash.
+
+## Hero liquid reveal recovery
+
+- [ ] Identify the approved pointer-following liquid reveal implementation separately from the global SplashCursor canvas.
+- [ ] Restore the portrait liquid reveal with its approved translucent, fluid appearance in Developer and Weekend modes.
+- [ ] Verify the Hero interaction against the supplied reference and publish it to GitHub Pages.
+
+## SplashCursor Canvas 2D fallback
+
+- [x] Add a pointer-driven Canvas 2D fluid fallback that activates only when SplashCursor cannot initialize WebGL.
+- [x] Preserve the original WebGL SplashCursor path, theme-aware white/black color behavior, and full cleanup lifecycle.
+- [x] Add regression tests and validate fallback rendering and production builds; GitHub Pages publication remains pending.
