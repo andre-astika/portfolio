@@ -833,4 +833,6 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 
 - [x] Reproduce the published static-site crash and identify the null `getExtension` call.
 - [x] Fix or guard the static build path that crashes at runtime.
-- [ ] Run regression checks and verify a healthy published GitHub Pages page.
+- [x] Run regression checks and verify a healthy published GitHub Pages page.
+
+Recovery verification: GitHub Pages workflow `32644012373` completed successfully. The published page loaded normally at `?v=bfe1708` in the connected browser, showing the complete portfolio content without the previous `getExtension` runtime crash.
