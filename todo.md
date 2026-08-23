@@ -889,4 +889,4 @@ Verification note: a root-element click from browser automation resolves to the 
 
 - [x] Restore `SplashCursor.jsx` byte-for-byte from the last commit before the WebGL error guard.
 - [x] Remove every later SplashCursor guard, fallback, visibility-strength, and test adjustment.
-- [ ] Publish the exact pre-error source to GitHub Pages, accepting the prior runtime error if it recurs.
+- [x] Publish the exact pre-error source to GitHub Pages, accepting the prior runtime error if it recurs.
