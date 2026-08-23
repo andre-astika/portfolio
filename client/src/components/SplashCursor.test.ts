@@ -10,17 +10,16 @@ const homeSource = readFileSync(
   "utf8",
 );
 
-describe("SplashCursor WebGL fallback", () => {
+describe("SplashCursor WebGL guard", () => {
   it("does not initialize WebGL extensions when the browser returns no context", () => {
     expect(splashCursorSource).toContain("const webglContext = getWebGLContext(canvas);");
-    expect(splashCursorSource).toContain("if (!webglContext) return mountCssSplashFallback();");
+    expect(splashCursorSource).toContain("if (!webglContext) return;");
     expect(splashCursorSource).toContain("if (!gl) return null;");
   });
 
-  it("uses a visual fallback instead of removing the cursor experience when WebGL is unavailable", () => {
-    expect(splashCursorSource).toContain("if (!webglContext) return mountCssSplashFallback();");
-    expect(splashCursorSource).toContain("function mountCssSplashFallback()");
-    expect(splashCursorSource).toContain("splash-cursor-fallback-particle");
+  it("does not replace the approved fluid cursor with a bubble-style fallback", () => {
+    expect(splashCursorSource).not.toContain("mountCssSplashFallback");
+    expect(splashCursorSource).not.toContain("splash-cursor-fallback");
   });
 
   it("keeps white developer splashes and black weekend splashes", () => {
