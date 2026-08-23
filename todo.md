@@ -828,3 +828,9 @@ Production delivery result: the published Manus endpoint returned HTTP 200 to a 
 - [x] Show the shortened Dev Mode label and revised role copy only on mobile.
 - [x] Reduce Contact card padding on mobile and set the inquiry button typography and padding at all breakpoints.
 - [x] Validate and publish the Hero and Contact refinement.
+
+## User-supplied SplashCursor patch review
+
+- [x] Review the supplied SplashCursor patch and replacement source against the restored project snapshot.
+- [x] Apply only the compatible WebGL/context fix while preserving the approved SplashCursor fluid appearance.
+- [ ] Validate, publish, and synchronize the approved patch to GitHub Pages.
