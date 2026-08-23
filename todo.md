@@ -841,4 +841,4 @@ Recovery verification: GitHub Pages workflow `32644012373` completed successfull
 
 - [x] Keep SplashCursor active whenever WebGL is available while retaining a no-crash fallback when it is unavailable.
 - [x] Verify the cursor effect can initialize and the static site still handles an unavailable WebGL context safely.
-- [ ] Publish the SplashCursor recovery.
+- [x] Publish the SplashCursor recovery.
