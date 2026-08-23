@@ -875,7 +875,7 @@ Public Weekend validation note: the same deployed GitHub Pages version switches 
 
 - [x] Identify the exact pre-regression pointer-fluid renderer shown in the approved reference, separate from the static Hero background.
 - [x] Restore the transparent fluid splash that follows pointer movement over the portrait, preserving the approved visual character.
-- [ ] Verify the interaction in both modes, retain a non-visual WebGL crash guard, then publish to GitHub Pages.
+- [x] Verify the interaction in both modes, retain a non-visual WebGL crash guard, then publish to GitHub Pages.
 
 Audit note: the pre-error WebGL source is still mounted with only the null-context guard changed, but the connected browser did not visibly render a splash after its initial pointer movement. The recovery therefore must validate actual pointer-generated splats, not only component mounting or static Hero appearance.
 
