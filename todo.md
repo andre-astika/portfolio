@@ -847,4 +847,4 @@ Recovery verification: GitHub Pages workflow `32644012373` completed successfull
 
 - [x] Remove the CSS bubble fallback that changed the approved fluid SplashCursor appearance.
 - [x] Retain the original fluid WebGL cursor in white for Developer and black ink for Weekend, while keeping a silent no-crash WebGL guard.
-- [ ] Validate the corrected cursor behavior, publish it, and synchronize GitHub Pages.
+- [x] Validate the corrected cursor behavior, publish it, and synchronize GitHub Pages.
