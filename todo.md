@@ -850,3 +850,19 @@ Verification note: `Hero.tsx`, `LiquidHeroReveal.tsx`, and `FluidHeroBg.tsx` are
 - [x] Add a pointer-driven Canvas 2D fluid fallback that activates only when SplashCursor cannot initialize WebGL.
 - [x] Preserve the original WebGL SplashCursor path, theme-aware white/black color behavior, and full cleanup lifecycle.
 - [x] Add regression tests, validate fallback rendering and production builds, then publish to GitHub Pages.
+
+## Lumora-style Hero interaction replacement
+
+- [x] Remove the Canvas 2D particle fallback that does not match the approved visual reference.
+- [x] Implement a clean, pointer-following Hero photo reveal with a large feathered liquid mask, not particles, smoke, rings, or generic blobs.
+- [x] Preserve the original global SplashCursor WebGL renderer only where it is supported, then validate and publish both theme modes.
+
+Interaction check: moving the pointer across the Developer Hero switches the portrait through the enlarged soft photo mask, while Weekend reverses that photo relationship against the paper palette. No particle fallback is visible in either inspection.
+
+## Lumora-only interaction scope
+
+- [x] Remove the global SplashCursor overlay so the page has only the Hero-local Lumora liquid reveal.
+- [x] Revalidate the Hero photo reveal in Developer and Weekend modes without any global cursor effect.
+- [x] Publish the Lumora-only interaction to GitHub Pages.
+
+Preview verification: after removal of the global overlay, Developer reveals the cap-and-glasses portrait through the large feathered Hero mask; Weekend reveals the plain portrait through the same local mask. The cursor effect no longer appears outside the Hero.

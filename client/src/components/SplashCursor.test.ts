@@ -8,15 +8,14 @@ describe('SplashCursor renderer capability handling', () => {
     expect(source).toMatch(/if \(!gl\) \{\s+return \{ gl: null, ext: \{\} \};\s+\}/);
   });
 
-  it('starts a Canvas 2D fallback when the original fluid renderer cannot initialize', () => {
-    expect(source).toContain('function startCanvas2DFallback');
-    expect(source).toMatch(/if \(!gl \|\| !ext\.formatRGBA \|\| !ext\.formatRG \|\| !ext\.formatR \|\| !ext\.halfFloatTexType\) \{/);
-    expect(source).toMatch(/const disposeFallback = startCanvas2DFallback\(canvas, \{\s+color: COLOR,\s+inkMode: INK_MODE\s+\}\);/);
-    expect(source).toContain("canvas.dataset.splashRenderer = 'canvas2d'");
+  it('does not replace the original fluid renderer with a particle fallback', () => {
+    expect(source).not.toContain('startCanvas2DFallback');
+    expect(source).not.toContain('CANVAS_FALLBACK_MAX_PARTICLES');
+    expect(source).toMatch(/if \(!gl \|\| !ext\.formatRGBA \|\| !ext\.formatRG \|\| !ext\.formatR \|\| !ext\.halfFloatTexType\) \{\s+return \(\) => \{\s+isActive = false;\s+\};\s+\}/);
   });
 
-  it('keeps the fallback theme-aware and fully disposable', () => {
-    expect(source).toContain("const tint = inkMode ? { r: 0, g: 0, b: 0 } : colorFromHex(color);");
-    expect(source).toContain('disposeFallback();');
+  it('keeps the original WebGL renderer marked while it is active', () => {
+    expect(source).toContain("canvas.dataset.splashRenderer = 'webgl'");
+    expect(source).toContain('delete canvas.dataset.splashRenderer;');
   });
 });

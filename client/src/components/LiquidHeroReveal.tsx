@@ -94,7 +94,7 @@ const LiquidHeroReveal = forwardRef<
         {
           "--liquid-x": "78%",
           "--liquid-y": "46%",
-          "--liquid-radius": "clamp(7rem, 15vw, 15rem)",
+          "--liquid-radius": "clamp(13rem, 26vw, 29rem)",
         } as React.CSSProperties
       }
       aria-hidden="true"
@@ -103,19 +103,19 @@ const LiquidHeroReveal = forwardRef<
         key={baseSrc}
         src={baseSrc}
         alt=""
-        className={`theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[80%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 ${mode === "weekend" ? "opacity-90" : "opacity-40"}`}
+        className={`theme-aware-reveal-media theme-aware-reveal-base absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[80%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 ${mode === "weekend" ? "opacity-90" : "opacity-46"}`}
         draggable={false}
       />
       <img
         key={revealSrc}
         src={revealSrc}
         alt=""
-        className={`theme-aware-reveal-media theme-aware-reveal-hover absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[80%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-opacity duration-500 ${active ? "opacity-60" : "opacity-0"}`}
+        className={`theme-aware-reveal-media theme-aware-reveal-hover absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[80%_50%] grayscale-[0.15] contrast-[1.05] brightness-[0.72] transition-[opacity,transform] duration-500 ease-out ${active ? "opacity-[0.86] scale-100" : "opacity-0 scale-[0.985]"}`}
         style={{
           WebkitMaskImage:
-            "radial-gradient(circle var(--liquid-radius) at var(--liquid-x) var(--liquid-y), black 0%, black 30%, rgb(0 0 0 / 0.7) 48%, transparent 100%)",
+            "radial-gradient(ellipse calc(var(--liquid-radius) * 0.82) var(--liquid-radius) at var(--liquid-x) var(--liquid-y), black 0%, black 35%, rgb(0 0 0 / 0.94) 52%, rgb(0 0 0 / 0.58) 72%, transparent 100%)",
           maskImage:
-            "radial-gradient(circle var(--liquid-radius) at var(--liquid-x) var(--liquid-y), black 0%, black 30%, rgb(0 0 0 / 0.7) 48%, transparent 100%)",
+            "radial-gradient(ellipse calc(var(--liquid-radius) * 0.82) var(--liquid-radius) at var(--liquid-x) var(--liquid-y), black 0%, black 35%, rgb(0 0 0 / 0.94) 52%, rgb(0 0 0 / 0.58) 72%, transparent 100%)",
         }}
         draggable={false}
       />
