@@ -111,7 +111,7 @@ export default function Hero() {
         revealSrc={weekend ? HERO_IMG_PLAIN : HERO_IMG_WEEKEND}
       />
       {/* WebGL fluid/smoke layer behind everything, pointer-reactive */}
-      <FluidHeroBg />
+      <FluidHeroBg weekend={weekend} />
 
       <div className="container relative z-10 flex min-h-screen flex-col justify-center px-6 pb-12 pt-28 md:pb-28 md:pt-32 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">

@@ -848,3 +848,15 @@ Recovery verification: GitHub Pages workflow `32644012373` completed successfull
 - [x] Remove the CSS bubble fallback that changed the approved fluid SplashCursor appearance.
 - [x] Retain the original fluid WebGL cursor in white for Developer and black ink for Weekend, while keeping a silent no-crash WebGL guard.
 - [x] Validate the corrected cursor behavior, publish it, and synchronize GitHub Pages.
+
+## Lumora smoke SplashCursor recovery
+
+- [x] Audit the approved Lumora smoke implementation and the pre-error SplashCursor version to identify the missing visual behavior.
+- [x] Restore the approved smoke-like fluid trail rather than a bubble, ring, or silent no-op, while retaining safe WebGL capability handling.
+- [ ] Verify white smoke in Developer Mode and black ink smoke in Weekend Mode, then publish and synchronize GitHub Pages.
+
+Audit note: current preview confirms the smoke layer is now visible above the Hero photography, but its initial plume is still too compact and bright. The final treatment must diffuse into broader, overlapping smoke rather than reading as one luminous blob.
+
+Developer validation note: after broadening the veil and overlapping smoke sources, the Hero now renders a clearly visible white, diffused smoke layer across the lower portrait rather than a ring or isolated bubble.
+
+Weekend validation note: switching to Weekend Mode changes the full Hero to the light-paper palette and renders the same lower-portrait smoke treatment as a soft black/ink haze.
