@@ -63,7 +63,7 @@ export const EXPERIENCE = [
   },
   {
     period: "2022 — Present",
-    role: "Freelance Website Designer & Developer, Graphic Designer",
+    role: "Freelance WEBSITE & GRAPHIC DESIGNER",
     company: "Self-employed",
     points: [
       "Design and develop customised, responsive websites for clients, including wedding and event platforms, with strong UI/UX and frontend performance.",

@@ -41,7 +41,7 @@ describe("Experience About section", () => {
       "Led the frontend team in building, maintaining, and optimising 10+ web projects annually for client business operations."
     );
     expect(freelanceRole).toMatchObject({
-      role: "Freelance Website Designer & Developer, Graphic Designer",
+      role: "Freelance WEBSITE & GRAPHIC DESIGNER",
       company: "Self-employed",
     });
   });

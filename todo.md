@@ -898,3 +898,11 @@ Preview verification: the rendered About summary and all six Experience entries 
 - [x] Validate the new paragraph; GitHub Pages publication remains pending.
 
 Preview verification: the full supplied profile paragraph appears directly under Design. Build. Ship.; no other About, Experience, or site content was changed.
+
+## Freelance role title update
+
+- [x] Change only the freelance role title to “Freelance WEBSITE & GRAPHIC DESIGNER”.
+- [x] Validate the updated title without changes to headings, layout, responsibilities, or other content.
+- [x] Validate the role title; GitHub Pages publication remains pending.
+
+Preview verification: the rendered freelance title is exactly “Freelance WEBSITE & GRAPHIC DESIGNER”; employer and existing responsibilities remain unchanged.
