@@ -890,3 +890,11 @@ Preview check: the mask now uses `clamp(11rem, 21vw, 24rem)`, a moderate reducti
 - [x] Validate exact content scope and test the portfolio; GitHub Pages publication remains pending.
 
 Preview verification: the rendered About summary and all six Experience entries match the supplied CV profile, titles, periods, employers, and responsibilities. No components, styles, interactions, or unrelated page copy were changed.
+
+## About profile text replacement
+
+- [x] Replace only the profile paragraph below Design. Build. Ship. with the user-provided text.
+- [x] Preserve the existing About heading, layout, Experience entries, and all unrelated sections.
+- [x] Validate the new paragraph; GitHub Pages publication remains pending.
+
+Preview verification: the full supplied profile paragraph appears directly under Design. Build. Ship.; no other About, Experience, or site content was changed.

@@ -3,7 +3,7 @@
 import { AndrePhoto } from "@/components/AndrePhoto";
 
 export const ABOUT_SUMMARY =
-  "Frontend Web Developer with 3+ years of experience, evolving from traditional WordPress development to modern Next.js architecture. I build high-performance, responsive applications with React, Next.js, TypeScript, Tailwind CSS, Headless WordPress, GraphQL, and MDX — pairing UI/UX, technical SEO, and asset optimisation with disciplined troubleshooting, security, and documentation.";
+  "Frontend Web Developer with 3+ years of experience, transitioning from an Expert Traditional WordPress Developer to a Modern Next.js Specialist. Highly proficient in building high-performance, responsive web applications using Front-End Architecture, modern JavaScript (React.js, Next.js), strictly typed with TypeScript, and styled with HTML, CSS, and Tailwind CSS. Experienced in handling two primary modern architectures: Headless WordPress (utilizing PHP/MySQL backend for content entry and fetching data via GraphQL) and fully static sites driven by MDX content. Retains deep expertise in traditional WordPress development while actively implementing UI/UX principles, Technical/On-Page SEO best practices, and asset optimization for maximum page load speed. Adept at troubleshooting, bug fixing, and leveraging AI technologies (ChatGPT, Gemini, Claude) for workflow automation. Proven ability to work independently or within a team to maintain website security, optimize performance, and deliver comprehensive technical documentation.";
 
 export const EXPERIENCE = [
   {

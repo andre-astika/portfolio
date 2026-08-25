@@ -19,9 +19,12 @@ describe("Experience About section", () => {
 
   it("uses the supplied CV profile summary", () => {
     expect(ABOUT_SUMMARY).toContain("Frontend Web Developer with 3+ years of experience");
+    expect(ABOUT_SUMMARY).toContain("Expert Traditional WordPress Developer");
+    expect(ABOUT_SUMMARY).toContain("Modern Next.js Specialist");
     expect(ABOUT_SUMMARY).toContain("Headless WordPress");
     expect(ABOUT_SUMMARY).toContain("GraphQL");
     expect(ABOUT_SUMMARY).toContain("MDX");
+    expect(ABOUT_SUMMARY).toContain("ChatGPT, Gemini, Claude");
   });
 
   it("uses the supplied CV roles, employers, periods, and responsibilities", () => {
