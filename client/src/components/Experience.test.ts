@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ABOUT_PORTRAIT_OPTIONS, EXPERIENCE } from "./Experience";
+import { ABOUT_PORTRAIT_OPTIONS, ABOUT_SUMMARY, EXPERIENCE } from "./Experience";
 import { BOTTOM_CAPTION_CLASS } from "./AndrePhoto";
 
 describe("Experience About section", () => {
@@ -17,11 +17,29 @@ describe("Experience About section", () => {
     expect(BOTTOM_CAPTION_CLASS).not.toContain("border");
   });
 
-  it("uses the requested Lead WordPress Frontend Developer role and corrected Lead wording", () => {
-    const jupitrRole = EXPERIENCE.find((experience) => experience.period === "Oct 2024 — Jan 2026");
+  it("uses the supplied CV profile summary", () => {
+    expect(ABOUT_SUMMARY).toContain("Frontend Web Developer with 3+ years of experience");
+    expect(ABOUT_SUMMARY).toContain("Headless WordPress");
+    expect(ABOUT_SUMMARY).toContain("GraphQL");
+    expect(ABOUT_SUMMARY).toContain("MDX");
+  });
 
-    expect(jupitrRole?.role).toBe("Lead WordPress Frontend Developer");
-    expect(jupitrRole?.points).toContain("Lead the frontend development team — managed workflow and delegated tasks.");
-    expect(EXPERIENCE.flatMap((experience) => experience.points).some((point) => point.startsWith("Led"))).toBe(false);
+  it("uses the supplied CV roles, employers, periods, and responsibilities", () => {
+    const currentRole = EXPERIENCE.find((experience) => experience.period === "Jul 2026 — Present");
+    const jupitrRole = EXPERIENCE.find((experience) => experience.period === "Oct 2024 — Jan 2026");
+    const freelanceRole = EXPERIENCE.find((experience) => experience.period === "2022 — Present");
+
+    expect(currentRole?.role).toBe("Frontend Web Developer (Headless CMS & Next.js)");
+    expect(currentRole?.points).toContain(
+      "Engineer Headless WordPress architecture by connecting Next.js applications to PHP/MySQL content systems through GraphQL."
+    );
+    expect(jupitrRole?.role).toBe("Lead Frontend WordPress Developer");
+    expect(jupitrRole?.points).toContain(
+      "Led the frontend team in building, maintaining, and optimising 10+ web projects annually for client business operations."
+    );
+    expect(freelanceRole).toMatchObject({
+      role: "Freelance Website Designer & Developer, Graphic Designer",
+      company: "Self-employed",
+    });
   });
 });

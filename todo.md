@@ -882,3 +882,11 @@ Chrome preview check: the site loaded without the former WebGL crash after the o
 - [x] Validate the smaller focus radius; GitHub Pages publication remains pending.
 
 Preview check: the mask now uses `clamp(11rem, 21vw, 24rem)`, a moderate reduction from the former `clamp(13rem, 26vw, 29rem)`. Pointer inspection confirms the focused photo transition is more contained around the face while retaining its feathered edge.
+
+## CV content update: About and Experience only
+
+- [x] Replace the About summary using the supplied CV profile while preserving the existing About layout and all unrelated copy.
+- [x] Update every Experience entry with the supplied CV titles, dates, employers, and responsibilities only.
+- [x] Validate exact content scope and test the portfolio; GitHub Pages publication remains pending.
+
+Preview verification: the rendered About summary and all six Experience entries match the supplied CV profile, titles, periods, employers, and responsibilities. No components, styles, interactions, or unrelated page copy were changed.

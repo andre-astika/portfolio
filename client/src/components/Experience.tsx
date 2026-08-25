@@ -2,15 +2,19 @@
    and skills chips echoing the CV's pill style (inverted grayscale). */
 import { AndrePhoto } from "@/components/AndrePhoto";
 
+export const ABOUT_SUMMARY =
+  "Frontend Web Developer with 3+ years of experience, evolving from traditional WordPress development to modern Next.js architecture. I build high-performance, responsive applications with React, Next.js, TypeScript, Tailwind CSS, Headless WordPress, GraphQL, and MDX — pairing UI/UX, technical SEO, and asset optimisation with disciplined troubleshooting, security, and documentation.";
+
 export const EXPERIENCE = [
   {
     period: "Jul 2026 — Present",
-    role: "Frontend Developer — Headless CMS & Next.js",
+    role: "Frontend Web Developer (Headless CMS & Next.js)",
     company: "Jupitr Agency",
     points: [
-      "Site structure & styling with WordPress + CSS and Next.js (TypeScript/JSX) with MDX and Tailwind.",
-      "Headless Next.js sites integrated with GraphQL + WordPress, and Next.js with Sanity CMS.",
-      "Fullstack-leaning involvement with a strong frontend foundation; AI-assisted research without compromising code quality.",
+      "Develop and optimise responsive frontend applications with JavaScript, React.js, Next.js, TypeScript (TSX), and Tailwind CSS.",
+      "Engineer Headless WordPress architecture by connecting Next.js applications to PHP/MySQL content systems through GraphQL.",
+      "Build high-performance static pages with MDX for scalable content management, page-load speed, and overall system performance.",
+      "Manage troubleshooting, bug fixing, testing, deployment, AI-assisted workflow automation, and team technical documentation.",
     ],
   },
   {
@@ -18,17 +22,21 @@ export const EXPERIENCE = [
     role: "Quality Assurance",
     company: "Jupitr Agency",
     points: [
-      "Designed the create-check-approval SOP for QA documentation.",
-      "Built custom tools for comparing developed websites against design references.",
+      "Managed maintenance, development, and optimisation checks for digital products against UI/UX and responsive-design standards.",
+      "Built custom internal tools to identify layout anomalies and performance bottlenecks during troubleshooting.",
+      "Partnered with the development team to isolate bugs, track fixes, and integrate solutions into internal systems.",
+      "Designed and maintained the create-check-approval SOP and user guidelines for a consistent QA workflow.",
     ],
   },
   {
     period: "Oct 2024 — Jan 2026",
-    role: "Lead WordPress Frontend Developer",
+    role: "Lead Frontend WordPress Developer",
     company: "Jupitr Agency",
     points: [
-      "Lead the frontend development team — managed workflow and delegated tasks.",
-      "Handled 10–20 projects annually for international agency clients, each with distinct performance challenges and case studies.",
+      "Led the frontend team in building, maintaining, and optimising 10+ web projects annually for client business operations.",
+      "Managed independent and collaborative tasks while ensuring features met operational, performance, and security standards.",
+      "Conducted code reviews and mentored junior developers in frontend architecture, modern practices, and effective bug resolution.",
+      "Translated technical challenges and international stakeholder needs into actionable technical requirements.",
     ],
   },
   {
@@ -36,7 +44,10 @@ export const EXPERIENCE = [
     role: "Senior Frontend WordPress Developer",
     company: "Cabaretti Website Design and Development",
     points: [
-      "Lead frontend development for international clients with distinct performance challenges and case studies.",
+      "Managed frontend workflows, delegated tasks, and led delivery for international agency clients based in San Diego, California.",
+      "Maintained enterprise-level responsive WordPress websites using PHP, MySQL, HTML, and CSS.",
+      "Oversaw database interactions, security protocols, and website performance to maintain strong client-side stability.",
+      "Provided senior technical troubleshooting for critical backend and frontend issues.",
     ],
   },
   {
@@ -44,16 +55,19 @@ export const EXPERIENCE = [
     role: "Junior Frontend WordPress Developer",
     company: "Cabaretti Website Design and Development",
     points: [
-      "Built WordPress sites across WP Bakery, Elementor, Divi, and Gutenberg plus custom plugins.",
-      "Worked directly with an international team and clients (company based in San Diego, California, USA).",
+      "Built custom WordPress websites with WP Bakery, Elementor, Divi, Gutenberg, and custom plugin implementations.",
+      "Applied technical SEO: WebP image optimisation below 200KB, alt text, and meta-title and description configuration.",
+      "Worked with international teams to translate website designs into clean, responsive, mobile-friendly code.",
+      "Handled day-to-day maintenance, performance checks, and routine bug fixes across client web properties.",
     ],
   },
   {
     period: "2022 — Present",
-    role: "Freelance Graphic Designer, Website Designer & Developer",
-    company: "Independent",
+    role: "Freelance Website Designer & Developer, Graphic Designer",
+    company: "Self-employed",
     points: [
-      "Delivered flyers, banners, logos, invitation cards, and websites for various clients, including wedding event websites.",
+      "Design and develop customised, responsive websites for clients, including wedding and event platforms, with strong UI/UX and frontend performance.",
+      "Produce branded digital assets including logos, banners, flyers, and invitation cards using Adobe Photoshop.",
     ],
   },
 ];
@@ -97,10 +111,7 @@ export default function Experience() {
               Ship.
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-white/60 md:text-base">
-              3+ years in the craft. I turn ideas into websites, brands, and visual systems that
-              perform — not decorate. I've owned QA processes end to end (SOPs, custom tooling)
-              and run my own freelance practice since 2022, working across time zones with
-              international clients and teams.
+              {ABOUT_SUMMARY}
             </p>
 
             <div className="reveal mt-8 inline-block md:mt-10" style={{ "--reveal-delay": "220ms" } as React.CSSProperties}>
