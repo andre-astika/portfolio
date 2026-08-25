@@ -911,6 +911,6 @@ Preview verification: the rendered freelance title is exactly “Freelance WEBSI
 
 - [x] Determine whether manus-agent is an active repository collaborator or a contributor generated from commit history.
 - [x] Identify the least disruptive removal path and its implications for GitHub Pages and repository history.
-- [ ] Rewrite commit attribution with the user's explicit approval, force-push the new history, and verify the repository result.
+- [x] Rewrite commit attribution with the user's explicit approval, force-push the new history, and verify the repository result.
 
-Audit result: `manus-agent` is not an active repository collaborator. GitHub lists it as a contributor solely because 138 commits use `Manus <dev-agent@manus.ai>`; the user explicitly approved history rewrite and force-push to replace that attribution.
+Audit result: `manus-agent` is not an active repository collaborator. It previously appeared solely because 138 commits used `Manus <dev-agent@manus.ai>`. With the user's explicit approval, every commit on `main` was rewritten with `andre-astika <264904497+andre-astika@users.noreply.github.com>` and force-pushed; GitHub now lists only `andre-astika` as the contributor.
