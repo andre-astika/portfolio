@@ -914,3 +914,11 @@ Preview verification: the rendered freelance title is exactly “Freelance WEBSI
 - [x] Rewrite commit attribution with the user's explicit approval, force-push the new history, and verify the repository result.
 
 Audit result: `manus-agent` is not an active repository collaborator. It previously appeared solely because 138 commits used `Manus <dev-agent@manus.ai>`. With the user's explicit approval, every commit on `main` was rewritten with `andre-astika <264904497+andre-astika@users.noreply.github.com>` and force-pushed; GitHub now lists only `andre-astika` as the contributor.
+
+## Contributor UI stale-entry investigation
+
+- [x] Audit all remote refs and GitHub contributor/statistics endpoints for lingering manus-agent attribution.
+- [x] Determine whether the repository UI is using stale contributor cache or a remaining reachable commit.
+- [x] Trigger and verify the available GitHub contributor-statistics rebuild; no remaining repository attribution needs removal.
+
+Audit result: GitHub publishes only `main`, whose 140 commits all use the user's no-reply email. The public contributors and statistics APIs both return only `andre-astika` (140); the separate repository-sidebar card still displays the historical contributor entry and is therefore GitHub server-side cache, not reachable commit history or collaborator access.
