@@ -906,3 +906,11 @@ Preview verification: the full supplied profile paragraph appears directly under
 - [x] Validate the role title; GitHub Pages publication remains pending.
 
 Preview verification: the rendered freelance title is exactly “Freelance WEBSITE & GRAPHIC DESIGNER”; employer and existing responsibilities remain unchanged.
+
+## GitHub contributor attribution review
+
+- [x] Determine whether manus-agent is an active repository collaborator or a contributor generated from commit history.
+- [x] Identify the least disruptive removal path and its implications for GitHub Pages and repository history.
+- [ ] Rewrite commit attribution with the user's explicit approval, force-push the new history, and verify the repository result.
+
+Audit result: `manus-agent` is not an active repository collaborator. GitHub lists it as a contributor solely because 138 commits use `Manus <dev-agent@manus.ai>`; the user explicitly approved history rewrite and force-push to replace that attribution.
