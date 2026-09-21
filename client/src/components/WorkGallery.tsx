@@ -7,6 +7,17 @@ import { siteAsset } from "@/lib/siteAsset";
 export const PROJECTS = [
   {
     index: "01",
+    year: "2026",
+    title: "Digital Service",
+    tag: "Web Design · Web Development · Graphic Design",
+    image: siteAsset("/manus-storage/algorhythm-works-website-device_e1029af2.webp"),
+    description:
+      "A complete digital presence for a multidisciplinary service studio, bringing web design, web development, and graphic design together in one focused, responsive brand experience.",
+    stats: ["Web design", "Web development", "Graphic design"],
+    link: "https://andre-astika.github.io/algorhythm-works/",
+  },
+  {
+    index: "02",
     year: "2022 — 26",
     title: "Agency Client Website",
     tag: "WordPress · Next.js · Responsive Web · Web Development",
@@ -16,7 +27,7 @@ export const PROJECTS = [
     stats: ["WordPress", "Next.js", "Responsive web"],
   },
   {
-    index: "02",
+    index: "03",
     year: "2026",
     title: "Cultural Campaign Website",
     tag: "WordPress · Campaign Design · Responsive Web · Web Development",
@@ -26,7 +37,7 @@ export const PROJECTS = [
     stats: ["WordPress", "Campaign site", "Responsive web"],
   },
   {
-    index: "03",
+    index: "04",
     year: "2026",
     title: "E-Invitation Website",
     tag: "Website · WordPress",
@@ -36,7 +47,7 @@ export const PROJECTS = [
     stats: ["WordPress", "Responsive web", "2026"],
   },
   {
-    index: "04",
+    index: "05",
     year: "2026",
     title: "Invitation Branding Suite",
     tag: "Logo · Invitation Card · Brand · Print",
@@ -107,7 +118,18 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
       {/* meta block */}
       <div className="flex flex-col gap-4 p-6 md:p-8">
         <h3 className="font-display text-2xl font-extrabold uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-silver-gradient md:text-3xl">
-          {project.title}
+          {project.link ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-opacity duration-200 hover:opacity-70"
+            >
+              {project.title}
+            </a>
+          ) : (
+            project.title
+          )}
         </h3>
         <div className="flex gap-6 border-t border-white/10 pt-4">
           {project.stats.map((s) => (
@@ -116,6 +138,16 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
             </span>
           ))}
         </div>
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="font-label inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-white/60 transition-colors duration-200 hover:text-white"
+          >
+            View project <span aria-hidden="true">→</span>
+          </a>
+        )}
       </div>
     </article>
   );
