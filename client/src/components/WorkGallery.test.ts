@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { PROJECTS, WORK_IMAGE_CLASS } from "./WorkGallery";
+import { PROJECTS, WORK_GALLERY_VIEWPORT_CLASS, WORK_IMAGE_CLASS, WORK_META_CLASS } from "./WorkGallery";
 
 describe("WorkGallery project data", () => {
   it("keeps the featured portfolio projects in the intended order", () => {
@@ -28,6 +28,12 @@ describe("WorkGallery project data", () => {
     expect(WORK_IMAGE_CLASS).toContain("object-cover");
     expect(WORK_IMAGE_CLASS).not.toContain("group-hover:scale");
     expect(WORK_IMAGE_CLASS).not.toContain("group-hover:contrast");
+  });
+
+  it("keeps project links clickable with right-aligned metadata and no grab cursor", () => {
+    expect(WORK_META_CLASS).toContain("justify-between");
+    expect(WORK_GALLERY_VIEWPORT_CLASS).not.toContain("cursor-grab");
+    expect(WORK_GALLERY_VIEWPORT_CLASS).not.toContain("cursor-grabbing");
   });
 
   it("adds the Digital Service project with its featured asset and link", () => {

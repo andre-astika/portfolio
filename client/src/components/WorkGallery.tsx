@@ -1,6 +1,6 @@
 /* NOIR KINETIC — a manually draggable horizontal Work gallery.
    Hovering a card lifts it and reveals its brief description. */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useRevealObserver } from "@/hooks/useKinetic";
 import { siteAsset } from "@/lib/siteAsset";
 
@@ -61,6 +61,9 @@ export const PROJECTS = [
 
 export const WORK_IMAGE_CLASS =
   "h-full w-full object-cover";
+export const WORK_META_CLASS = "flex items-end justify-between gap-6 border-t border-white/10 pt-4";
+export const WORK_GALLERY_VIEWPORT_CLASS =
+  "overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
 
 function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
   const cardRef = useRef<HTMLElement>(null);
@@ -131,23 +134,25 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
             project.title
           )}
         </h3>
-        <div className="flex gap-6 border-t border-white/10 pt-4">
-          {project.stats.map((s) => (
-            <span key={s} className="font-label text-[9px] uppercase tracking-[0.2em] text-white/40">
-              {s}
-            </span>
-          ))}
+        <div className={WORK_META_CLASS}>
+          <div className="flex flex-wrap gap-6">
+            {project.stats.map((s) => (
+              <span key={s} className="font-label text-[9px] uppercase tracking-[0.2em] text-white/40">
+                {s}
+              </span>
+            ))}
+          </div>
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              className="font-label inline-flex shrink-0 items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-white/60 transition-colors duration-200 hover:text-white"
+            >
+              View project <span aria-hidden="true">→</span>
+            </a>
+          )}
         </div>
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            className="font-label inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-white/60 transition-colors duration-200 hover:text-white"
-          >
-            View project <span aria-hidden="true">→</span>
-          </a>
-        )}
       </div>
     </article>
   );
@@ -155,52 +160,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
 
 export default function WorkGallery() {
   const viewportRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef({ active: false, didDrag: false, pointerId: 0, startX: 0, startScrollLeft: 0 });
-  const [isDragging, setIsDragging] = useState(false);
   useRevealObserver();
-
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType !== "mouse" || event.button !== 0) return;
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-
-    dragRef.current = {
-      active: true,
-      didDrag: false,
-      pointerId: event.pointerId,
-      startX: event.clientX,
-      startScrollLeft: viewport.scrollLeft,
-    };
-    viewport.setPointerCapture(event.pointerId);
-    setIsDragging(true);
-  };
-
-  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    const viewport = viewportRef.current;
-    if (!drag.active || !viewport) return;
-
-    const distance = event.clientX - drag.startX;
-    if (Math.abs(distance) > 4) drag.didDrag = true;
-    viewport.scrollLeft = drag.startScrollLeft - distance;
-  };
-
-  const finishDragging = (event: React.PointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    const viewport = viewportRef.current;
-    if (!drag.active || !viewport) return;
-
-    if (viewport.hasPointerCapture(drag.pointerId)) viewport.releasePointerCapture(drag.pointerId);
-    drag.active = false;
-    setIsDragging(false);
-  };
-
-  const preventDraggedClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!dragRef.current.didDrag) return;
-    event.preventDefault();
-    event.stopPropagation();
-    dragRef.current.didDrag = false;
-  };
 
   return (
     <section id="work" className="relative bg-[oklch(0.15_0_0)]">
@@ -223,12 +183,7 @@ export default function WorkGallery() {
 
       <div
         ref={viewportRef}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={finishDragging}
-        onPointerCancel={finishDragging}
-        onClickCapture={preventDraggedClick}
-        className={`cursor-grab overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${isDragging ? "cursor-grabbing" : ""}`}
+        className={WORK_GALLERY_VIEWPORT_CLASS}
       >
         <div
           className="flex w-max gap-6 px-6 py-12 md:gap-12 md:px-[max(1rem,calc((100vw-1280px)/2+2rem))] md:pb-28 md:pt-12"
