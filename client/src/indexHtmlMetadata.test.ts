@@ -10,7 +10,7 @@ describe("portfolio document metadata", () => {
   });
 
   it("uses the sparkle favicon as the social sharing image", () => {
-    const favicon = "https://andrefolio-f6gtj9q8.manus.space/manus-storage/andre-portfolio-exact-sparkle-favicon_d64f6048.png";
+    const favicon = "https://andrefolio-f6gtj9q8.manus.space/manus-storage/andre-portfolio-padded-sparkle-favicon_b4bdeb5a.png";
     expect(indexHtml).toContain(`<link rel="icon" type="image/png" href="${favicon}" />`);
     expect(indexHtml).toContain(`<meta property="og:image" content="${favicon}" />`);
     expect(indexHtml).toContain(`<meta name="twitter:image" content="${favicon}" />`);
