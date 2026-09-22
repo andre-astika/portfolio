@@ -60,9 +60,13 @@ describe("WorkGallery project data", () => {
       tag: "Brand Identity · Visual System · Guidelines",
       link: "https://algorhythm-works-brand-guidelines.vercel.app/",
     });
-    expect(project.image).toContain("/manus-storage/brand-guidelines-device_d2e8fcbb.webp");
+    expect(project.image).toContain("/manus-storage/pasted_file_kYaVKA_image_2235b175.png");
     expect(project.description).toContain("logo rules");
     expect(project.stats).toEqual(["Brand identity", "Visual system", "2026"]);
+  });
+
+  it("links the Cultural Campaign Website to its live project", () => {
+    expect(PROJECTS[3].link).toBe("https://batur2026.com/");
   });
 
   it("matches category text sizing to the View project link", () => {

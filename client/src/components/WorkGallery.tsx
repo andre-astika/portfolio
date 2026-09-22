@@ -21,7 +21,7 @@ export const PROJECTS = [
     year: "2026",
     title: "Brand Guidelines",
     tag: "Brand Identity · Visual System · Guidelines",
-    image: siteAsset("/manus-storage/brand-guidelines-device_d2e8fcbb.webp"),
+    image: siteAsset("/manus-storage/pasted_file_kYaVKA_image_2235b175.png"),
     description:
       "A monochrome brand guidelines system for Algorhythm Works, defining the identity's philosophy, logo rules, typography, colour palette, and applications with a precise, repeatable visual language.",
     stats: ["Brand identity", "Visual system", "2026"],
@@ -46,6 +46,7 @@ export const PROJECTS = [
     description:
       "A responsive WordPress campaign site that translates cultural storytelling into a clear digital experience, giving the programme a distinctive presence and an accessible home across every device.",
     stats: ["WordPress", "Campaign site", "Responsive web"],
+    link: "https://batur2026.com/",
   },
   {
     index: "05",
