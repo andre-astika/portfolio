@@ -9,7 +9,6 @@ describe("WorkGallery project data", () => {
       "Agency Client Website",
       "Cultural Campaign Website",
       "E-Invitation Website",
-      "Invitation Branding Suite",
     ]);
   });
 
@@ -19,10 +18,6 @@ describe("WorkGallery project data", () => {
     expect(PROJECTS[2].description).toContain("responsive");
     expect(PROJECTS[3].tag).toContain("Responsive Web");
     expect(PROJECTS[3].description).toContain("responsive");
-  });
-
-  it("uses a crisp, dark, high-contrast monochrome treatment for the Invitation Branding Suite image", () => {
-    expect(PROJECTS[5].imageFilter).toBe("grayscale(100%) brightness(0.82) contrast(1.48)");
   });
 
   it("keeps project images cover-fitted without hover zoom or image-filter motion", () => {
@@ -62,11 +57,15 @@ describe("WorkGallery project data", () => {
     });
     expect(project.image).toContain("/manus-storage/algorhythm-works-mockup_119ff09f.jpg");
     expect(project.description).toContain("logo rules");
-    expect(project.stats).toEqual(["Brand identity", "Visual system", "2026"]);
+    expect(project.stats).toEqual(["Brand identity", "Visual system"]);
   });
 
   it("links the Cultural Campaign Website to its live project", () => {
     expect(PROJECTS[3].link).toBe("https://batur2026.com/");
+  });
+
+  it("removes the 2026 stat label from E-Invitation Website", () => {
+    expect(PROJECTS[4].stats).toEqual(["WordPress", "Responsive web"]);
   });
 
   it("matches category text sizing to the View project link", () => {

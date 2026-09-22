@@ -13,9 +13,9 @@ describe("minimal site branding", () => {
   it("uses a sparkle-only mark in both the navigation and footer", () => {
     expect(NAV_BRAND_MARK).toBe("✦");
     expect(FOOTER_BRAND_MARK).toBe("✦");
-    expect(SITE_CHROME_MARK_CLASS).toContain("rounded-md");
-    expect(SITE_CHROME_MARK_CLASS).toContain("bg-black");
     expect(SITE_CHROME_MARK_CLASS).toContain("text-[18px]");
+    expect(SITE_CHROME_MARK_CLASS).toContain("md:text-3xl");
+    expect(SITE_CHROME_MARK_CLASS).not.toContain("rounded-md");
   });
 
   it("uses the same fixed-height container structure for header and footer", () => {

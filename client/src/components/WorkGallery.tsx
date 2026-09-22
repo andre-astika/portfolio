@@ -24,7 +24,7 @@ export const PROJECTS = [
     image: siteAsset("/manus-storage/algorhythm-works-mockup_119ff09f.jpg"),
     description:
       "A monochrome brand guidelines system for Algorhythm Works, defining the identity's philosophy, logo rules, typography, colour palette, and applications with a precise, repeatable visual language.",
-    stats: ["Brand identity", "Visual system", "2026"],
+    stats: ["Brand identity", "Visual system"],
     link: "https://algorhythm-works-brand-guidelines.vercel.app/",
   },
   {
@@ -56,18 +56,7 @@ export const PROJECTS = [
     image: siteAsset("/manus-storage/portfolio-e-invitation_1bd541f0.webp"),
     description:
       "A responsive WordPress e-invitation experience that gives guests a clear, elegant way to discover every event detail across desktop and mobile.",
-    stats: ["WordPress", "Responsive web", "2026"],
-  },
-  {
-    index: "06",
-    year: "2026",
-    title: "Invitation Branding Suite",
-    tag: "Logo · Invitation Card · Brand · Print",
-    image: siteAsset("/manus-storage/portfolio-logo-card_df167b01.webp"),
-    imageFilter: "grayscale(100%) brightness(0.82) contrast(1.48)",
-    description:
-      "A complete visual identity from the logo through invitation cards and print pieces, built as one considered brand system with a cohesive, memorable finish.",
-    stats: ["Logo system", "Print suite", "2026"],
+    stats: ["WordPress", "Responsive web"],
   },
 ];
 
@@ -108,7 +97,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
           alt={project.title}
           draggable={false}
           className={WORK_IMAGE_CLASS}
-          style={{ filter: project.imageFilter ?? "grayscale(100%) contrast(1.2)" }}
+          style={{ filter: "grayscale(100%) contrast(1.2)" }}
           loading="lazy"
           />
           <span className="font-label absolute right-4 top-4 border border-white/30 bg-black/60 px-2.5 py-1 text-[9px] uppercase tracking-[0.3em] text-white backdrop-blur-sm">
