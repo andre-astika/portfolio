@@ -60,7 +60,7 @@ export function getInquiryClientErrors(draft: InquiryDraft): InquiryFieldErrors 
 
 export const SOCIALS = [
   { label: "Email", href: `mailto:${INQUIRY_EMAIL}`, value: INQUIRY_EMAIL },
-  { label: "Web", href: "https://andre-astika.github.io/algorhythm-works/", value: "andre-astika.github.io/algorhythm-works", external: true },
+  { label: "Web", href: "https://algorhythm-works.vercel.app/", value: "https://algorhythm-works.vercel.app/", external: true },
   { label: "Location", href: "#contact", value: "Bali, Indonesia" },
 ];
 

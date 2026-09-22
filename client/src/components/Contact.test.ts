@@ -23,8 +23,8 @@ describe("Contact privacy and location content", () => {
 
   it("links the Contact Web card to the Algorhythm Works website", () => {
     const web = SOCIALS.find((item) => item.label === "Web");
-    expect(web?.href).toBe("https://andre-astika.github.io/algorhythm-works/");
-    expect(web?.value).toBe("andre-astika.github.io/algorhythm-works");
+    expect(web?.href).toBe("https://algorhythm-works.vercel.app/");
+    expect(web?.value).toBe("https://algorhythm-works.vercel.app/");
   });
 
   it("keeps a mailto fallback for the static GitHub Pages edition", () => {

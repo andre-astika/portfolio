@@ -57,10 +57,10 @@ describe("WorkGallery project data", () => {
     expect(project).toMatchObject({
       index: "02",
       title: "Brand Guidelines",
-      tag: "Brand Identity · Visual System · Guidelines",
+      tag: "Website · Brand Identity · Visual System · Guidelines",
       link: "https://algorhythm-works-brand-guidelines.vercel.app/",
     });
-    expect(project.image).toContain("/manus-storage/pasted_file_kYaVKA_image_2235b175.png");
+    expect(project.image).toContain("/manus-storage/algorhythm-works-mockup_119ff09f.jpg");
     expect(project.description).toContain("logo rules");
     expect(project.stats).toEqual(["Brand identity", "Visual system", "2026"]);
   });
