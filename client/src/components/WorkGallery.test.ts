@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { PROJECTS, WORK_CATEGORY_CLASS, WORK_GALLERY_VIEWPORT_CLASS, WORK_IMAGE_CLASS, WORK_META_CLASS } from "./WorkGallery";
+import { PROJECTS, WORK_CATEGORY_CLASS, WORK_CATEGORY_ROW_CLASS, WORK_GALLERY_VIEWPORT_CLASS, WORK_IMAGE_CLASS, WORK_META_CLASS } from "./WorkGallery";
 
 describe("WorkGallery project data", () => {
   it("keeps the featured portfolio projects in the intended order", () => {
@@ -71,6 +71,7 @@ describe("WorkGallery project data", () => {
 
   it("matches category text sizing to the View project link", () => {
     expect(WORK_CATEGORY_CLASS).toContain("text-[10px]");
+    expect(WORK_CATEGORY_ROW_CLASS).toContain("w-full");
     expect(WORK_META_CLASS).toContain("justify-between");
   });
 });

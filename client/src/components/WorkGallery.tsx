@@ -64,6 +64,7 @@ export const PROJECTS = [
 export const WORK_IMAGE_CLASS =
   "h-full w-full object-cover";
 export const WORK_CATEGORY_CLASS = "font-label text-[10px] uppercase tracking-[0.25em] text-white/40";
+export const WORK_CATEGORY_ROW_CLASS = "flex w-full items-center";
 export const WORK_META_CLASS = "flex items-end justify-between gap-6 border-t border-white/10 pt-4";
 export const WORK_GALLERY_VIEWPORT_CLASS =
   "overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
@@ -138,7 +139,9 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
           )}
         </h3>
         {"category" in project && project.category && (
-          <span className={WORK_CATEGORY_CLASS}>{project.category}</span>
+          <div className={WORK_CATEGORY_ROW_CLASS}>
+            <span className={WORK_CATEGORY_CLASS}>{project.category}</span>
+          </div>
         )}
         <div className={WORK_META_CLASS}>
           <div className="flex flex-wrap gap-6">
