@@ -52,6 +52,7 @@ describe("WorkGallery project data", () => {
     expect(project).toMatchObject({
       index: "02",
       title: "Brand Guidelines",
+      category: "WEBSITE",
       tag: "WEBSITE · Brand Identity · Visual System · Guidelines",
       link: "https://algorhythm-works-brand-guidelines.vercel.app/",
     });

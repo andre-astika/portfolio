@@ -20,6 +20,7 @@ export const PROJECTS = [
     index: "02",
     year: "2026",
     title: "Brand Guidelines",
+    category: "WEBSITE",
     tag: "WEBSITE · Brand Identity · Visual System · Guidelines",
     image: siteAsset("/manus-storage/algorhythm-works-mockup_119ff09f.jpg"),
     description:
@@ -136,6 +137,9 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
             project.title
           )}
         </h3>
+        {"category" in project && project.category && (
+          <span className={WORK_CATEGORY_CLASS}>{project.category}</span>
+        )}
         <div className={WORK_META_CLASS}>
           <div className="flex flex-wrap gap-6">
             {project.stats.map((s) => (
