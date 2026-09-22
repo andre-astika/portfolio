@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { PROJECTS, WORK_GALLERY_VIEWPORT_CLASS, WORK_IMAGE_CLASS, WORK_META_CLASS } from "./WorkGallery";
+import { PROJECTS, WORK_CATEGORY_CLASS, WORK_GALLERY_VIEWPORT_CLASS, WORK_IMAGE_CLASS, WORK_META_CLASS } from "./WorkGallery";
 
 describe("WorkGallery project data", () => {
   it("keeps the featured portfolio projects in the intended order", () => {
     expect(PROJECTS.map((project) => project.title)).toEqual([
       "Digital Service",
+      "Brand Guidelines",
       "Agency Client Website",
       "Cultural Campaign Website",
       "E-Invitation Website",
@@ -13,15 +14,15 @@ describe("WorkGallery project data", () => {
   });
 
   it("uses managed portfolio images and includes requested responsive-web metadata", () => {
-    expect(PROJECTS.slice(1).every((project) => project.image.includes("/manus-storage/portfolio-"))).toBe(true);
-    expect(PROJECTS[1].tag).toContain("Responsive Web");
-    expect(PROJECTS[1].description).toContain("responsive");
+    expect(PROJECTS.every((project) => project.image.includes("/manus-storage/"))).toBe(true);
     expect(PROJECTS[2].tag).toContain("Responsive Web");
     expect(PROJECTS[2].description).toContain("responsive");
+    expect(PROJECTS[3].tag).toContain("Responsive Web");
+    expect(PROJECTS[3].description).toContain("responsive");
   });
 
   it("uses a crisp, dark, high-contrast monochrome treatment for the Invitation Branding Suite image", () => {
-    expect(PROJECTS[4].imageFilter).toBe("grayscale(100%) brightness(0.82) contrast(1.48)");
+    expect(PROJECTS[5].imageFilter).toBe("grayscale(100%) brightness(0.82) contrast(1.48)");
   });
 
   it("keeps project images cover-fitted without hover zoom or image-filter motion", () => {
@@ -43,10 +44,29 @@ describe("WorkGallery project data", () => {
       year: "2026",
       title: "Digital Service",
       tag: "Web Design · Web Development · Graphic Design",
-      link: "https://andre-astika.github.io/algorhythm-works/",
+      link: "https://algorhythm-works.vercel.app/",
     });
     expect(project.image).toContain("/manus-storage/algorhythm-works-website-device_e1029af2.webp");
     expect(project.description).toContain("web design, web development, and graphic design");
     expect(project.stats).toEqual(["Web design", "Web development", "Graphic design"]);
+  });
+
+  it("adds Brand Guidelines as the second project with a featured asset and link", () => {
+    const project = PROJECTS[1];
+
+    expect(project).toMatchObject({
+      index: "02",
+      title: "Brand Guidelines",
+      tag: "Brand Identity · Visual System · Guidelines",
+      link: "https://algorhythm-works-brand-guidelines.vercel.app/",
+    });
+    expect(project.image).toContain("/manus-storage/brand-guidelines-device_d2e8fcbb.webp");
+    expect(project.description).toContain("logo rules");
+    expect(project.stats).toEqual(["Brand identity", "Visual system", "2026"]);
+  });
+
+  it("matches category text sizing to the View project link", () => {
+    expect(WORK_CATEGORY_CLASS).toContain("text-[10px]");
+    expect(WORK_META_CLASS).toContain("justify-between");
   });
 });

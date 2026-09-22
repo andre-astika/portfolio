@@ -14,10 +14,21 @@ export const PROJECTS = [
     description:
       "A complete digital presence for a multidisciplinary service studio, bringing web design, web development, and graphic design together in one focused, responsive brand experience.",
     stats: ["Web design", "Web development", "Graphic design"],
-    link: "https://andre-astika.github.io/algorhythm-works/",
+    link: "https://algorhythm-works.vercel.app/",
   },
   {
     index: "02",
+    year: "2026",
+    title: "Brand Guidelines",
+    tag: "Brand Identity · Visual System · Guidelines",
+    image: siteAsset("/manus-storage/brand-guidelines-device_d2e8fcbb.webp"),
+    description:
+      "A monochrome brand guidelines system for Algorhythm Works, defining the identity's philosophy, logo rules, typography, colour palette, and applications with a precise, repeatable visual language.",
+    stats: ["Brand identity", "Visual system", "2026"],
+    link: "https://algorhythm-works-brand-guidelines.vercel.app/",
+  },
+  {
+    index: "03",
     year: "2022 — 26",
     title: "Agency Client Website",
     tag: "WordPress · Next.js · Responsive Web · Web Development",
@@ -27,7 +38,7 @@ export const PROJECTS = [
     stats: ["WordPress", "Next.js", "Responsive web"],
   },
   {
-    index: "03",
+    index: "04",
     year: "2026",
     title: "Cultural Campaign Website",
     tag: "WordPress · Campaign Design · Responsive Web · Web Development",
@@ -37,7 +48,7 @@ export const PROJECTS = [
     stats: ["WordPress", "Campaign site", "Responsive web"],
   },
   {
-    index: "04",
+    index: "05",
     year: "2026",
     title: "E-Invitation Website",
     tag: "Website · WordPress",
@@ -47,7 +58,7 @@ export const PROJECTS = [
     stats: ["WordPress", "Responsive web", "2026"],
   },
   {
-    index: "05",
+    index: "06",
     year: "2026",
     title: "Invitation Branding Suite",
     tag: "Logo · Invitation Card · Brand · Print",
@@ -61,6 +72,7 @@ export const PROJECTS = [
 
 export const WORK_IMAGE_CLASS =
   "h-full w-full object-cover";
+export const WORK_CATEGORY_CLASS = "font-label text-[10px] uppercase tracking-[0.25em] text-white/40";
 export const WORK_META_CLASS = "flex items-end justify-between gap-6 border-t border-white/10 pt-4";
 export const WORK_GALLERY_VIEWPORT_CLASS =
   "overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
@@ -137,7 +149,7 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
         <div className={WORK_META_CLASS}>
           <div className="flex flex-wrap gap-6">
             {project.stats.map((s) => (
-              <span key={s} className="font-label text-[9px] uppercase tracking-[0.2em] text-white/40">
+              <span key={s} className={WORK_CATEGORY_CLASS}>
                 {s}
               </span>
             ))}
