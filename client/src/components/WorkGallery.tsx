@@ -20,12 +20,11 @@ export const PROJECTS = [
     index: "02",
     year: "2026",
     title: "Brand Guidelines",
-    category: "WEBSITE",
     tag: "WEBSITE · Brand Identity · Visual System · Guidelines",
     image: siteAsset("/manus-storage/algorhythm-works-mockup_119ff09f.jpg"),
     description:
       "A monochrome brand guidelines system for Algorhythm Works, defining the identity's philosophy, logo rules, typography, colour palette, and applications with a precise, repeatable visual language.",
-    stats: ["Brand identity", "Visual system"],
+    stats: ["WEBSITE", "Brand identity", "Visual system"],
     link: "https://algorhythm-works-brand-guidelines.vercel.app/",
   },
   {
@@ -64,7 +63,6 @@ export const PROJECTS = [
 export const WORK_IMAGE_CLASS =
   "h-full w-full object-cover";
 export const WORK_CATEGORY_CLASS = "font-label text-[10px] uppercase tracking-[0.25em] text-white/40";
-export const WORK_CATEGORY_ROW_CLASS = "flex w-full items-center";
 export const WORK_META_CLASS = "flex items-end justify-between gap-6 border-t border-white/10 pt-4";
 export const WORK_GALLERY_VIEWPORT_CLASS =
   "overflow-x-auto select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
@@ -138,11 +136,6 @@ function SpotlightCard({ project }: { project: (typeof PROJECTS)[number] }) {
             project.title
           )}
         </h3>
-        {"category" in project && project.category && (
-          <div className={WORK_CATEGORY_ROW_CLASS}>
-            <span className={WORK_CATEGORY_CLASS}>{project.category}</span>
-          </div>
-        )}
         <div className={WORK_META_CLASS}>
           <div className="flex flex-wrap gap-6">
             {project.stats.map((s) => (
