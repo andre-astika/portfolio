@@ -20,7 +20,7 @@ export const PROJECTS = [
     index: "02",
     year: "2026",
     title: "Brand Guidelines",
-    tag: "Website · Brand Identity · Visual System · Guidelines",
+    tag: "WEBSITE · Brand Identity · Visual System · Guidelines",
     image: siteAsset("/manus-storage/algorhythm-works-mockup_119ff09f.jpg"),
     description:
       "A monochrome brand guidelines system for Algorhythm Works, defining the identity's philosophy, logo rules, typography, colour palette, and applications with a precise, repeatable visual language.",
